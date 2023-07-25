@@ -3,6 +3,6 @@
     "plugin:testing-library/react",
     "plugin:jest-dom/recommended",
     "@rocketseat/eslint-config/react"
-]
+  ]
 }
 
