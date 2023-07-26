@@ -1,6 +1,6 @@
-import Image from 'next/image'
+import Image from "next/image";
 
-import logo from '@/app/assets/svg/logo.svg'
+import logo from "@/app/assets/svg/logo.svg";
 
 export function Header() {
   return (
@@ -8,9 +8,11 @@ export function Header() {
       <nav className="p-5">
         <div className="sm:flex sm:flex-col  md:flex md:flex-row md:text-4xl">
           <Image className="h-11 " src={logo} alt="site principal" />
-          <span className="h-11 pt-1 flex items-center justify-center ">Expensive Tracker</span>
+          <span className="h-11 pt-1 flex items-center justify-center ">
+            Expensive Tracker
+          </span>
         </div>
       </nav>
     </header>
-  )
+  );
 }
