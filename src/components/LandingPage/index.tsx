@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Header } from "./Header";
 import imgHome from "@/app/assets/img/imagem-site.png";
 
-export default function LandingPage() {
+export function LandingPage() {
   return (
     <>
       <Header />

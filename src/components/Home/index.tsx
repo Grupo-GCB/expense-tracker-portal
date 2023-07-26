@@ -4,7 +4,7 @@ interface IUser {
   user: UserProfile | undefined;
 }
 
-export default function Home({ user }: IUser) {
+export function Home({ user }: IUser) {
   if (!user) return null;
 
   return (
