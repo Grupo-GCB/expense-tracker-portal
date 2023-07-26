@@ -1,34 +1,35 @@
 # Descrição da tarefa
 
-Criando um template de pull request para o projeto backend
+Inclua um resumo da alteração, qual problema foi corrigido e também motivação e contexto relevantes.
 
 Solicitante(s) da tarefa
 
-- Kayke Fujinaka
+- Nome da tarefa
 
 Card(s) da tarefa
 
-- [Criar pull request do template dos pulls requests](https://dev.azure.com/GCBInvestimentos/Academy%202.0/_sprints/taskboard/Academy%202.0%20Team/Academy%202.0/Sprint%201)
+- [nome-card](link-card)
 
 # Checklist
 
 Você realizou o code review do seu próprio PR?
 
-- [] Sim
-- [] Não
+- [ ] Sim
+- [ ] Não
 
 ---
 
 Necessário seguir alguma ordem de deploy (ex: aceitar outro PR antes)?
 
-- [] Sim
-- [] Não
+- [ ] Sim
+- [ ] Não
 
-### Teste que precisa ser realizado para aprovação do PR
+### Testes que precisa ser realizado para aprovação do PR
 
-- [] Frontend
-- [] Backend
+- [ ] Produtos
+- [ ] Ux/Ui
+- [ ] QA
 
 Responsáveis pelos testes QA:
 
-- Kayke Fujinaka
+- Nome
