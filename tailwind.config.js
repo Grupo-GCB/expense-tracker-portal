@@ -10,6 +10,12 @@ module.exports = {
       fontFamily: {
         roboto: ["'Roboto', sans-serif"],
       },
+      screens: {
+        sm: "320px",
+        md: "768px",
+        lg: "1224px",
+        xl: "1440px",
+      },
       colors: {
         screens: {
           sm: '480px',
@@ -29,9 +35,9 @@ module.exports = {
           900: '#121214',
         },
         green: {
-          300: '#00B37E',
-          500: '#00875F',
-          700: '#015F43',
+          300: "#00B37E",
+          500: "#00875F",
+          700: "#015F43",
         },
         red: {
           300: '#F75A68',
