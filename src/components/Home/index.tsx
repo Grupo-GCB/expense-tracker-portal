@@ -1,22 +1,17 @@
-'use client'
+import { UserProfile } from '@auth0/nextjs-auth0/client'
 
-import { useUser } from '@auth0/nextjs-auth0/client'
-import LandingPage from '../LandingPage'
+interface IUser {
+  user: UserProfile | undefined
+}
 
-export default function Home() {
-  const { user, error, isLoading } = useUser()
-
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>{error.message}</div>
-
-  if (user) {
-    console.log(user)
-    return (
-      <div>
-        Welcome {user.nickname}! <a href="/api/auth/logout">Logout</a>
-      </div>
-    )
+export default function Home({ user }: IUser) {
+  if (!user) {
+    return null
   }
 
-  return <LandingPage />
+  return (
+    <div>
+      Welcome {user.nickname}! <a href="/api/auth/logout">Logout</a>
+    </div>
+  )
 }
