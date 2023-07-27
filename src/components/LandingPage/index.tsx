@@ -25,7 +25,7 @@ export function LandingPage() {
           </div>
           <div className="w-full mt-5 flex justify-center items-center ">
             <Image
-              loading="lazy"
+              loading="eager"
               className="w-4/5 lg:w-5/5 "
               src={imgHome}
               alt="home do site"
