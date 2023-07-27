@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { Header } from "./Header";
-import imgHome from "@/app/assets/img/imagem-site.png";
+import imgHome from "../../app/assets/img/imagem-site.png";
 import { Button } from "../Button";
 
 export function LandingPage() {
@@ -19,7 +19,7 @@ export function LandingPage() {
                 <Button className="py-2 px-4 md:w-64 md:items-self-center rounded-md bg-green-500 md:py-4  md:px-3">
                   <a href="/api/auth/login" className="text-sm md:text-2xl ">
                     Experimentar!
-                  </a> 
+                  </a>
                 </Button>
               </div>
             </div>
