@@ -2,9 +2,7 @@ import { UserProfile } from '@auth0/nextjs-auth0/client'
 import { useCallback, useEffect } from 'react'
 import axios from 'axios'
 
-interface IUser {
-  user: UserProfile | undefined
-}
+import { IUser } from '@/interfaces/User'
 
 interface ISession {
   user: UserProfile | undefined
@@ -40,7 +38,7 @@ export function Home({ user }: IUser) {
 
   return (
     <div>
-      Welcome {user.nickname}! <a href="/api/auth/logout">Logout</a>
+      Welcome {user.name}! <a href="/api/auth/logout">Logout</a>
     </div>
   )
 }
