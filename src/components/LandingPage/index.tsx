@@ -3,11 +3,12 @@ import Image from "next/image";
 import { Header } from "./Header";
 import imgHome from "../../app/assets/img/imagem-site.png";
 import { Button } from "../Button";
+import Link from "next/link";
 
 export function LandingPage() {
   return (
     <>
-      <Header />
+      <Header/>
       <main className="w-full min-h-screen bg-gray-300 font-roboto font-semibold text-white xl:-mt-1">
         <section className="w-full min-h-screen flex-column align-middle lg:flex  lg:justify-center  lg:gap-16 lg:pt-12  lg:px-16 pb-12">
           <div className="pt-6 lg:flex lg:items-center lg:w-2/5">
@@ -17,9 +18,9 @@ export function LandingPage() {
               </h1>
               <div className="w-full flex justify-center  mt-4 md:mt-10">
                 <Button className="py-2 px-4  hover:bg-green-300 md:w-64 md:items-self-center rounded-md bg-green-500 md:py-4  md:px-3">
-                  <a href="/api/auth/login" className="text-sm md:text-2xl ">
+                  <Link href="/api/auth/login" className="text-sm md:text-2xl ">
                     Experimentar!
-                  </a>
+                  </Link>
                 </Button>
               </div>
             </div>
