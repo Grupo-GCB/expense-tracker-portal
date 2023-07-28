@@ -16,7 +16,7 @@ export function LandingPage() {
                 Trilhe o caminho da estabilidade financeira
               </h1>
               <div className="w-full flex justify-center  mt-4 md:mt-10">
-                <Button className="py-2 px-4 md:w-64 md:items-self-center rounded-md bg-green-500 md:py-4  md:px-3">
+                <Button className="py-2 px-4  hover:bg-green-300 md:w-64 md:items-self-center rounded-md bg-green-500 md:py-4  md:px-3">
                   <a href="/api/auth/login" className="text-sm md:text-2xl ">
                     Experimentar!
                   </a>
