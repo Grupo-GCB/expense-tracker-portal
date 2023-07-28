@@ -3,8 +3,7 @@ import { twMerge } from "tailwind-merge";
 
 export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  onClick?: ()=> void;
-
+  onClick?: () => void;
 }
 
 export function Button({ children, className, onClick }: IButtonProps) {

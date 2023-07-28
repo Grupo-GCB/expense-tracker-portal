@@ -7,7 +7,7 @@ import { Button } from "../Button";
 export function LandingPage() {
   return (
     <>
-      <Header/>
+      <Header />
       <main className="w-full min-h-screen bg-gray-300 font-roboto font-semibold text-white xl:-mt-1">
         <section className="w-full min-h-screen flex-column align-middle lg:flex  lg:justify-center  lg:gap-16 lg:pt-12  lg:px-16 pb-12">
           <div className="pt-6 lg:flex lg:items-center lg:w-2/5">
