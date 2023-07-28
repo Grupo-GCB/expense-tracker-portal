@@ -1,5 +1,6 @@
 import { StoryObj, Meta } from "@storybook/react";
-import { Button, IButtonProps } from "./index";
+
+import { Button, IButtonProps } from ".";
 
 export default {
   title: "Components/Button",
@@ -40,7 +41,8 @@ export const Big: StoryObj<IButtonProps> = {
 
 export const Link: StoryObj<IButtonProps> = {
   args: {
-    className: "items-self-center rounded-md bg-green-500 py-3 px-5 text-white font-bold",
+    className:
+      "items-self-center rounded-md bg-green-500 py-3 px-5 text-white font-bold",
     children: <a className="text-sm">Experimentar!</a>,
   },
 };

@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 
-import { Button } from "./index";
+import { Button } from ".";
 
 describe("Button", () => {
   it("should be able to render the children correctly", () => {
