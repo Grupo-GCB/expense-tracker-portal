@@ -1,4 +1,3 @@
-// sessionAuth.test.ts
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from '@auth0/nextjs-auth0'
 
@@ -15,8 +14,8 @@ jest.mock('@auth0/nextjs-auth0', () => ({
   },
 }))
 
-describe('sessionAuth', () => {
-  it('should respond with userSession when getSession resolves', async () => {
+describe('Session Auth', () => {
+  it('should be able to get user session', async () => {
     const req: NextApiRequest = {} as any
     const res: NextApiResponse = {
       status: jest.fn().mockReturnThis(),
@@ -33,7 +32,7 @@ describe('sessionAuth', () => {
     expect(res.json).toHaveBeenCalledWith({ userSession })
   })
 
-  it('should respond with error when getSession rejects', async () => {
+  it('should not be able to get user session', async () => {
     const req: NextApiRequest = {} as any
     const res: NextApiResponse = {
       status: jest.fn().mockReturnThis(),
