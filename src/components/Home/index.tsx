@@ -6,14 +6,34 @@ interface IUser {
   user: UserProfile | undefined
 }
 
+interface ISession {
+  user: UserProfile | undefined
+  accessToken: string
+  accessTokenScope: string
+  accessTokenExpiresAt: number
+  idToken: string
+  token_type: string
+}
+
 export function Home({ user }: IUser) {
-  const handleAccessToken = useCallback(async () => {
-    const res = await axios.get<{ accessToken: string }>('api/accessTokenAuth')
-    console.log(res.data.accessToken)
+  const handleUserSession = useCallback(async () => {
+    try {
+      const res = await axios.get<{ userSession: ISession }>('/api/sessionAuth')
+      const userIdToken = res.data.userSession.idToken
+      const userAccessToken = res.data.userSession.accessToken
+      console.log(userIdToken)
+      console.log(userAccessToken)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error('Axios error:', error.message)
+      } else {
+        console.error('Unknown error:', error)
+      }
+    }
   }, [])
 
   useEffect(() => {
-    handleAccessToken()
+    handleUserSession()
   }, [])
 
   if (!user) return null
