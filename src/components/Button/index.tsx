@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 
 }
