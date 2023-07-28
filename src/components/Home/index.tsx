@@ -1,17 +1,8 @@
-import { UserProfile } from '@auth0/nextjs-auth0/client'
 import { useCallback, useEffect } from 'react'
 import axios from 'axios'
 
 import { IUser } from '@/interfaces/User'
-
-interface ISession {
-  user: UserProfile | undefined
-  accessToken: string
-  accessTokenScope: string
-  accessTokenExpiresAt: number
-  idToken: string
-  token_type: string
-}
+import { ISession } from '@/interfaces/Session'
 
 export function Home({ user }: IUser) {
   const handleUserSession = useCallback(async () => {
