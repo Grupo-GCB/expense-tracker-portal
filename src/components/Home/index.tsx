@@ -10,8 +10,6 @@ export function Home({ user }: IUser) {
       const res = await axios.get<{ userSession: ISession }>('/api/sessionAuth')
       const userIdToken = res.data.userSession.idToken
       const userAccessToken = res.data.userSession.accessToken
-      console.log(userIdToken)
-      console.log(userAccessToken)
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error('Axios error:', error.message)
