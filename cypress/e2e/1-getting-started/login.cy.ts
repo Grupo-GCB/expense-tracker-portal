@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+/// <reference types="jest" />
 
 context('Login', () => {
   beforeEach(() => {
