@@ -38,8 +38,6 @@ export function Home({ user }: IUser) {
 
   if (!user) return null
 
-  console.log(user)
-
   return (
     <div>
       Welcome {user.nickname}! <a href="/api/auth/logout">Logout</a>
