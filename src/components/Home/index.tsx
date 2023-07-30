@@ -1,8 +1,7 @@
 import { useCallback, useEffect } from 'react'
 import axios from 'axios'
 
-import { IUser } from '@/interfaces/User'
-import { ISession } from '@/interfaces/Session'
+import { ISession, IUser } from '@/interfaces'
 
 export function Home({ user }: IUser) {
   const handleUserSession = useCallback(async () => {
