@@ -1,48 +1,43 @@
 import { StoryObj, Meta } from "@storybook/react";
 
-import { Button, IButtonProps } from ".";
+import { Button, IButtonProps } from "./";
 
-export default {
+const meta: Meta<IButtonProps> = {
   title: "Components/Button",
   component: Button,
-} as Meta<IButtonProps>;
+  argTypes: {
+    children: {
+      type: "string",
+    },
+  },
+};
 
-export const Hover: StoryObj<IButtonProps> = {
+export default meta;
+
+export const Default: StoryObj<IButtonProps> = {
   args: {
-    className:
-      "items-self-center rounded-md bg-green-300 py-3  px-5 text-white font-bold",
     children: "Experimentar!",
+    size: "medium",
   },
 };
 
 export const Small: StoryObj<IButtonProps> = {
   args: {
-    className:
-      "items-self-center rounded-md bg-green-500 py-2  px-4 text-white font-bold text-sm ",
     children: "Experimentar!",
+    size: "small",
   },
 };
 
 export const Medium: StoryObj<IButtonProps> = {
   args: {
-    className:
-      "items-self-center rounded-md bg-green-500 py-3  px-5 text-white font-bold",
     children: "Experimentar!",
+    size: "medium",
   },
 };
 
-export const Big: StoryObj<IButtonProps> = {
+export const Large: StoryObj<IButtonProps> = {
   args: {
-    className:
-      "items-self-center rounded-md bg-green-500 py-4  px-8 text-xl text-white font-bold",
     children: "Experimentar!",
-  },
-};
-
-export const Link: StoryObj<IButtonProps> = {
-  args: {
-    className:
-      "items-self-center rounded-md bg-green-500 py-3 px-5 text-white font-bold",
-    children: <a className="text-sm">Experimentar!</a>,
+    size: "large",
   },
 };
