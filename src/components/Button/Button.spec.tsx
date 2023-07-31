@@ -1,26 +1,26 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
-import { Button } from ".";
+import { Button } from "./";
 
 describe("Button", () => {
-  it("should be able to render the children correctly", () => {
-    const buttonText = "Clique aqui";
+  const buttonText = "Click here";
 
-    render(<Button>{buttonText}</Button>);
+  it("should be able to render the children correctly",() => {
+    
+    render(<Button testId="test-button">{buttonText}</Button>);
 
-    const button = screen.getByRole("button", { name: buttonText });
+    const button = screen.getByTestId("test-button");
 
     expect(button).toBeInTheDocument();
+    expect(button).toHaveTextContent('Click here');
   });
 
-  afterEach(cleanup);
-
-  it("should be able to call onClick function when the button is clicked", () => {
+  it("should be able to click the button", () => {
     const handleClick = jest.fn();
 
-    render(<Button onClick={handleClick}>Clique aqui</Button>);
+    render(<Button onClick={handleClick}>{buttonText}</Button>);
 
-    const button = screen.getByRole("button", { name: "Clique aqui" });
+    const button = screen.getByRole("button", { name: "Click here" });
 
     fireEvent.click(button);
 

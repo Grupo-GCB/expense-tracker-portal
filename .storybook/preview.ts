@@ -12,6 +12,15 @@ export const laptopLarge = {
   type: "desktop",
 };
 
+export const customViewPorts = {
+  name: "laptopL",
+  styles: {
+    width: "1440px",
+    height: "871px",
+  },
+  type: "desktop",
+}
+
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
