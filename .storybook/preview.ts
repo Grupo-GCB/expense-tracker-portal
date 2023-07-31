@@ -3,23 +3,40 @@ import { MINIMAL_VIEWPORTS } from "@storybook/addon-viewport";
 
 import "../src/styles/tailwind.css";
 
-export const laptopLarge = {
-  name: "laptopL",
-  styles: {
-    width: "1440px",
-    height: "871px",
+export const customViewports = [
+  {
+    name: "laptop",
+    styles: {
+      width: "1440px",
+      height: "871px",
+    },
+    type: "desktop",
   },
-  type: "desktop",
-};
-
-export const customViewPorts = {
-  name: "laptopL",
-  styles: {
-    width: "1440px",
-    height: "871px",
+  {
+    name: "desktop",
+    styles: {
+      width: "1024px",
+      height: "800px",
+    },
+    type: "desktop",
   },
-  type: "desktop",
-}
+  {
+    name: "tablet",
+    styles: {
+      width: "1024px",
+      height: "768px",
+    },
+    type:"tablet"
+  },
+  {
+    name: "mobile",
+    styles: {
+      width: "320px",
+      height: "480px",
+    },
+    type:"mobile"
+  },
+];
 
 const preview: Preview = {
   parameters: {
@@ -31,7 +48,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      viewports: { ...MINIMAL_VIEWPORTS, laptopLarge },
+      viewports: { ...MINIMAL_VIEWPORTS, ...customViewports },
     },
   },
 };
