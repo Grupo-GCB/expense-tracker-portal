@@ -14,12 +14,18 @@ export default {
   },
 } as Meta;
 
-export const Desktop: StoryObj = {};
-
-export const Mobile: StoryObj = {
+export const Laptop: StoryObj = {
   parameters: {
     viewport: {
-      defaultViewport: "iphone5",
+      defaultViewport: "laptop",
+    },
+  },
+};
+
+export const Desktop: StoryObj = {
+  parameters: {
+    viewport: {
+      defaultViewport: "desktop",
     },
   },
 };
@@ -27,7 +33,15 @@ export const Mobile: StoryObj = {
 export const Tablet: StoryObj = {
   parameters: {
     viewport: {
-      defaultViewport: "ipad",
+      defaultViewport: "tablet",
+    },
+  },
+};
+
+export const Mobile: StoryObj = {
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile",
     },
   },
 };
