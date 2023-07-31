@@ -5,14 +5,13 @@ import { Button } from "./";
 describe("Button", () => {
   const buttonText = "Click here";
 
-  it("should be able to render the children correctly",() => {
-    
+  it("should be able to render the children correctly", () => {
     render(<Button testId="test-button">{buttonText}</Button>);
 
     const button = screen.getByTestId("test-button");
 
     expect(button).toBeInTheDocument();
-    expect(button).toHaveTextContent('Click here');
+    expect(button).toHaveTextContent("Click here");
   });
 
   it("should be able to click the button", () => {

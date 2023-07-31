@@ -1,8 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { LandingPage } from ".";
 
-describe("LandingPage", () => {
+import { LandingPage } from "./";
+
+describe("Landing Page", () => {
   it("should be able to render correctly", () => {
     render(<LandingPage />);
 
@@ -20,15 +21,16 @@ describe("LandingPage", () => {
     const button = screen.getByRole("button");
     expect(button).toBeInTheDocument();
 
-    const image = screen.getByAltText("home do site");
+    const image = screen.getByRole("img", { name: "preview-of-home" });
     expect(image).toBeInTheDocument();
   });
 
   it("should be able to render button text correctly", () => {
     render(<LandingPage />);
 
-    const buttonText = screen.getByRole("button", { name: "Experimentar!" });
+    const buttonText = screen.getByTestId("main-button");
     expect(buttonText).toBeInTheDocument();
+    expect(buttonText).toHaveTextContent("Experimentar!");
   });
 
   it("should be able to render button link with correct URL", () => {
