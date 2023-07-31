@@ -1,23 +1,26 @@
 import Image from "next/image";
-
-import { Header } from "./Header";
-import imgHome from "../../app/assets/img/imagem-site.png";
-import { Button } from "../Button";
 import Link from "next/link";
+
+import imgHome from "@/app/assets/img/portal.png";
+import { Header } from "./Header";
+import { Button } from "../Button";
 
 export function LandingPage() {
   return (
     <>
-      <Header/>
-      <main className="w-full min-h-screen bg-gray-300 font-roboto font-semibold text-white xl:-mt-1">
-        <section className="w-full min-h-screen flex-column align-middle lg:flex  lg:justify-center  lg:gap-16 lg:pt-12  lg:px-16 pb-12">
+      <Header />
+      <main className="w-full min-h-screen bg-gray-300 font-semibold text-white xl:-mt-1">
+        <section className="w-full min-h-screen flex-column align-middle lg:flex  lg:justify-center  lg:gap-16 lg:pt-12 lg:px-16 pb-12">
           <div className="pt-6 lg:flex lg:items-center lg:w-2/5">
             <div className="lg:w-full md:h-56 rounded-md md:p-3 lg:bg-gray-200 xl:h-65">
-              <h1 className="text-center text-base text-lg px-3 md:text-xl md:mt-2 md:px-6 lg:text-large xl:text-2xl">
+              <h1 className="text-center text-base sm:text-lg px-3 md:text-xl md:mt-2 md:px-6 lg:text-large xl:text-2xl">
                 Trilhe o caminho da estabilidade financeira
               </h1>
               <div className="w-full flex justify-center  mt-4 md:mt-10">
-                <Button className="py-2 px-4  hover:bg-green-300 md:w-64 md:items-self-center rounded-md bg-green-500 md:py-4  md:px-3">
+                <Button
+                  testId="main-button"
+                  className="py-2 px-4  hover:bg-green-300 md:w-64 md:items-self-center rounded-md bg-green-500 md:py-4  md:px-3"
+                >
                   <Link href="/api/auth/login" className="text-sm md:text-2xl ">
                     Experimentar!
                   </Link>
@@ -30,6 +33,7 @@ export function LandingPage() {
               loading="eager"
               className="w-4/5 lg:w-5/5 "
               src={imgHome}
+              aria-label="preview-of-home"
               alt="home do site"
             />
           </div>
