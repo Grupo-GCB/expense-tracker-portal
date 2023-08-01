@@ -41,7 +41,10 @@ export function LandingPage() {
                   disabled={isLoading}
                 >
                   {isLoading ? (
-                    <CircleNotch className="animate-spin w-full justify-center" />
+                    <CircleNotch
+                      className="animate-spin w-full justify-center"
+                      data-testid="loading-icon"
+                    />
                   ) : (
                     <span>Experimentar!</span>
                   )}
