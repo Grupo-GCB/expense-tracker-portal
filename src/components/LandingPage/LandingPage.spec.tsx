@@ -34,6 +34,20 @@ describe("Landing Page", () => {
     expect(buttonText).toHaveTextContent("Experimentar!");
   });
 
+  it("should be able render loading icon when button is clicked", async () => {
+    render(<LandingPage />);
+
+    const button = screen.getByTestId("login-page-button");
+    expect(button).toBeInTheDocument();
+    expect(button).not.toBeDisabled();
+
+    fireEvent.click(button);
+
+    const loadingIcon = screen.getByTestId("loading-icon");
+    expect(loadingIcon).toBeInTheDocument();
+    expect(button).toBeDisabled();
+  });
+
   it("should be able to redirect to login page when button is clicked", () => {
     render(<LandingPage />);
 
