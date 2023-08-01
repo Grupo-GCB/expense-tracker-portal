@@ -21,7 +21,6 @@ export function Loading() {
             fill="currentFill"
           />
         </svg>
-        <span className="sr-only">Loading...</span>
       </div>
     </div>
   )
