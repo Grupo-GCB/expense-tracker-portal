@@ -1,13 +1,13 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
-import { LandingPage } from "./";
+import { LandingPage } from "@/components/LandingPage";
 
 describe("Landing Page", () => {
   it("should be able to render correctly", () => {
     render(<LandingPage />);
 
-    const logo = screen.getByAltText("logo gcb");
+    const logo = screen.getByRole("img", { name: "Logo do Grupo GCB" });
     expect(logo).toBeInTheDocument();
 
     const spanHeader = screen.getByText("Expensive Tracker");
@@ -18,7 +18,7 @@ describe("Landing Page", () => {
     );
     expect(title).toBeInTheDocument();
 
-    const button = screen.getByRole("button");
+    const button = screen.getByRole("button", { name: "Experimentar!" });
     expect(button).toBeInTheDocument();
 
     const image = screen.getByRole("img", { name: "preview-of-home" });
@@ -28,15 +28,18 @@ describe("Landing Page", () => {
   it("should be able to render button text correctly", () => {
     render(<LandingPage />);
 
-    const buttonText = screen.getByTestId("main-button");
+    const buttonText = screen.getByTestId("login-page-button");
+
     expect(buttonText).toBeInTheDocument();
     expect(buttonText).toHaveTextContent("Experimentar!");
   });
 
-  it("should be able to render button link with correct URL", () => {
+  it("should be able to redirect to login page when button is clicked", () => {
     render(<LandingPage />);
 
-    const linkButton = screen.getByRole("link", { name: "Experimentar!" });
-    expect(linkButton).toHaveAttribute("href", "/api/auth/login");
+    const button = screen.getByTestId("login-page-button");
+    expect(button).toBeInTheDocument();
+
+    fireEvent.click(button);
   });
 });
