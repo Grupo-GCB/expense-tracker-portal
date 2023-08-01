@@ -1,11 +1,28 @@
+import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { CircleNotch } from "phosphor-react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import imgHome from "@/app/assets/img/portal.png";
-import { Header } from "./Header";
-import { Button } from "../Button";
+import { Header } from "@/components/LandingPage/Header";
+import { Button } from "@/components/Button";
 
 export function LandingPage() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function handleRedirectToLoginPage() {
+    setIsLoading(true);
+    try {
+      window.location.href = "/api/auth/login";
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+    } catch (error) {
+      toast.error("Ocorreu um erro durante o redirecionamento: ");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <>
       <Header />
@@ -18,12 +35,16 @@ export function LandingPage() {
               </h1>
               <div className="w-full flex justify-center  mt-4 md:mt-10">
                 <Button
-                  testId="main-button"
-                  className="py-2 px-4  hover:bg-green-300 md:w-64 md:items-self-center rounded-md bg-green-500 md:py-4  md:px-3"
+                  testId="login-page-button"
+                  className="py-2 px-4 md:w-64 md:items-self-center rounded-md bg-green-500 md:py-4  md:px-3 text-sm md:text-2xl"
+                  onClick={handleRedirectToLoginPage}
+                  disabled={isLoading}
                 >
-                  <Link href="/api/auth/login" className="text-sm md:text-2xl ">
-                    Experimentar!
-                  </Link>
+                  {isLoading ? (
+                    <CircleNotch className="animate-spin w-full justify-center" />
+                  ) : (
+                    <span>Experimentar!</span>
+                  )}
                 </Button>
               </div>
             </div>
