@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import { Button } from "./";
+import { Button } from "@/components/Button";
 
 describe("Button", () => {
   const buttonText = "Click here";

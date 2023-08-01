@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
-import { Header } from "./";
+import { Header } from "@/components/LandingPage/Header/";
 
 export default {
   title: "Components/Header",
@@ -14,10 +14,18 @@ export default {
   },
 } as Meta;
 
-export const Laptop: StoryObj = {
+export const Mobile: StoryObj = {
   parameters: {
     viewport: {
-      defaultViewport: "laptop",
+      defaultViewport: "iphone5",
+    },
+  },
+};
+
+export const Tablet: StoryObj = {
+  parameters: {
+    viewport: {
+      defaultViewport: "ipad",
     },
   },
 };
@@ -30,18 +38,10 @@ export const Desktop: StoryObj = {
   },
 };
 
-export const Tablet: StoryObj = {
+export const Laptop: StoryObj = {
   parameters: {
     viewport: {
-      defaultViewport: "tablet",
-    },
-  },
-};
-
-export const Mobile: StoryObj = {
-  parameters: {
-    viewport: {
-      defaultViewport: "mobile",
+      defaultViewport: "laptopLarge",
     },
   },
 };
