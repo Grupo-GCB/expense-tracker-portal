@@ -1,7 +1,7 @@
 export function Loading() {
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-gray-300"
+      className="flex h-screen items-center justify-center bg-gray-300"
       style={{ zIndex: 9999 }}
     >
       <div className="text-center rounded-full p-4" role="status">
