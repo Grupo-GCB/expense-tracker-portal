@@ -5,18 +5,7 @@ export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   onClick?: () => void;
   testId?: string;
-  size?: "small" | "medium" | "large" | "default";
-}
-
-const sizeVariant: Record<string, string> = {
-  small: "py-2 px-4 text-sm",
-  medium: "py-3 px-5",
-  large: "py-4 px-8 text-xl",
-  default: "",
-};
-
-function getVariant(size: string): string {
-  return sizeVariant[size] || sizeVariant["default"];
+  disabled?: boolean;
 }
 
 export function Button({
@@ -24,18 +13,23 @@ export function Button({
   className,
   onClick,
   testId,
-  size = "default",
+  disabled = false,
+  ...rest
 }: IButtonProps) {
   return (
     <button
       data-testid={testId}
       className={twMerge(
-        `hover:bg-green-300 text-white items-self-center rounded-md bg-green-500 font-bold ${getVariant(
-          size
-        )} `,
+        ` ${
+          disabled
+            ? "bg-green-500 opacity-70 cursor-not-allowed"
+            : "bg-green-500 hover:bg-green-300"
+        } text-white items-self-center rounded-md  font-bold  `,
         className
       )}
       onClick={onClick}
+      disabled={disabled}
+      {...rest}
     >
       {children}
     </button>
