@@ -10,7 +10,14 @@ export default function Page() {
 
   if (isLoading) return <Loading />
 
-  if (error) return <div>{error.message}</div>
+  if (error)
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <div className="flex items-center justify-center p-8 rounded text-black bg-zinc-100">
+          {error.message}
+        </div>
+      </div>
+    )
 
   if (user) {
     return (
