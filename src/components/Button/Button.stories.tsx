@@ -49,7 +49,7 @@ export const Large: StoryObj<IButtonProps> = {
 
 export const Loading: StoryObj<IButtonProps> = {
   args: {
-    className: "py-3 px-5 ",
+    className: "py-3 px-5 w-48",
     children: <CircleNotch className="animate-spin w-full justify-center" />,
   },
 };
