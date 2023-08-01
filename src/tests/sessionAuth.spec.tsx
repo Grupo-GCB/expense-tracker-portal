@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from '@auth0/nextjs-auth0'
 
-import sessionAuth from '../../pages/api/sessionAuth'
+import sessionAuth from '@pages/api/sessionAuth'
 
 jest.mock('@auth0/nextjs-auth0', () => ({
   getSession: jest.fn(),
