@@ -17,7 +17,6 @@ export default function Page() {
     return (
       <>
         <Home user={user} />
-        <Error errorMessage={'poha'} />
       </>
     )
   }
