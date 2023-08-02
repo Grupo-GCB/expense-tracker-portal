@@ -30,15 +30,15 @@ export const Tablet: StoryObj = {
   },
 };
 
-export const Desktop: StoryObj = {
+export const Laptop: StoryObj = {
   parameters: {
     viewport: {
-      defaultViewport: "desktop",
+      defaultViewport: "laptop",
     },
   },
 };
 
-export const Laptop: StoryObj = {
+export const LaptopLarge: StoryObj = {
   parameters: {
     viewport: {
       defaultViewport: "laptopLarge",

@@ -12,8 +12,8 @@ export const laptopLarge = {
   type: "desktop",
 };
 
-export const desktop = {
-  name: "desktop",
+export const laptop = {
+  name: "laptop",
   styles: {
     width: "1024px",
     height: "800px",
@@ -31,7 +31,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      viewports: { MINIMAL_VIEWPORTS, laptopLarge, desktop },
+      viewports: { MINIMAL_VIEWPORTS, laptopLarge, laptop },
     },
   },
 };
