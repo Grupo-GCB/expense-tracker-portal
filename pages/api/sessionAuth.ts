@@ -8,7 +8,7 @@ async function sessionAuth(req: NextApiRequest, res: NextApiResponse) {
     const userSession = await getSession(req, res)
     res.status(200).json({ userSession })
   } catch (error: any) {
-    console.error('Error obtaining the session:', error)
+    console.error('Error obtaining the session: ', error)
     res
       .status(error.status || 500)
       .json({ error: error.message || DEFAULT_UNKNOWN_ERROR_MESSAGE })
