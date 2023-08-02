@@ -1,7 +1,25 @@
-import type { Preview } from "@storybook/react";
 import { MINIMAL_VIEWPORTS } from "@storybook/addon-viewport";
+import type { Preview } from "@storybook/react";
 
 import "../src/styles/tailwind.css";
+
+export const mobile = {
+  name: "mobile",
+  styles: {
+    width: "320px",
+    height: "568px",
+  },
+  type: "mobile",
+};
+
+export const tablet = {
+  name: "tablet",
+  styles: {
+    width: "768px",
+    height: "871px",
+  },
+  type: "tablet",
+};
 
 export const laptop = {
   name: "laptop",
@@ -31,7 +49,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      viewports: { MINIMAL_VIEWPORTS, laptopLarge, laptop },
+      viewports: { MINIMAL_VIEWPORTS, mobile, tablet, laptop, laptopLarge},
     },
   },
 };

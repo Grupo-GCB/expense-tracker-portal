@@ -1,13 +1,13 @@
-import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CircleNotch } from "phosphor-react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import imgHome from "@/app/assets/img/portal.png";
-import { Header } from "@/components/LandingPage/Header";
 import { Button } from "@/components/Button";
+import { Header } from "@/components/LandingPage/Header";
 
 export function LandingPage() {
   const router = useRouter();
@@ -68,5 +68,5 @@ export function LandingPage() {
         </section>
       </main>
     </>
-  );
+  )
 }
