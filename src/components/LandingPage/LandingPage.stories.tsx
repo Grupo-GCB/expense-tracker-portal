@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { LandingPage } from '@/components/LandingPage'
 
 export default {
-  title: 'Landing Page',
+  title: 'Pages/Landing Page',
   component: LandingPage,
   parameters: {
     layout: 'fullscreen',
