@@ -12,13 +12,31 @@ export const laptopLarge = {
   type: "desktop",
 };
 
-export const desktop = {
-  name: "desktop",
+export const laptop = {
+  name: "laptop",
   styles: {
     width: "1024px",
     height: "800px",
   },
   type: "desktop",
+};
+
+export const mobile = {
+  name: "mobile",
+  styles: {
+    width: "320px",
+    height: "568px",
+  },
+  type: "mobile",
+};
+
+export const tablet = {
+  name: "tablet",
+  styles: {
+    width: "768px",
+    height: "871px",
+  },
+  type: "tablet",
 };
 
 const preview: Preview = {
@@ -31,7 +49,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      viewports: { MINIMAL_VIEWPORTS, laptopLarge, desktop },
+      viewports: { MINIMAL_VIEWPORTS, laptopLarge, laptop, mobile, tablet },
     },
   },
 };
