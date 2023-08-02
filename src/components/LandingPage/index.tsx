@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { CircleNotch } from "phosphor-react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,17 +10,19 @@ import { Header } from "@/components/LandingPage/Header";
 import { Button } from "@/components/Button";
 
 export function LandingPage() {
-  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const [isRedirectingToLogin, setIsRedirectingToLogin] =
+    useState<boolean>(false);
 
   async function handleRedirectToLoginPage() {
-    setIsLoading(true);
+    setIsRedirectingToLogin(true);
     try {
-      window.location.href = "/api/auth/login";
+      router.push("/api/auth/login");
       await new Promise((resolve) => setTimeout(resolve, 3000));
-    } catch (error) {
-      toast.error("Ocorreu um erro durante o redirecionamento: ");
+    } catch {
+      toast.error("Ocorreu um erro durante o redirecionamento");
     } finally {
-      setIsLoading(false);
+      setIsRedirectingToLogin(false);
     }
   }
 
@@ -38,9 +41,9 @@ export function LandingPage() {
                   testId="login-page-button"
                   className="py-2 px-4 md:w-64 md:items-self-center rounded-md bg-green-500 md:py-4  md:px-3 text-sm md:text-2xl"
                   onClick={handleRedirectToLoginPage}
-                  disabled={isLoading}
+                  disabled={isRedirectingToLogin}
                 >
-                  {isLoading ? (
+                  {isRedirectingToLogin ? (
                     <CircleNotch
                       className="animate-spin w-full justify-center"
                       data-testid="loading-icon"
