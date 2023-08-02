@@ -1,5 +1,5 @@
-import type { Preview } from "@storybook/react";
 import { MINIMAL_VIEWPORTS } from "@storybook/addon-viewport";
+import type { Preview } from "@storybook/react";
 
 import "../src/styles/tailwind.css";
 

@@ -1,5 +1,5 @@
-import { StoryObj } from '@storybook/react'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { StoryObj } from '@storybook/react'
 
 import { ErrorPage } from '@/components'
 import { DEFAULT_UNKNOWN_ERROR_MESSAGE } from '@/utils/constants'
