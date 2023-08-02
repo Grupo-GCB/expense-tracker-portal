@@ -1,4 +1,6 @@
-export function Error({ errorMessage }: { errorMessage: string }) {
+import { IErrorMessage } from '@/interfaces'
+
+export function ErrorPage({ errorMessage }: IErrorMessage) {
   return (
     <div className="flex flex-col min-h-screen items-center justify-center p-5 w-full bg-white">
       <div className="text-center">
@@ -29,8 +31,8 @@ export function Error({ errorMessage }: { errorMessage: string }) {
           500 - Server error
         </h1>
         <p className="text-slate-600 mt-5 text-lg">
-          Oops something went wrong. Try to refresh this page or <br /> feel
-          free to contact us if the problem persists.
+          Oops alguma coisa deu erradi. Tente recarregar esta página ou <br />{' '}
+          Sinta-se a vontade para contatar a gente caso o problema persista
         </p>
       </div>
       <p className="text-slate-600 mt-5 text-lg">{errorMessage}</p>
