@@ -1,7 +1,10 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
+import mockRouter from "next-router-mock";
 
 import { LandingPage } from "@/components/LandingPage";
+
+jest.mock("next/navigation", () => require("next-router-mock"));
 
 describe("Landing Page", () => {
   it("should be able to render correctly", () => {
@@ -30,7 +33,6 @@ describe("Landing Page", () => {
 
     const buttonText = screen.getByTestId("login-page-button");
 
-    expect(buttonText).toBeInTheDocument();
     expect(buttonText).toHaveTextContent("Experimentar!");
   });
 
@@ -55,5 +57,10 @@ describe("Landing Page", () => {
     expect(button).toBeInTheDocument();
 
     fireEvent.click(button);
+
+    expect(mockRouter).toMatchObject({
+      asPath: "/api/auth/login",
+      pathname: "/api/auth/login",
+    });
   });
 });
