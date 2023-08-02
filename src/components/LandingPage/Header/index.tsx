@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-import logo from "@/app/assets/svg/logo.svg";
+import logo from '@/app/assets/svg/logo.svg'
 
 export function Header() {
   return (
@@ -14,5 +14,5 @@ export function Header() {
         </div>
       </nav>
     </header>
-  );
+  )
 }

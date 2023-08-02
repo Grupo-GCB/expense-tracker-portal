@@ -1,7 +1,7 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-import { Header } from "./Header";
-import imgHome from "@/app/assets/img/imagem-site.png";
+import { Header } from './Header'
+import imgHome from '@/app/assets/img/imagem-site.png'
 
 export function LandingPage() {
   return (
@@ -34,5 +34,5 @@ export function LandingPage() {
         </section>
       </main>
     </>
-  );
+  )
 }
