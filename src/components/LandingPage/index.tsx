@@ -11,6 +11,7 @@ import { Button } from "@/components/Button";
 
 export function LandingPage() {
   const router = useRouter();
+
   const [isRedirectingToLogin, setIsRedirectingToLogin] =
     useState<boolean>(false);
 
@@ -20,7 +21,7 @@ export function LandingPage() {
       router.push("/api/auth/login");
       await new Promise((resolve) => setTimeout(resolve, 3000));
     } catch {
-      toast.error("Ocorreu um erro durante o redirecionamento");
+      toast.error("Ocorreu um erro durante o redirecionamento.");
     } finally {
       setIsRedirectingToLogin(false);
     }
