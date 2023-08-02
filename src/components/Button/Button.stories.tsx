@@ -1,55 +1,55 @@
-import { StoryObj, Meta } from "@storybook/react";
-import { CircleNotch } from "phosphor-react";
+import { Meta, StoryObj } from '@storybook/react'
+import { CircleNotch } from 'phosphor-react'
 
-import { Button, IButtonProps } from "@/components/Button";
+import { Button, IButtonProps } from '@/components/Button'
 
 const meta: Meta<IButtonProps> = {
-  title: "Components/Button",
+  title: 'Components/Button',
   component: Button,
   argTypes: {
     disabled: {
       defaultValue: false,
-      type: "boolean",
+      type: 'boolean',
     },
     children: {
-      type: "string",
+      type: 'string',
     },
   },
-};
+}
 
-export default meta;
+export default meta
 
 export const Default: StoryObj<IButtonProps> = {
   args: {
-    className: "py-3 px-5",
-    children: "Experimentar!",
+    className: 'py-3 px-5',
+    children: 'Experimentar!',
   },
-};
+}
 
 export const Small: StoryObj<IButtonProps> = {
   args: {
-    className: "py-2 px-4 text-sm",
-    children: "Experimentar!",
+    className: 'py-2 px-4 text-sm',
+    children: 'Experimentar!',
   },
-};
+}
 
 export const Medium: StoryObj<IButtonProps> = {
   args: {
-    className: "py-3 px-5",
-    children: "Experimentar!",
+    className: 'py-3 px-5',
+    children: 'Experimentar!',
   },
-};
+}
 
 export const Large: StoryObj<IButtonProps> = {
   args: {
-    className: "py-4 px-8 text-xl",
-    children: "Experimentar!",
+    className: 'py-4 px-8 text-xl',
+    children: 'Experimentar!',
   },
-};
+}
 
 export const Loading: StoryObj<IButtonProps> = {
   args: {
-    className: "py-3 px-5 w-48",
+    className: 'py-3 px-5 w-48',
     children: <CircleNotch className="animate-spin w-full justify-center" />,
   },
-};
+}

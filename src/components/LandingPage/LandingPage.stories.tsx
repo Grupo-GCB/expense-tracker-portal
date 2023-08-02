@@ -1,47 +1,47 @@
-import { Meta, StoryObj } from "@storybook/react";
-import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { Meta, StoryObj } from '@storybook/react'
 
-import { LandingPage } from "@/components/LandingPage";
+import { LandingPage } from '@/components/LandingPage'
 
 export default {
-  title: "Landing Page",
+  title: 'Landing Page',
   component: LandingPage,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
     viewport: {
       viewports: INITIAL_VIEWPORTS,
     },
   },
-} as Meta;
+} as Meta
 
 export const Mobile: StoryObj = {
   parameters: {
     viewport: {
-      defaultViewport: "iphone5",
+      defaultViewport: 'iphone5',
     },
   },
-};
+}
 
 export const Tablet: StoryObj = {
   parameters: {
     viewport: {
-      defaultViewport: "ipad",
+      defaultViewport: 'ipad',
     },
   },
-};
+}
 
 export const Laptop: StoryObj = {
   parameters: {
     viewport: {
-      defaultViewport: "laptop",
+      defaultViewport: 'laptop',
     },
   },
-};
+}
 
 export const LaptopLarge: StoryObj = {
   parameters: {
     viewport: {
-      defaultViewport: "laptopLarge",
+      defaultViewport: 'laptopLarge',
     },
   },
-};
+}

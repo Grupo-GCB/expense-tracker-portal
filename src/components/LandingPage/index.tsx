@@ -1,29 +1,29 @@
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { CircleNotch } from "phosphor-react";
-import { useState } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { CircleNotch } from 'phosphor-react'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-import imgHome from "@/app/assets/img/portal.png";
-import { Button } from "@/components/Button";
-import { Header } from "@/components/LandingPage/Header";
+import imgHome from '@/app/assets/img/portal.png'
+import { Button } from '@/components/Button'
+import { Header } from '@/components/LandingPage/Header'
 
 export function LandingPage() {
-  const router = useRouter();
+  const router = useRouter()
 
   const [isRedirectingToLogin, setIsRedirectingToLogin] =
-    useState<boolean>(false);
+    useState<boolean>(false)
 
   async function handleRedirectToLoginPage() {
-    setIsRedirectingToLogin(true);
+    setIsRedirectingToLogin(true)
     try {
-      router.push("/api/auth/login");
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      router.push('/api/auth/login')
+      await new Promise((resolve) => setTimeout(resolve, 3000))
     } catch {
-      toast.error("Ocorreu um erro durante o redirecionamento.");
+      toast.error('Ocorreu um erro durante o redirecionamento.')
     } finally {
-      setIsRedirectingToLogin(false);
+      setIsRedirectingToLogin(false)
     }
   }
 
