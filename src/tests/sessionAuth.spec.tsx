@@ -45,9 +45,9 @@ describe('Session Auth', () => {
     await sessionAuth(req, res)
 
     expect(getSession).toHaveBeenCalledWith(req, res)
-    expect(res.status).toHaveBeenCalledWith(error.status || 500)
+    expect(res.status).toHaveBeenCalledWith(error.status)
     expect(res.json).toHaveBeenCalledWith({
-      error: error.message || 'Something went wrong',
+      error: error.message,
     })
   })
 })
