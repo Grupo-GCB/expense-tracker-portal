@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useCallback, useEffect } from 'react'
+import { parseCookies, setCookie } from 'nookies'
 
 import { ErrorPage } from '@/components'
 import { IIdToken, ISession, IUser } from '@/interfaces'
@@ -29,12 +30,21 @@ export function Home({ user }: IUser) {
     }
   }
 
+  function saveUserIdTokenInCookies({ idToken }: IIdToken) {
+    setCookie(null, 'userIdToken', idToken, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: '/',
+    })
+  }
+
   const handleUserSession = useCallback(async () => {
     try {
       const userSession = await getUserSession()
 
       if (userSession) {
-        const { idToken, accessToken } = userSession
+        const { idToken } = userSession
+
+        const lastUserIdToken = parseCookies()
       } else {
         throw new Error('Sessão do usuário não disponível.')
       }
