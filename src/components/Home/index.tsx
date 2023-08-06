@@ -44,16 +44,16 @@ export function Home({ user }: IUser) {
       if (userSession) {
         const { idToken } = userSession
 
-        const lastUserIdToken = parseCookies()
+        const lastUserIdToken = parseCookies().userIdToken
+        if (idToken !== lastUserIdToken) {
+          saveUserIdTokenInCookies({ idToken })
+          sendIdToken({ idToken })
+        }
       } else {
         throw new Error('Sessão do usuário não disponível.')
       }
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error('Axios error: ', error.message)
-      } else {
-        console.error('Erro desconhecido: ', error)
-      }
+      console.error('Erro desconhecido: ', error)
     }
   }, [])
 
