@@ -5,6 +5,7 @@ import { parseCookies, setCookie } from 'nookies'
 import { ErrorPage } from '@/components'
 import { IIdToken, ISession, IUser } from '@/interfaces'
 import api from '@/services/api'
+import { UNKNOWN_ERROR } from '@/utils/constants'
 
 export function Home({ user }: IUser) {
   const getUserSession = async (): Promise<ISession | undefined> => {
@@ -12,7 +13,7 @@ export function Home({ user }: IUser) {
       const res = await axios.get<{ userSession: ISession }>('/api/sessionAuth')
       return res.data.userSession
     } catch (error) {
-      console.error('Erro desconhecido:  ', error)
+      console.error(UNKNOWN_ERROR, error)
     }
   }
 
@@ -25,7 +26,7 @@ export function Home({ user }: IUser) {
       if (axios.isAxiosError(error)) {
         console.error('Axios error: ', error.message)
       } else {
-        console.error('Erro desconhecido: ', error)
+        console.error(UNKNOWN_ERROR, error)
       }
     }
   }
@@ -53,7 +54,7 @@ export function Home({ user }: IUser) {
         throw new Error('Sessão do usuário não disponível.')
       }
     } catch (error) {
-      console.error('Erro desconhecido: ', error)
+      console.error(UNKNOWN_ERROR, error)
     }
   }, [])
 
