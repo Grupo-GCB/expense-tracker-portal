@@ -2,7 +2,8 @@ import axios from 'axios'
 import { useCallback, useEffect } from 'react'
 
 import { ErrorPage } from '@/components'
-import { ISession, IUser } from '@/interfaces'
+import { IIdToken, ISession, IUser } from '@/interfaces'
+import api from '@/services/api'
 
 export function Home({ user }: IUser) {
   const getUserSession = async (): Promise<ISession | undefined> => {
@@ -11,6 +12,20 @@ export function Home({ user }: IUser) {
       return res.data.userSession
     } catch (error) {
       console.error('Erro desconhecido:  ', error)
+    }
+  }
+
+  async function sendIdToken({ idToken }: IIdToken) {
+    try {
+      await api.post('usersTokens', {
+        idToken,
+      })
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error('Axios error: ', error.message)
+      } else {
+        console.error('Erro desconhecido: ', error)
+      }
     }
   }
 
