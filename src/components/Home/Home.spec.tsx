@@ -57,4 +57,21 @@ describe('Home', () => {
     expect(response.status).toBe(200)
     expect(response.data).toEqual({ token: token.idToken })
   })
+
+  it('should be able to handle error when sending idToken to API if it matches saved idToken', async () => {
+    const errorMessage = 'Token matches stored idToken'
+
+    mock.onPost('usersToken').reply(400, errorMessage)
+
+    await expect(
+      axios.post('usersToken', {
+        token: token.idToken,
+      }),
+    ).rejects.toMatchObject({
+      response: {
+        status: 400,
+        data: errorMessage,
+      },
+    })
+  })
 })
