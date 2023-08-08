@@ -30,4 +30,20 @@ describe('Home', () => {
 
     axiosGetMock.mockRestore()
   })
+
+  it('should be able to handle error during user session retrieval', async () => {
+    const axiosGetMock = jest.spyOn(axios, 'get')
+    axiosGetMock.mockRejectedValueOnce(new Error(errorMessage))
+
+    try {
+      await axios.get('/api/sessionAuth')
+    } catch (error: unknown) {
+      expect(error instanceof Error).toBe(true)
+      expect((error as Error).message).toBe(errorMessage)
+    }
+
+    expect(axiosGetMock).toHaveBeenCalledWith('/api/sessionAuth')
+
+    axiosGetMock.mockRestore()
+  })
 })
