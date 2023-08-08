@@ -46,4 +46,15 @@ describe('Home', () => {
 
     axiosGetMock.mockRestore()
   })
+
+  it('should be able to send the id token to API successfully if different from saved idToken', async () => {
+    mock.onPost('usersToken').reply(200, { token: token.idToken })
+
+    const response = await axios.post('usersToken', {
+      token: token.idToken,
+    })
+
+    expect(response.status).toBe(200)
+    expect(response.data).toEqual({ token: token.idToken })
+  })
 })
