@@ -21,8 +21,8 @@ export function Home({ user }: IUser) {
 
   async function sendIdToken({ idToken }: IIdToken) {
     try {
-      await api.post('usersTokens', {
-        idToken,
+      await api.post('user/login', {
+        token: idToken,
       })
     } catch (error) {
       if (axios.isAxiosError(error)) {
