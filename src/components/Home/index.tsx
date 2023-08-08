@@ -1,13 +1,13 @@
 import axios from 'axios'
-import { useCallback, useEffect } from 'react'
 import nookies, { parseCookies, setCookie } from 'nookies'
+import { useCallback, useEffect } from 'react'
 
 import { ErrorPage } from '@/components'
 import {
-  IToken,
   ISession,
-  IUser,
   ISignInResponse,
+  IToken,
+  IUser,
   IUserSessionResponse,
 } from '@/interfaces'
 import api from '@/services/api'
