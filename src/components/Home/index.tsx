@@ -10,8 +10,10 @@ import { UNKNOWN_ERROR } from '@/utils/constants'
 export function Home({ user }: IUser) {
   const getUserSession = async (): Promise<ISession | undefined> => {
     try {
-      const res = await axios.get<{ userSession: ISession }>('/api/sessionAuth')
-      return res.data.userSession
+      const { data } = await axios.get<{ userSession: ISession }>(
+        '/api/sessionAuth',
+      )
+      return data.userSession
     } catch (error) {
       console.error(UNKNOWN_ERROR, error)
     }
