@@ -48,9 +48,9 @@ describe('Home', () => {
   })
 
   it('should be able to send the id token to API successfully if different from saved id token', async () => {
-    mock.onPost('usersToken').reply(200, { token: token.idToken })
+    mock.onPost('user/login').reply(200, { token: token.idToken })
 
-    const response = await axios.post('usersToken', {
+    const response = await axios.post('user/login', {
       token: token.idToken,
     })
 
@@ -59,10 +59,10 @@ describe('Home', () => {
   })
 
   it('should be able to return error when sending id token to API if it matches saved id token', async () => {
-    mock.onPost('usersToken').reply(400, errorMessage)
+    mock.onPost('user/login').reply(400, errorMessage)
 
     await expect(
-      axios.post('usersToken', {
+      axios.post('user/login', {
         token: token.idToken,
       }),
     ).rejects.toMatchObject({
