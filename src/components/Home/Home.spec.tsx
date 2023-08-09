@@ -35,13 +35,7 @@ describe('Home', () => {
     const axiosGetMock = jest.spyOn(axios, 'get')
     axiosGetMock.mockRejectedValueOnce(new Error(errorMessage))
 
-    try {
-      await axios.get('/api/sessionAuth')
-    } catch (error: unknown) {
-      expect(error instanceof Error).toBe(true)
-      expect((error as Error).message).toBe(errorMessage)
-    }
-
+    await expect(axios.get('/api/sessionAuth')).rejects.toThrow(errorMessage)
     expect(axiosGetMock).toHaveBeenCalledWith('/api/sessionAuth')
 
     axiosGetMock.mockRestore()
