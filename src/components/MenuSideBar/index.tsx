@@ -3,16 +3,14 @@ import Image from 'next/image'
 import logoBull from '@/app/assets/svg/logoBull.svg'
 import { Bell, Gear, House, Scroll, Wallet } from 'phosphor-react'
 import { IUser } from '@/interfaces'
+import { Header } from './components'
 
 export function MenuSideBar({ user }: IUser) {
   return (
     <div className=" w-28 h-full bg-gray-700 px-5 py-10 relative duration-300">
       <div className="flex flex-col justify-between h-screen">
         <div className="flex flex-col gap-32">
-          <div className="flex items-center justify-center">
-            <Image src={logoBull} alt="Logo da GCB." />
-          </div>
-
+          <Header />
           <nav>
             <ul>
               <li className="flex flex-col items-center justify-center text-sm h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded">
