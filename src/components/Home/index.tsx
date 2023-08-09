@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useCallback, useEffect } from 'react'
-import nookies, { parseCookies, setCookie } from 'nookies'
+import { parseCookies, setCookie } from 'nookies'
 
 import { ErrorPage } from '@/components'
 import {
@@ -48,10 +48,6 @@ export function Home({ user }: IUser) {
     })
   }
 
-  const handleDestroyUserToken = (): void => {
-    nookies.destroy(null, '@user_token', { path: '/' })
-  }
-
   const handleUserSession = useCallback(async () => {
     try {
       const userSession = await getUserSession()
@@ -87,12 +83,5 @@ export function Home({ user }: IUser) {
     )
   }
 
-  return (
-    <div>
-      Welcome {user.name}!{' '}
-      <a href="/api/auth/logout" onClick={handleDestroyUserToken}>
-        Logout
-      </a>
-    </div>
-  )
+  return <div>Welcome {user.name}! </div>
 }

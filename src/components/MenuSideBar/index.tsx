@@ -1,7 +1,13 @@
+import nookies from 'nookies'
+
 import { IUser } from '@/interfaces'
 import { Header, MenuOptions, MenuUser, UserProfile } from './components'
 
 export function MenuSideBar({ user }: IUser) {
+  const handleDestroyUserToken = (): void => {
+    nookies.destroy(null, '@user_token', { path: '/' })
+  }
+
   return (
     <div className=" w-28 h-full bg-gray-700 px-5 py-10 relative duration-300">
       <div className="flex flex-col justify-between h-screen">
