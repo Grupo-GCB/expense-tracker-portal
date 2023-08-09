@@ -3,7 +3,13 @@ import { useCallback, useEffect } from 'react'
 import nookies, { parseCookies, setCookie } from 'nookies'
 
 import { ErrorPage } from '@/components'
-import { IToken, ISession, IUser, ISignInResponse } from '@/interfaces'
+import {
+  IToken,
+  ISession,
+  IUser,
+  ISignInResponse,
+  IUserSessionResponse,
+} from '@/interfaces'
 import api from '@/services/api'
 import {
   AXIOS_ERROR,
@@ -14,9 +20,7 @@ import {
 export function Home({ user }: IUser) {
   const getUserSession = async (): Promise<ISession | undefined> => {
     try {
-      const { data } = await axios.get<{ userSession: ISession }>(
-        '/api/sessionAuth',
-      )
+      const { data } = await axios.get<IUserSessionResponse>('/api/sessionAuth')
       return data.userSession
     } catch (error) {
       console.error(UNKNOWN_ERROR, error)
