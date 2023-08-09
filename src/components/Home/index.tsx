@@ -5,7 +5,11 @@ import nookies, { parseCookies, setCookie } from 'nookies'
 import { ErrorPage } from '@/components'
 import { IToken, ISession, IUser } from '@/interfaces'
 import api from '@/services/api'
-import { UNKNOWN_ERROR } from '@/utils/constants'
+import {
+  AXIOS_ERROR,
+  THIRTY_DAY_COOKIE_LIFETIME,
+  UNKNOWN_ERROR,
+} from '@/utils/constants'
 
 export function Home({ user }: IUser) {
   const getUserSession = async (): Promise<ISession | undefined> => {
@@ -26,7 +30,7 @@ export function Home({ user }: IUser) {
       })
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error('Axios error: ', error.message)
+        console.error(AXIOS_ERROR, error.message)
       } else {
         console.error(UNKNOWN_ERROR, error)
       }
@@ -35,7 +39,7 @@ export function Home({ user }: IUser) {
 
   function saveUserTokenInCookies({ token }: IToken) {
     setCookie(null, 'userToken', token, {
-      maxAge: 30 * 24 * 60 * 60,
+      maxAge: THIRTY_DAY_COOKIE_LIFETIME,
       path: '/',
     })
   }
