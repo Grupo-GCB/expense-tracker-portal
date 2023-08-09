@@ -3,6 +3,9 @@
 context('Login', () => {
   beforeEach(() => {
     cy.visit('/api/auth/login')
+    /* cy.on('uncaught:exception', (err, runnable) => {
+      return false
+    }) */
   })
 
   it('should be able to render with correct informations', () => {
