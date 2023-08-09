@@ -37,14 +37,14 @@ export function Home({ user }: IUser) {
     }
   }
 
-  function saveUserTokenInCookies({ token }: IToken) {
+  function saveUserTokenInCookies({ token }: IToken): void {
     setCookie(null, '@user_token', token, {
       maxAge: THIRTY_DAY_COOKIE_LIFETIME,
       path: '/',
     })
   }
 
-  const handleDestroyUserToken = () => {
+  const handleDestroyUserToken = (): void => {
     nookies.destroy(null, '@user_token', { path: '/' })
   }
 
