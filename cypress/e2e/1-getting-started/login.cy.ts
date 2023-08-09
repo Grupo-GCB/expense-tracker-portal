@@ -3,6 +3,9 @@
 context('Login', () => {
   beforeEach(() => {
     cy.visit('/api/auth/login')
+    /* cy.on('uncaught:exception', (err, runnable) => {
+      return false
+    }) */
   })
 
   it('should be able to render with correct informations', () => {
@@ -18,6 +21,22 @@ context('Login', () => {
       'be.visible',
     )
     cy.contains('button', 'Continue with Facebook').should('be.visible')
+  })
+
+  // teste com erro
+  it('should be able log in through google account', () => {
+    cy.contains('button', 'Continue with Google').click()
+    cy.origin('https://accounts.google.com/', () => {
+      cy.url()
+        .should('contain', 'accounts.google.com')
+        .get('input[type="email"]')
+        .type(Cypress.env('USERNAME'))
+        .type('{enter}')
+      cy.url()
+        .should('contain', 'accounts.google.com')
+        .get('@InputPass')
+        .type(Cypress.env('PASSWORD'))
+    })
   })
 
   it('should be able log in through Microsoft account', () => {
