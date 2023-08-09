@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
 import logoBull from '@/app/assets/svg/logoBull.svg'
-import { Bell, Gear, House, Scroll, Wallet } from 'phosphor-react'
+import { Bell, Gear } from 'phosphor-react'
 import { IUser } from '@/interfaces'
-import { Header } from './components'
+import { Header, MenuOptions } from './components'
 
 export function MenuSideBar({ user }: IUser) {
   return (
@@ -11,22 +11,7 @@ export function MenuSideBar({ user }: IUser) {
       <div className="flex flex-col justify-between h-screen">
         <div className="flex flex-col gap-32">
           <Header />
-          <nav>
-            <ul>
-              <li className="flex flex-col items-center justify-center text-sm h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded">
-                <House color="white" className="w-8 h-8" />
-                <span>Home</span>
-              </li>
-              <li className="flex flex-col items-center justify-center text-sm h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded">
-                <Scroll color="white" className="w-8 h-8" />
-                <span>Resumo</span>
-              </li>
-              <li className="flex flex-col items-center justify-center text-sm h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded">
-                <Wallet color="white" className="w-8 h-8" />
-                <span>Carteiras</span>
-              </li>
-            </ul>
-          </nav>
+          <MenuOptions />
         </div>
 
         <div className="flex flex-col items-center gap-8">
