@@ -8,3 +8,7 @@ export interface ISession {
   idToken: string
   token_type: string
 }
+
+export interface IUserSessionResponse {
+  userSession: ISession
+}
