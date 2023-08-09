@@ -3,7 +3,7 @@ import { useCallback, useEffect } from 'react'
 import nookies, { parseCookies, setCookie } from 'nookies'
 
 import { ErrorPage } from '@/components'
-import { IToken, ISession, IUser } from '@/interfaces'
+import { IToken, ISession, IUser, ISignInResponse } from '@/interfaces'
 import api from '@/services/api'
 import {
   AXIOS_ERROR,
@@ -23,9 +23,9 @@ export function Home({ user }: IUser) {
     }
   }
 
-  async function sendToken({ token }: IToken) {
+  async function sendToken({ token }: IToken): Promise<void> {
     try {
-      await api.post('user/login', {
+      await api.post<ISignInResponse>('user/login', {
         token,
       })
     } catch (error) {
