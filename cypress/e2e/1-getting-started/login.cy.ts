@@ -20,6 +20,21 @@ context('Login', () => {
     cy.contains('button', 'Continue with Facebook').should('be.visible')
   })
 
+  it('should be able log in through Microsoft account', () => {
+    cy.contains('button', 'Continue with Microsoft Account').click()
+    cy.origin('https://login.live.com/', () => {
+      cy.get('input[type="email"]').type(Cypress.env('USERNAME'), {
+        log: false,
+      })
+      cy.get('input[type="submit"]').click()
+      cy.get('input[type="password"]').type(Cypress.env('PASSWORD'), {
+        log: false,
+      })
+      cy.get('input[type="submit"]').click()
+      cy.get('#idBtn_Back').click()
+    })
+  })
+
   it('should be able log in through Facebook account', () => {
     cy.contains('button', 'Continue with Facebook').click()
     cy.origin('https://www.facebook.com/', () => {
