@@ -1,3 +1,3 @@
-export interface IIdToken {
-  idToken: string
+export interface IToken {
+  token: string
 }

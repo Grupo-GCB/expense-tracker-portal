@@ -3,7 +3,7 @@ import { useCallback, useEffect } from 'react'
 import nookies, { parseCookies, setCookie } from 'nookies'
 
 import { ErrorPage } from '@/components'
-import { IIdToken, ISession, IUser } from '@/interfaces'
+import { IToken, ISession, IUser } from '@/interfaces'
 import api from '@/services/api'
 import { UNKNOWN_ERROR } from '@/utils/constants'
 
@@ -19,10 +19,10 @@ export function Home({ user }: IUser) {
     }
   }
 
-  async function sendIdToken({ idToken }: IIdToken) {
+  async function sendToken({ token }: IToken) {
     try {
       await api.post('user/login', {
-        token: idToken,
+        token,
       })
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -33,15 +33,15 @@ export function Home({ user }: IUser) {
     }
   }
 
-  function saveUserIdTokenInCookies({ idToken }: IIdToken) {
-    setCookie(null, 'userIdToken', idToken, {
+  function saveUserTokenInCookies({ token }: IToken) {
+    setCookie(null, 'userToken', token, {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',
     })
   }
 
-  const handleDestroyUserIdToken = () => {
-    nookies.destroy(null, 'userIdToken', { path: '/' })
+  const handleDestroyUserToken = () => {
+    nookies.destroy(null, 'userToken', { path: '/' })
   }
 
   const handleUserSession = useCallback(async () => {
@@ -50,11 +50,12 @@ export function Home({ user }: IUser) {
 
       if (userSession) {
         const { idToken } = userSession
+        const token = idToken
 
-        const lastUserIdToken = parseCookies().userIdToken
-        if (idToken !== lastUserIdToken) {
-          saveUserIdTokenInCookies({ idToken })
-          sendIdToken({ idToken })
+        const lastUserToken = parseCookies().userToken
+        if (token !== lastUserToken) {
+          saveUserTokenInCookies({ token })
+          sendToken({ token })
         }
       } else {
         throw new Error('Sessão do usuário não disponível.')
@@ -81,7 +82,7 @@ export function Home({ user }: IUser) {
   return (
     <div>
       Welcome {user.name}!{' '}
-      <a href="/api/auth/logout" onClick={handleDestroyUserIdToken}>
+      <a href="/api/auth/logout" onClick={handleDestroyUserToken}>
         Logout
       </a>
     </div>
