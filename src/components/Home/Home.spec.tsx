@@ -17,7 +17,7 @@ describe('Home', () => {
     mock.reset()
   })
 
-  it('should be able to return user session with correct id token', async () => {
+  it('should be able to return correct user id token', async () => {
     const axiosGetMock = jest.spyOn(axios, 'get')
     axiosGetMock.mockResolvedValueOnce({
       data: { userSession: token.idToken },
@@ -31,7 +31,7 @@ describe('Home', () => {
     axiosGetMock.mockRestore()
   })
 
-  it('should be able to return error during user session retrieval', async () => {
+  it('should be able to return user session error', async () => {
     const axiosGetMock = jest.spyOn(axios, 'get')
     axiosGetMock.mockRejectedValueOnce(new Error(errorMessage))
 
@@ -47,7 +47,7 @@ describe('Home', () => {
     axiosGetMock.mockRestore()
   })
 
-  it('should be able to send the id token to API successfully if different from saved id token', async () => {
+  it('should be able to send the id token to API', async () => {
     mock.onPost('user/login').reply(200, { token: token.idToken })
 
     const response = await axios.post('user/login', {
@@ -58,7 +58,7 @@ describe('Home', () => {
     expect(response.data).toEqual({ token: token.idToken })
   })
 
-  it('should be able to return error when sending id token to API if it matches saved id token', async () => {
+  it('should be able to return error when fail to send id token to API', async () => {
     mock.onPost('user/login').reply(400, errorMessage)
 
     await expect(
