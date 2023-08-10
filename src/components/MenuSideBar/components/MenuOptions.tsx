@@ -6,15 +6,15 @@ export function MenuOptions({open}: IMenuProps) {
   return (
     <nav>
       <ul className='flex flex-col gap-8'>
-        <li className={`flex ${open ? 'flex-row text-2xl gap-4' : 'flex-col text-sm gap-0'} items-center justify-center h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded`}>
+        <li className={`flex ${open ? 'flex-row text-2xl gap-4 p-4' : 'flex-col text-sm justify-center'} items-center h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded`}>
           <House color="white" className="w-8 h-8" />
           <span>Home</span>
         </li>
-        <li className={`flex ${open ? 'flex-row text-2xl gap-4' : 'flex-col text-sm'} items-center justify-center h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded`}>
+        <li className={`flex ${open ? 'flex-row text-2xl gap-4 p-4' : 'flex-col text-sm justify-center'} items-center  h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded`}>
           <Scroll color="white" className="w-8 h-8" />
           <span>Resumo</span>
         </li>
-        <li className={`flex ${open ? 'flex-row text-2xl gap-4' : 'flex-col text-sm'} items-center justify-center h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded`}>
+        <li className={`flex ${open ? 'flex-row text-2xl gap-4 p-4' : 'flex-col text-sm justify-center'} items-center  h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded`}>
           <Wallet color="white" className="w-8 h-8" />
           <span>Carteiras</span>
         </li>
