@@ -1,12 +1,12 @@
 import Image from 'next/image'
 
-import { IUser } from '@/interfaces'
+import { IMenuProps, IUser, IUserProfileProps } from '@/interfaces'
 
 import logoBull from '@/app/assets/svg/logoBull.svg'
 
-export function UserProfile({ user }: IUser) {
+export function UserProfile({open, user}: IUserProfileProps) {
   return (
-    <div className="flex flex-col justify-center items-center px-4 py-6 gap-2 h-32 bg-gray-900 rounded-xl">
+    <div className={`flex ${open ? 'flex-row h-20 gap-4 text-2xl': 'flex-col h-32'} justify-center items-center px-4 py-6 gap-2 bg-gray-900 rounded-xl`}>
       <Image
         src={logoBull}
         alt="Imagem do usuário."

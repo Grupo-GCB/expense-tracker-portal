@@ -1,14 +1,22 @@
 import { Bell, Gear } from 'phosphor-react'
 
-export function MenuUser() {
+import { IMenuProps } from '@/interfaces'
+
+export function MenuUser({open}: IMenuProps) {
   return (
     <nav>
       <ul>
-        <li className="flex flex-col items-center justify-center text-sm h-16 text-gray-100 cursor-pointer hover:bg-gray-900 w-16 rounded">
+        <li className={`flex ${open ? 'flex-row text-2xl gap-4' : 'flex-col text-sm gap-0'} items-center justify-center h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded`}>
           <Bell color="white" className="w-8 h-8" />
+          {open &&(
+            <span>Notificações</span>
+          )}
         </li>
-        <li className="flex flex-col items-center justify-center text-sm h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded">
+        <li className={`flex ${open ? 'flex-row text-2xl gap-4' : 'flex-col text-sm gap-0'} items-center justify-center h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded`}>
           <Gear color="white" className="w-8 h-8" />
+          {open &&(
+            <span>Configurações</span>
+          )}
         </li>
       </ul>
     </nav>
