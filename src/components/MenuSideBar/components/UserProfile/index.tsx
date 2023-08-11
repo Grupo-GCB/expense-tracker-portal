@@ -1,11 +1,16 @@
 import Image from 'next/image'
+import { useUser } from '@auth0/nextjs-auth0/client'
 
 import { IUserProfileProps } from '@/interfaces'
 
-export function UserProfile({open, user}: IUserProfileProps) {
+
+
+export function UserProfile({ open }: IUserProfileProps) {
+  const { user } = useUser()
+ 
   return (
-    <div className={`flex ${open ? 'flex-row h-20 gap-4 text-2xl w-56': 'flex-col h-32 justify-center w-full'} items-center px-4 py-6 gap-2 bg-gray-900 rounded-xl`}>
-      {user.picture && typeof user.picture === 'string' && user.picture.trim() !== '' && (
+    <div className={`flex ${open ? 'flex-row h-20 gap-4 text-2xl w-56' : 'flex-col h-32 justify-center w-full'} items-center px-4 py-6 gap-2 bg-gray-900 rounded-xl`}>
+      {user && user.picture && typeof user.picture === 'string' && user.picture.trim() !== '' && (
         <Image
           src={user.picture}
           width={24}
