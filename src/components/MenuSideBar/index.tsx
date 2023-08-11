@@ -2,7 +2,7 @@ import nookies from 'nookies'
 import { List, SignOut, X } from 'phosphor-react'
 import { useState } from 'react'
 
-import { IUser, IUserProfileProps } from '@/interfaces'
+import { IUserProfileProps } from '@/interfaces'
 import { Header, MenuOptions, MenuUser, UserProfile } from './components'
 
 
