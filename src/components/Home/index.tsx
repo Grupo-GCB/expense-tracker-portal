@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useCallback, useEffect } from 'react'
 import { parseCookies, setCookie } from 'nookies'
 
-import { ErrorPage } from '@/components'
+import { ErrorPage, LandingPage } from '@/components'
 import {
   IToken,
   ISession,
@@ -83,5 +83,11 @@ export function Home({ user }: IUser) {
     )
   }
 
-  return <div>Welcome {user.name}! </div>
+  return (
+    <div>Welcome {user.name}! 
+    <LandingPage />
+    <LandingPage />
+    <LandingPage />
+    </div>
+  )
 }
