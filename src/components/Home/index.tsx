@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useCallback, useEffect } from 'react'
 import { parseCookies, setCookie } from 'nookies'
 
-import { ErrorPage, LandingPage } from '@/components'
+import { ErrorPage } from '@/components'
 import {
   IToken,
   ISession,
@@ -73,7 +73,8 @@ export function Home({ user }: IUser) {
 
   useEffect(() => {
     handleUserSession()
-  }, [handleUserSession])
+  }, [handleUserSession])   
+
 
   if (!user) {
     return (
@@ -86,10 +87,6 @@ export function Home({ user }: IUser) {
   }
 
   return (
-    <div>Welcome {user.name}! 
-    <LandingPage />
-    <LandingPage />
-    <LandingPage />
-    </div>
+    <div className='lg:ml-28'>Welcome {user.name}!</div>
   )
 }
