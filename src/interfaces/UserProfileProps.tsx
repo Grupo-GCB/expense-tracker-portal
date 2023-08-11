@@ -4,4 +4,5 @@ import { IUser } from ".";
 export interface IUserProfileProps{
     user: IUser | UserProfile
     open?: boolean
+    picture?: string
 }
