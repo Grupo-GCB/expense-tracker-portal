@@ -7,7 +7,6 @@ import {
   Home,
   LandingPage,
   Loading,
-  MenuSideBar,
 } from '@/components'
 
 export default function Page() {
@@ -19,8 +18,7 @@ export default function Page() {
 
   if (user) {
     return (
-      <div className="flex">
-        <MenuSideBar user={user} />
+      <div>
         <Home user={user} />
       </div>
     )
