@@ -1,6 +1,5 @@
 {
   "name": "expense-tracker-portal",
-  "version": "0.0.6",
   "private": true,
   "scripts": {
     "dev": "next dev",
