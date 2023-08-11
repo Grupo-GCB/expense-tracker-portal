@@ -6,7 +6,7 @@ import { IMenuProps } from '@/interfaces'
 
 export function Header({open}: IMenuProps) {
   return (
-    <div className="flex items-center justify-center">
+    <div className={`${open ? 'justify-start' : 'justify-center'} flex items-center`}>
       <Image src={open ? logoGCB: logoBull} alt="Logo da GCB." />
     </div>
   )
