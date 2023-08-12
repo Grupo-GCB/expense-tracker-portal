@@ -25,4 +25,28 @@ describe('MenuOptions', () => {
     expect(carteirasIcon).toBeInTheDocument();
     expect(carteirasLabel).toBeInTheDocument();
   });
+
+  it('should be able to render correct style in icons when open prop is true', () => {
+    render(<MenuOptions open={true} />);
+
+    const homeIcon = screen.getByTestId('homeIcon');
+    const resumoIcon = screen.getByTestId('resumoIcon');
+    const carteirasIcon = screen.getByTestId('carteirasIcon');
+
+    expect(homeIcon).toHaveClass('w-8 h-8');
+    expect(resumoIcon).toHaveClass('w-8 h-8');
+    expect(carteirasIcon).toHaveClass('w-8 h-8');
+  });
+
+  it('should be able to render correct style in icons when open prop is false', () => {
+    render(<MenuOptions open={false} />);
+
+    const homeIcon = screen.getByTestId('homeIcon');
+    const resumoIcon = screen.getByTestId('resumoIcon');
+    const carteirasIcon = screen.getByTestId('carteirasIcon');
+
+    expect(homeIcon).toHaveClass('w-8 h-8');
+    expect(resumoIcon).toHaveClass('w-8 h-8');
+    expect(carteirasIcon).toHaveClass('w-8 h-8');
+  });
 });
