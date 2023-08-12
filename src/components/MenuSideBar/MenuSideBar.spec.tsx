@@ -53,5 +53,13 @@ describe('MenuSideBar', () => {
         expect(userPicture).toBeInTheDocument();
         expect(userName).toBeInTheDocument();
       });
+  
+      it('should be able to destroy user token when SignOut button is clicked', () => {
+        render(<MenuSideBar />);
+        const signOutButton = screen.getByTestId('singOut');
     
+        fireEvent.click(signOutButton);
+    
+        expect(nookies.destroy).toHaveBeenCalledWith(null, '@user_token', { path: '/' });
+      });  
   });
