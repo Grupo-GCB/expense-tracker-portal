@@ -19,4 +19,14 @@ describe('MenuUser', () => {
     expect(configuracoesIcon).toBeInTheDocument();
     expect(configuracoesLabel).toBeInTheDocument();
   });
+
+  it('should be able to render menu user with correct icons when open prop is false', () => {
+    render(<MenuUser open={false} />);
+
+    const notificacoesIcon = screen.getByTestId('notificacoesIcon');
+    expect(notificacoesIcon).toBeInTheDocument();
+
+    const configuracoesIcon = screen.getByTestId('configuracoesIcon');
+    expect(configuracoesIcon).toBeInTheDocument();
+  });
 });
