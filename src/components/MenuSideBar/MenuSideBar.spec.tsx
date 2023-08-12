@@ -33,4 +33,17 @@ describe('MenuSideBar', () => {
   
       expect(screen.getByTestId('menuNav')).toHaveClass('sm:w-full');
     });
+
+    it('should be able to close sidebar when X icon is clicked', () => {
+        render(<MenuSideBar />);
+        const menuHamburguer = screen.getByTestId('menuHamburguer');
+        const closeX = screen.getByTestId('closeX');
+    
+        fireEvent.click(menuHamburguer);
+        fireEvent.click(closeX);
+    
+        expect(screen.getByTestId('menuNav')).toHaveClass('sm:-left-full');
+    });
+    
+      
   });
