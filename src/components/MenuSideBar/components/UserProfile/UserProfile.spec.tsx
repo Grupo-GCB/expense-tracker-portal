@@ -44,4 +44,16 @@ describe('UserProfile', () => {
     expect(userProfile).toHaveClass('text-2xl');
     expect(userProfile).toHaveClass('w-56');
   });
+
+  it('should be ablt to apply correct styles when open is false', () => {
+    mockUseUser.mockReturnValue(mockUser);
+
+    const { container } = render(<UserProfile open={false} />);
+
+    const userProfile = container.querySelector('.flex-col');
+    expect(userProfile).toBeInTheDocument();
+    expect(userProfile).toHaveClass('h-32');
+    expect(userProfile).toHaveClass('justify-center');
+    expect(userProfile).toHaveClass('w-full');
+  });
 });
