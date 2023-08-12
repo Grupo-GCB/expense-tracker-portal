@@ -45,5 +45,13 @@ describe('MenuSideBar', () => {
         expect(screen.getByTestId('menuNav')).toHaveClass('sm:-left-full');
     });
     
-      
+    it('should be able to render user profile with picture and name', () => {
+        render(<MenuSideBar />);
+        const userPicture = screen.getByAltText('Imagem do usuário.');
+        const userName = screen.getByText('John Doe');
+    
+        expect(userPicture).toBeInTheDocument();
+        expect(userName).toBeInTheDocument();
+      });
+    
   });
