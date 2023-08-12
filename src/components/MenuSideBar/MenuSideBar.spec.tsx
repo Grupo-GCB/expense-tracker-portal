@@ -72,4 +72,14 @@ describe('MenuSideBar', () => {
         expect(menuNav).toHaveClass('flex');
         expect(menuNav).not.toHaveClass('hidden');
       });
+
+      it('should be able to render hidden layout when user is not logged in', () => {
+        mockUseUser.mockReturnValue({ user: null });
+        
+        render(<MenuSideBar />);
+        
+        const menuNav = screen.getByTestId('menuNav');
+        
+        expect(menuNav).toHaveClass('hidden');
+      });
   });
