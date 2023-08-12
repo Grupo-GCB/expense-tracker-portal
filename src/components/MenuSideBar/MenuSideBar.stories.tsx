@@ -1,14 +1,14 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 import { MenuSideBar } from '.';
 
 const defaultUser = {
   picture: 'https://e7.pngegg.com/pngimages/885/607/png-clipart-dynamics-365-computer-icons-user-profile-login-others-miscellaneous-angle.png',
-  name: 'John Doe'
-}
+  name: 'John Doe',
+};
 
 const meta: Meta = {
   title: 'MenuSideBar',
@@ -25,21 +25,24 @@ const meta: Meta = {
   parameters: {
     layout: 'fullscreen',
     viewport: {
-      viewports: INITIAL_VIEWPORTS
-    }
-  }
+      viewports: INITIAL_VIEWPORTS,
+    },
+  },
 };
 
 export default meta;
 
-export const Mobile: StoryObj = (args: any) => (
-  <UserProvider>
-    <MenuSideBar {...args} />
+const withUserProvider = (Component: any, user: any) => (
+  <UserProvider user={user}>
+    <Component />
   </UserProvider>
 );
 
+export const Mobile: StoryObj = (args: any) =>
+  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
+
 Mobile.args = {
-  user: defaultUser,
+  open: false,
 };
 
 Mobile.parameters = {
@@ -48,17 +51,11 @@ Mobile.parameters = {
   },
 };
 
-export const Tablet: StoryObj = (args: any) => (
-  <UserProvider>
-    <MenuSideBar {...args} />
-  </UserProvider>
-);
+export const Tablet: StoryObj = (args: any) =>
+  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
 
 Tablet.args = {
-  user: {
-    picture: 'https://example.com/user-picture.jpg',
-    name: 'John Doe',
-  },
+  open: false,
 };
 
 Tablet.parameters = {
@@ -67,17 +64,11 @@ Tablet.parameters = {
   },
 };
 
-export const Laptop: StoryObj = (args: any) => (
-  <UserProvider>
-    <MenuSideBar {...args} />
-  </UserProvider>
-);
+export const Laptop: StoryObj = (args: any) =>
+  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
 
 Laptop.args = {
-  user: {
-    picture: 'https://example.com/user-picture.jpg',
-    name: 'John Doe',
-  },
+  open: false,
 };
 
 Laptop.parameters = {
@@ -86,17 +77,11 @@ Laptop.parameters = {
   },
 };
 
-export const LaptopLarge: StoryObj = (args: any) => (
-  <UserProvider>
-    <MenuSideBar {...args} />
-  </UserProvider>
-);
+export const LaptopLarge: StoryObj = (args: any) =>
+  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
 
 LaptopLarge.args = {
-  user: {
-    picture: 'https://example.com/user-picture.jpg',
-    name: 'John Doe',
-  },
+  open: false,
 };
 
 LaptopLarge.parameters = {
