@@ -31,4 +31,17 @@ describe('UserProfile', () => {
     expect(userPicture).toHaveAttribute('alt', 'Imagem do usuário.');
     expect(userName).toBeInTheDocument();
   });
+
+  it('should be able to apply correct styles when open is true', () => {
+    mockUseUser.mockReturnValue(mockUser);
+
+    const { container } = render(<UserProfile open={true} />);
+
+    const userProfile = container.querySelector('.flex-row');
+    expect(userProfile).toBeInTheDocument();
+    expect(userProfile).toHaveClass('h-20');
+    expect(userProfile).toHaveClass('gap-4');
+    expect(userProfile).toHaveClass('text-2xl');
+    expect(userProfile).toHaveClass('w-56');
+  });
 });
