@@ -61,5 +61,15 @@ describe('MenuSideBar', () => {
         fireEvent.click(signOutButton);
     
         expect(nookies.destroy).toHaveBeenCalledWith(null, '@user_token', { path: '/' });
-      });  
+      }); 
+
+      it('should be able to render flex layout when user is logged in', () => {
+          
+        render(<MenuSideBar />);
+        
+        const menuNav = screen.getByTestId('menuNav');
+        
+        expect(menuNav).toHaveClass('flex');
+        expect(menuNav).not.toHaveClass('hidden');
+      });
   });
