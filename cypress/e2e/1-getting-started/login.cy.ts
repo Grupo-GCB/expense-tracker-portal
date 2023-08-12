@@ -20,8 +20,8 @@ context('Login', () => {
     cy.contains('button', 'Continue with Facebook').should('be.visible')
   })
 
-  // teste com erro
-  /* it('should be able log in through google account', () => {
+  // TODO: Arrumar o teste de login social com o Google
+  /* it('should be able to log in through a Google account', () => {
     cy.contains('button', 'Continue with Google').click()
     cy.origin('https://accounts.google.com/', () => {
       cy.url()
@@ -36,7 +36,7 @@ context('Login', () => {
     })
   }) */
 
-  it('should be able log in through Microsoft account', () => {
+  it('should be able to log in through a Microsoft account', () => {
     cy.contains('button', 'Continue with Microsoft Account').click()
     cy.origin('https://login.live.com/', () => {
       cy.get('input[type="email"]').type(Cypress.env('USERNAME'), {
@@ -51,7 +51,7 @@ context('Login', () => {
     })
   })
 
-  it('should be able log in through Facebook account', () => {
+  it('should be able to log in through a Facebook account', () => {
     cy.contains('button', 'Continue with Facebook').click()
     cy.origin('https://www.facebook.com/', () => {
       cy.get('#email').type(Cypress.env('USERNAME'), { log: false })
