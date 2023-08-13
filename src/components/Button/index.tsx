@@ -1,11 +1,12 @@
-import React, { HTMLAttributes } from 'react'
+import React, { ButtonHTMLAttributes} from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
   onClick?: () => void
   testId?: string
   disabled?: boolean
+  canceled:boolean
 }
 
 export function Button({
@@ -14,22 +15,23 @@ export function Button({
   onClick,
   testId,
   disabled = false,
-  ...rest
+  type,
+  canceled
+  
 }: IButtonProps) {
   return (
     <button
       data-testid={testId}
       className={twMerge(
         ` ${
-          disabled
-            ? 'bg-green-500 opacity-70 cursor-not-allowed'
-            : 'bg-green-500 hover:bg-green-300'
+          disabled && 'bg-green-500 opacity-70 cursor-not-allowed'
         } text-white items-self-center rounded-md  font-bold  `,
+        `${canceled? 'bg-red-300' : 'bg-green-500 hover:bg-green-300'}`,
         className,
       )}
       onClick={onClick}
       disabled={disabled}
-      {...rest}
+      type={type}
     >
       {children}
     </button>
