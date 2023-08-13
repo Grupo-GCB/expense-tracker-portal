@@ -45,6 +45,7 @@ export function LandingPage() {
                   className="py-2 px-4 md:w-64 md:items-self-center rounded-md bg-green-500 md:py-4  md:px-3 text-sm md:text-2xl"
                   onClick={handleRedirectToLoginPage}
                   disabled={isRedirectingToLogin}
+                  canceled={false}
                 >
                   {isRedirectingToLogin ? (
                     <CircleNotch
