@@ -18,6 +18,7 @@ import {
   THIRTY_DAY_COOKIE_LIFETIME,
   UNKNOWN_ERROR,
 } from '@/utils/constants'
+import Link from 'next/link'
 
 export function Home({ user }: IUser) {
   const getUserSession = async (): Promise<ISession | undefined> => {
@@ -87,6 +88,13 @@ export function Home({ user }: IUser) {
   }
 
   return (
-    <div className='lg:ml-28'>Welcome {user.name}!</div>
+    <div>
+      Welcome {user.name}!{' '}
+      <a href="/api/auth/logout" onClick={handleDestroyUserToken}>
+        Logout
+      </a>
+
+      <Link href="/Wallet">Carteiras</Link>
+    </div>
   )
 }
