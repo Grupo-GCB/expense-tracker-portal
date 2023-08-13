@@ -4,7 +4,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { CircleNotch } from 'phosphor-react'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
-import { getBanks, handleRegisterWallet } from '@/app/wallet/actions'
+import { getBanks, handleRegisterWallet } from '@/app/Wallet/actions'
 import { Button } from '@/components/Button'
 import { Modal } from '@/components/Modal'
 import { FormModal } from '@/components/Modal/FormModal'
