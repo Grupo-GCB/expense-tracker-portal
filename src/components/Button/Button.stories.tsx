@@ -53,3 +53,11 @@ export const Loading: StoryObj<IButtonProps> = {
     children: <CircleNotch className="animate-spin w-full justify-center" />,
   },
 }
+
+export const Canceled: StoryObj<IButtonProps> = {
+  args: {
+    className: 'py-4 px-8 text-xl',
+    children: 'Experimentar!',
+    canceled: true
+  },
+}
