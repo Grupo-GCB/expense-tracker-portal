@@ -1,8 +1,10 @@
 'use client'
 
+import React ,{ Dispatch, SetStateAction, useEffect, useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { CircleNotch } from 'phosphor-react'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 import { getBanks, handleRegisterWallet } from '@/app/Wallet/actions'
 import { Button } from '@/components/Button'
@@ -10,7 +12,7 @@ import { Modal } from '@/components/Modal'
 import { FormModal } from '@/components/Modal/FormModal'
 import { CustomSelect, IOptions } from '@/components/Select'
 import { accountTypes } from '@/utils/constants'
-import { toast } from 'react-toastify'
+
 
 interface IRegisterWallet {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -69,18 +71,19 @@ export function RegisterWallet({ setOpen }: IRegisterWallet) {
           label: bank.name,
         }));
         setBankList(formattedOptions);
+        toast.success('sucesso')
       } catch (error) {
-        console.error("Erro ao buscar os bancos:", error);
+        toast.error(`Erro ao buscar os bancos:${error}`);
       }
     }
     fetchBanks();
   }, []);
 
-  const test = async (values : any) => {
-    await handleRegisterWallet(values).then((has) => {
-      toast.success(has)
+  const test = async (values : FormData) => {
+    await handleRegisterWallet(values).then((res) => {
+        toast.success(res)
     }).catch((err) => {
-      console.log(err)
+      toast.error(err)
     })
   }
   
