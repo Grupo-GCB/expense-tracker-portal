@@ -6,6 +6,14 @@ import { Button, IButtonProps } from '@/components/Button'
 const meta: Meta<IButtonProps> = {
   title: 'Components/Button',
   component: Button,
+  parameters:{
+    nextRouter: {
+      path: '/',
+      asPath: '/',
+      query: {},
+      push() {},
+    },
+  },
   argTypes: {
     disabled: {
       defaultValue: false,
