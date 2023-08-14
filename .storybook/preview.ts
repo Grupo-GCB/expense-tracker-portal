@@ -1,15 +1,7 @@
 import { MINIMAL_VIEWPORTS } from "@storybook/addon-viewport";
 import type { Preview } from "@storybook/react";
-import { RouterContext } from "next/dist/shared/lib/router-context";
 
 import "../src/styles/tailwind.css";
-
-export const parameters = {
-  nextRouter: {
-    Provider: RouterContext.Provider,
-    locale: "en" 
-  },
-};
 
 export const mobile = {
   name: "mobile",
