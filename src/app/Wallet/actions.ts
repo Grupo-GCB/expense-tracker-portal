@@ -20,7 +20,7 @@ export async function getBanks() {
 export async function handleRegisterWallet(formData: FormData) {
   const user_token = cookies().get('@user_token')!.value;
 
-  'use server'
+  
   const decodedToken: DecodedToken = jwt_decode(user_token)
   const sub = decodedToken.sub;
 
@@ -31,9 +31,11 @@ export async function handleRegisterWallet(formData: FormData) {
       bank_id: formData.get('bank_id') as string,
       user_id: sub as string,
     });
-    console.log('Registro da carteira feito com sucesso:', data);
-  } catch (error: any) {
-    if (error.isAxiosError) {
+    return 'deu certo'
+   // console.log('Registro da carteira feito com sucesso:', data);
+  } catch (error) {
+
+    if (error instanceof AxiosError) {
       const axiosError = error as AxiosError
       if (axiosError.response) {
         const status = axiosError.response.status
@@ -47,8 +49,7 @@ export async function handleRegisterWallet(formData: FormData) {
       } else {
         console.error('Erro ao fazer a requisição:', axiosError.message)
       }
-    } else {
-      console.error('Erro desconhecido:', error.message)
-    }
+    } 
+    return 'deu ruim'
   }
 }
