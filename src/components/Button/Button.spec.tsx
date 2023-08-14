@@ -6,7 +6,7 @@ describe('Button', () => {
   const buttonText = 'Click here'
 
   it('should be able to render the children correctly', () => {
-    render(<Button testId="test-button">{buttonText}</Button>)
+    render(<Button testId="test-button" canceled={false}>{buttonText}</Button>)
 
     const button = screen.getByTestId('test-button')
 
@@ -17,7 +17,7 @@ describe('Button', () => {
   it('should be able to click the button', () => {
     const handleClick = jest.fn()
 
-    render(<Button onClick={handleClick}>{buttonText}</Button>)
+    render(<Button onClick={handleClick} canceled={false}>{buttonText}</Button>)
 
     const button = screen.getByRole('button', { name: 'Click here' })
 
