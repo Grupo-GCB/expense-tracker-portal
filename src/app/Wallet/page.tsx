@@ -10,6 +10,7 @@ import { Modal } from '@/components/Modal'
 import { FormModal } from '@/components/Modal/FormModal'
 import { CustomSelect, IOptions } from '@/components/Select'
 import { accountTypes } from '@/utils/constants'
+import { toast } from 'react-toastify'
 
 interface IRegisterWallet {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -75,8 +76,16 @@ export function RegisterWallet({ setOpen }: IRegisterWallet) {
     fetchBanks();
   }, []);
 
-  return (
-    <FormModal action={handleRegisterWallet}>
+  const test = async (values : any) => {
+    await handleRegisterWallet(values).then((has) => {
+      toast.success(has)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+  
+  return ( 
+    <FormModal action={test}>
       <CustomSelect options={accountTypes} placeholder="Tipo da conta" name="account_type"/>
       <CustomSelect options={bankList} placeholder="Banco" name="bank_id"/>
       <textarea
