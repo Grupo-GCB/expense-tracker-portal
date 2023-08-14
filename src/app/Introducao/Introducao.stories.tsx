@@ -2,11 +2,11 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import { Meta, StoryObj } from '@storybook/react'
 import { reactRouterOutlet, reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6'
 
-import { LandingPage } from '@/components/LandingPage'
+import { Introducao } from './page'
 
 export default {
   title: 'Pages/Landing Page',
-  component: LandingPage,
+  component: Introducao,
   decorators:[withRouter],
   parameters: {
     layout: 'fullscreen',
@@ -22,7 +22,7 @@ export const Mobile: StoryObj = {
       defaultViewport: 'iphone5',
     },
     reactRouter: reactRouterParameters({
-      routing: reactRouterOutlet(<LandingPage/>),
+      routing: reactRouterOutlet(<Introducao/>),
     }),
   },
 }

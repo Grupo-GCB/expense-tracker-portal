@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { CircleNotch } from 'phosphor-react'
@@ -5,11 +7,11 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { Header } from '@/components/LandingPage/Header'
+import { Header } from './components/Header'
 import imgHome from '@/app/assets/img/portal.png'
 import { Button } from '@/components/Button'
 
-export function LandingPage() {
+export function Introducao() {
   const router = useRouter()
 
   const [isRedirectingToLogin, setIsRedirectingToLogin] =
@@ -71,3 +73,5 @@ export function LandingPage() {
     </>
   )
 }
+
+export default Introducao

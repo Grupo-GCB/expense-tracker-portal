@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
-import { Header } from "@/components/LandingPage/Header";
+import { Header } from "./index";
 
 describe("Header", () => {
   it("should be able to render correctly", () => {

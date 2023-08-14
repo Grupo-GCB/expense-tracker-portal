@@ -2,12 +2,8 @@
 
 import { useUser } from '@auth0/nextjs-auth0/client'
 
-import {
-  ErrorPage,
-  Home,
-  LandingPage,
-  Loading,
-} from '@/components'
+import { ErrorPage, Home, Loading } from '@/components'
+import Introducao from './Introducao/page'
 
 export default function Page() {
   const { user, error, isLoading } = useUser()
@@ -24,5 +20,5 @@ export default function Page() {
     )
   }
 
-  return <LandingPage />
+  return <Introducao/>
 }
