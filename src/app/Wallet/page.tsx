@@ -15,7 +15,7 @@ interface IRegisterWallet {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Wallet() {
+export function Wallet() {
   let [open, setOpen] = useState(false);
 
   return (
@@ -43,7 +43,9 @@ export default function Wallet() {
   );
 }
 
-function RegisterWallet({ setOpen }: IRegisterWallet) {
+export default Wallet
+
+export function RegisterWallet({ setOpen }: IRegisterWallet) {
   const [bankList, setBankList] = useState<IOptions[]>([]);
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
