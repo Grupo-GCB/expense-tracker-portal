@@ -31,25 +31,24 @@ export async function handleRegisterWallet(formData: FormData) {
       bank_id: formData.get('bank_id') as string,
       user_id: sub as string,
     });
-    return 'deu certo'
-   // console.log('Registro da carteira feito com sucesso:', data);
+    return 'Registro da carteira feito com sucesso'
+    
   } catch (error) {
-
     if (error instanceof AxiosError) {
       const axiosError = error as AxiosError
       if (axiosError.response) {
         const status = axiosError.response.status
         if (status === 400) {
-          console.error('Erro: Requisição inválida')
+          return'Erro: Requisição inválida'
         } else if (status === 404) {
-          console.error('Erro: Recurso não encontrado')
+          return'Erro: Recurso não encontrado'
         } else {
-          console.error('Erro desconhecido:', axiosError.message)
+          return axiosError.message
         }
       } else {
-        console.error('Erro ao fazer a requisição:', axiosError.message)
+        return axiosError.message
       }
     } 
-    return 'deu ruim'
+    return 'Erro ao registrar a carteira'
   }
 }
