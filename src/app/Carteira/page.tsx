@@ -6,7 +6,7 @@ import { CircleNotch } from 'phosphor-react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
-import { getBanks, handleRegisterWallet } from '@/app/Wallet/actions'
+import { getBanks, handleRegisterWallet } from '@/app/Carteira/hook'
 import { Button } from '@/components/Button'
 import { Modal } from '@/components/Modal'
 import { FormModal } from '@/components/Modal/FormModal'
@@ -18,7 +18,7 @@ interface IRegisterWallet {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export function Wallet() {
+export function Carteira() {
   let [open, setOpen] = useState(false);
 
   return (
@@ -45,8 +45,7 @@ export function Wallet() {
     </section>
   );
 }
-
-export default Wallet
+export default Carteira
 
 export function RegisterWallet({ setOpen }: IRegisterWallet) {
   const [bankList, setBankList] = useState<IOptions[]>([]);
