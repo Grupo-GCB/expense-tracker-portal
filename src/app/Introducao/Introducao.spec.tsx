@@ -1,13 +1,13 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
-import { LandingPage } from '@/components/LandingPage'
+import { Introducao } from './page'
 
 jest.mock('next/navigation', () => require('next-router-mock'))
 
 describe('Landing Page', () => {
   it('should be able to render correctly', () => {
-    render(<LandingPage />)
+    render(<Introducao />)
 
     const logo = screen.getByRole('img', { name: 'Logo do Grupo GCB' })
     expect(logo).toBeInTheDocument()
@@ -28,7 +28,7 @@ describe('Landing Page', () => {
   })
 
   it('should be able render loading icon when button is clicked', async () => {
-    render(<LandingPage />)
+    render(<Introducao />)
 
     const button = screen.getByTestId('login-page-button')
     expect(button).toBeInTheDocument()
@@ -42,7 +42,7 @@ describe('Landing Page', () => {
   })
 
   it('should be able to redirect to login page when button is clicked', () => {
-    render(<LandingPage />)
+    render(<Introducao />)
 
     const button = screen.getByTestId('login-page-button')
     expect(button).toBeInTheDocument()
