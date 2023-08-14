@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Plugs } from "phosphor-react";
-import "react-toastify/dist/ReactToastify.css";
 
 import { Button } from "@/components/Button";
 
