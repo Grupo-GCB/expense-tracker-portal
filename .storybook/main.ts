@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/nextjs";
+
 import path from "node:path";
 
 const config: StorybookConfig = {
@@ -17,7 +18,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
-    "storybook-addon-next-router",
+    "storybook-addon-react-router-v6",
     {
       name: "@storybook/addon-styling",
       options: {
