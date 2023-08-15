@@ -54,13 +54,15 @@ interface ICustomSelectProps{
   placeholder: string
   options: IOptions[]
   name: string
+  testid:string
 
 }
 
-export function CustomSelect({options, placeholder, name}:ICustomSelectProps) {
+export function CustomSelect({options, placeholder, name, testid}:ICustomSelectProps) {
   return (
     <div>
       <Select
+        data-testid={testid}
         options={options}
         styles={customStyles}
         components={{
