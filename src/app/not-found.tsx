@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Plugs } from "phosphor-react";
 
-import { Button } from "@/components/Button";
+import { Button } from "@/components";
 
 export default function NotFound() {
   return (
