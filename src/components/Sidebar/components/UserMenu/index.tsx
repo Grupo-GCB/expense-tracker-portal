@@ -16,7 +16,7 @@ export function UserMenu({ open }: IMenu) {
       title: "Notificações",
     },
     {
-      id: 1,
+      id: 2,
       icon: (
         <Gear
           color="white"
