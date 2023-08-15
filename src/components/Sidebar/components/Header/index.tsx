@@ -2,9 +2,9 @@ import Image from "next/image";
 
 import bullIcon from "@/app/assets/svg/logoBull.svg";
 import gcbLogo from "@/app/assets/svg/logo.svg";
-import { IMenuProps } from "@/interfaces";
+import { IMenu } from "@/interfaces";
 
-export function Header({ open }: IMenuProps) {
+export function Header({ open }: IMenu) {
   return (
     <div
       className={`${
