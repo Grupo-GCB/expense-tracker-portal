@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 import { UserMenu } from ".";
 
 describe("User Menu", () => {
-  it("should be able to render menu user with correct icons when open prop is true", () => {
+  it("should be able to render the user menu with the correct icons when the open prop is true", () => {
     render(<UserMenu open={true} />);
 
     const notificacoesIcon = screen.getByTestId("notificacoesIcon");
@@ -20,7 +20,7 @@ describe("User Menu", () => {
     expect(configuracoesLabel).toBeInTheDocument();
   });
 
-  it("should be able to render menu user with correct icons when open prop is false", () => {
+  it("should be able to render the user menu with the correct icons when the open prop is false", () => {
     render(<UserMenu open={false} />);
 
     const notificacoesIcon = screen.getByTestId("notificacoesIcon");
