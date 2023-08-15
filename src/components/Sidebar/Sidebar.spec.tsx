@@ -45,7 +45,7 @@ describe("Sidebar", () => {
     expect(screen.getByTestId("navMenu")).toHaveClass("sm:-left-full");
   });
 
-  it("should be able to render user profile with picture and name", () => {
+  it("should be able to render the user's profile with a picture and name", () => {
     render(<Sidebar />);
     const userPicture = screen.getByAltText("Imagem do usuário.");
     const userName = screen.getByText("John Doe");
@@ -54,7 +54,7 @@ describe("Sidebar", () => {
     expect(userName).toBeInTheDocument();
   });
 
-  it("should be able to destroy user token when SignOut button is clicked", () => {
+  it("should be able to destroy the user token when the Sign Out button is clicked", () => {
     render(<Sidebar />);
     const signOutButton = screen.getByTestId("singOut");
 
