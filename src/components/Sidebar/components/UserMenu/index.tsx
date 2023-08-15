@@ -1,8 +1,8 @@
 import { Bell, Gear } from "phosphor-react";
 
-import { IMenuProps } from "@/interfaces";
+import { IMenu } from "@/interfaces";
 
-export function MenuUser({ open }: IMenuProps) {
+export function UserMenu({ open }: IMenu) {
   return (
     <nav>
       <ul>

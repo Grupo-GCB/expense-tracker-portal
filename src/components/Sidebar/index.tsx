@@ -5,7 +5,7 @@ import { List, SignOut, X } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
-import { Header, MenuOptions, MenuUser, UserProfile } from "./components";
+import { Header, MenuOptions, UserMenu, UserProfile } from "./components";
 
 export function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -70,7 +70,7 @@ export function Sidebar() {
         </div>
 
         <div className="flex flex-col gap-8">
-          <MenuUser open={open} data-testid="menuUser" />
+          <UserMenu open={open} data-testid="menuUser" />
           <UserProfile open={open} data-testid="userProfile" />
         </div>
       </div>
