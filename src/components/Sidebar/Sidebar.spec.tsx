@@ -65,7 +65,7 @@ describe("Sidebar", () => {
     });
   });
 
-  it("should be able to render flex layout when user is logged in", () => {
+  it("should be able to display a flex layout when the user is logged in", () => {
     render(<Sidebar />);
 
     const navMenu = screen.getByTestId("navMenu");
@@ -84,7 +84,7 @@ describe("Sidebar", () => {
     expect(navMenu).toHaveClass("hidden");
   });
 
-  it("should be able to render all components correctly when user is logged in", () => {
+  it("should be able to render all components correctly when the user is logged in", () => {
     render(<Sidebar />);
 
     const headerComponent = screen.findByTestId("header");
