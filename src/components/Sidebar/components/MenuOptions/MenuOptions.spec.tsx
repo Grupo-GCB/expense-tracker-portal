@@ -8,22 +8,22 @@ describe("MenuOptions", () => {
     render(<MenuOptions open={true} />);
 
     const homeIcon = screen.getByTestId("homeIcon");
-    const homeLabel = screen.getByText("Home");
+    const homeLabelText = screen.getByText("Home");
 
     const summaryIcon = screen.getByTestId("summaryIcon");
-    const resumoLabel = screen.getByText("Resumo");
+    const resumoLabelText = screen.getByText("Resumo");
 
-    const carteirasIcon = screen.getByTestId("carteirasIcon");
-    const carteirasLabel = screen.getByText("Carteiras");
+    const walletsIcon = screen.getByTestId("walletsIcon");
+    const carteirasLabelText = screen.getByText("Carteiras");
 
     expect(homeIcon).toBeInTheDocument();
-    expect(homeLabel).toBeInTheDocument();
+    expect(homeLabelText).toBeInTheDocument();
 
     expect(summaryIcon).toBeInTheDocument();
-    expect(resumoLabel).toBeInTheDocument();
+    expect(resumoLabelText).toBeInTheDocument();
 
-    expect(carteirasIcon).toBeInTheDocument();
-    expect(carteirasLabel).toBeInTheDocument();
+    expect(walletsIcon).toBeInTheDocument();
+    expect(carteirasLabelText).toBeInTheDocument();
   });
 
   it("should be able to render the correct styles for icons when the open prop is true", () => {
@@ -31,11 +31,11 @@ describe("MenuOptions", () => {
 
     const homeIcon = screen.getByTestId("homeIcon");
     const summaryIcon = screen.getByTestId("summaryIcon");
-    const carteirasIcon = screen.getByTestId("carteirasIcon");
+    const walletsIcon = screen.getByTestId("walletsIcon");
 
     expect(homeIcon).toHaveClass("w-8 h-8");
     expect(summaryIcon).toHaveClass("w-8 h-8");
-    expect(carteirasIcon).toHaveClass("w-8 h-8");
+    expect(walletsIcon).toHaveClass("w-8 h-8");
   });
 
   it("should be able to render the correct styles for icons when the open prop is false", () => {
@@ -43,10 +43,10 @@ describe("MenuOptions", () => {
 
     const homeIcon = screen.getByTestId("homeIcon");
     const summaryIcon = screen.getByTestId("summaryIcon");
-    const carteirasIcon = screen.getByTestId("carteirasIcon");
+    const walletsIcon = screen.getByTestId("walletsIcon");
 
     expect(homeIcon).toHaveClass("w-8 h-8");
     expect(summaryIcon).toHaveClass("w-8 h-8");
-    expect(carteirasIcon).toHaveClass("w-8 h-8");
+    expect(walletsIcon).toHaveClass("w-8 h-8");
   });
 });

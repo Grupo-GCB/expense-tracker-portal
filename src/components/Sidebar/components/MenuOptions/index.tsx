@@ -36,7 +36,7 @@ export function MenuOptions({ open }: IMenu) {
           <Wallet
             color="white"
             className="w-8 h-8"
-            data-testid="carteirasIcon"
+            data-testid="walletsIcon"
           />
           <span>Carteiras</span>
         </li>
