@@ -16,7 +16,7 @@ export function UserMenu({ open }: IMenu) {
           <Bell
             color="white"
             className="w-8 h-8"
-            data-testid="notificacoesIcon"
+            data-testid="notificationsIcon"
           />
           {open && <span>Notificações</span>}
         </li>

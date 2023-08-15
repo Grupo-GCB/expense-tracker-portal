@@ -7,24 +7,24 @@ describe("User Menu", () => {
   it("should be able to render the user menu with the correct icons when the open prop is true", () => {
     render(<UserMenu open={true} />);
 
-    const notificacoesIcon = screen.getByTestId("notificacoesIcon");
-    const notificacoesLabel = screen.getByText("Notificações");
+    const notificationsIcon = screen.getByTestId("notificationsIcon");
+    const notificacoesLabelText = screen.getByText("Notificações");
 
-    expect(notificacoesIcon).toBeInTheDocument();
-    expect(notificacoesLabel).toBeInTheDocument();
+    expect(notificationsIcon).toBeInTheDocument();
+    expect(notificacoesLabelText).toBeInTheDocument();
 
     const configuracoesIcon = screen.getByTestId("configuracoesIcon");
-    const configuracoesLabel = screen.getByText("Configurações");
+    const configuracoesLabelText = screen.getByText("Configurações");
 
     expect(configuracoesIcon).toBeInTheDocument();
-    expect(configuracoesLabel).toBeInTheDocument();
+    expect(configuracoesLabelText).toBeInTheDocument();
   });
 
   it("should be able to render the user menu with the correct icons when the open prop is false", () => {
     render(<UserMenu open={false} />);
 
-    const notificacoesIcon = screen.getByTestId("notificacoesIcon");
-    expect(notificacoesIcon).toBeInTheDocument();
+    const notificationsIcon = screen.getByTestId("notificationsIcon");
+    expect(notificationsIcon).toBeInTheDocument();
 
     const configuracoesIcon = screen.getByTestId("configuracoesIcon");
     expect(configuracoesIcon).toBeInTheDocument();
