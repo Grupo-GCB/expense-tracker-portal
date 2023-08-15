@@ -82,7 +82,7 @@ export function Sidebar() {
             open ? "justify-start" : "justify-center"
           }`}
         >
-          <SignOut color="white" className="w-8 h-8" data-testid="singOut" />
+          <SignOut color="white" className="w-8 h-8" data-testid="signOut" />
         </a>
       </button>
     </div>
