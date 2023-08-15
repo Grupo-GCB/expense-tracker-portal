@@ -10,7 +10,7 @@ describe("MenuOptions", () => {
     const homeIcon = screen.getByTestId("homeIcon");
     const homeLabel = screen.getByText("Home");
 
-    const resumoIcon = screen.getByTestId("resumoIcon");
+    const summaryIcon = screen.getByTestId("summaryIcon");
     const resumoLabel = screen.getByText("Resumo");
 
     const carteirasIcon = screen.getByTestId("carteirasIcon");
@@ -19,7 +19,7 @@ describe("MenuOptions", () => {
     expect(homeIcon).toBeInTheDocument();
     expect(homeLabel).toBeInTheDocument();
 
-    expect(resumoIcon).toBeInTheDocument();
+    expect(summaryIcon).toBeInTheDocument();
     expect(resumoLabel).toBeInTheDocument();
 
     expect(carteirasIcon).toBeInTheDocument();
@@ -30,11 +30,11 @@ describe("MenuOptions", () => {
     render(<MenuOptions open={true} />);
 
     const homeIcon = screen.getByTestId("homeIcon");
-    const resumoIcon = screen.getByTestId("resumoIcon");
+    const summaryIcon = screen.getByTestId("summaryIcon");
     const carteirasIcon = screen.getByTestId("carteirasIcon");
 
     expect(homeIcon).toHaveClass("w-8 h-8");
-    expect(resumoIcon).toHaveClass("w-8 h-8");
+    expect(summaryIcon).toHaveClass("w-8 h-8");
     expect(carteirasIcon).toHaveClass("w-8 h-8");
   });
 
@@ -42,11 +42,11 @@ describe("MenuOptions", () => {
     render(<MenuOptions open={false} />);
 
     const homeIcon = screen.getByTestId("homeIcon");
-    const resumoIcon = screen.getByTestId("resumoIcon");
+    const summaryIcon = screen.getByTestId("summaryIcon");
     const carteirasIcon = screen.getByTestId("carteirasIcon");
 
     expect(homeIcon).toHaveClass("w-8 h-8");
-    expect(resumoIcon).toHaveClass("w-8 h-8");
+    expect(summaryIcon).toHaveClass("w-8 h-8");
     expect(carteirasIcon).toHaveClass("w-8 h-8");
   });
 });

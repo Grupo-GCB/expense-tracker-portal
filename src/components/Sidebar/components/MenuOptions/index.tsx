@@ -1,8 +1,8 @@
 import { House, Scroll, Wallet } from "phosphor-react";
 
-import { IMenuProps } from "@/interfaces";
+import { IMenu } from "@/interfaces";
 
-export function MenuOptions({ open }: IMenuProps) {
+export function MenuOptions({ open }: IMenu) {
   return (
     <nav>
       <ul className="flex flex-col gap-8">
@@ -23,7 +23,7 @@ export function MenuOptions({ open }: IMenuProps) {
               : "flex-col text-sm justify-center"
           } items-center  h-16 text-gray-100 cursor-pointer hover:bg-gray-900 rounded`}
         >
-          <Scroll color="white" className="w-8 h-8" data-testid="resumoIcon" />
+          <Scroll color="white" className="w-8 h-8" data-testid="summaryIcon" />
           <span>Resumo</span>
         </li>
         <li
