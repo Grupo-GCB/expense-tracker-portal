@@ -25,24 +25,24 @@ describe("Sidebar", () => {
     jest.clearAllMocks();
   });
 
-  it("should be able to toggle sidebar when List icon is clicked", () => {
+  it("should be able to toggle sidebar when the hamburguer menu is clicked", () => {
     render(<Sidebar />);
-    const menuHamburguer = screen.getByTestId("menuHamburguer");
+    const hamburguerMenu = screen.getByTestId("hamburguerMenu");
 
-    fireEvent.click(menuHamburguer);
+    fireEvent.click(hamburguerMenu);
 
-    expect(screen.getByTestId("menuNav")).toHaveClass("sm:w-full");
+    expect(screen.getByTestId("navMenu")).toHaveClass("sm:w-full");
   });
 
   it("should be able to close sidebar when X icon is clicked", () => {
     render(<Sidebar />);
-    const menuHamburguer = screen.getByTestId("menuHamburguer");
+    const hamburguerMenu = screen.getByTestId("hamburguerMenu");
     const closeX = screen.getByTestId("closeX");
 
-    fireEvent.click(menuHamburguer);
+    fireEvent.click(hamburguerMenu);
     fireEvent.click(closeX);
 
-    expect(screen.getByTestId("menuNav")).toHaveClass("sm:-left-full");
+    expect(screen.getByTestId("navMenu")).toHaveClass("sm:-left-full");
   });
 
   it("should be able to render user profile with picture and name", () => {
@@ -68,10 +68,10 @@ describe("Sidebar", () => {
   it("should be able to render flex layout when user is logged in", () => {
     render(<Sidebar />);
 
-    const menuNav = screen.getByTestId("menuNav");
+    const navMenu = screen.getByTestId("navMenu");
 
-    expect(menuNav).toHaveClass("flex");
-    expect(menuNav).not.toHaveClass("hidden");
+    expect(navMenu).toHaveClass("flex");
+    expect(navMenu).not.toHaveClass("hidden");
   });
 
   it("should be able to render hidden layout when user is not logged in", () => {
@@ -79,9 +79,9 @@ describe("Sidebar", () => {
 
     render(<Sidebar />);
 
-    const menuNav = screen.getByTestId("menuNav");
+    const navMenu = screen.getByTestId("navMenu");
 
-    expect(menuNav).toHaveClass("hidden");
+    expect(navMenu).toHaveClass("hidden");
   });
 
   it("should be able to render all components correctly when user is logged in", () => {

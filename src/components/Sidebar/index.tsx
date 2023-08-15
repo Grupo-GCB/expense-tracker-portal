@@ -35,7 +35,7 @@ export function Sidebar() {
       className={`${user ? "flex" : "hidden"} fixed lg:w-28 ${
         open ? "sm:left-0 sm:w-full sm:px-12" : "sm:-left-full lg:left-0"
       } min-h-screen max-h-screen bg-gray-700 px-5 py-10 top-0 flex flex-col gap-16 duration-300 overflow-y-scroll scrollbar-thin scrollbar-zinc-950 scrollbar-thumb-800`}
-      data-testid="menuNav"
+      data-testid="navMenu"
     >
       <div
         className={`${
@@ -46,7 +46,7 @@ export function Sidebar() {
           color="#f2f2f2"
           className="w-8 h-8"
           onClick={() => setOpen(!open)}
-          data-testid="menuHamburguer"
+          data-testid="hamburguerMenu"
         />
       </div>
 
