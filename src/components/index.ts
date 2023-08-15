@@ -1,5 +1,4 @@
-export * from './ErrorPage'
-export * from '../app/Home/page'
+export * from './ErrorPage' 
 export * from './Loading'
 export * from './Modal'
 export * from './Button'
