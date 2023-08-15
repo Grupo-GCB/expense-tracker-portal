@@ -8,7 +8,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { Header, MenuOptions, UserMenu, UserProfile } from "./components";
 
 export function Sidebar() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   const { user } = useUser();
 
   const handleDestroyUserToken = (): void => {
