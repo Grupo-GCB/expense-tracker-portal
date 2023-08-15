@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
-import { IUserProfileProps } from "@/interfaces";
+import { IUserProfile } from "@/interfaces";
 
-export function UserProfile({ open }: IUserProfileProps) {
+export function UserProfile({ open }: IUserProfile) {
   const { user } = useUser();
 
   return (
