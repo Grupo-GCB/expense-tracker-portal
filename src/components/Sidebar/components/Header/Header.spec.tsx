@@ -8,7 +8,7 @@ jest.mock("next/image", () => {
 });
 
 describe("Header", () => {
-  it("shoulde be able to render open header with the correct image", () => {
+  it("should be able to render an open header with the correct image", () => {
     render(<Header open={true} />);
 
     const image = screen.getByRole("img", { name: "Logo da GCB." });
@@ -17,7 +17,7 @@ describe("Header", () => {
     expect(image.getAttribute("alt")).toBe("Logo da GCB.");
   });
 
-  it("shoulde be able to render closed header with the correct image", () => {
+  it("should be able to render a closed header with the correct image", () => {
     render(<Header open={false} />);
 
     const image = screen.getByRole("img", {
