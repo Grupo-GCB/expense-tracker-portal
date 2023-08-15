@@ -20,7 +20,7 @@ describe("UserProfile", () => {
     jest.clearAllMocks();
   });
 
-  it("should be able to render user profile with picture and name", () => {
+  it("should be able to render user's profile with a picture and name.", () => {
     mockUseUser.mockReturnValue(mockUser);
 
     render(<UserProfile open={true} />);
@@ -33,7 +33,7 @@ describe("UserProfile", () => {
     expect(userName).toBeInTheDocument();
   });
 
-  it("should be able to apply correct styles when open is true", () => {
+  it("should be able to apply the correct styles when open is true.", () => {
     mockUseUser.mockReturnValue(mockUser);
 
     const { container } = render(<UserProfile open={true} />);
@@ -46,7 +46,7 @@ describe("UserProfile", () => {
     expect(userProfile).toHaveClass("w-56");
   });
 
-  it("should be ablt to apply correct styles when open is false", () => {
+  it("should be able to apply the correct styles when open is false.", () => {
     mockUseUser.mockReturnValue(mockUser);
 
     const { container } = render(<UserProfile open={false} />);
