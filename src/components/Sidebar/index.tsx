@@ -7,7 +7,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 import { Header, MenuOptions, MenuUser, UserProfile } from "./components";
 
-export function MenuSideBar() {
+export function Sidebar() {
   const [open, setOpen] = useState(false);
   const { user } = useUser();
 

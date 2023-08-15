@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
-import { MenuSideBar } from ".";
+import { Sidebar } from ".";
 
 const defaultUser = {
   picture:
@@ -13,7 +13,7 @@ const defaultUser = {
 
 const meta: Meta = {
   title: "MenuSideBar",
-  component: MenuSideBar,
+  component: Sidebar,
   argTypes: {
     open: {
       defaultValue: false,
@@ -40,7 +40,7 @@ const withUserProvider = (Component: any, user: any) => (
 );
 
 export const Mobile: StoryObj = (args: any) =>
-  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
+  withUserProvider(() => <Sidebar {...args} />, defaultUser);
 
 Mobile.args = {
   open: false,
@@ -53,7 +53,7 @@ Mobile.parameters = {
 };
 
 export const Tablet: StoryObj = (args: any) =>
-  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
+  withUserProvider(() => <Sidebar {...args} />, defaultUser);
 
 Tablet.args = {
   open: false,
@@ -66,7 +66,7 @@ Tablet.parameters = {
 };
 
 export const Laptop: StoryObj = (args: any) =>
-  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
+  withUserProvider(() => <Sidebar {...args} />, defaultUser);
 
 Laptop.args = {
   open: false,
@@ -79,7 +79,7 @@ Laptop.parameters = {
 };
 
 export const LaptopLarge: StoryObj = (args: any) =>
-  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
+  withUserProvider(() => <Sidebar {...args} />, defaultUser);
 
 LaptopLarge.args = {
   open: false,

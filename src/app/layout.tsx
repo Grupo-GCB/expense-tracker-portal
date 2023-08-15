@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 import '@/styles/tailwind.css'
-import { MenuSideBar } from '@/components'
+import { Sidebar } from '@/components'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <UserProvider>
         <body className={inter.className}>
-          <MenuSideBar />
+          <Sidebar />
           {children}</body>
       </UserProvider>
     </html>

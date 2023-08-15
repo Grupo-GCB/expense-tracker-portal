@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import nookies from "nookies";
 
-import { MenuSideBar } from ".";
+import { Sidebar } from ".";
 
 jest.mock("@auth0/nextjs-auth0/client");
 jest.mock("nookies");
@@ -16,7 +16,7 @@ const mockUserData = {
     "https://e7.pngegg.com/pngimages/885/607/png-clipart-dynamics-365-computer-icons-user-profile-login-others-miscellaneous-angle.png",
 };
 
-describe("MenuSideBar", () => {
+describe("Sidebar", () => {
   beforeEach(() => {
     mockUseUser.mockReturnValue({ user: mockUserData });
   });
@@ -26,7 +26,7 @@ describe("MenuSideBar", () => {
   });
 
   it("should be able to toggle sidebar when List icon is clicked", () => {
-    render(<MenuSideBar />);
+    render(<Sidebar />);
     const menuHamburguer = screen.getByTestId("menuHamburguer");
 
     fireEvent.click(menuHamburguer);
@@ -35,7 +35,7 @@ describe("MenuSideBar", () => {
   });
 
   it("should be able to close sidebar when X icon is clicked", () => {
-    render(<MenuSideBar />);
+    render(<Sidebar />);
     const menuHamburguer = screen.getByTestId("menuHamburguer");
     const closeX = screen.getByTestId("closeX");
 
@@ -46,7 +46,7 @@ describe("MenuSideBar", () => {
   });
 
   it("should be able to render user profile with picture and name", () => {
-    render(<MenuSideBar />);
+    render(<Sidebar />);
     const userPicture = screen.getByAltText("Imagem do usuário.");
     const userName = screen.getByText("John Doe");
 
@@ -55,7 +55,7 @@ describe("MenuSideBar", () => {
   });
 
   it("should be able to destroy user token when SignOut button is clicked", () => {
-    render(<MenuSideBar />);
+    render(<Sidebar />);
     const signOutButton = screen.getByTestId("singOut");
 
     fireEvent.click(signOutButton);
@@ -66,7 +66,7 @@ describe("MenuSideBar", () => {
   });
 
   it("should be able to render flex layout when user is logged in", () => {
-    render(<MenuSideBar />);
+    render(<Sidebar />);
 
     const menuNav = screen.getByTestId("menuNav");
 
@@ -77,7 +77,7 @@ describe("MenuSideBar", () => {
   it("should be able to render hidden layout when user is not logged in", () => {
     mockUseUser.mockReturnValue({ user: null });
 
-    render(<MenuSideBar />);
+    render(<Sidebar />);
 
     const menuNav = screen.getByTestId("menuNav");
 
@@ -85,7 +85,7 @@ describe("MenuSideBar", () => {
   });
 
   it("should be able to render all components correctly when user is logged in", () => {
-    render(<MenuSideBar />);
+    render(<Sidebar />);
 
     const headerComponent = screen.findByTestId("header");
     expect(headerComponent).toBeCalled;
