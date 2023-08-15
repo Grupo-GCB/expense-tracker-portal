@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import logoBull from "@/app/assets/svg/logoBull.svg";
-import logoGCB from "@/app/assets/svg/logo.svg";
+import bullIcon from "@/app/assets/svg/logoBull.svg";
+import gcbLogo from "@/app/assets/svg/logo.svg";
 import { IMenuProps } from "@/interfaces";
 
 export function Header({ open }: IMenuProps) {
@@ -12,8 +12,8 @@ export function Header({ open }: IMenuProps) {
       } flex items-center`}
     >
       <Image
-        src={open ? logoGCB : logoBull}
-        alt={open ? "Logo da GCB." : "Metade da cabeça do touro da GCB."}
+        src={open ? gcbLogo : bullIcon}
+        alt={open ? "Logo do Grupo GCB." : "Ícone do touro do Grupo GCB."}
       />
     </div>
   );
