@@ -11,24 +11,23 @@ export function Sidebar() {
   const [open, setOpen] = useState<boolean>(false);
   const { user } = useUser();
 
+  useEffect(() => {
+    handleMenuOnResize();
+    window.addEventListener("resize", handleMenuOnResize);
+    return () => {
+      window.removeEventListener("resize", handleMenuOnResize);
+    };
+  }, []);
+
   const handleDestroyUserToken = (): void => {
     nookies.destroy(null, "@user_token", { path: "/" });
   };
 
-  const handleMenuResize = (): void => {
+  const handleMenuOnResize = (): void => {
     if (window.innerWidth >= 1224) {
       setOpen(false);
     }
   };
-
-  useEffect(() => {
-    handleMenuResize();
-
-    window.addEventListener("resize", handleMenuResize);
-    return () => {
-      window.removeEventListener("resize", handleMenuResize);
-    };
-  }, [handleMenuResize]);
 
   return (
     <div
@@ -75,16 +74,15 @@ export function Sidebar() {
         </div>
       </div>
 
-      <button onClick={handleDestroyUserToken}>
-        <a
-          href="/api/auth/logout"
-          className={`flex items-center ${
-            open ? "justify-start" : "justify-center"
-          }`}
-        >
-          <SignOut color="white" className="w-8 h-8" data-testid="signOut" />
-        </a>
-      </button>
+      <a
+        onClick={handleDestroyUserToken}
+        href="/api/auth/logout"
+        className={`flex items-center ${
+          open ? "justify-start" : "justify-center"
+        }`}
+      >
+        <SignOut color="white" className="w-8 h-8" data-testid="signOut" />
+      </a>
     </div>
   );
 }
