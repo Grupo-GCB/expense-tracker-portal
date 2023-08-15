@@ -34,13 +34,13 @@ describe("Sidebar", () => {
     expect(screen.getByTestId("navMenu")).toHaveClass("sm:w-full");
   });
 
-  it("should be able to close sidebar when X icon is clicked", () => {
+  it("should be able to close sidebar when the close icon is clicked", () => {
     render(<Sidebar />);
     const hamburguerMenu = screen.getByTestId("hamburguerMenu");
-    const closeX = screen.getByTestId("closeX");
+    const close = screen.getByTestId("close");
 
     fireEvent.click(hamburguerMenu);
-    fireEvent.click(closeX);
+    fireEvent.click(close);
 
     expect(screen.getByTestId("navMenu")).toHaveClass("sm:-left-full");
   });

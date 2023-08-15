@@ -59,7 +59,7 @@ export function Sidebar() {
           color="white"
           className="w-8 h-8"
           onClick={() => setOpen(!open)}
-          data-testid="closeX"
+          data-testid="close"
         />
       </div>
 
