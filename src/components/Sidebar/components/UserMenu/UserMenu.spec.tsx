@@ -13,10 +13,10 @@ describe("User Menu", () => {
     expect(notificationsIcon).toBeInTheDocument();
     expect(notificacoesLabelText).toBeInTheDocument();
 
-    const configuracoesIcon = screen.getByTestId("configuracoesIcon");
+    const configurationsIcon = screen.getByTestId("configurationsIcon");
     const configuracoesLabelText = screen.getByText("Configurações");
 
-    expect(configuracoesIcon).toBeInTheDocument();
+    expect(configurationsIcon).toBeInTheDocument();
     expect(configuracoesLabelText).toBeInTheDocument();
   });
 
@@ -26,7 +26,7 @@ describe("User Menu", () => {
     const notificationsIcon = screen.getByTestId("notificationsIcon");
     expect(notificationsIcon).toBeInTheDocument();
 
-    const configuracoesIcon = screen.getByTestId("configuracoesIcon");
-    expect(configuracoesIcon).toBeInTheDocument();
+    const configurationsIcon = screen.getByTestId("configurationsIcon");
+    expect(configurationsIcon).toBeInTheDocument();
   });
 });

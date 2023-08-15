@@ -30,7 +30,7 @@ export function UserMenu({ open }: IMenu) {
           <Gear
             color="white"
             className="w-8 h-8"
-            data-testid="configuracoesIcon"
+            data-testid="configurationsIcon"
           />
           {open && <span>Configurações</span>}
         </li>
