@@ -1,29 +1,30 @@
-import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
-import { UserProvider } from '@auth0/nextjs-auth0/client';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
-import { MenuSideBar } from '.';
+import { MenuSideBar } from ".";
 
 const defaultUser = {
-  picture: 'https://e7.pngegg.com/pngimages/885/607/png-clipart-dynamics-365-computer-icons-user-profile-login-others-miscellaneous-angle.png',
-  name: 'John Doe',
+  picture:
+    "https://e7.pngegg.com/pngimages/885/607/png-clipart-dynamics-365-computer-icons-user-profile-login-others-miscellaneous-angle.png",
+  name: "John Doe",
 };
 
 const meta: Meta = {
-  title: 'MenuSideBar',
+  title: "MenuSideBar",
   component: MenuSideBar,
   argTypes: {
     open: {
       defaultValue: false,
-      type: 'boolean',
+      type: "boolean",
     },
     user: {
       defaultValue: defaultUser,
     },
   },
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     viewport: {
       viewports: INITIAL_VIEWPORTS,
     },
@@ -47,7 +48,7 @@ Mobile.args = {
 
 Mobile.parameters = {
   viewport: {
-    defaultViewport: 'iphone5',
+    defaultViewport: "iphone5",
   },
 };
 
@@ -60,7 +61,7 @@ Tablet.args = {
 
 Tablet.parameters = {
   viewport: {
-    defaultViewport: 'ipad',
+    defaultViewport: "ipad",
   },
 };
 
@@ -73,7 +74,7 @@ Laptop.args = {
 
 Laptop.parameters = {
   viewport: {
-    defaultViewport: 'laptop',
+    defaultViewport: "laptop",
   },
 };
 
@@ -86,6 +87,6 @@ LaptopLarge.args = {
 
 LaptopLarge.parameters = {
   viewport: {
-    defaultViewport: 'laptopLarge',
+    defaultViewport: "laptopLarge",
   },
 };
