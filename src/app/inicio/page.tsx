@@ -101,7 +101,7 @@ export default function Home() {
       </a>
 
     <button className="bg-red-400 p-2 text-red-200"> 
-      <Link href="/Wallet">Carteiras</Link>
+      <Link href="/carteira">Carteiras</Link>
     </button>
     </div>
   )
