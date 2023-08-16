@@ -4,7 +4,6 @@ import { CircleNotch, Plugs } from "phosphor-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import { Button } from "@/components";
 
@@ -16,7 +15,6 @@ export default function NotFound() {
     setIsRedirecting(true);
     try {
       router.push("/");
-      await new Promise((resolve) => setTimeout(resolve, 3000));
     } catch {
       toast.error("Ocorreu um erro durante o redirecionamento.");
     } finally {
@@ -54,7 +52,7 @@ export default function NotFound() {
               </div>
             </div>
             <figure>
-              <img src="https://i.ibb.co/G9DC8S0/404-2.png" />
+              <img src="https://i.ibb.co/G9DC8S0/404-2.png" alt="Imagem 404."/>
             </figure>
           </div>
         </div>
