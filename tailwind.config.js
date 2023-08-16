@@ -11,10 +11,10 @@ module.exports = {
         roboto: ["'Roboto', sans-serif"],
       },
       screens: {
-        sm: "320px",
-        md: "768px",
-        lg: "1224px",
-        xl: "1440px",
+        sm: '320px',
+        md: '768px',
+        lg: '1224px',
+        xl: '1440px',
       },
       colors: {
         screens: {
@@ -35,9 +35,9 @@ module.exports = {
           900: '#121214',
         },
         green: {
-          300: "#00B37E",
-          500: "#00875F",
-          700: "#015F43",
+          300: '#00B37E',
+          500: '#00875F',
+          700: '#015F43',
         },
         red: {
           300: '#F75A68',
@@ -50,7 +50,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('tailwind-scrollbar'),
-  ],
+  plugins: [require('tailwind-scrollbar')],
 }
