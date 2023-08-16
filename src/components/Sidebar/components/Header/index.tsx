@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import bullIcon from "@/app/assets/svg/logoBull.svg";
-import gcbLogo from "@/app/assets/svg/logo.svg";
+import bullIcon from "@/app/assets/svg/bullIcon.svg";
+import gcbLogo from "@/app/assets/svg/gcbLogo.svg";
 import { IMenu } from "@/interfaces";
 
 export function Header({ open }: IMenu) {
