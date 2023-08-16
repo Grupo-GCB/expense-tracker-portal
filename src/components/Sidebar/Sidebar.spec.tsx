@@ -56,7 +56,7 @@ describe("Sidebar", () => {
 
   it("should be able to destroy the user token when the Sign Out button is clicked", () => {
     render(<Sidebar />);
-    const signOutButton = screen.getByTestId("singOut");
+    const signOutButton = screen.getByTestId("signOut");
 
     fireEvent.click(signOutButton);
 
