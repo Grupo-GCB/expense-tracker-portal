@@ -1,3 +1,4 @@
+'use client'
 import { MagnifyingGlass } from "phosphor-react";
 import Select, { StylesConfig } from "react-select";
 
@@ -53,15 +54,13 @@ interface ICustomSelectProps{
   placeholder: string
   options: IOptions[]
   name: string
-  testid:string
 
 }
 
-export function CustomSelect({options, placeholder, name, testid}:ICustomSelectProps) {
+export function CustomSelect({options, placeholder, name}:ICustomSelectProps) {
   return (
     <div>
       <Select
-        data-testid={testid}
         options={options}
         styles={customStyles}
         components={{
