@@ -25,8 +25,8 @@ export default function NotFound() {
   }
 
   return (
-    <div className="absolute flex flex-col min-h-screen items-center justify-center p-5 w-full bg-white z-10">
-      <div className="lg:px-24 lg:py-24 md:py-20 md:px-44 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
+    <main className="absolute flex flex-col min-h-screen items-center justify-center p-5 w-full bg-white z-10">
+      <section className="lg:px-24 lg:py-24 md:py-20 md:px-44 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
         <div className="xl:pt-24 w-full xl:w-1/2 relative pb-12 lg:pb-0">
           <div className="relative">
             <div className="absolute">
@@ -53,15 +53,15 @@ export default function NotFound() {
                 </Button>
               </div>
             </div>
-            <div>
+            <figure>
               <img src="https://i.ibb.co/G9DC8S0/404-2.png" />
-            </div>
+            </figure>
           </div>
         </div>
         <div>
           <Plugs size={400} color={"lightgreen"} />
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
