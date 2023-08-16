@@ -16,7 +16,6 @@ export default function NotFound() {
     setIsRedirecting(true);
     try {
       router.push("/");
-      await new Promise((resolve) => setTimeout(resolve, 3000));
     } catch {
       toast.error("Ocorreu um erro durante o redirecionamento.");
     } finally {
