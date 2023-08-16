@@ -1,6 +1,7 @@
 import { UserProvider } from '@auth0/nextjs-auth0/client'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import "react-toastify/dist/ReactToastify.css";
 
 import '@/styles/tailwind.css'
 
