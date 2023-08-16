@@ -1,29 +1,30 @@
-import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
-import { UserProvider } from '@auth0/nextjs-auth0/client';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
-import { MenuSideBar } from '.';
+import { Sidebar } from ".";
 
 const defaultUser = {
-  picture: 'https://e7.pngegg.com/pngimages/885/607/png-clipart-dynamics-365-computer-icons-user-profile-login-others-miscellaneous-angle.png',
-  name: 'John Doe',
+  picture:
+    "https://e7.pngegg.com/pngimages/885/607/png-clipart-dynamics-365-computer-icons-user-profile-login-others-miscellaneous-angle.png",
+  name: "John Doe",
 };
 
 const meta: Meta = {
-  title: 'MenuSideBar',
-  component: MenuSideBar,
+  title: "MenuSideBar",
+  component: Sidebar,
   argTypes: {
     open: {
       defaultValue: false,
-      type: 'boolean',
+      type: "boolean",
     },
     user: {
       defaultValue: defaultUser,
     },
   },
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     viewport: {
       viewports: INITIAL_VIEWPORTS,
     },
@@ -39,7 +40,7 @@ const withUserProvider = (Component: any, user: any) => (
 );
 
 export const Mobile: StoryObj = (args: any) =>
-  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
+  withUserProvider(() => <Sidebar {...args} />, defaultUser);
 
 Mobile.args = {
   open: false,
@@ -47,12 +48,12 @@ Mobile.args = {
 
 Mobile.parameters = {
   viewport: {
-    defaultViewport: 'iphone5',
+    defaultViewport: "iphone5",
   },
 };
 
 export const Tablet: StoryObj = (args: any) =>
-  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
+  withUserProvider(() => <Sidebar {...args} />, defaultUser);
 
 Tablet.args = {
   open: false,
@@ -60,12 +61,12 @@ Tablet.args = {
 
 Tablet.parameters = {
   viewport: {
-    defaultViewport: 'ipad',
+    defaultViewport: "ipad",
   },
 };
 
 export const Laptop: StoryObj = (args: any) =>
-  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
+  withUserProvider(() => <Sidebar {...args} />, defaultUser);
 
 Laptop.args = {
   open: false,
@@ -73,12 +74,12 @@ Laptop.args = {
 
 Laptop.parameters = {
   viewport: {
-    defaultViewport: 'laptop',
+    defaultViewport: "laptop",
   },
 };
 
 export const LaptopLarge: StoryObj = (args: any) =>
-  withUserProvider(() => <MenuSideBar {...args} />, defaultUser);
+  withUserProvider(() => <Sidebar {...args} />, defaultUser);
 
 LaptopLarge.args = {
   open: false,
@@ -86,6 +87,6 @@ LaptopLarge.args = {
 
 LaptopLarge.parameters = {
   viewport: {
-    defaultViewport: 'laptopLarge',
+    defaultViewport: "laptopLarge",
   },
 };
