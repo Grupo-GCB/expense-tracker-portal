@@ -1,8 +1,7 @@
 {
   "extends": [
     "plugin:testing-library/react",
-    "plugin:jest-dom/recommended",
-    "@rocketseat/eslint-config/react"
+    "plugin:jest-dom/recommended"
   ]
 }
 

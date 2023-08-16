@@ -2,7 +2,12 @@
 
 import { useUser } from '@auth0/nextjs-auth0/client'
 
-import { ErrorPage, Home, LandingPage, Loading } from '@/components'
+import {
+  ErrorPage,
+  Home,
+  LandingPage,
+  Loading,
+} from '@/components'
 
 export default function Page() {
   const { user, error, isLoading } = useUser()
@@ -13,9 +18,9 @@ export default function Page() {
 
   if (user) {
     return (
-      <>
+      <div>
         <Home user={user} />
-      </>
+      </div>
     )
   }
 
