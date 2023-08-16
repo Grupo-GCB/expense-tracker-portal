@@ -88,8 +88,8 @@ export function RegisterWallet({ setOpen }: IRegisterWallet) {
   
   return ( 
     <FormModal action={test}>
-      <CustomSelect options={accountTypes} placeholder="Tipo da conta" name="account_type" testid="input-type-account"/>
-      <CustomSelect options={bankList} placeholder="Banco" name="bank_id" testid="input-bank"/>
+      <CustomSelect options={accountTypes} placeholder="Tipo da conta" name="account_type" />
+      <CustomSelect options={bankList} placeholder="Banco" name="bank_id" />
       <textarea
         name="description"
         id="description"
