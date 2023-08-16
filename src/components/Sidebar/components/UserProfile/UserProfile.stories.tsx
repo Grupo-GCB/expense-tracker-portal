@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 import { UserProfile } from ".";
-import { IUserProfileProps } from "@/interfaces";
+import { IUserProfile } from "@/interfaces";
 
 const defaultUser = {
   picture:
@@ -11,7 +11,7 @@ const defaultUser = {
   name: "John Doe",
 };
 
-const meta: Meta<IUserProfileProps> = {
+const meta: Meta<IUserProfile> = {
   title: "MenuSideBar/Components/UserProfile",
   component: UserProfile,
   argTypes: {
@@ -36,7 +36,7 @@ const withUserProvider = (Component: any, user: any) => (
   </UserProvider>
 );
 
-export const Default: StoryObj<IUserProfileProps> = (args: any) =>
+export const Default: StoryObj<IUserProfile> = (args: any) =>
   withUserProvider(() => <UserProfile {...args} />, defaultUser);
 
 Default.args = {

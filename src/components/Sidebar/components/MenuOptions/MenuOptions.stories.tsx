@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { MenuOptions } from ".";
-import { IMenuProps } from "@/interfaces";
+import { IMenu } from "@/interfaces";
 
-const meta: Meta<IMenuProps> = {
+const meta: Meta<IMenu> = {
   title: "MenuSideBar/Components/MenuOptions",
   component: MenuOptions,
   argTypes: {
@@ -22,7 +22,7 @@ const meta: Meta<IMenuProps> = {
 
 export default meta;
 
-export const Default: StoryObj<IMenuProps> = {
+export const Default: StoryObj<IMenu> = {
   args: {
     open: false,
   },
