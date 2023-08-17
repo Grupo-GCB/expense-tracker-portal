@@ -1,17 +1,15 @@
 'use client'
 
+import { useUser } from '@auth0/nextjs-auth0/client'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { CircleNotch } from 'phosphor-react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
-import { Header } from './components/Header'
 import previewPortal from '@/app/assets/img/portal.png'
-import { Button } from '@/components/Button'
-
-import { useUser } from '@auth0/nextjs-auth0/client' 
-import { ErrorPage, Loading } from '@/components'
+import { Button, ErrorPage, Loading } from '@/components'
+import { Header } from './components/Header'
  
 
 export function Introducao() {
