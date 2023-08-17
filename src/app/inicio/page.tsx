@@ -2,15 +2,12 @@
 
 import axios from 'axios'
 import { useCallback, useEffect } from 'react'
-import nookies, { parseCookies, setCookie } from 'nookies'
+import { parseCookies, setCookie } from 'nookies'
 
 import { ErrorPage } from '@/components'
 import {
   IToken,
-  ISession,
-  IUser,
   ISignInResponse,
-  IUserSessionResponse,
 } from '@/interfaces'
 import api from '@/services/api'
 import {
@@ -23,7 +20,7 @@ import { useUser } from '@auth0/nextjs-auth0/client'
 import getUserSession from '@/services/userSession'
 
 export default function Home() {
-  const { user, error, isLoading } = useUser()
+  const { user } = useUser()
   
   async function sendToken({ token }: IToken): Promise<void> {
     try {
@@ -44,10 +41,6 @@ export default function Home() {
       maxAge: THIRTY_DAY_COOKIE_LIFETIME,
       path: '/',
     })
-  }
-
-  const handleDestroyUserToken = (): void => {
-    nookies.destroy(null, '@user_token', { path: '/' })
   }
 
   const handleUserSession = useCallback(async () => {
@@ -86,12 +79,8 @@ export default function Home() {
   }
 
   return (
-    <div>
-      Welcome {user.name}!{' '}
-      <a href="/api/auth/logout" onClick={handleDestroyUserToken}>
-        Logout
-      </a>
-
+    <div className='lg:ml-28'>
+     Welcome {user.name}!
     <button className="bg-red-400 p-2 text-red-200"> 
       <Link href="/carteira">Carteiras</Link>
     </button>
