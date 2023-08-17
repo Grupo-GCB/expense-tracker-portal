@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import { Header } from './components/Header'
-import imgHome from '@/app/assets/img/portal.png'
+import previewPortal from '@/app/assets/img/portal.png'
 import { Button } from '@/components/Button'
 
 import { useUser } from '@auth0/nextjs-auth0/client' 
@@ -74,7 +74,7 @@ export function Introducao() {
             <Image
               loading="eager"
               className="w-4/5 lg:w-5/5 "
-              src={imgHome}
+              src={previewPortal}
               aria-label="preview-of-home"
               alt="home do site"
             />
