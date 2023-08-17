@@ -9,7 +9,7 @@ const options = [
   { value: 'option3', label: 'Option 3' },
 ];
 
-describe('CustomSelect', () => {
+describe('Select', () => {
   it('should be able to render correctly', () => {
     render(<CustomSelect options={options} placeholder="Select an option" name="mySelect" />);
     const placeholderText = screen.getByText('Select an option');
