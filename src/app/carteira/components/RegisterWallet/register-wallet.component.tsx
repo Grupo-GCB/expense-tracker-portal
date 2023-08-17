@@ -1,22 +1,28 @@
-import React  from 'react'
-import * as Dialog from '@radix-ui/react-dialog'
-import { CircleNotch } from 'phosphor-react'
+import * as Dialog from "@radix-ui/react-dialog";
+import { CircleNotch } from "phosphor-react";
 
-import { Button } from '@/components/Button'
-import { FormModal } from '@/components/Modal/FormModal'
-import { CustomSelect } from '@/components/Select'
-import { accountTypes } from '@/utils/constants'
-
-import { IRegisterWallet } from "../../types" 
-import { useRegisterWallet } from './register-wallet.hook'
+import { IRegisterWallet } from "@/app/carteira/types";
+import { Button } from "@/components/Button";
+import { FormModal } from "@/components/Modal/FormModal";
+import { CustomSelect } from "@/components/Select";
+import { accountTypes } from "@/utils/constants";
+import { useRegisterWallet } from "./register-wallet.hook";
 
 export function RegisterWallet({ setOpen }: IRegisterWallet) {
-  const { actions,states } = useRegisterWallet({setOpen})
-  
-  return ( 
+  const { actions, states } = useRegisterWallet({ setOpen });
+
+  return (
     <FormModal action={actions.handleRegisterWallet}>
-      <CustomSelect options={accountTypes} placeholder="Tipo da conta" name="account_type" />
-      <CustomSelect options={states.bankList} placeholder="Banco" name="bank_id" />
+      <CustomSelect
+        options={accountTypes}
+        placeholder="Tipo da conta"
+        name="account_type"
+      />
+      <CustomSelect
+        options={states.bankList}
+        placeholder="Banco"
+        name="bank_id"
+      />
       <textarea
         name="description"
         id="description"
@@ -40,7 +46,7 @@ export function RegisterWallet({ setOpen }: IRegisterWallet) {
               data-testid="loading-icon"
             />
           ) : (
-            <span>Confirmar!</span>
+            <span>Confirmar</span>
           )}
         </Button>
         <Dialog.Close asChild>
