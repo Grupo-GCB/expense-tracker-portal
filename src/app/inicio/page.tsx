@@ -20,19 +20,11 @@ import {
 } from '@/utils/constants'
 import Link from 'next/link'
 import { useUser } from '@auth0/nextjs-auth0/client'
+import getUserSession from '@/services/userSession'
 
 export default function Home() {
   const { user, error, isLoading } = useUser()
   
-  const getUserSession = async (): Promise<ISession | undefined> => {
-    try {
-      const { data } = await axios.get<IUserSessionResponse>('/api/sessionAuth')
-      return data.userSession
-    } catch (error) {
-      console.error(UNKNOWN_ERROR, error)
-    }
-  }
-
   async function sendToken({ token }: IToken): Promise<void> {
     try {
       await api.post<ISignInResponse>('user/login', {
