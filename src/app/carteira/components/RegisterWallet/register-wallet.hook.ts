@@ -38,9 +38,9 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) =>{
     fetchBanks();
   }, []);
 
-  const test = async (values : FormData) => {
+  const registerWallet = async (values : FormData) => {
     await handleRegisterWallet(values).then((res) => {
-        toast.success(res)
+      toast.success(res)
     }).catch((err) => {
       toast.error(err)
     })
@@ -52,7 +52,7 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) =>{
       isSavingDataForms
     },
     actions:{
-      test,
+      registerWallet,
       handleSaveForm
     }
   }
