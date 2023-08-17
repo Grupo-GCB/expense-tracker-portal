@@ -4,7 +4,6 @@ import React ,{ Dispatch, SetStateAction, useEffect, useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { CircleNotch } from 'phosphor-react'
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
 
 import { getBanks, handleRegisterWallet } from '@/app/carteira/action'
 import { Button } from '@/components/Button'

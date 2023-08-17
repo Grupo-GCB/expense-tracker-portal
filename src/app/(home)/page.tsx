@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import { CircleNotch } from 'phosphor-react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 import { Header } from './components/Header'
 import previewPortal from '@/app/assets/img/portal.png'
