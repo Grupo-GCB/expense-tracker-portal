@@ -16,11 +16,18 @@ export async function getBanks() {
   return data;
 }
 
-export async function handleRegisterWallet(formData: FormData) {
-  const user_token = cookies().get('@user_token')!.value;
+function getUserToken(){
+  return cookies().get('@user_token')!.value;
+}
 
-  const decodedToken: DecodedToken = jwt_decode(user_token)
-  const sub = decodedToken.sub;
+function getSubUserToken(userToken: string): string{
+  const { sub }: DecodedToken = jwt_decode(userToken)
+  return sub;
+}
+
+export async function registerWallet(formData: FormData): Promise<string >{
+  const user_token: string = getUserToken()
+  const sub = getSubUserToken(user_token)
 
   try {
     const { data } = await api.post<IWallet>('/wallet', {
