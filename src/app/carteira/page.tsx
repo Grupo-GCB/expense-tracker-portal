@@ -13,7 +13,7 @@ export function Carteira() {
   return (
     <section className="bg-slate-500 h-screen">
       <header className="w-full h-36 bg-gray-900 flex items-center justify-center">
-        <h1 className="text-white font-semibold text-lg d md:text-xl">Carteiras</h1>
+        <h1 className="text-white font-semibold text-lg  md:text-xl">Carteiras</h1>
       </header>
 
       <main className="w-full flex justify-center ">
