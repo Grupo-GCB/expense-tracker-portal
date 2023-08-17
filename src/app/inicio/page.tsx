@@ -81,9 +81,6 @@ export default function Home() {
   return (
     <div className='lg:ml-28'>
      Welcome {user.name}!
-    <button className="bg-red-400 p-2 text-red-200"> 
-      <Link href="/carteira">Carteiras</Link>
-    </button>
     </div>
   )
 }
