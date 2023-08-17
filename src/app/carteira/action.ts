@@ -37,17 +37,17 @@ export async function handleRegisterWallet(formData: FormData) {
 
       if (axiosError.response) {
         const status = axiosError.response.status;
-        
         const errorMappings: ErrorMappings = {
           400: AXIOS_ERROR_400,
           404: AXIOS_ERROR_404
         };
-
+    
         return errorMappings[status] || axiosError.message;
       } else {
         return axiosError.message;
       }
     }
+    
     return 'Erro ao registrar a carteira';
   }  
 }

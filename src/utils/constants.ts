@@ -8,14 +8,13 @@ export const THIRTY_DAY_COOKIE_LIFETIME = 30 * 24 * 60 * 60
 export const AXIOS_ERROR_400 = 'Erro: Requisição inválida'
 export const AXIOS_ERROR_404 = 'Erro: Recurso não encontrado'
 
-export enum AccountType {
-  CHECKING_ACCOUNT = 'Conta-Corrente',
-  SAVINGS_ACCOUNT = 'Conta-Poupança',
-  INVESTMENT = 'Investimento',
-  CASH = 'Dinheiro',
-  OTHERS = 'Outros',
-}
-
+export const AccountType = {
+  CHECKING_ACCOUNT: 'Conta-Corrente',
+  SAVINGS_ACCOUNT : 'Conta-Poupança',
+  INVESTMENT : 'Investimento',
+  CASH : 'Dinheiro',
+  OTHERS :'Outros',
+}as const;
 
 export const accountTypes: IOptions[] = [
   { value: AccountType.CHECKING_ACCOUNT, label: AccountType.CHECKING_ACCOUNT },
