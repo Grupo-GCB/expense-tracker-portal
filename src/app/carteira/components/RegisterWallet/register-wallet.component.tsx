@@ -14,7 +14,7 @@ export function RegisterWallet({ setOpen }: IRegisterWallet) {
   const { actions,states } = useRegisterWallet({setOpen})
   
   return ( 
-    <FormModal action={actions.registerWallet}>
+    <FormModal action={actions.handleRegisterWallet}>
       <CustomSelect options={accountTypes} placeholder="Tipo da conta" name="account_type" />
       <CustomSelect options={states.bankList} placeholder="Banco" name="bank_id" />
       <textarea

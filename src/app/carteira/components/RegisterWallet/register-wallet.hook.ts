@@ -3,7 +3,7 @@
 import {  useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
-import { getBanks, handleRegisterWallet } from '@/app/carteira/action'
+import { getBanks, registerWallet } from '@/app/carteira/action'
 import {  IOptions } from '@/components/Select'
 import { IRegisterWallet } from "../../types"  
 
@@ -38,9 +38,9 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) =>{
     fetchBanks();
   }, []);
 
-  const registerWallet = async (values : FormData) => {
+  const handleRegisterWallet = async (values : FormData) => {
     try{
-     const reponse = await handleRegisterWallet(values)
+     const reponse : string  = await registerWallet(values)
      toast.success(reponse)
     }catch(error: any){
       toast.error(error)
@@ -53,7 +53,7 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) =>{
       isSavingDataForms
     },
     actions:{
-      registerWallet,
+      handleRegisterWallet,
       handleSaveForm
     }
   }
