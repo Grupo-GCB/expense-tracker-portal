@@ -78,7 +78,7 @@ export function RegisterWallet({ setOpen }: IRegisterWallet) {
     fetchBanks();
   }, []);
 
-  const test = async (values : FormData) => {
+  const registerWallet = async (values : FormData) => {
     await handleRegisterWallet(values).then((res) => {
         toast.success(res)
     }).catch((err) => {
@@ -87,7 +87,7 @@ export function RegisterWallet({ setOpen }: IRegisterWallet) {
   }
   
   return ( 
-    <FormModal action={test}>
+    <FormModal action={registerWallet}>
       <CustomSelect options={accountTypes} placeholder="Tipo da conta" name="account_type" />
       <CustomSelect options={bankList} placeholder="Banco" name="bank_id" />
       <textarea
