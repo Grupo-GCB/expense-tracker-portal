@@ -9,7 +9,7 @@ export function MenuOptions({ open }: IMenu) {
   const options = [
     {
       id: 1,
-      icon: <House color="white" className="w-8 h-8" data-testid="homeIcon" />,
+      icon: <House color="white" className="w-8 h-8" data-testid="homeIcon" onClick={() => router.push("inicio")}/>,
       title: "Home",
     },
     {
