@@ -2,15 +2,14 @@
 
 import jwt_decode from 'jwt-decode';
 import { AxiosError } from 'axios';
-
 import { cookies } from 'next/dist/client/components/headers';
+
+import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from '@/utils/constants';
+import { ErrorMappings } from '@/interfaces/ErrorMapping';
+import { DecodedToken } from "./types"
 import { IBank } from '@/interfaces';
 import { IWallet } from '@/interfaces';
 import api from '@/services/api';
-
-import { DecodedToken } from "./types"
-import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from '@/utils/constants';
-import { ErrorMappings } from '@/interfaces/ErrorMapping';
 
 export async function getBanks() {
   const response = await api.get<IBank[]>('/bank/all');
