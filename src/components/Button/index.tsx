@@ -17,7 +17,6 @@ export function Button({
   disabled = false,
   type,
   canceled = false
-  
 }: IButtonProps) {
   return (
     <button
