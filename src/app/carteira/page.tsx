@@ -18,7 +18,7 @@ interface IRegisterWallet {
 }
 
 export function Carteira() {
-  let [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <section className="bg-slate-500 h-screen">
