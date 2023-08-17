@@ -5,7 +5,7 @@ import { AxiosError } from 'axios';
 
 import { cookies } from 'next/dist/client/components/headers';
 import { IBank } from '@/interfaces';
-import { IWallet } from '@/interfaces/Wallet';
+import { IWallet } from '@/interfaces';
 import api from '@/services/api';
 
 import { DecodedToken } from "./types"
