@@ -5,6 +5,8 @@ export const DEFAULT_UNKNOWN_ERROR_MESSAGE = 'Algo deu errado!'
 export const UNKNOWN_ERROR = 'Erro desconhecido: '
 export const AXIOS_ERROR = 'Axios error: '
 export const THIRTY_DAY_COOKIE_LIFETIME = 30 * 24 * 60 * 60
+export const AXIOS_ERROR_400 = 'Erro: Requisição inválida'
+export const AXIOS_ERROR_404 = 'Erro: Recurso não encontrado'
 
 export enum AccountType {
   CHECKING_ACCOUNT = 'Conta-Corrente',
@@ -22,3 +24,5 @@ export const accountTypes: IOptions[] = [
   { value: AccountType.CASH, label: AccountType.CHECKING_ACCOUNT },
   { value: AccountType.OTHERS, label: AccountType.CHECKING_ACCOUNT },
 ];
+
+
