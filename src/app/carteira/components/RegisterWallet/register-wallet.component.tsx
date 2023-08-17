@@ -1,11 +1,11 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { CircleNotch } from "phosphor-react";
 
-import { IRegisterWallet } from "@/app/carteira/types";
-import { Button } from "@/components/Button";
+import { Button, CustomSelect } from "@/components";
 import { FormModal } from "@/components/Modal/FormModal";
-import { CustomSelect } from "@/components/Select";
 import { accountTypes } from "@/utils/constants";
+
+import { IRegisterWallet } from "@/app/carteira/types";
 import { useRegisterWallet } from "./register-wallet.hook";
 
 export function RegisterWallet({ setOpen }: IRegisterWallet) {
@@ -46,7 +46,7 @@ export function RegisterWallet({ setOpen }: IRegisterWallet) {
               data-testid="loading-icon"
             />
           ) : (
-            <span>Confirmar</span>
+            <span>Confirmar!</span>
           )}
         </Button>
         <Dialog.Close asChild>
