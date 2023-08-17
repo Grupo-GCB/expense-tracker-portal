@@ -39,11 +39,12 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) =>{
   }, []);
 
   const registerWallet = async (values : FormData) => {
-    await handleRegisterWallet(values).then((res) => {
-      toast.success(res)
-    }).catch((err) => {
-      toast.error(err)
-    })
+    try{
+     const reponse = await handleRegisterWallet(values)
+     toast.success(reponse)
+    }catch(error: any){
+      toast.error(error)
+    }
   }
 
   return {
