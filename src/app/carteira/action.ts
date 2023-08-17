@@ -12,8 +12,8 @@ import { IWallet } from '@/interfaces';
 import api from '@/services/api';
 
 export async function getBanks() {
-  const response = await api.get<IBank[]>('/bank/all');
-  return response.data;
+  const { data }= await api.get<IBank[]>('/bank/all');
+  return data;
 }
 
 export async function handleRegisterWallet(formData: FormData) {
