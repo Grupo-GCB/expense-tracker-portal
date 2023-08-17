@@ -29,7 +29,7 @@ export async function handleRegisterWallet(formData: FormData) {
       bank_id: formData.get('bank_id') as string,
       user_id: sub as string,
     })
-    return 'Registro da carteira feito com sucesso'
+    return 'Registro da carteira feito com sucesso.'
   } catch (error) {
     if (error instanceof AxiosError) {
       const axiosError = error as AxiosError;
@@ -47,6 +47,6 @@ export async function handleRegisterWallet(formData: FormData) {
       }
     }
     
-    return 'Erro ao registrar a carteira';
+    return 'Erro ao registrar a carteira.';
   }  
 }
