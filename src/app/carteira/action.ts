@@ -7,7 +7,7 @@ import { cookies } from "next/dist/client/components/headers";
 import { ErrorMappings, IBank, IWallet } from "@/interfaces";
 import api from "@/services/api";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
-import { DecodedToken } from "./types";
+import { DecodedToken } from "@/app/carteira/types";
 
 export async function getBanks() {
   const { data } = await api.get<IBank[]>("/bank/all");
