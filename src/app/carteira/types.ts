@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-export interface IRegisterWallet {
+export interface IUseWallet {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
