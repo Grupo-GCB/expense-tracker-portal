@@ -25,6 +25,10 @@ function getSubUserToken(userToken: string): string{
   return sub;
 }
 
+function getIdWallet(){
+  return cookies().get('@id_wallet')!.value
+}
+
 export async function registerWallet(formData: FormData): Promise<string >{
   const user_token: string = getUserToken()
   const sub = getSubUserToken(user_token)
@@ -57,3 +61,4 @@ export async function registerWallet(formData: FormData): Promise<string >{
     return 'Erro ao registrar a carteira.';
   }  
 }
+
