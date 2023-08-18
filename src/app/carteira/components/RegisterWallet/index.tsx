@@ -6,8 +6,8 @@ import { Button, CustomSelect, FormModal } from "@/components";
 import { accountTypes } from "@/utils/constants";
 import { useRegisterWallet } from "./register-wallet.hook";
 
-export function RegisterWallet({ setOpen: setOpen }: IRegisterWallet) {
-  const { actions, states } = useRegisterWallet({ setOpen: setOpen });
+export function RegisterWallet({ setOpen }: IRegisterWallet) {
+  const { actions, states } = useRegisterWallet({ setOpen });
 
   return (
     <FormModal action={actions.handleRegisterWallet}>
@@ -44,7 +44,7 @@ export function RegisterWallet({ setOpen: setOpen }: IRegisterWallet) {
               data-testid="loading-icon"
             />
           ) : (
-            <span>Confirmar!</span>
+            <span>Confirmar</span>
           )}
         </Button>
         <Dialog.Close asChild>
