@@ -20,8 +20,8 @@ export const accountTypes: IOptions[] = [
   { value: AccountType.CHECKING_ACCOUNT, label: AccountType.CHECKING_ACCOUNT },
   { value: AccountType.SAVINGS_ACCOUNT, label: AccountType.SAVINGS_ACCOUNT },
   { value: AccountType.INVESTMENT, label: AccountType.INVESTMENT },
-  { value: AccountType.CASH, label: AccountType.CHECKING_ACCOUNT },
-  { value: AccountType.OTHERS, label: AccountType.CHECKING_ACCOUNT },
+  { value: AccountType.CASH, label: AccountType.CASH},
+  { value: AccountType.OTHERS, label: AccountType.OTHERS },
 ];
 
 
