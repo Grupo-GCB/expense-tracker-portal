@@ -3,8 +3,8 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
 
-import { Button, Modal } from "@/components";
 import { RegisterWallet } from "@/app/carteira/components/RegisterWallet";
+import { Button, Modal } from "@/components";
 
 export function Carteira() {
   const [open, setOpen] = useState<boolean>(false);
