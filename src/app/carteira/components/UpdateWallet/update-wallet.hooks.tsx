@@ -22,4 +22,21 @@ export const useUpdateWallet = ({ setOpen }: IRegisterWallet) => {
     }, 2000);
   };
 
+  useEffect(() => {
+    async function fetchBanks(): Promise<void> {
+      try {
+        const banks: IBank[] = await getBanks();
+        const formattedOptions = banks.map((bank) => ({
+          value: bank.id,
+          label: bank.name,
+        }));
+        setBankList(formattedOptions);
+      } catch (error) {
+        toast.error(`Erro ao buscar os bancos: ${error}`);
+      }
+    }
+    fetchBanks();
+  }, []);
+
+
 };
