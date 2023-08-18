@@ -38,7 +38,7 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
     fetchBanks();
   }, []);
 
-  const handleRegisterWallet = async (values: FormData) => {
+  const handleRegisterWallet = async (values: FormData): Promise<void> => {
     try {
       const reponse: string = await registerWallet(values);
       toast.success(reponse);
