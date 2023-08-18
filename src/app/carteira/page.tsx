@@ -3,8 +3,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
 
-import { Button } from "@/components";
-import { Modal } from "@/components";
+import { Button, Modal } from "@/components";
 import { RegisterWallet } from "./components/RegisterWallet/register-wallet.component";
 
 export function Carteira() {
