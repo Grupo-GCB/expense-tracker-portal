@@ -38,5 +38,23 @@ export const useUpdateWallet = ({ setOpen }: IRegisterWallet) => {
     fetchBanks();
   }, []);
 
+  const handleUpdateWallet = async (values: FormData) => {
+    try {
+      const reponse: string = await updateWallet(values);
+      toast.success(reponse);
+    } catch (error) {
+      toast.error(`${error}`);
+    }
+  };
 
+  return {
+    states: {
+      bankList,
+      isSavingDataForms,
+    },
+    actions: {
+        handleUpdateWallet,
+      handleSaveForm,
+    },
+  };
 };
