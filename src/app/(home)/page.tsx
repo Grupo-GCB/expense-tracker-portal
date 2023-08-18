@@ -35,7 +35,7 @@ export function Introducao() {
 
   if (error) return <ErrorPage errorMessage={error.message} />
 
-  if (user) return router.push("inicio")
+  if (user) router.push("inicio")
 
   return (
     <>
