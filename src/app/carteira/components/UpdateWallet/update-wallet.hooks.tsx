@@ -12,7 +12,7 @@ export const useUpdateWallet = ({ setOpen }: IRegisterWallet) => {
   const [bankList, setBankList] = useState<IOptions[]>([]);
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
-  const handleSaveForm = () => {
+  const handleSaveForm = (): void => {
     setTimeout(() => {
       setIsSavingDataForms(true);
     }, 200);
@@ -38,10 +38,10 @@ export const useUpdateWallet = ({ setOpen }: IRegisterWallet) => {
     fetchBanks();
   }, []);
 
-  const handleUpdateWallet = async (values: FormData) => {
+  const handleUpdateWallet = async (values: FormData): Promise<void> => {
     try {
-      const reponse: string = await updateWallet(values);
-      toast.success(reponse);
+      const response = await updateWallet(values);
+      toast(response)
     } catch (error) {
       toast.error(`${error}`);
     }
@@ -53,7 +53,7 @@ export const useUpdateWallet = ({ setOpen }: IRegisterWallet) => {
       isSavingDataForms,
     },
     actions: {
-        handleUpdateWallet,
+      handleUpdateWallet,
       handleSaveForm,
     },
   };
