@@ -8,7 +8,7 @@ import { IRegisterWallet } from "@/app/carteira/types";
 import { IOptions } from "@/components/Select";
 import { IBank } from "@/interfaces";
 
-export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
+export const useRegisterWallet = ({ setOpen: setOpen }: IRegisterWallet) => {
   const [bankList, setBankList] = useState<IOptions[]>([]);
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
