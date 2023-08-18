@@ -5,7 +5,7 @@ import { Button, Modal } from "@/components";
 import { ContentCard } from "./content-card-wallet.component";
 import { ICardWallet } from "@/app/carteira/types";
 import * as Dialog from "@radix-ui/react-dialog";
-import { UpdateWallet } from "../UpdateWallet/update-wallet.component";
+import { UpdateWallet } from "../UpdateWallet";
 import { THIRTY_DAY_COOKIE_LIFETIME } from "@/utils/constants";
 
 
