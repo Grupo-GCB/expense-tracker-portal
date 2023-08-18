@@ -62,3 +62,33 @@ export async function registerWallet(formData: FormData): Promise<string >{
   }  
 }
 
+export async function updateWallet(formData: FormData): Promise<string >{
+  const idWallet: string = getIdWallet()
+
+  try {
+     await api.put<IWallet>(`/wallet/${idWallet}`, {
+      account_type: formData.get('account_type') as string,
+      description: formData.get('description') as string,
+      bank_id: formData.get('bank_id') as string,
+    })
+    return 'Registro da carteira feito com sucesso.'
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      const axiosError = error as AxiosError;
+
+      if (axiosError.response) {
+        const status = axiosError.response.status;
+        const errorMappings: ErrorMappings = {
+          400: AXIOS_ERROR_400,
+          404: AXIOS_ERROR_404
+        };
+    
+        return errorMappings[status] || axiosError.message;
+      } else {
+        return axiosError.message;
+      }
+    }
+    
+    return 'Erro ao registrar a carteira.';
+  }  
+}
