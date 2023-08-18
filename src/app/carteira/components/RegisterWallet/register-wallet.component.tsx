@@ -5,14 +5,16 @@ import { Button, CustomSelect } from "@/components";
 import { FormModal } from "@/components/Modal/FormModal";
 import { accountTypes } from "@/utils/constants";
 
-import { IRegisterWallet } from "@/app/carteira/types";
+import { IUseWallet } from "@/app/carteira/types";
 import { useRegisterWallet } from "./register-wallet.hook";
+import { useWallet } from "../../wallet.hook";
 
-export function RegisterWallet({ setOpen }: IRegisterWallet) {
-  const { actions, states } = useRegisterWallet({ setOpen });
+export function RegisterWallet({ setOpen }: IUseWallet) {
+  const { actions, states } = useWallet({ setOpen });
+  const { regsiterActions } = useRegisterWallet()
 
   return (
-    <FormModal action={actions.handleRegisterWallet}>
+    <FormModal action={regsiterActions.handleRegisterWallet}>
       <CustomSelect
         options={accountTypes}
         placeholder="Tipo da conta"
