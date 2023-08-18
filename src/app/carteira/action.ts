@@ -4,12 +4,12 @@ import { AxiosError } from "axios";
 import jwt_decode from "jwt-decode";
 import { cookies } from "next/dist/client/components/headers";
 
+import { DecodedToken } from "@/app/carteira/types";
 import { ErrorMappings, IBank, IWallet } from "@/interfaces";
 import api from "@/services/api";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
-import { DecodedToken } from "@/app/carteira/types";
 
-export async function getBanks() {
+export async function getBanks(): Promise<IBank[]> {
   const { data } = await api.get<IBank[]>("/bank/all");
   return data;
 }
