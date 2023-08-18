@@ -6,8 +6,8 @@ import { Button, CustomSelect, FormModal } from "@/components";
 import { accountTypes } from "@/utils/constants";
 import { useRegisterWallet } from "./register-wallet.hook";
 
-export function RegisterWallet({ setOpen }: IRegisterWallet) {
-  const { actions, states } = useRegisterWallet({ setOpen });
+export function RegisterWallet({ setOpen: setOpen }: IRegisterWallet) {
+  const { actions, states } = useRegisterWallet({ setOpen: setOpen });
 
   return (
     <FormModal action={actions.handleRegisterWallet}>
@@ -59,5 +59,3 @@ export function RegisterWallet({ setOpen }: IRegisterWallet) {
     </FormModal>
   );
 }
-
-export default RegisterWallet;
