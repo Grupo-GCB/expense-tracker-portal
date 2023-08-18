@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <UserProvider>
-        <body className={inter.className}>
+        <body className="bg-gray-800">
           <Sidebar />
           {children}
         </body>
