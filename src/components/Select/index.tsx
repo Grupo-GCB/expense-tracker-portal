@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { MagnifyingGlass } from "phosphor-react";
 import Select, { StylesConfig } from "react-select";
@@ -31,7 +31,7 @@ const customStyles: StylesConfig = {
   singleValue: (defaultValue) => ({
     ...defaultValue,
     color: "white",
-    display: "flex", 
+    display: "flex",
     alignItems: "center",
   }),
   menu: (defaultValue) => ({
@@ -42,7 +42,7 @@ const customStyles: StylesConfig = {
   placeholder: (provided) => ({
     ...provided,
     display: "flex",
-    alignItems: "center", 
+    alignItems: "center",
   }),
 };
 
@@ -51,14 +51,17 @@ export interface IOptions {
   label: string;
 }
 
-interface ICustomSelectProps{
-  placeholder: string
-  options: IOptions[]
-  name: string
-
+interface ICustomSelectProps {
+  placeholder: string;
+  options: IOptions[];
+  name: string;
 }
 
-export function CustomSelect({options, placeholder, name}:ICustomSelectProps) {
+export function CustomSelect({
+  options,
+  placeholder,
+  name,
+}: ICustomSelectProps) {
   return (
     <div>
       <Select
@@ -69,7 +72,8 @@ export function CustomSelect({options, placeholder, name}:ICustomSelectProps) {
         }}
         placeholder={
           <span className="flex align-middle">
-            <MagnifyingGlass size={24} color="#7d7878" className="mr-2" /> {placeholder}
+            <MagnifyingGlass size={24} color="#7d7878" className="mr-2" />{" "}
+            {placeholder}
           </span>
         }
         name={name}
