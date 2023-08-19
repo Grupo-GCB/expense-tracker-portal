@@ -31,7 +31,7 @@ export function ErrorPage({ errorMessage }: IErrorMessage) {
           500 - Server error
         </h1>
         <p className="text-slate-600 mt-5 text-lg">
-          Oops alguma coisa deu erradi. Tente recarregar esta página ou <br />{' '}
+          Oops alguma coisa deu errado. Tente recarregar esta página ou <br />{' '}
           Sinta-se a vontade para contatar a gente caso o problema persista
         </p>
       </div>
