@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react'
+import { HTMLAttributes } from "react";
 
 interface IFormModal extends HTMLAttributes<HTMLFormElement> {
   action?: (formData: FormData) => void;

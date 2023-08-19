@@ -9,7 +9,6 @@ jest.mock("next/navigation", () => ({
     push: mockPush,
   })),
 }));
-
 describe("Landing Page", () => {
   it("should be able to render correctly", () => {
     render(<Introducao />);
