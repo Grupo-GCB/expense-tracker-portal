@@ -84,3 +84,21 @@ export async function updateWallet(formData: FormData): Promise<string>{
     return "Erro ao realizar a atualização da carteira."
   }  
 }
+
+export async function deleteWallet(): Promise<string>{
+  const idWallet: string = getIdWallet()
+
+  try {
+     await api.delete<string>(`/wallet/${idWallet}`)
+
+    return "Carteira deletada com sucesso."
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error(AXIOS_ERROR, error.message);
+    } else {
+      console.error(UNKNOWN_ERROR, error);
+    }
+
+    return "Erro ao deletar a carteira."
+  }  
+}
