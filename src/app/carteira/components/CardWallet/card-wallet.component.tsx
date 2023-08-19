@@ -88,7 +88,7 @@ export function CardWallet({
                     <Trash size={40} />
                   </div>
                   <div className="flex items-center justify-center">
-                    <h2>Deseja deletar esta carteira ?</h2>
+                    <h2>Deseja deletar esta carteira?</h2>
                   </div>
                 </div>
               </Dialog.Title>
