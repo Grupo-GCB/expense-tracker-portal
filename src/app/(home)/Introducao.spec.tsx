@@ -1,17 +1,13 @@
-import mockRouter from "next-router-mock";
-
- import { render, screen, fireEvent } from "@/tests/providers";
+import { render, screen } from "@/tests/providers";
+import { fireEvent } from "@testing-library/react";
 import { Introducao } from "./page";
- 
-jest.mock("next/navigation", () => require("next-router-mock"));
 
-export const mockUseUser = jest.fn(() => ({
-  user: {
-    id: 123,
-    name: 'Usuário de Exemplo',
-  },
-  error: null,
-  isLoading: false,
+const mockPush = jest.fn();
+
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(() => ({
+    push: mockPush,
+  })),
 }));
 
 describe("Landing Page", () => {
@@ -37,7 +33,7 @@ describe("Landing Page", () => {
   });
 
   it("should be able render loading icon when button is clicked", async () => {
-   render(<Introducao />);
+    render(<Introducao />);
 
     const button = screen.getByTestId("login-page-button");
     expect(button).toBeInTheDocument();
@@ -51,16 +47,13 @@ describe("Landing Page", () => {
   });
 
   it("should be able to redirect to login page when button is clicked", () => {
-   render(<Introducao />);
+    render(<Introducao />);
 
     const button = screen.getByTestId("login-page-button");
     expect(button).toBeInTheDocument();
 
     fireEvent.click(button);
 
-    expect(mockRouter).toMatchObject({
-      asPath: "/api/auth/login",
-      pathname: "/api/auth/login",
-    });
+    expect(mockPush).toHaveBeenCalledWith("/api/auth/login");
   });
 });
