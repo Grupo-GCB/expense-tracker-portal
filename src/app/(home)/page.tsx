@@ -31,7 +31,6 @@ export function Introducao() {
     }
   }
 
-  // Possivel problema nos testes. Caso tiver em loading ou error. O conteudo abaixo não é renderizado.
   if (isLoading) return <Loading />
 
   if (error) return <ErrorPage errorMessage={error.message} />
