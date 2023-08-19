@@ -6,7 +6,7 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void
   testId?: string
   disabled?: boolean
-  canceled:boolean
+  canceled?:boolean
 }
 
 export function Button({
@@ -16,8 +16,7 @@ export function Button({
   testId,
   disabled = false,
   type,
-  canceled
-  
+  canceled = false
 }: IButtonProps) {
   return (
     <button

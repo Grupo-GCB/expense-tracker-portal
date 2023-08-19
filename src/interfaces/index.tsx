@@ -5,5 +5,6 @@ export * from "./Token";
 export * from "./SignInResponse";
 export * from "./Menu";
 export * from "./UserProfile";
-export * from './Bank'
-export * from './Wallet'
+export * from "./Bank";
+export * from "./Wallet";
+export * from "./ErrorMapping"

@@ -1,13 +1,14 @@
-'use client' 
+"use client";
 
-import {  useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
-import { getBanks, handleRegisterWallet } from '@/app/carteira/action'
-import {  IOptions } from '@/components/Select'
-import { IRegisterWallet } from "../../types"  
+import { getBanks, registerWallet } from "@/app/carteira/action";
+import { IRegisterWallet } from "@/app/carteira/types";
+import { IOptions } from "@/components/Select";
+import { IBank } from "@/interfaces";
 
-export const useRegisterWallet = ({ setOpen }: IRegisterWallet) =>{ 
+export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
   const [bankList, setBankList] = useState<IOptions[]>([]);
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
@@ -22,38 +23,38 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) =>{
   };
 
   useEffect(() => {
-    async function fetchBanks() {
+    async function fetchBanks(): Promise<void> {
       try {
-        const banks = await getBanks();
+        const banks: IBank[] = await getBanks();
         const formattedOptions = banks.map((bank) => ({
           value: bank.id,
           label: bank.name,
         }));
         setBankList(formattedOptions);
-        toast.success('sucesso')
       } catch (error) {
-        toast.error(`Erro ao buscar os bancos:${error}`);
+        toast.error(`Erro ao buscar os bancos: ${error}`);
       }
     }
     fetchBanks();
   }, []);
 
-  const test = async (values : FormData) => {
-    await handleRegisterWallet(values).then((res) => {
-        toast.success(res)
-    }).catch((err) => {
-      toast.error(err)
-    })
-  }
+  const handleRegisterWallet = async (values: FormData): Promise<void> => {
+    try {
+      const reponse: string = await registerWallet(values);
+      toast.success(reponse);
+    } catch (error) {
+      toast.error(`${error}`);
+    }
+  };
 
   return {
-    states:{
+    states: {
       bankList,
-      isSavingDataForms
+      isSavingDataForms,
     },
-    actions:{
-      test,
-      handleSaveForm
-    }
-  }
-}
+    actions: {
+      handleRegisterWallet,
+      handleSaveForm,
+    },
+  };
+};

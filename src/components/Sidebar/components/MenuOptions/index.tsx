@@ -1,12 +1,15 @@
 import { House, Scroll, Wallet } from "phosphor-react";
 
 import { IMenu } from "@/interfaces";
+import { useRouter } from "next/navigation";
 
 export function MenuOptions({ open }: IMenu) {
+  const router = useRouter()
+  
   const options = [
     {
       id: 1,
-      icon: <House color="white" className="w-8 h-8" data-testid="homeIcon" />,
+      icon: <House color="white" className="w-8 h-8" data-testid="homeIcon" onClick={() => router.push("inicio")}/>,
       title: "Home",
     },
     {
@@ -16,7 +19,7 @@ export function MenuOptions({ open }: IMenu) {
     },
     {
       id: 3,
-      icon: <Wallet color="white" className="w-8 h-8" data-testid="walletsIcon" />,
+      icon: <Wallet color="white" className="w-8 h-8" data-testid="walletsIcon" onClick={() => router.push("carteira")}/>,
       title: "Carteiras",
     },
   ];

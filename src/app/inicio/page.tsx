@@ -1,108 +1,75 @@
-'use client'
+"use client";
 
-import axios from 'axios'
-import { useCallback, useEffect } from 'react'
-import nookies, { parseCookies, setCookie } from 'nookies'
+import { useUser } from "@auth0/nextjs-auth0/client";
+import axios from "axios";
+import { parseCookies, setCookie } from "nookies";
+import { useCallback, useEffect } from "react";
 
-import { ErrorPage } from '@/components'
-import {
-  IToken,
-  ISession,
-  IUser,
-  ISignInResponse,
-  IUserSessionResponse,
-} from '@/interfaces'
-import api from '@/services/api'
+import { ErrorPage } from "@/components";
+import { ISignInResponse, IToken } from "@/interfaces";
+import api from "@/services/api";
+import getUserSession from "@/services/userSession";
 import {
   AXIOS_ERROR,
   THIRTY_DAY_COOKIE_LIFETIME,
   UNKNOWN_ERROR,
-} from '@/utils/constants'
-import Link from 'next/link'
-import { useUser } from '@auth0/nextjs-auth0/client'
+} from "@/utils/constants";
 
 export default function Home() {
-  const { user, error, isLoading } = useUser()
-  
-  const getUserSession = async (): Promise<ISession | undefined> => {
-    try {
-      const { data } = await axios.get<IUserSessionResponse>('/api/sessionAuth')
-      return data.userSession
-    } catch (error) {
-      console.error(UNKNOWN_ERROR, error)
-    }
-  }
+  const { user } = useUser();
 
   async function sendToken({ token }: IToken): Promise<void> {
     try {
-      await api.post<ISignInResponse>('user/login', {
+      await api.post<ISignInResponse>("user/login", {
         token,
-      })
+      });
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error(AXIOS_ERROR, error.message)
-      } else {
-        console.error(UNKNOWN_ERROR, error)
-      }
+      if (axios.isAxiosError(error)) console.error(AXIOS_ERROR, error.message);
+      else console.error(UNKNOWN_ERROR, error);
     }
   }
 
   function saveUserTokenInCookies({ token }: IToken): void {
-    setCookie(null, '@user_token', token, {
+    setCookie(null, "@user_token", token, {
       maxAge: THIRTY_DAY_COOKIE_LIFETIME,
-      path: '/',
-    })
-  }
-
-  const handleDestroyUserToken = (): void => {
-    nookies.destroy(null, '@user_token', { path: '/' })
+      path: "/",
+    });
   }
 
   const handleUserSession = useCallback(async () => {
     try {
-      const userSession = await getUserSession()
+      const userSession = await getUserSession();
 
       if (userSession) {
-        const { idToken } = userSession
-        const token = idToken
+        const { idToken } = userSession;
+        const token = idToken;
 
-        const lastUserToken = parseCookies().userToken
+        const lastUserToken = parseCookies().userToken;
         if (token !== lastUserToken) {
-          saveUserTokenInCookies({ token })
-          sendToken({ token })
+          saveUserTokenInCookies({ token });
+          sendToken({ token });
         }
       } else {
-        throw new Error('Sessão do usuário não disponível.')
+        throw new Error("Sessão do usuário não disponível.");
       }
     } catch (error) {
-      console.error(UNKNOWN_ERROR, error)
+      console.error(UNKNOWN_ERROR, error);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    handleUserSession()
-  }, [handleUserSession])
+    handleUserSession();
+  }, [handleUserSession]);
 
   if (!user) {
     return (
       <ErrorPage
         errorMessage={
-          'Erro ao encontrar um usuário! Volte para a página de login e tente novamente!'
+          "Erro ao encontrar um usuário! Volte para a página de login e tente novamente!"
         }
       />
-    )
+    );
   }
 
-  return (
-    <div>
-      Welcome {user.name}!{' '}
-      <a href="/api/auth/logout" onClick={handleDestroyUserToken}>
-        Logout
-      </a>
-
-    <button className="bg-red-400 p-2 text-red-200"> 
-      <Link href="/carteira">Carteiras</Link>
-    </button>
-    </div>
-  )
+  return <div className="lg:ml-28">Welcome {user.name}!</div>;
 }
