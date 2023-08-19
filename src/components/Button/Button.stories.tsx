@@ -6,6 +6,14 @@ import { Button, IButtonProps } from '@/components/Button'
 const meta: Meta<IButtonProps> = {
   title: 'Components/Button',
   component: Button,
+  parameters:{
+    nextRouter: {
+      path: '/',
+      asPath: '/',
+      query: {},
+      push() {},
+    },
+  },
   argTypes: {
     disabled: {
       defaultValue: false,
@@ -51,5 +59,13 @@ export const Loading: StoryObj<IButtonProps> = {
   args: {
     className: 'py-3 px-5 w-48',
     children: <CircleNotch className="animate-spin w-full justify-center" />,
+  },
+}
+
+export const Canceled: StoryObj<IButtonProps> = {
+  args: {
+    className: 'py-4 px-8 text-xl',
+    children: 'Experimentar!',
+    canceled: true
   },
 }

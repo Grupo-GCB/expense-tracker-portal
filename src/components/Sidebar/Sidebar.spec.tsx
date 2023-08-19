@@ -1,12 +1,14 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { fireEvent, render, screen } from "@testing-library/react";
 import nookies from "nookies";
 
 import { Sidebar } from ".";
 
 jest.mock("@auth0/nextjs-auth0/client");
 jest.mock("nookies");
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn()
+}));
 
 const mockUseUser = useUser as jest.Mock;
 

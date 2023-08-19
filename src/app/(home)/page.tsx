@@ -1,33 +1,40 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import { CircleNotch } from 'phosphor-react'
-import { useState } from 'react'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { useUser } from "@auth0/nextjs-auth0/client";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { CircleNotch } from "phosphor-react";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
-import imgHome from '@/app/assets/img/portal.png'
-import { Button } from '@/components/Button'
-import { Header } from '@/components/LandingPage/Header'
+import previewPortal from "@/app/assets/img/portal.png";
+import { Button, ErrorPage, Loading } from "@/components";
+import { Header } from "./components/Header";
 
-export function LandingPage() {
-  const router = useRouter()
+export function Introducao() {
+  const router = useRouter();
+  const { user, error, isLoading } = useUser();
 
   const [isRedirectingToLogin, setIsRedirectingToLogin] =
-    useState<boolean>(false)
+    useState<boolean>(false);
 
   async function handleRedirectToLoginPage() {
-    setIsRedirectingToLogin(true)
+    setIsRedirectingToLogin(true);
     try {
-      router.push('/api/auth/login')
-      await new Promise((resolve) => setTimeout(resolve, 3000))
+      router.push("/api/auth/login");
+      await new Promise((resolve) => setTimeout(resolve, 3000));
     } catch {
-      toast.error('Ocorreu um erro durante o redirecionamento.')
+      toast.error("Ocorreu um erro durante o redirecionamento.");
     } finally {
-      setIsRedirectingToLogin(false)
+      setIsRedirectingToLogin(false);
     }
   }
+
+  if (isLoading) return <Loading />;
+
+  if (error) return <ErrorPage errorMessage={error.message} />;
+
+  if (user) router.push("inicio");
 
   return (
     <>
@@ -45,6 +52,7 @@ export function LandingPage() {
                   className="py-2 px-4 md:w-64 md:items-self-center rounded-md bg-green-500 md:py-4  md:px-3 text-sm md:text-2xl"
                   onClick={handleRedirectToLoginPage}
                   disabled={isRedirectingToLogin}
+                  canceled={false}
                 >
                   {isRedirectingToLogin ? (
                     <CircleNotch
@@ -62,7 +70,7 @@ export function LandingPage() {
             <Image
               loading="eager"
               className="w-4/5 lg:w-5/5 "
-              src={imgHome}
+              src={previewPortal}
               aria-label="preview-of-home"
               alt="home do site"
             />
@@ -70,5 +78,7 @@ export function LandingPage() {
         </section>
       </main>
     </>
-  )
+  );
 }
+
+export default Introducao;
