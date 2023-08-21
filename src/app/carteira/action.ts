@@ -4,10 +4,11 @@ import { AxiosError } from "axios";
 import jwt_decode from "jwt-decode";
 import { cookies } from "next/dist/client/components/headers";
 
-import { DecodedToken } from "@/app/carteira/types";
-import { ErrorMappings, IBank, IWallet } from "@/interfaces";
+import { IBank, IRegisterWallet, IWallet } from "@/interfaces";
+import { ErrorMappings } from "@/interfaces/ErrorMapping";
 import api from "@/services/api";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
+import { DecodedToken } from "./types";
 
 export async function getBanks(): Promise<IBank[]> {
   const { data } = await api.get<IBank[]>("/bank/all");
@@ -28,7 +29,7 @@ export async function registerWallet(formData: FormData): Promise<string> {
   const sub: string = getSubUserToken(id);
 
   try {
-    const { data } = await api.post<IWallet>("/wallet", {
+    const { data } = await api.post<IRegisterWallet>("/wallet", {
       account_type: formData.get("account_type") as string,
       description: formData.get("description") as string,
       bank_id: formData.get("bank_id") as string,
@@ -54,5 +55,16 @@ export async function registerWallet(formData: FormData): Promise<string> {
     }
 
     return "Erro ao registrar a carteira.";
+  }
+}
+
+export async function getAllWallets(): Promise<IWallet[] | string> {
+  try {
+    const id: string = getUserIdFromToken();
+    const sub = getSubUserToken(id);
+    const { data } = await api.get<IWallet[]>(`/wallets/${sub}`);
+    return data;
+  } catch (err) {
+    return `${err}`;
   }
 }
