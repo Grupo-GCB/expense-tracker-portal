@@ -4,7 +4,6 @@ import jwt_decode from 'jwt-decode';
 import axios, { AxiosError } from 'axios';
 import { cookies } from 'next/dist/client/components/headers';
 import api from '@/services/api';
-import { toast } from 'react-toastify';
 
 import { AXIOS_ERROR, AXIOS_ERROR_400, AXIOS_ERROR_404, UNKNOWN_ERROR } from '@/utils/constants';
 import { ErrorMappings } from '@/interfaces/ErrorMapping';
@@ -31,7 +30,7 @@ function getIdWallet(){
 }
 
 export async function registerWallet(formData: FormData): Promise<string>{
-  const user_token: string = getUserToken()
+  const user_token: string = getUserIdFromToken()
   const sub = getSubUserToken(user_token)
 
   try {
