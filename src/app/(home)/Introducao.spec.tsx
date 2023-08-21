@@ -1,5 +1,6 @@
 import { render, screen } from "@/tests/providers";
 import { fireEvent } from "@testing-library/react";
+
 import { Introducao } from "./page";
 
 const mockPush = jest.fn();
