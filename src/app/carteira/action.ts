@@ -57,3 +57,14 @@ export async function registerWallet(formData: FormData): Promise<string> {
     return "Erro ao registrar a carteira.";
   }
 }
+
+export async function getAllWallets(): Promise<IWallet[] | string> {
+  try {
+    const id: string = getUserIdFromToken();
+    const sub = getSubUserToken(id);
+    const { data } = await api.get<IWallet[]>(`/wallets/${sub}`);
+    return data;
+  } catch (err) {
+    return `${err}`;
+  }
+}
