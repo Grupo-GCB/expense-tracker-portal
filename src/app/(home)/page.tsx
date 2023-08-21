@@ -7,9 +7,9 @@ import { CircleNotch } from 'phosphor-react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
+import { Header } from '@/app/(home)/components/Header'
 import previewPortal from '@/app/assets/img/portal.png'
 import { Button, ErrorPage, Loading } from '@/components'
-import { Header } from './components/Header'
  
 
 export function Introducao() {

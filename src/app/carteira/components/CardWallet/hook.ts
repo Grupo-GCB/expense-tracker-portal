@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import { getAllWallets } from "@/app/carteira/action";
 import { IWallet } from "@/interfaces";
-import { toast } from "react-toastify";
 
 export const useShowAllWallet = () => {
   const [walletList, setWalletList] = useState<IWallet[]>([]);

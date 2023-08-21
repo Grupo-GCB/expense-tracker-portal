@@ -1,8 +1,8 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { CircleNotch, Plugs } from "phosphor-react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 import { Button } from "@/components";

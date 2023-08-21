@@ -1,11 +1,10 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { CircleNotch } from "phosphor-react";
 
+import { IRegisterWallet } from "@/app/carteira/types";
 import { Button, CustomSelect } from "@/components";
 import { FormModal } from "@/components/Modal/FormModal";
 import { accountTypes } from "@/utils/constants";
-
-import { IRegisterWallet } from "@/app/carteira/types";
 import { useRegisterWallet } from "./hook";
 
 export default function RegisterWallet({ setOpen }: IRegisterWallet) {
