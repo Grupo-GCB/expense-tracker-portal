@@ -6,7 +6,7 @@ import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 import { Button, Modal } from "@/components";
-import { CardWallet } from "./components/CardWallet/card-wallet.component";
+import { CardWallet, CardWallet } from "./components/CardWallet/card-wallet.component";
 import { RegisterWallet } from "./components/RegisterWallet/register-wallet.component";
 
 const itemsVisibles = {
