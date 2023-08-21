@@ -4,7 +4,7 @@ import RegisterWallet from "./index"
 
 describe('RegisterWallet', () => {
 
-  it('should be able to render correctly', async () => {
+  it('should be able to render correctly', () => {
     render(<RegisterWallet setOpen={() => true}/>)
     const selectAccount = screen.getByPlaceholderText("Tipo da conta");
     expect(selectAccount).toBeInTheDocument()
