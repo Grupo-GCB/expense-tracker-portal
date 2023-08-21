@@ -3,11 +3,12 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
 import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
 
 import { Button, Modal } from "@/components";
-import { useShowAllWallet } from "./components/CardWallet/card-wallet.hook";
-import { RegisterWallet } from "./components/RegisterWallet/register-wallet.component";
+import { IWallet } from "@/interfaces";
+import { CardWallet } from "./components/CardWallet";
+import { useShowAllWallet } from "./components/CardWallet/hook";
+import { RegisterWallet } from "./components/RegisterWallet";
 
 const itemsVisibles = {
   768: {
@@ -23,9 +24,22 @@ const itemsVisibles = {
   },
 };
 
+export const createCardItems = (walletList: IWallet[]) =>
+  walletList.map((wallet) => (
+    <div className="w-full flex justify-center">
+      <CardWallet
+        key={wallet.id}
+        idWallet={wallet.id}
+        nameBank={wallet.bank.name}
+        typeAccount={wallet.account_type}
+        description={wallet.description}
+      />
+    </div>
+  ));
+
 export function Carteira() {
   const [open, setOpen] = useState<boolean>(false);
-  const { states, actions } = useShowAllWallet();
+  const { states } = useShowAllWallet();
 
   return (
     <section className="bg-gray-800 max-h-fit ">
@@ -37,7 +51,7 @@ export function Carteira() {
       <main className="w-full lg:pl-28 ">
         <section className="w-full mt-6">
           <AliceCarousel
-            items={actions.createCardItems()}
+            items={createCardItems(states.walletList)}
             responsive={itemsVisibles}
             disableButtonsControls
           />
