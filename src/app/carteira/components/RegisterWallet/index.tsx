@@ -35,7 +35,6 @@ export default function RegisterWallet({ setOpen }: IRegisterWallet) {
         <Button
           type="submit"
           className="py-2 px-4 md:py-4 md:px-6 bg-green-500 w-full md:w-full rounded-[6px]"
-          onClick={actions.handleSaveForm}
           disabled={states.isSavingDataForms}
           canceled={false}
         >
