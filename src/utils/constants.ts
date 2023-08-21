@@ -7,6 +7,9 @@ export const AXIOS_ERROR = "Axios error: ";
 export const THIRTY_DAY_COOKIE_LIFETIME = 30 * 24 * 60 * 60;
 export const AXIOS_ERROR_400 = "Requisição inválida.";
 export const AXIOS_ERROR_404 = "Recurso não encontrado.";
+export const SUCESS_UPDATE_MESSAGE = "Atualização da carteira realizada com sucesso."
+export const ERROR_UPDATE_MESSAGE = "Erro ao realizar a atualização da carteira."
+
 
 export const AccountType = {
   CHECKING_ACCOUNT: "Conta-Corrente",
