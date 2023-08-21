@@ -8,7 +8,7 @@ import { accountTypes } from "@/utils/constants";
 import { IRegisterWallet } from "@/app/carteira/types";
 import { useRegisterWallet } from "./hook";
 
-export function RegisterWallet({ setOpen }: IRegisterWallet) {
+export default function RegisterWallet({ setOpen }: IRegisterWallet) {
   const { actions, states } = useRegisterWallet({ setOpen });
 
   return (
@@ -46,7 +46,7 @@ export function RegisterWallet({ setOpen }: IRegisterWallet) {
               data-testid="loading-icon"
             />
           ) : (
-            <span>Confirmar!</span>
+            <span>Confirmar</span>
           )}
         </Button>
         <Dialog.Close asChild>
