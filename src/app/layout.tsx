@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { Sidebar } from "@/components";
 import "@/styles/tailwind.css";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <body className="bg-gray-800">
           <Sidebar />
           {children}
+          <ToastContainer />
         </body>
       </UserProvider>
     </html>
