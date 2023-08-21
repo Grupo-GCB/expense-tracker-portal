@@ -51,7 +51,7 @@ export interface IOptions {
   label: string;
 }
 
-interface ICustomSelectProps{
+export interface ICustomSelectProps{
   placeholder: string
   options: IOptions[]
   name: string
