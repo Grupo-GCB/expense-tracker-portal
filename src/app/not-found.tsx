@@ -52,7 +52,7 @@ export default function NotFound() {
               </div>
             </div>
             <figure>
-              <img src="https://i.ibb.co/G9DC8S0/404-2.png" alt="Imagem 404."/>
+              <img src="https://i.ibb.co/G9DC8S0/404-2.png" alt="Imagem 404." />
             </figure>
           </div>
         </div>

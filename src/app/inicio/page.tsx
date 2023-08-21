@@ -24,11 +24,8 @@ export default function Home() {
         token,
       });
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error(AXIOS_ERROR, error.message);
-      } else {
-        console.error(UNKNOWN_ERROR, error);
-      }
+      if (axios.isAxiosError(error)) console.error(AXIOS_ERROR, error.message);
+      else console.error(UNKNOWN_ERROR, error);
     }
   }
 

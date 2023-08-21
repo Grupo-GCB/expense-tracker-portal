@@ -15,7 +15,7 @@ export async function getBanks(): Promise<IBank[]> {
   return data;
 }
 
-function getUserToken(): string {
+function getUserIdFromToken(): string {
   return cookies().get("@user_token")!.value;
 }
 
@@ -24,16 +24,9 @@ function getSubUserToken(userToken: string): string {
   return sub;
 }
 
-export async function getAllWallets(): Promise<IWallet[]> {
-  const id: string = getUserToken();
-  const sub = getSubUserToken(id);
-  const { data } = await api.get<IWallet[]>(`/wallets/${sub}`);
-  return data;
-}
-
 export async function registerWallet(formData: FormData): Promise<string> {
-  const user_token: string = getUserToken();
-  const sub = getSubUserToken(user_token);
+  const id: string = getUserIdFromToken();
+  const sub: string = getSubUserToken(id);
 
   try {
     const { data } = await api.post<IRegisterWallet>("/wallet", {
@@ -46,9 +39,10 @@ export async function registerWallet(formData: FormData): Promise<string> {
   } catch (error) {
     if (error instanceof AxiosError) {
       const axiosError = error as AxiosError;
+      const response = axiosError.response;
 
-      if (axiosError.response) {
-        const status = axiosError.response.status;
+      if (response) {
+        const status = response.status;
         const errorMappings: ErrorMappings = {
           400: AXIOS_ERROR_400,
           404: AXIOS_ERROR_404,

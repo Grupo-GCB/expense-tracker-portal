@@ -1,41 +1,40 @@
-'use client'
+"use client";
 
-import { useUser } from '@auth0/nextjs-auth0/client'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import { CircleNotch } from 'phosphor-react'
-import { useState } from 'react'
-import { toast } from 'react-toastify'
+import { useUser } from "@auth0/nextjs-auth0/client";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { CircleNotch } from "phosphor-react";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
-import { Header } from '@/app/(home)/components/Header'
-import previewPortal from '@/app/assets/img/portal.png'
-import { Button, ErrorPage, Loading } from '@/components'
- 
+import previewPortal from "@/app/assets/img/portal.png";
+import { Button, ErrorPage, Loading } from "@/components";
+import { Header } from "./components/Header";
 
 export function Introducao() {
-  const router = useRouter()
-  const { user, error, isLoading } = useUser()
- 
+  const router = useRouter();
+  const { user, error, isLoading } = useUser();
+
   const [isRedirectingToLogin, setIsRedirectingToLogin] =
-    useState<boolean>(false)
+    useState<boolean>(false);
 
   async function handleRedirectToLoginPage() {
-    setIsRedirectingToLogin(true)
+    setIsRedirectingToLogin(true);
     try {
-      router.push('/api/auth/login')
-      await new Promise((resolve) => setTimeout(resolve, 3000))
+      router.push("/api/auth/login");
+      await new Promise((resolve) => setTimeout(resolve, 3000));
     } catch {
-      toast.error('Ocorreu um erro durante o redirecionamento.')
+      toast.error("Ocorreu um erro durante o redirecionamento.");
     } finally {
-      setIsRedirectingToLogin(false)
+      setIsRedirectingToLogin(false);
     }
   }
 
-  if (isLoading) return <Loading />
+  if (isLoading) return <Loading />;
 
-  if (error) return <ErrorPage errorMessage={error.message} />
+  if (error) return <ErrorPage errorMessage={error.message} />;
 
-  if (user) router.push("inicio")
+  if (user) router.push("inicio");
 
   return (
     <>
@@ -79,7 +78,7 @@ export function Introducao() {
         </section>
       </main>
     </>
-  )
+  );
 }
 
-export default Introducao
+export default Introducao;
