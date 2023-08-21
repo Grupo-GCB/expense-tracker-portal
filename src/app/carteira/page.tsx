@@ -3,12 +3,13 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
 import AliceCarousel from "react-alice-carousel";
+import 'react-alice-carousel/lib/alice-carousel.css';
 
 import { Button, Modal } from "@/components";
 import { IWallet } from "@/interfaces";
 import { CardWallet } from "./components/CardWallet";
 import { useShowAllWallet } from "./components/CardWallet/hook";
-import { RegisterWallet } from "./components/RegisterWallet";
+import RegisterWallet from "./components/RegisterWallet";
 
 const itemsVisibles = {
   768: {
