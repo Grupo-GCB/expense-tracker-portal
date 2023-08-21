@@ -14,3 +14,8 @@ export interface ICardWallet{
   typeAccount:string
   description:string
 }
+
+export interface IContentCard{
+  titleContent:string
+  textContent:string
+}

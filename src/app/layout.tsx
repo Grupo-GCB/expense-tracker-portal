@@ -1,6 +1,7 @@
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
@@ -25,6 +26,7 @@ export default function RootLayout({
       <UserProvider>
         <body className="bg-gray-800">
           <Sidebar />
+          <ToastContainer/>
           {children}
           <ToastContainer />
         </body>
