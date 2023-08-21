@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
-import { Header } from "./index";
+import { Header } from ".";
 
 export default {
   title: "Components/Header",
