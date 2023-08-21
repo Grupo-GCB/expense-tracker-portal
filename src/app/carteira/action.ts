@@ -10,12 +10,12 @@ import api from "@/services/api";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
 import { DecodedToken } from "./types";
 
-export async function getBanks() {
+export async function getBanks(): Promise<IBank[]> {
   const { data } = await api.get<IBank[]>("/bank/all");
   return data;
 }
 
-function getUserToken() {
+function getUserToken(): string {
   return cookies().get("@user_token")!.value;
 }
 
@@ -24,12 +24,11 @@ function getSubUserToken(userToken: string): string {
   return sub;
 }
 
-export async function getAllWallets(): Promise<IWallet[]>{
-    const id: string = getUserToken();
-    const sub = getSubUserToken(id);
-    const { data } = await api.get<IWallet[]>(`/wallets/${sub}`)
-    console.log(data)
-    return data
+export async function getAllWallets(): Promise<IWallet[]> {
+  const id: string = getUserToken();
+  const sub = getSubUserToken(id);
+  const { data } = await api.get<IWallet[]>(`/wallets/${sub}`);
+  return data;
 }
 
 export async function registerWallet(formData: FormData): Promise<string> {
