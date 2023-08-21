@@ -5,7 +5,7 @@ import axios, { AxiosError } from 'axios';
 import { cookies } from 'next/dist/client/components/headers';
 import api from '@/services/api';
 
-import { AXIOS_ERROR, AXIOS_ERROR_400, AXIOS_ERROR_404, UNKNOWN_ERROR } from '@/utils/constants';
+import { AXIOS_ERROR, AXIOS_ERROR_400, AXIOS_ERROR_404, ERROR_UPDATE_MESSAGE, SUCESS_UPDATE_MESSAGE, UNKNOWN_ERROR } from '@/utils/constants';
 import { ErrorMappings } from '@/interfaces/ErrorMapping';
 import { DecodedToken } from "./types"
 import { IBank } from '@/interfaces';
@@ -73,7 +73,7 @@ export async function updateWallet(formData: FormData): Promise<string>{
       bank_id: formData.get('bank_id') as string,
     })
 
-    return "Atualização da carteira realizada com sucesso."
+    return SUCESS_UPDATE_MESSAGE
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error(AXIOS_ERROR, error.message);
@@ -81,6 +81,6 @@ export async function updateWallet(formData: FormData): Promise<string>{
       console.error(UNKNOWN_ERROR, error);
     }
 
-    return "Erro ao realizar a atualização da carteira."
+    return ERROR_UPDATE_MESSAGE
   }  
 }
