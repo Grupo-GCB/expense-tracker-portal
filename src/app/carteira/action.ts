@@ -3,17 +3,10 @@
 import jwt_decode from 'jwt-decode';
 import axios, { AxiosError } from 'axios';
 import { cookies } from 'next/dist/client/components/headers';
-import api from '@/services/api';
 
 import { AXIOS_ERROR, AXIOS_ERROR_400, AXIOS_ERROR_404, ERROR_UPDATE_MESSAGE, SUCESS_UPDATE_MESSAGE, UNKNOWN_ERROR } from '@/utils/constants';
-import { ErrorMappings } from '@/interfaces/ErrorMapping';
-import { DecodedToken } from "./types"
-import { IBank } from '@/interfaces';
-import { IWallet } from '@/interfaces';
 import { IBank, IRegisterWallet, IWallet } from "@/interfaces";
 import { ErrorMappings } from "@/interfaces/ErrorMapping";
-import api from "@/services/api";
-import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
 import { DecodedToken } from "./types";
 import api from '@/services/api';
 

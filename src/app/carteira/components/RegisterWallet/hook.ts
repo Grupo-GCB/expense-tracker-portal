@@ -1,44 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Zod from "zod";
 
-import { getBanks, registerWallet } from "@/app/carteira/action";
-import { IRegisterWallet } from "@/app/carteira/types";
-import { IOptions } from "@/components/Select";
-import { IBank } from "@/interfaces";
+import { registerWallet } from "@/app/carteira/action";
 import { RegisterWalletSchema, fieldErrorMappings } from "./types";
 
-export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
-  const [bankList, setBankList] = useState<IOptions[]>([]);
-  const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
-
-  const handleSaveForm = (succes: boolean) => {
-    setTimeout(() => {
-      setIsSavingDataForms(succes);
-    }, 200);
-
-    setTimeout(() => {
-      setOpen(false);
-    }, 2000);
-  };
-
-  useEffect(() => {
-    async function fetchBanks(): Promise<void> {
-      try {
-        const banks: IBank[] = await getBanks();
-        const formattedOptions = banks.map((bank) => ({
-          value: bank.id,
-          label: bank.name,
-        }));
-        setBankList(formattedOptions);
-      } catch (error) {
-        toast.error(`Erro ao buscar os bancos: ${error}`);
-      }
-    }
-    fetchBanks();
-  }, []);
+export const useRegisterWallet = () => {
 
   function validateRegisterWallet(formData: FormData): void {
     const formDataObject = Object.fromEntries(formData.entries());
@@ -59,7 +27,6 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
     try {
       validateRegisterWallet(values);
       const response = await registerWallet(values);
-      handleSaveForm(true);
       toast.success(response);
     } catch (error) {
       if (error instanceof Zod.ZodError) {
@@ -71,13 +38,8 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
   };
 
   return {
-    states: {
-      bankList,
-      isSavingDataForms,
-    },
-    actions: {
+    registerActions: {
       handleRegisterWallet,
-      handleSaveForm,
     },
   };
 };

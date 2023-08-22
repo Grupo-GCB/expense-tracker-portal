@@ -2,17 +2,17 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { CircleNotch } from "phosphor-react";
 
 import { IUseWallet } from "@/app/carteira/types";
-import { Button, CustomSelect, FormModal, FormModal } from "@/components";
+import { Button, CustomSelect, FormModal } from "@/components";
 import { accountTypes } from "@/utils/constants";
-import { useRegisterWallet } from "./register-wallet.hook";
+import { useRegisterWallet } from "./hook";
 import { useWallet } from "../../wallet.hook";
 
 export function RegisterWallet({ setOpen }: IUseWallet) {
   const { actions, states } = useWallet({ setOpen });
-  const {regsiterActions} = useRegisterWallet()
+  const { registerActions } = useRegisterWallet()
 
   return (
-    <FormModal action={regsiterActions.handleRegisterWallet}>
+    <FormModal action={registerActions.handleRegisterWallet}>
       <CustomSelect
         options={accountTypes}
         placeholder="Tipo da conta"
@@ -37,6 +37,7 @@ export function RegisterWallet({ setOpen }: IUseWallet) {
           type="submit"
           className="py-2 px-4 md:py-4 md:px-6 bg-green-500 w-full md:w-full rounded-[6px]"
           disabled={states.isSavingDataForms}
+          onClick={actions.handleSaveForm}
           canceled={false}
         >
           {states.isSavingDataForms ? (
