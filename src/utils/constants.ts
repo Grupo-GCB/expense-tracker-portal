@@ -9,6 +9,8 @@ export const AXIOS_ERROR_400 = "Requisição inválida.";
 export const AXIOS_ERROR_404 = "Recurso não encontrado.";
 export const SUCESS_UPDATE_MESSAGE = "Atualização da carteira realizada com sucesso."
 export const ERROR_UPDATE_MESSAGE = "Erro ao realizar a atualização da carteira."
+export const SUCESS_DELETE_MESSAGE = "Carteira deletada com sucesso."
+export const ERROR_DELETE_MESSAGE = "Erro ao deletar a carteira."
 
 
 export const AccountType = {
