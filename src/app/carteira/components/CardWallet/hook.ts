@@ -13,9 +13,7 @@ export const useShowAllWallet = () => {
     async function fetchAllWallets(): Promise<void> {
       try {
         const response: IWallet[] | string = await getAllWallets();
-        if (Array.isArray(response)) {
-          setWalletList(response);
-        }
+        if (Array.isArray(response)) setWalletList(response);
       } catch (err) {
         toast.error("Erro ao listar as carteiras");
       }
