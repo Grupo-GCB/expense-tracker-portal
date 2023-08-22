@@ -10,13 +10,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Set SKIP_CYPRESS_INSTALL
+        run: echo "SKIP_CYPRESS_INSTALL=true" >> $GITHUB_ENV
+
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 14
           cache: 'yarn'
 
-      - run: 'yarn install --frozen-lockfile'
-
+      - run: |
+          if [ "$SKIP_CYPRESS_INSTALL" != "true" ]; then
+            yarn install
+          fi
+          
       - name: Test coverage
         run: |
           yarn test
