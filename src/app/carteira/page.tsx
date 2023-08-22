@@ -27,12 +27,11 @@ const itemsVisibles = {
 
 export const createCardItems = (walletList: IWallet[]) =>
   walletList.map((wallet) => (
-    <div className="w-full flex justify-center">
+    <div className="w-full flex justify-center" key={wallet.id}>
       <CardWallet
-        key={wallet.id}
-        idWallet={wallet.id}
-        nameBank={wallet.bank.name}
-        typeAccount={wallet.account_type}
+        walletId={wallet.id}
+        bankName={wallet.bank.name}
+        accountType={wallet.account_type}
         description={wallet.description}
       />
     </div>
@@ -40,6 +39,7 @@ export const createCardItems = (walletList: IWallet[]) =>
 
 export function Carteira() {
   const [open, setOpen] = useState<boolean>(false);
+
   const { states } = useShowAllWallet();
 
   return (

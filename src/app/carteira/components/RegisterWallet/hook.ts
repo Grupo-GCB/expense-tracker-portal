@@ -14,9 +14,9 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
   const [bankList, setBankList] = useState<IOptions[]>([]);
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
-  const handleSaveForm = (succes: boolean) => {
+  const handleSaveForm = (success: boolean) => {
     setTimeout(() => {
-      setIsSavingDataForms(succes);
+      setIsSavingDataForms(success);
     }, 200);
 
     setTimeout(() => {
@@ -49,8 +49,8 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
     error.issues.forEach((issue, i) => {
       const fieldName = issue.path[i];
       if (fieldName in fieldErrorMappings) {
-        const errorMessage = fieldErrorMappings[fieldName];
-        toast.error(errorMessage.errorMessage);
+        const { errorMessage } = fieldErrorMappings[fieldName];
+        toast.error(errorMessage);
       }
     });
   }
