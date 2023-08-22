@@ -5,9 +5,11 @@ import { Button, Input, FormModal, CustomSelect } from "@/components";
 import { IUseTransaction } from "@/app/inicio/types";
 import { useWallet } from "@/app/carteira/wallet.hook";
 import { useState } from "react";
+import { useRegisterTransaction } from "./hook";
 
 export function RegisterTransaction({ setOpen }: IUseTransaction) {
   const { states } = useWallet({ setOpen });
+  const { actions } = useRegisterTransaction()
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleOptionSelect = (value: string) => {
@@ -30,6 +32,15 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
         placeholder="Preço"
         maxLength={32}
         className="flex items-center px-4 bg-gray-900 h-12 rounded focus:outline-none focus:ring focus:ring-green-300 resize-none"
+      />
+      <Input.Root
+        id="price"
+        name="price"
+        type="date" 
+        maxLength={32} 
+        placeholder="Data"
+        max={actions.getMaxDate()} 
+        className="flex items-center px-4 bg-gray-900 h-12 rounded focus:outline-none focus:ring focus:ring-green-300 resize-none  decoration-gray-300"
       />
       <CustomSelect
         id="wallets"
