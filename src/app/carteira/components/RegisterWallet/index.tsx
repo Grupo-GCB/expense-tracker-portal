@@ -4,9 +4,9 @@ import { CircleNotch } from "phosphor-react";
 import { IRegisterWallet } from "@/app/carteira/types";
 import { Button, CustomSelect, FormModal } from "@/components";
 import { accountTypes } from "@/utils/constants";
-import { useRegisterWallet } from "./register-wallet.hook";
+import { useRegisterWallet } from "./hook";
 
-export function RegisterWallet({ setOpen }: IRegisterWallet) {
+export default function RegisterWallet({ setOpen }: IRegisterWallet) {
   const { actions, states } = useRegisterWallet({ setOpen });
 
   return (
@@ -34,7 +34,6 @@ export function RegisterWallet({ setOpen }: IRegisterWallet) {
         <Button
           type="submit"
           className="py-2 px-4 md:py-4 md:px-6 bg-green-500 w-full md:w-full rounded-[6px]"
-          onClick={actions.handleSaveForm}
           disabled={states.isSavingDataForms}
           canceled={false}
         >

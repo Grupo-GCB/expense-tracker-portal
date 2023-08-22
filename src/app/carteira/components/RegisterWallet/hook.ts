@@ -2,19 +2,21 @@
 
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import Zod from "zod";
 
 import { getBanks, registerWallet } from "@/app/carteira/action";
 import { IRegisterWallet } from "@/app/carteira/types";
 import { IOptions } from "@/components/Select";
 import { IBank } from "@/interfaces";
+import { RegisterWalletSchema, fieldErrorMappings } from "./types";
 
 export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
   const [bankList, setBankList] = useState<IOptions[]>([]);
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
-  const handleSaveForm = () => {
+  const handleSaveForm = (success: boolean) => {
     setTimeout(() => {
-      setIsSavingDataForms(true);
+      setIsSavingDataForms(success);
     }, 200);
 
     setTimeout(() => {
@@ -38,12 +40,33 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
     fetchBanks();
   }, []);
 
+  function validateRegisterWallet(formData: FormData): void {
+    const formDataObject = Object.fromEntries(formData.entries());
+    RegisterWalletSchema.parse(formDataObject);
+  }
+
+  function handleValidationErrors(error: Zod.ZodError): void {
+    error.issues.forEach((issue, i) => {
+      const fieldName = issue.path[i];
+      if (fieldName in fieldErrorMappings) {
+        const { errorMessage } = fieldErrorMappings[fieldName];
+        toast.error(errorMessage);
+      }
+    });
+  }
+
   const handleRegisterWallet = async (values: FormData): Promise<void> => {
     try {
-      const reponse: string = await registerWallet(values);
-      toast.success(reponse);
+      validateRegisterWallet(values);
+      const response = await registerWallet(values);
+      handleSaveForm(true);
+      toast.success(response);
     } catch (error) {
-      toast.error(`${error}`);
+      if (error instanceof Zod.ZodError) {
+        handleValidationErrors(error);
+      } else {
+        toast.error(`${error}`);
+      }
     }
   };
 
