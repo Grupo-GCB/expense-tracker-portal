@@ -2,7 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
 
 import { Button, Modal } from "@/components";
-import { UpdateWallet } from "@/app/carteira/components/UpdateWallet";
+import { RegisterTransaction } from "../RegisterTransaction";
 
 export default function Header() {
   const [open, setOpen] = useState<boolean>(false);
@@ -26,7 +26,7 @@ export default function Header() {
               Nova transação
             </Dialog.Title>
           </div>
-          <UpdateWallet setOpen={setOpen} />
+          <RegisterTransaction setOpen={setOpen} />
         </Modal.Content>
       </Modal>
     </header>
