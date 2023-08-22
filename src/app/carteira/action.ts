@@ -4,7 +4,7 @@ import jwt_decode from 'jwt-decode';
 import axios, { AxiosError } from 'axios';
 import { cookies } from 'next/dist/client/components/headers';
 
-import { AXIOS_ERROR, AXIOS_ERROR_400, AXIOS_ERROR_404, ERROR_UPDATE_MESSAGE, SUCESS_UPDATE_MESSAGE, UNKNOWN_ERROR } from '@/utils/constants';
+import { AXIOS_ERROR, AXIOS_ERROR_400, AXIOS_ERROR_404, ERROR_DELETE_MESSAGE, ERROR_UPDATE_MESSAGE, SUCESS_DELETE_MESSAGE, SUCESS_UPDATE_MESSAGE, UNKNOWN_ERROR } from '@/utils/constants';
 import { IBank, IRegisterWallet, IWallet, ErrorMappings } from "@/interfaces";
 import { DecodedToken } from "./types";
 import api from '@/services/api';
@@ -100,7 +100,7 @@ export async function deleteWallet(): Promise<string>{
   try {
      await api.delete<string>(`/wallet/${idWallet}`)
 
-    return "Carteira deletada com sucesso."
+    return SUCESS_DELETE_MESSAGE
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error(AXIOS_ERROR, error.message);
@@ -108,6 +108,6 @@ export async function deleteWallet(): Promise<string>{
       console.error(UNKNOWN_ERROR, error);
     }
 
-    return "Erro ao deletar a carteira."
+    return ERROR_DELETE_MESSAGE
   }  
 }
