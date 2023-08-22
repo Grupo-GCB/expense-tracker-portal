@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import { UpdateWallet }  from "./index";
+import { UpdateWallet } from "./";
 
 describe("RegisterWallet", () => {
   it("should be able to render the component correctly", () => {

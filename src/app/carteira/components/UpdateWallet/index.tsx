@@ -6,7 +6,7 @@ import { FormModal } from "@/components/Modal/FormModal";
 import { accountTypes } from "@/utils/constants";
 import { IUseWallet } from "@/app/carteira/types";
 import { useUpdateWallet } from "./hooks";
-import { useWallet } from "../../wallet.hook";
+import { useWallet } from "@/app/carteira/wallet.hook";
 
 export function UpdateWallet({ setOpen }: IUseWallet) {
   const { states } = useWallet({ setOpen });

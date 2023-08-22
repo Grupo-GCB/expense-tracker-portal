@@ -6,10 +6,13 @@ import { useState } from "react";
 
 import { updateWallet } from "@/app/carteira/action";
 import { ERROR_UPDATE_MESSAGE, SUCESS_UPDATE_MESSAGE } from "@/utils/constants";
-import { IUseWallet, WalletSchema, fieldErrorMappings } from "../../types";
+import {
+  IUseWallet,
+  WalletSchema,
+  fieldErrorMappings,
+} from "@/app/carteira/types";
 
 export const useUpdateWallet = ({ setOpen }: IUseWallet) => {
-
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
   const handleSaveForm = (succes: boolean) => {
@@ -42,8 +45,8 @@ export const useUpdateWallet = ({ setOpen }: IUseWallet) => {
       validateWallet(values);
       const response = await updateWallet(values);
       handleSaveForm(true);
-      if (response === SUCESS_UPDATE_MESSAGE) toast.success(response)
-      if (response === ERROR_UPDATE_MESSAGE) toast.error(response)
+      if (response === SUCESS_UPDATE_MESSAGE) toast.success(response);
+      if (response === ERROR_UPDATE_MESSAGE) toast.error(response);
     } catch (error) {
       if (error instanceof Zod.ZodError) {
         handleValidationErrors(error);
