@@ -39,6 +39,7 @@ export const createCardItems = (walletList: IWallet[]) =>
 
 export function Carteira() {
   const [open, setOpen] = useState<boolean>(false);
+
   const { states } = useShowAllWallet();
 
   return (
