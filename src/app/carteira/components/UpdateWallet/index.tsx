@@ -5,7 +5,7 @@ import { Button, CustomSelect } from "@/components";
 import { FormModal } from "@/components/Modal/FormModal";
 import { accountTypes } from "@/utils/constants";
 import { IUseWallet } from "@/app/carteira/types";
-import { useUpdateWallet } from "./update-wallet.hooks";
+import { useUpdateWallet } from "./hooks";
 import { useWallet } from "../../wallet.hook";
 
 export function UpdateWallet({ setOpen }: IUseWallet) {
