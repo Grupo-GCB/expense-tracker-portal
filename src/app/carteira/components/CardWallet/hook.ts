@@ -13,9 +13,9 @@ export const useShowAllWallet = () => {
     async function fetchAllWallets(): Promise<void> {
       try {
         const response: IWallet[] | string = await getAllWallets();
-        if (Array.isArray(response) && response.length !== 0) setWalletList(response);
-        else toast.error("Nenhuma carteira foi encontrada.")
-        
+        if (Array.isArray(response) && response.length !== 0)
+          setWalletList(response);
+        else toast.error("Nenhuma carteira foi encontrada.");
       } catch {
         toast.error("Erro ao listar as carteiras.");
       }
