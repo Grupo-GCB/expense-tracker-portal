@@ -63,7 +63,7 @@ export async function getAllWallets(): Promise<IWallet[] | string> {
     const sub = getSubUserToken(id);
     const { data } = await api.get<IWallet[]>(`/wallets/${sub}`);
     return data;
-  } catch (err) {
-    return `${err}`;
+  } catch {
+    return "Erro ao listar as carteiras.";
   }
 }
