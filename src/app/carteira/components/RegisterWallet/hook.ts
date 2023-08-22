@@ -4,13 +4,13 @@ import { toast } from "react-toastify";
 import Zod from "zod";
 
 import { registerWallet } from "@/app/carteira/action";
-import { RegisterWalletSchema, fieldErrorMappings } from "./types";
+import { WalletSchema, fieldErrorMappings } from "../../types";
 
 export const useRegisterWallet = () => {
 
   function validateRegisterWallet(formData: FormData): void {
     const formDataObject = Object.fromEntries(formData.entries());
-    RegisterWalletSchema.parse(formDataObject);
+    WalletSchema.parse(formDataObject);
   }
 
   function handleValidationErrors(error: Zod.ZodError): void {
