@@ -1,17 +1,17 @@
-import * as RadioGroup from '@radix-ui/react-radio-group';
+import * as RadioGroup from "@radix-ui/react-radio-group";
 import { ArrowCircleDown, ArrowCircleUp, CircleNotch } from "phosphor-react";
 
 import { Button, Input, FormModal, CustomSelect } from "@/components";
 import { IUseTransaction } from "@/app/inicio/types";
 import { useWallet } from "@/app/carteira/wallet.hook";
-import { useState } from 'react';
+import { useState } from "react";
 
 export function RegisterTransaction({ setOpen }: IUseTransaction) {
   const { states } = useWallet({ setOpen });
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleOptionSelect = (value: string) => {
-    if (selectedOption === value) setSelectedOption(null); 
+    if (selectedOption === value) setSelectedOption(null);
     else setSelectedOption(value);
   };
 
@@ -45,26 +45,36 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
         placeholder="Categoria"
       />
 
-<RadioGroup.Root className="m:grid sm:grid-rows-1 sm:w-full md:grid md:grid-cols-2 gap-4 mt-2">
+      <RadioGroup.Root className="m:grid sm:grid-rows-1 sm:w-full md:grid md:grid-cols-2 gap-4 mt-2">
         <RadioGroup.Item
           className={`p-4 flex items-center justify-center gap-2 rounded cursor-pointer decoration-gray-300 font-normal ${
-            selectedOption === "income" ? 'bg-green-500' : 'bg-gray-700 hover:bg-gray-300'
+            selectedOption === "income"
+              ? "bg-green-500"
+              : "bg-gray-700 hover:bg-gray-300"
           }`}
           value="income"
           onClick={() => handleOptionSelect("income")}
         >
-          <ArrowCircleUp size={20} color={`${selectedOption === "income" ? '#FFFFFF' : '#00B37E'}`}/>
+          <ArrowCircleUp
+            size={20}
+            color={`${selectedOption === "income" ? "#FFFFFF" : "#00B37E"}`}
+          />
           Entrada
         </RadioGroup.Item>
 
         <RadioGroup.Item
           className={`p-4 flex items-center justify-center gap-2 rounded cursor-pointer decoration-gray-300 font-normal ${
-            selectedOption === "outcome" ? 'bg-red-300' : 'bg-gray-700 hover:bg-gray-300'
+            selectedOption === "outcome"
+              ? "bg-red-300"
+              : "bg-gray-700 hover:bg-gray-300"
           }`}
           value="outcome"
           onClick={() => handleOptionSelect("outcome")}
         >
-          <ArrowCircleDown size={20} color={`${selectedOption === "outcome" ? '#FFFFFF' : '#F75A68'}`}/>
+          <ArrowCircleDown
+            size={20}
+            color={`${selectedOption === "outcome" ? "#FFFFFF" : "#F75A68"}`}
+          />
           Saída
         </RadioGroup.Item>
       </RadioGroup.Root>
