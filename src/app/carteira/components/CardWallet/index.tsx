@@ -2,7 +2,7 @@ import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { setCookie } from "nookies";
 
-import { ICardWallet } from "@/app/carteira/types";
+import { ICardWallet, IContentCard } from "@/app/carteira/types";
 import { Button, Modal } from "@/components";
 import { ContentCard } from "./content-card-wallet";
 import { UpdateWallet } from "../UpdateWallet";
@@ -24,7 +24,7 @@ export function CardWallet({
   const [open, setOpen] = useState<boolean>(false);
 
   const saveWalletIdOnCookies = () => {
-    setCookie(null, "@id_wallet", idWallet, {
+    setCookie(null, "@id_wallet", walletId, {
       maxAge: THIRTY_DAY_COOKIE_LIFETIME,
       path: "/",
     });
@@ -47,7 +47,7 @@ export function CardWallet({
           <div className="w-full flex justify-center">
             <Modal.Button className="rounded py-2 px-10 mb-5" asChild>
               <Button
-                id={idWallet}
+                id={walletId}
                 type="submit"
                 className="py-2 px-9 w-4/5 min-[425px]:w-[125px] bg-green-500 rounded-[6px] "
                 canceled={false}
