@@ -23,7 +23,7 @@ export function CardWallet({
 
   const [open, setOpen] = useState<boolean>(false);
 
-  const saveWalletIdOnCookies = () => {
+  const saveWalletIdOnCookies = (): void => {
     setCookie(null, "@id_wallet", walletId, {
       maxAge: THIRTY_DAY_COOKIE_LIFETIME,
       path: "/",
