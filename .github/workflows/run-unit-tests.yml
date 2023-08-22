@@ -22,7 +22,12 @@ jobs:
           if [ "$SKIP_CYPRESS_INSTALL" != "true" ]; then
             yarn install
           fi
-          
+
+      - name: Install Jest
+        run: yarn add --dev jest
+
+      - run: 'yarn test'
+
       - name: Test coverage
         run: |
           yarn test
