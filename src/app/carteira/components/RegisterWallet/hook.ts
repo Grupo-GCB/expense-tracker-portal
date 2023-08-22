@@ -49,8 +49,8 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
     error.issues.forEach((issue, i) => {
       const fieldName = issue.path[i];
       if (fieldName in fieldErrorMappings) {
-        const errorMessage = fieldErrorMappings[fieldName];
-        toast.error(errorMessage.errorMessage);
+        const { errorMessage } = fieldErrorMappings[fieldName];
+        toast.error(errorMessage);
       }
     });
   }
