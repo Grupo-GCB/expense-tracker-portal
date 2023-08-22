@@ -9,7 +9,7 @@ import { CardWallet } from "@/app/carteira/components/CardWallet";
 import { Button, Modal } from "@/components";
 import { IWallet } from "@/interfaces";
 import { useShowAllWallet } from "./components/CardWallet/hook";
-import RegisterWallet from "./components/RegisterWallet";
+import { RegisterWallet } from "./components/RegisterWallet";
 
 const itemsVisibles = {
   768: {
@@ -43,7 +43,7 @@ export function Carteira() {
   const { states } = useShowAllWallet();
 
   return (
-    <section className="bg-gray-800 max-h-fit ">
+    <>
       <header className="w-full h-24 bg-gray-900 flex items-center justify-center lg:pl-28">
         <h1 className="text-white font-semibold text-lg  md:text-xl">
           Carteiras
@@ -73,7 +73,7 @@ export function Carteira() {
           </Modal.Content>
         </Modal>
       </main>
-    </section>
+    </>
   );
 }
 export default Carteira;
