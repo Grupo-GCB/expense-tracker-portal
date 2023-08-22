@@ -1,12 +1,14 @@
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { setCookie } from "nookies";
+import { Trash } from "phosphor-react";
 
 import { ICardWallet, IContentCard } from "@/app/carteira/types";
 import { Button, Modal } from "@/components";
 import { ContentCard } from "./content-card-wallet";
 import { UpdateWallet } from "../UpdateWallet";
 import { THIRTY_DAY_COOKIE_LIFETIME } from "@/utils/constants";
+import { DeleteWallet } from "@/app/carteira/components/DeleteWallet";
 
 export function CardWallet({
   walletId,
@@ -21,7 +23,8 @@ export function CardWallet({
     { titleContent: "Descrição", textContent: description },
   ];
 
-  const [open, setOpen] = useState<boolean>(false);
+  const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
 
   const saveWalletIdOnCookies = (): void => {
     setCookie(null, "@id_wallet", walletId, {
@@ -43,7 +46,7 @@ export function CardWallet({
         />
       ))}
       <div className="w-full flex flex-col items-center mt-8 gap-4 min-[425px]:flex min-[425px]:flex-row min-[425px]:justify-center min-[425px]:gap-20 min-[425px]:mt-12">
-        <Modal open={open} onOpenChange={setOpen}>
+        <Modal open={editModalOpen} onOpenChange={setEditModalOpen}>
           <div className="w-full flex justify-center">
             <Modal.Button className="rounded py-2 px-10 mb-5" asChild>
               <Button
@@ -51,7 +54,10 @@ export function CardWallet({
                 type="submit"
                 className="py-2 px-9 w-4/5 min-[425px]:w-[125px] bg-green-500 rounded-[6px] "
                 canceled={false}
-                onClick={saveWalletIdOnCookies}
+                onClick={() => {
+                  saveWalletIdOnCookies();
+                  setEditModalOpen(true);
+                }}
               >
                 Editar
               </Button>
@@ -63,7 +69,41 @@ export function CardWallet({
                 Editar Carteira
               </Dialog.Title>
             </div>
-            <UpdateWallet setOpen={setOpen} />
+            <UpdateWallet setOpen={setEditModalOpen} />
+          </Modal.Content>
+        </Modal>
+
+        <Modal open={deleteModalOpen} onOpenChange={setDeleteModalOpen}>
+          <div className="w-full flex justify-center">
+            <Modal.Button className="rounded py-2 px-10 mb-5" asChild>
+              <Button
+                id={walletId}
+                type="submit"
+                className="py-2 px-9 w-4/5 min-[425px]:w-[125px] bg-red-300 rounded-[6px] hover:bg-red-400"
+                canceled={false}
+                onClick={() => {
+                  saveWalletIdOnCookies();
+                  setDeleteModalOpen(true);
+                }}
+              >
+                Excluir
+              </Button>
+            </Modal.Button>
+          </div>
+          <Modal.Content>
+            <div className="flex items-center justify-center">
+              <Dialog.Title className="text-lg md:text-xl">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="w-16 h-16 bg-red-300 flex justify-center items-center rounded-full">
+                    <Trash size={40} />
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <h2>Deseja deletar esta carteira?</h2>
+                  </div>
+                </div>
+              </Dialog.Title>
+            </div>
+            <DeleteWallet setOpen={setDeleteModalOpen} />
           </Modal.Content>
         </Modal>
       </div>
