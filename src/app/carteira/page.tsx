@@ -30,9 +30,9 @@ export const createCardItems = (walletList: IWallet[]) =>
     <div className="w-full flex justify-center">
       <CardWallet
         key={wallet.id}
-        idWallet={wallet.id}
-        nameBank={wallet.bank.name}
-        typeAccount={wallet.account_type}
+        walletId={wallet.id}
+        bankName={wallet.bank.name}
+        accountType={wallet.account_type}
         description={wallet.description}
       />
     </div>

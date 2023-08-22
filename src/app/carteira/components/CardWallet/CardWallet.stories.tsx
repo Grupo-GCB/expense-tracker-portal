@@ -16,9 +16,9 @@ export default {
 
 export const Default: StoryObj<ICardWallet> = {
   args: {
-    idWallet: "896adb01-efe8-4730-a9e4-b95720beaced",
-    nameBank: "C6",
-    typeAccount: "Conta-Corrente",
+    walletId: "896adb01-efe8-4730-a9e4-b95720beaced",
+    bankName: "C6",
+    accountType: "Conta-Corrente",
     description: "Carteira para viagens",
   },
   parameters: {
