@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 
 import { RegisterWallet }  from "./index";
 
-describe("RegisterWallet", () => {
+describe("Register Wallet", () => {
   it("should be able to render the component correctly", () => {
     const setOpen = jest.fn();
 

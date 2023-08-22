@@ -9,11 +9,18 @@ import { UpdateWallet } from "../UpdateWallet";
 import { THIRTY_DAY_COOKIE_LIFETIME } from "@/utils/constants";
 
 export function CardWallet({
-  idWallet,
-  nameBank,
-  typeAccount,
+  walletId,
+  bankName,
+  accountType,
   description,
 }: ICardWallet) {
+  const contentCardData: IContentCard[] = [
+    { titleContent: "Banco", textContent: bankName },
+    { titleContent: "Saldo", textContent: "R$00,00" },
+    { titleContent: "Tipo da conta", textContent: accountType },
+    { titleContent: "Descrição", textContent: description },
+  ];
+
   const [open, setOpen] = useState<boolean>(false);
 
   const saveWalletIdOnCookies = () => {
@@ -26,12 +33,15 @@ export function CardWallet({
   return (
     <div className="w-11/12 md:w-2/3 lg:w-2/5  h-96 bg-gray-600 rounded-2xl max-w-screen-md py-5 px-5">
       <h2 className="text-xl md:text-2xl font-semibold text-white text-center mb-4">
-        {nameBank} - {typeAccount}
+        {bankName} - {accountType}
       </h2>
-      <ContentCard titleContent="Banco" textContent={nameBank} />
-      <ContentCard titleContent="Saldo" textContent="R$00,00" />
-      <ContentCard titleContent="Tipo da conta" textContent={typeAccount} />
-      <ContentCard titleContent="Descrição" textContent={description} />
+      {contentCardData.map((content) => (
+        <ContentCard
+          key={content.titleContent}
+          titleContent={content.titleContent}
+          textContent={content.textContent}
+        />
+      ))}
       <div className="w-full flex flex-col items-center mt-8 gap-4 min-[425px]:flex min-[425px]:flex-row min-[425px]:justify-center min-[425px]:gap-20 min-[425px]:mt-12">
         <Modal open={open} onOpenChange={setOpen}>
           <div className="w-full flex justify-center">

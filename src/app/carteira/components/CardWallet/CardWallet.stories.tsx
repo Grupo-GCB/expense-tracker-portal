@@ -16,10 +16,10 @@ export default {
 
 export const Default: StoryObj<ICardWallet> = {
   args: {
-    idWallet: "12",
-    nameBank: "Banco storybook",
-    typeAccount: "teste",
-    description: "Card de teste para storybook",
+    walletId: "896adb01-efe8-4730-a9e4-b95720beaced",
+    bankName: "C6",
+    accountType: "Conta-Corrente",
+    description: "Carteira para viagens",
   },
   parameters: {
     viewport: {
@@ -30,10 +30,10 @@ export const Default: StoryObj<ICardWallet> = {
 
 export const Laptop: StoryObj = {
   args: {
-    idWallet: "12",
-    nameBank: "Banco storybook",
-    typeAccount: "teste",
-    description: "Card de teste para storybook",
+    idWallet: "896adb01-efe8-4730-a9e4-b95720beaced",
+    nameBank: "C6",
+    typeAccount: "Conta-Corrente",
+    description: "Carteira para viagens",
   },
   parameters: {
     viewport: {
@@ -44,10 +44,10 @@ export const Laptop: StoryObj = {
 
 export const LaptopLarge: StoryObj = {
   args: {
-    idWallet: "12",
-    nameBank: "Banco storybook",
-    typeAccount: "teste",
-    description: "Card de teste para storybook",
+    idWallet: "896adb01-efe8-4730-a9e4-b95720beaced",
+    nameBank: "C6",
+    typeAccount: "Conta-Corrente",
+    description: "Carteira para viagens",
   },
   parameters: {
     viewport: {

@@ -12,12 +12,12 @@ export const useShowAllWallet = () => {
   useEffect(() => {
     async function fetchAllWallets(): Promise<void> {
       try {
-        const reponse: IWallet[] | string = await getAllWallets();
-        if (Array.isArray(reponse)) {
-          setWalletList(reponse);
-        }
-      } catch (err) {
-        toast.error("Erro ao listar as carteiras");
+        const response: IWallet[] | string = await getAllWallets();
+        if (Array.isArray(response) && response.length !== 0)
+          setWalletList(response);
+        else toast.error("Nenhuma carteira foi encontrada.");
+      } catch {
+        toast.error("Erro ao listar as carteiras.");
       }
     }
     fetchAllWallets();

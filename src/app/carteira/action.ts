@@ -8,6 +8,7 @@ import { AXIOS_ERROR, AXIOS_ERROR_400, AXIOS_ERROR_404, ERROR_UPDATE_MESSAGE, SU
 import { IBank, IRegisterWallet, IWallet, ErrorMappings } from "@/interfaces";
 import { DecodedToken } from "./types";
 import api from '@/services/api';
+import axios from 'axios';
 
 export async function getBanks(): Promise<IBank[]> {
   const { data } = await api.get<IBank[]>("/bank/all");
