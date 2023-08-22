@@ -1,8 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { CircleNotch } from "phosphor-react";
 
-import { Button, CustomSelect } from "@/components";
-import { FormModal } from "@/components/Modal/FormModal";
+import { Button, CustomSelect, FormModal } from "@/components";
 import { accountTypes } from "@/utils/constants";
 import { IUseWallet } from "@/app/carteira/types";
 import { useUpdateWallet } from "./hooks";
