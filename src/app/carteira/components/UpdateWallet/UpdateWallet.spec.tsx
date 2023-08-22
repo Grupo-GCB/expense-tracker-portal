@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import { UpdateWallet } from "./";
+import { UpdateWallet } from ".";
 
-describe("RegisterWallet", () => {
-  it("should be able to render the component correctly", () => {
+describe("Update Wallet", () => {
+  it("should be able to render correctly", () => {
     const setOpen = jest.fn();
 
     render(<UpdateWallet setOpen={setOpen} />);
