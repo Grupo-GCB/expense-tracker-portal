@@ -71,7 +71,7 @@ export function CustomSelect({
           IndicatorSeparator: () => null,
         }}
         placeholder={
-          <span className="flex align-middle">
+          <span className="flex items-center h-12">
             <MagnifyingGlass size={24} color="#7d7878" className="mr-2" />{" "}
             {placeholder}
           </span>
