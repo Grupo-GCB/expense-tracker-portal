@@ -16,9 +16,6 @@ jobs:
           node-version: 14
           cache: 'yarn'
 
-      - name: Install dependencies
-        run: yarn install
-
       - name: Run frontend tests
         run: yarn test
 
