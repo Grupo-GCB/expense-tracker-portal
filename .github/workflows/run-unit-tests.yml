@@ -16,12 +16,15 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: 'yarn add storybook -router -D'
-        run: 'yarn denv'
+        run: yarn install --legacy-peer-deps
+
+
+      - name: Run tests
+        run: yarn test
 
       - name: Test coverage
         run: |
-          'yarn test'
+          yarn test
 
       - name: Validate test coverage
         run: |
