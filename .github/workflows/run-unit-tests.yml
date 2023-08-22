@@ -16,7 +16,6 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: yarn add storybook -router -D
         run: yarn
 
       - name: Test coverage
