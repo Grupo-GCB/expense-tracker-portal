@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
-import { DeleteWallet } from "./index";
+import { DeleteWallet } from ".";
 import { useDeleteWallet } from "./hook";
 
 jest.mock("./hook", () => ({
