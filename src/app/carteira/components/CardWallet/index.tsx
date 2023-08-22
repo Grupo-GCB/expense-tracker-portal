@@ -34,7 +34,7 @@ export function CardWallet({
   };
 
   return (
-    <div className="w-11/12 md:w-2/3 lg:w-2/5  h-96 bg-gray-600 rounded-2xl max-w-screen-md py-5 px-5">
+    <div className="w-11/12 md:w-2/3 lg:w-2/5 sm:h-100 md:h-96 bg-gray-600 rounded-2xl max-w-screen-md py-5 px-5">
       <h2 className="text-xl md:text-2xl font-semibold text-white text-center mb-4">
         {bankName} - {accountType}
       </h2>
