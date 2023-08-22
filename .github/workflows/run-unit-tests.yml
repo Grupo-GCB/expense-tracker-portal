@@ -1,32 +1,33 @@
-name: Run Frontend Tests
+name: Run Unit Tests
 
 on: [push]
 
 jobs:
-  run-frontend-tests:
-    name: Run Frontend Tests
+  run-unit-tests:
+    name: Run Unit Tests
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 18
           cache: 'yarn'
 
-      - name: Install dependencies
-        run: yarn install
+      - run: 'yarn install'
 
-      - name: Run frontend tests
-        run: yarn test
+      - run: 'yarn test'
+
+      - name: Test coverage
+        run: |
+          yarn test
 
       - name: Validate test coverage
         run: |
           coverage=$(cat coverage/coverage-summary.json | jq -r '.total.lines.pct')
           min_coverage=90
           if (( $(echo "$coverage < $min_coverage" | bc -l) )); then
-            echo "Test coverage is $coverage% and is less than $min_coverage%. Aborting the pull request."
+            echo "O coverage de testes é $coverage e é inferior a $min_coverage%. Abortando o pull request."
             exit 1
           fi
