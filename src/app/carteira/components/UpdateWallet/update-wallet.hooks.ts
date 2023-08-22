@@ -2,12 +2,25 @@
 
 import { toast } from "react-toastify";
 import Zod from "zod";
+import { useState } from "react";
 
 import { updateWallet } from "@/app/carteira/action";
 import { ERROR_UPDATE_MESSAGE, SUCESS_UPDATE_MESSAGE } from "@/utils/constants";
-import { WalletSchema, fieldErrorMappings } from "../../types";
+import { IUseWallet, WalletSchema, fieldErrorMappings } from "../../types";
 
-export const useUpdateWallet = () => {
+export const useUpdateWallet = ({ setOpen }: IUseWallet) => {
+
+  const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
+
+  const handleSaveForm = (succes: boolean) => {
+    setTimeout(() => {
+      setIsSavingDataForms(succes);
+    }, 200);
+
+    setTimeout(() => {
+      setOpen(false);
+    }, 2000);
+  };
 
   function validateWallet(formData: FormData): void {
     const formDataObject = Object.fromEntries(formData.entries());
@@ -28,6 +41,7 @@ export const useUpdateWallet = () => {
     try {
       validateWallet(values);
       const response = await updateWallet(values);
+      handleSaveForm(true);
       if (response === SUCESS_UPDATE_MESSAGE) toast.success(response)
       if (response === ERROR_UPDATE_MESSAGE) toast.error(response)
     } catch (error) {

@@ -4,9 +4,22 @@ import { toast } from "react-toastify";
 import Zod from "zod";
 
 import { registerWallet } from "@/app/carteira/action";
-import { WalletSchema, fieldErrorMappings } from "../../types";
+import { IUseWallet, WalletSchema, fieldErrorMappings } from "../../types";
+import { useState } from "react";
 
-export const useRegisterWallet = () => {
+export const useRegisterWallet = ({ setOpen }: IUseWallet) => {
+
+  const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
+
+  const handleSaveForm = (succes: boolean) => {
+    setTimeout(() => {
+      setIsSavingDataForms(succes);
+    }, 200);
+
+    setTimeout(() => {
+      setOpen(false);
+    }, 2000);
+  };
 
   function validateRegisterWallet(formData: FormData): void {
     const formDataObject = Object.fromEntries(formData.entries());
@@ -27,6 +40,7 @@ export const useRegisterWallet = () => {
     try {
       validateRegisterWallet(values);
       const response = await registerWallet(values);
+      handleSaveForm(true);
       toast.success(response);
     } catch (error) {
       if (error instanceof Zod.ZodError) {
