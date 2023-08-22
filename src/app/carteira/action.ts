@@ -5,8 +5,7 @@ import axios, { AxiosError } from 'axios';
 import { cookies } from 'next/dist/client/components/headers';
 
 import { AXIOS_ERROR, AXIOS_ERROR_400, AXIOS_ERROR_404, ERROR_UPDATE_MESSAGE, SUCESS_UPDATE_MESSAGE, UNKNOWN_ERROR } from '@/utils/constants';
-import { IBank, IRegisterWallet, IWallet } from "@/interfaces";
-import { ErrorMappings } from "@/interfaces/ErrorMapping";
+import { IBank, IRegisterWallet, IWallet, ErrorMappings } from "@/interfaces";
 import { DecodedToken } from "./types";
 import api from '@/services/api';
 
@@ -68,8 +67,8 @@ export async function getAllWallets(): Promise<IWallet[] | string> {
     const sub = getSubUserToken(id);
     const { data } = await api.get<IWallet[]>(`/wallets/${sub}`);
     return data;
-  } catch (err) {
-    return `${err}`;
+  } catch {
+    return "Erro ao listar as carteiras.";
   }
 }
 
