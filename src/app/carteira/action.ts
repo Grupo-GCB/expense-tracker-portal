@@ -8,7 +8,9 @@ import {
   AXIOS_ERROR,
   AXIOS_ERROR_400,
   AXIOS_ERROR_404,
+  ERROR_DELETE_MESSAGE,
   ERROR_UPDATE_MESSAGE,
+  SUCESS_DELETE_MESSAGE,
   SUCESS_UPDATE_MESSAGE,
   UNKNOWN_ERROR,
 } from "@/utils/constants";
@@ -93,5 +95,19 @@ export async function updateWallet(formData: FormData): Promise<string> {
     else console.error(UNKNOWN_ERROR, error);
 
     return ERROR_UPDATE_MESSAGE;
+  }
+}
+
+export async function deleteWallet(): Promise<string> {
+  const idWallet: string = getIdWallet();
+
+  try {
+    await api.delete<void>(`/wallet/${idWallet}`);
+    return SUCESS_DELETE_MESSAGE;
+  } catch (error) {
+    if (axios.isAxiosError(error)) console.error(AXIOS_ERROR, error.message);
+    else console.error(UNKNOWN_ERROR, error);
+
+    return ERROR_DELETE_MESSAGE;
   }
 }
