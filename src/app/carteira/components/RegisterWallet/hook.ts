@@ -14,9 +14,9 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
   const [bankList, setBankList] = useState<IOptions[]>([]);
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
-  const handleSaveForm = (succes: boolean) => {
+  const handleSaveForm = (success: boolean) => {
     setTimeout(() => {
-      setIsSavingDataForms(succes);
+      setIsSavingDataForms(success);
     }, 200);
 
     setTimeout(() => {
