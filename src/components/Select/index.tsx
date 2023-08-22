@@ -52,12 +52,14 @@ export interface IOptions {
 }
 
 export interface ICustomSelectProps {
+  id?: string
   placeholder: string;
   options: IOptions[];
   name: string;
 }
 
 export function CustomSelect({
+  id,
   options,
   placeholder,
   name,
@@ -65,6 +67,7 @@ export function CustomSelect({
   return (
     <div>
       <Select
+        id={id}
         options={options}
         styles={customStyles}
         components={{
