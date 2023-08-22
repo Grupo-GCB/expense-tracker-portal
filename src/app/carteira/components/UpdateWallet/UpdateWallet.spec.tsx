@@ -1,38 +1,38 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import { UpdateWallet } from "./";
+import { UpdateWallet } from ".";
 
-describe("RegisterWallet", () => {
-  it("should be able to render the component correctly", () => {
+describe("Update Wallet", () => {
+  it("should be able to render correctly", () => {
     const setOpen = jest.fn();
 
     render(<UpdateWallet setOpen={setOpen} />);
 
-    const tipoContaInput = screen.getByPlaceholderText("Tipo da conta");
-    const bancoInput = screen.getByPlaceholderText("Banco");
-    const descricaoTextarea = screen.getByPlaceholderText("Descrição");
+    const accountTypeInput = screen.getByPlaceholderText("Tipo da conta");
+    const bankInput = screen.getByPlaceholderText("Banco");
+    const descriptionTextarea = screen.getByPlaceholderText("Descrição");
     const confirmButton = screen.getByRole("button", { name: "Confirmar" });
     const cancelButton = screen.getByRole("button", { name: "Cancelar" });
-
-    expect(tipoContaInput).toBeInTheDocument();
-    expect(bancoInput).toBeInTheDocument();
-    expect(descricaoTextarea).toBeInTheDocument();
+    
+    expect(accountTypeInput).toBeInTheDocument();
+    expect(bankInput).toBeInTheDocument();
+    expect(descriptionTextarea).toBeInTheDocument();
     expect(confirmButton).toBeInTheDocument();
-    expect(cancelButton).toBeInTheDocument();
+    expect(cancelButton).toBeInTheDocument();    
   });
 
   it("should be able to handle form submission", async () => {
     const mockSetOpen = jest.fn();
     render(<UpdateWallet setOpen={mockSetOpen} />);
 
-    const tipoContaInput = screen.getByPlaceholderText("Tipo da conta");
-    const bancoInput = screen.getByPlaceholderText("Banco");
-    const descricaoTextarea = screen.getByPlaceholderText("Descrição");
+    const accountTypeInput = screen.getByPlaceholderText("Tipo da conta");
+    const bankInput = screen.getByPlaceholderText("Banco");
+    const descriptionTextarea = screen.getByPlaceholderText("Descrição");
     const confirmButton = screen.getByText("Confirmar");
 
-    fireEvent.change(tipoContaInput, { target: { value: "Tipo de Conta" } });
-    fireEvent.change(bancoInput, { target: { value: "Santander" } });
-    fireEvent.change(descricaoTextarea, {
+    fireEvent.change(accountTypeInput, { target: { value: "Tipo de Conta" } });
+    fireEvent.change(bankInput, { target: { value: "Santander" } });
+    fireEvent.change(descriptionTextarea, {
       target: { value: "Descrição do Wallet" },
     });
 

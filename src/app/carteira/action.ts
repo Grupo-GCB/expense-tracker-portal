@@ -1,13 +1,13 @@
 "use server";
 
-import jwt_decode from 'jwt-decode';
-import axios, { AxiosError } from 'axios';
-import { cookies } from 'next/dist/client/components/headers';
+import jwt_decode from "jwt-decode";
+import axios, { AxiosError } from "axios";
+import { cookies } from "next/dist/client/components/headers";
 
 import { AXIOS_ERROR, AXIOS_ERROR_400, AXIOS_ERROR_404, ERROR_DELETE_MESSAGE, ERROR_UPDATE_MESSAGE, SUCESS_DELETE_MESSAGE, SUCESS_UPDATE_MESSAGE, UNKNOWN_ERROR } from '@/utils/constants';
 import { IBank, IRegisterWallet, IWallet, ErrorMappings } from "@/interfaces";
 import { DecodedToken } from "./types";
-import api from '@/services/api';
+import api from "@/services/api";
 
 export async function getBanks(): Promise<IBank[]> {
   const { data } = await api.get<IBank[]>("/bank/all");
@@ -23,13 +23,11 @@ function getSubUserToken(userToken: string): string {
   return sub;
 }
 
-function getIdWallet(){
-  return cookies().get('@id_wallet')!.value
-}
+const getIdWallet = (): string => cookies().get("@id_wallet")!.value;
 
-export async function registerWallet(formData: FormData): Promise<string>{
-  const user_token: string = getUserIdFromToken()
-  const sub = getSubUserToken(user_token)
+export async function registerWallet(formData: FormData): Promise<string> {
+  const user_token: string = getUserIdFromToken();
+  const sub = getSubUserToken(user_token);
 
   try {
     const { data } = await api.post<IRegisterWallet>("/wallet", {
@@ -72,26 +70,23 @@ export async function getAllWallets(): Promise<IWallet[] | string> {
   }
 }
 
-export async function updateWallet(formData: FormData): Promise<string>{
-  const idWallet: string = getIdWallet()
+export async function updateWallet(formData: FormData): Promise<string> {
+  const idWallet: string = getIdWallet();
 
   try {
-     await api.put<IWallet>(`/wallet/${idWallet}`, {
-      account_type: formData.get('account_type') as string,
-      description: formData.get('description') as string,
-      bank_id: formData.get('bank_id') as string,
-    })
+    await api.put<IWallet>(`/wallet/${idWallet}`, {
+      account_type: formData.get("account_type") as string,
+      description: formData.get("description") as string,
+      bank_id: formData.get("bank_id") as string,
+    });
 
-    return SUCESS_UPDATE_MESSAGE
+    return SUCESS_UPDATE_MESSAGE;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.error(AXIOS_ERROR, error.message);
-    } else {
-      console.error(UNKNOWN_ERROR, error);
-    }
+    if (axios.isAxiosError(error)) console.error(AXIOS_ERROR, error.message);
+    else console.error(UNKNOWN_ERROR, error);
 
-    return ERROR_UPDATE_MESSAGE
-  }  
+    return ERROR_UPDATE_MESSAGE;
+  }
 }
 
 export async function deleteWallet(): Promise<string>{

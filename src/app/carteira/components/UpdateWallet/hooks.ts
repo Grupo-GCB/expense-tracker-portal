@@ -34,8 +34,8 @@ export const useUpdateWallet = ({ setOpen }: IUseWallet) => {
     error.issues.forEach((issue, i) => {
       const fieldName = issue.path[i];
       if (fieldName in fieldErrorMappings) {
-        const errorMessage = fieldErrorMappings[fieldName];
-        toast.error(errorMessage.errorMessage);
+        const { errorMessage } = fieldErrorMappings[fieldName];
+        toast.error(errorMessage);
       }
     });
   }
@@ -48,11 +48,8 @@ export const useUpdateWallet = ({ setOpen }: IUseWallet) => {
       if (response === SUCESS_UPDATE_MESSAGE) toast.success(response);
       if (response === ERROR_UPDATE_MESSAGE) toast.error(response);
     } catch (error) {
-      if (error instanceof Zod.ZodError) {
-        handleValidationErrors(error);
-      } else {
-        toast.error(`${error}`);
-      }
+      if (error instanceof Zod.ZodError) handleValidationErrors(error);
+      else toast.error(`${error}`);
     }
   };
 

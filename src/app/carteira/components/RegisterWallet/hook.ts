@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import Zod from "zod";
 
 import { registerWallet } from "@/app/carteira/action";
-import { IUseWallet, WalletSchema, fieldErrorMappings } from "../../types";
+import { IUseWallet, WalletSchema, fieldErrorMappings } from "@/app/carteira/types";
 import { useState } from "react";
 
 export const useRegisterWallet = ({ setOpen }: IUseWallet) => {

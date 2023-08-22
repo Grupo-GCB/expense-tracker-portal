@@ -26,7 +26,7 @@ export function CardWallet({
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
 
-  const saveWalletIdOnCookies = () => {
+  const saveWalletIdOnCookies = (): void => {
     setCookie(null, "@id_wallet", walletId, {
       maxAge: THIRTY_DAY_COOKIE_LIFETIME,
       path: "/",
