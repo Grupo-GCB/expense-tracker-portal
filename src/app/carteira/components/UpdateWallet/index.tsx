@@ -4,14 +4,13 @@ import { CircleNotch } from "phosphor-react";
 import { Button, CustomSelect } from "@/components";
 import { FormModal } from "@/components/Modal/FormModal";
 import { accountTypes } from "@/utils/constants";
-
 import { IUseWallet } from "@/app/carteira/types";
-import { useUpdateWallet } from "./update-wallet.hooks";
-import { useWallet } from "../../wallet.hook";
+import { useUpdateWallet } from "./hooks";
+import { useWallet } from "@/app/carteira/wallet.hook";
 
 export function UpdateWallet({ setOpen }: IUseWallet) {
-  const { actions, states } = useWallet({ setOpen });
-  const { updateActions } = useUpdateWallet()
+  const { states } = useWallet({ setOpen });
+  const { updateActions } = useUpdateWallet({ setOpen });
 
   return (
     <FormModal action={updateActions.handleUpdateWallet}>
@@ -38,7 +37,6 @@ export function UpdateWallet({ setOpen }: IUseWallet) {
         <Button
           type="submit"
           className="py-2 px-4 md:py-4 md:px-6 bg-green-500 w-full md:w-full rounded-[6px]"
-          onClick={actions.handleSaveForm}
           disabled={states.isSavingDataForms}
           canceled={false}
         >

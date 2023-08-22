@@ -1,10 +1,12 @@
-import { UserProvider } from '@auth0/nextjs-auth0/client'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import "@/styles/tailwind.css";
 import { Sidebar } from "@/components";
+import "@/styles/tailwind.css";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +25,9 @@ export default function RootLayout({
       <UserProvider>
         <body className="bg-gray-800">
           <Sidebar />
+          <ToastContainer/>
           {children}
+          <ToastContainer />
         </body>
       </UserProvider>
     </html>

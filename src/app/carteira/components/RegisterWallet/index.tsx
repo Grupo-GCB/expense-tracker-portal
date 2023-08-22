@@ -1,20 +1,18 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { CircleNotch } from "phosphor-react";
 
-import { Button, CustomSelect } from "@/components";
-import { FormModal } from "@/components/Modal/FormModal";
-import { accountTypes } from "@/utils/constants";
-
 import { IUseWallet } from "@/app/carteira/types";
-import { useRegisterWallet } from "./register-wallet.hook";
+import { Button, CustomSelect, FormModal } from "@/components";
+import { accountTypes } from "@/utils/constants";
+import { useRegisterWallet } from "./hook";
 import { useWallet } from "../../wallet.hook";
 
 export function RegisterWallet({ setOpen }: IUseWallet) {
-  const { actions, states } = useWallet({ setOpen });
-  const { regsiterActions } = useRegisterWallet()
+  const { states } = useWallet({ setOpen });
+  const { registerActions } = useRegisterWallet({ setOpen });
 
   return (
-    <FormModal action={regsiterActions.handleRegisterWallet}>
+    <FormModal action={registerActions.handleRegisterWallet}>
       <CustomSelect
         options={accountTypes}
         placeholder="Tipo da conta"
@@ -38,7 +36,6 @@ export function RegisterWallet({ setOpen }: IUseWallet) {
         <Button
           type="submit"
           className="py-2 px-4 md:py-4 md:px-6 bg-green-500 w-full md:w-full rounded-[6px]"
-          onClick={actions.handleSaveForm}
           disabled={states.isSavingDataForms}
           canceled={false}
         >
@@ -48,7 +45,7 @@ export function RegisterWallet({ setOpen }: IUseWallet) {
               data-testid="loading-icon"
             />
           ) : (
-            <span>Confirmar!</span>
+            <span>Confirmar</span>
           )}
         </Button>
         <Dialog.Close asChild>

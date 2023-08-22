@@ -1,11 +1,11 @@
-import { Meta, StoryObj } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { Meta, StoryObj } from "@storybook/react";
 
-import { Header } from ".";
+import { Carteira } from "./page";
 
 export default {
-  title: "Components/Header",
-  component: Header,
+  title: "Pages/Carteira",
+  component: Carteira,
   parameters: {
     layout: "fullscreen",
     viewport: {

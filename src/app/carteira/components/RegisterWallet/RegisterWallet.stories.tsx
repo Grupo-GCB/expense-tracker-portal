@@ -1,11 +1,19 @@
-import { Meta, StoryObj } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { Meta, StoryObj } from "@storybook/react";
 
-import { Header } from ".";
+import { Modal } from "@/components";
+import { RegisterWallet } from ".";
 
 export default {
-  title: "Components/Header",
-  component: Header,
+  title: "Components/RegisterWallet",
+  component: RegisterWallet,
+  decorators: [
+    (Story) => (
+      <div className="w-72">
+        <Modal>{Story()}</Modal>
+      </div>
+    ),
+  ],
   parameters: {
     layout: "fullscreen",
     viewport: {
