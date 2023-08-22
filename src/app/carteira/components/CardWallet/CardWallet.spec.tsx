@@ -1,6 +1,19 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import { toast } from "react-toastify";
 
+import { getAllWallets } from "@/app/carteira/action";
+import Carteira from "@/app/carteira/page";
 import { CardWallet } from ".";
+
+jest.mock("react-toastify", () => ({
+  toast: {
+    error: jest.fn(),
+  },
+}));
+
+jest.mock("@/app/carteira/action", () => ({
+  getAllWallets: jest.fn(),
+}));
 
 describe("CardWallet", () => {
   it("should be able to render correctly", () => {
@@ -12,6 +25,7 @@ describe("CardWallet", () => {
         description="Carteira para viagens"
       />
     );
+
     const bankTitleTest = screen.getByText("C6");
     expect(bankTitleTest).toBeInTheDocument();
 
@@ -29,5 +43,16 @@ describe("CardWallet", () => {
 
     const cancelButton = screen.getByRole("button", { name: "Excluir" });
     expect(cancelButton).toBeInTheDocument();
+  });
+
+  it("should be display error toast when there is an error to get wallets", async () => {
+    getAllWallets.mockRejectedValue(new Error("API error"));
+
+    render(<Carteira />);
+
+    await waitFor(() => {
+      expect(getAllWallets).toHaveBeenCalledTimes(1);
+      expect(toast.error).toHaveBeenCalledWith("Erro ao listar as carteiras.");
+    });
   });
 });
