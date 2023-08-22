@@ -4,8 +4,8 @@ import { CircleNotch } from "phosphor-react";
 import { Button } from "@/components";
 import { FormModal } from "@/components/Modal/FormModal";
 import { IUseWallet } from "@/app/carteira/types";
-import { useWallet } from "../../wallet.hook";
-import { useDeleteWallet } from "./delete-wallet.hook";
+import { useWallet } from "@/app/carteira/wallet.hook";
+import { useDeleteWallet } from "./hook";
 
 export function DeleteWallet({ setOpen }: IUseWallet) {
   const { actions, states } = useWallet({ setOpen });

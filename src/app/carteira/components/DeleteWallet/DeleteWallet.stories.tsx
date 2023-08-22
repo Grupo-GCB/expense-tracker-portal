@@ -2,7 +2,7 @@ import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { Meta, StoryObj } from "@storybook/react";
 
 import { Modal } from "@/components";
-import { DeleteWallet } from "./index";
+import { DeleteWallet } from "./";
 
 export default {
   title: "Components/DeleteWallet",
