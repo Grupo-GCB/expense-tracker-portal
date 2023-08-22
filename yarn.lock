@@ -1461,9 +1461,9 @@
     "@hapi/hoek" "^9.0.0"
 
 "@hookform/resolvers@^3.1.1":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-3.2.0.tgz#0f48f57d464a216fa4a2d76b0f1317b91f91e99b"
-  integrity sha512-skXQHhLxq0Sz2xDwCyv5dygBCtXJe1GmWwxDzfdtl0X6agD6qcyTG8HrZWkjJoy8AkiLARqYvSYJ8z7+Nwmi7w==
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-3.3.0.tgz#5e37c2926b827d2577c1bd2676a2a705984b334d"
+  integrity sha512-tgK3nWlfFLlqhqpXZmFMP3RN5E7mlbGfnM2h2ILVsW1TNGuFSod0ePW0grlIY2GAbL4pJdtmOT4HQSZsTwOiKg==
 
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"
@@ -8848,9 +8848,9 @@ node-dir@^0.1.10, node-dir@^0.1.17:
     minimatch "^3.0.2"
 
 node-fetch-native@^1.0.2:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/node-fetch-native/-/node-fetch-native-1.2.0.tgz#13ec6df98f33168958dbfb6945f10aedf42e7ea8"
-  integrity sha512-5IAMBTl9p6PaAjYCnMv5FmqIF6GcZnawAVnzaCG0rX2aYZJ4CxEkZNtVPuTRug7fL7wyM5BQYTlAzcyMPi6oTQ==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/node-fetch-native/-/node-fetch-native-1.3.1.tgz#c39d69bdea85cccdc28236ba8529679566ede78c"
+  integrity sha512-Z1q9inzb0c2+FuByzG5P2rHaNe3CEYLPqJywun4M/eOI0IHB3K9TDINfb1VA20vWFsW2rWUMaGIo87R3zwpMug==
 
 node-fetch@^2.0.0:
   version "2.6.13"
