@@ -16,7 +16,7 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: yarn denv
+        run: yarn dev
 
       - name: Test coverage
         run: |
