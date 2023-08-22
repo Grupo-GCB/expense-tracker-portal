@@ -8,8 +8,8 @@ import { useRegisterWallet } from "./hook";
 import { useWallet } from "../../wallet.hook";
 
 export function RegisterWallet({ setOpen }: IUseWallet) {
-  const { actions, states } = useWallet({ setOpen });
-  const { registerActions } = useRegisterWallet()
+  const { states } = useWallet({ setOpen });
+  const { registerActions } = useRegisterWallet({ setOpen });
 
   return (
     <FormModal action={registerActions.handleRegisterWallet}>
@@ -37,7 +37,6 @@ export function RegisterWallet({ setOpen }: IUseWallet) {
           type="submit"
           className="py-2 px-4 md:py-4 md:px-6 bg-green-500 w-full md:w-full rounded-[6px]"
           disabled={states.isSavingDataForms}
-          onClick={actions.handleSaveForm}
           canceled={false}
         >
           {states.isSavingDataForms ? (
