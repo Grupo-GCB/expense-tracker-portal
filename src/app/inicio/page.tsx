@@ -14,6 +14,8 @@ import {
   THIRTY_DAY_COOKIE_LIFETIME,
   UNKNOWN_ERROR,
 } from "@/utils/constants";
+import { TableTransaction } from "./components/TableTransaction";
+import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
 
 export default function Home() {
   const { user } = useUser();
@@ -71,5 +73,53 @@ export default function Home() {
     );
   }
 
-  return <div className="lg:ml-28">Welcome {user.name}!</div>;
+  const transaction = [
+    {
+      id: "1",
+      decription: "Desenvolvimento de site",
+      typeWallet: "Nubank",
+      value: "R$ 12.000,00",
+      type: "income",
+      typeTransaction: "venda",
+      date: "13/04/2022",
+    },
+    {
+      id: "2",
+      decription: "Hamburguer",
+      typeWallet: "C6",
+      value: "- R$ 59,00",
+      type: "outcome",
+      typeTransaction: "venda",
+      date: "27/03/2022",
+    },
+    {
+      id: "3",
+      decription: "Hamburguer",
+      typeWallet: "Santander",
+      type: "outcome",
+      value: "- R$ 59,00",
+      typeTransaction: "venda",
+      date: "27/03/2022",
+    },
+  ];
+
+  return (
+    <main className="w-full max-w-5xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
+      <TableTransaction>
+        {transaction.map((item) => {
+          return (
+            <TableTransactionContent
+              key={item.id}
+              description={item.decription}
+              type={item.type}
+              typeWallet={item.typeWallet}
+              valueTransaction={item.value}
+              typeTransaction={item.typeTransaction}
+              dateTransaction={item.date}
+            />
+          );
+        })}
+      </TableTransaction>
+    </main>
+  );
 }
