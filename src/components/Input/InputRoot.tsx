@@ -5,6 +5,8 @@ interface InputRootProps extends HTMLAttributes<HTMLInputElement> {
   maxLength: number
   listId?: string
   name: string
+  type?: string
+  max?: string
 }
 
 export function InputRoot({
@@ -12,6 +14,8 @@ export function InputRoot({
   maxLength,
   listId,
   name,
+  type,
+  max,
   ...spread
 }: InputRootProps) {
   return (
@@ -21,6 +25,8 @@ export function InputRoot({
       list={listId}
       maxLength={maxLength}
       name={name}
+      type={type}
+      max={max}
       {...spread}
     />
   )
