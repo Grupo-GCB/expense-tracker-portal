@@ -6,22 +6,22 @@ describe("CardWallet", () => {
   it("should be able to render correctly", () => {
     render(
       <CardWallet
-        idWallet="12"
-        nameBank="NuTeste"
-        typeAccount="Teste"
-        description="Teste Unitário"
+        idWallet="896adb01-efe8-4730-a9e4-b95720beaced"
+        nameBank="C6"
+        typeAccount="Conta-Corrente"
+        description="Carteira para viagens"
       />
     );
-    const bankTitleTest = screen.getByText("NuTeste");
+    const bankTitleTest = screen.getByText("C6");
     expect(bankTitleTest).toBeInTheDocument();
 
     const balance = screen.getByText("R$00,00");
     expect(balance).toBeInTheDocument();
 
-    const typeAccount = screen.getByText("Teste");
+    const typeAccount = screen.getByText("Conta-Corrente");
     expect(typeAccount).toBeInTheDocument();
 
-    const description = screen.getByText("Teste Unitário");
+    const description = screen.getByText("Carteira para viagens");
     expect(description).toBeInTheDocument();
 
     const confirmButton = screen.getByRole("button", { name: "Editar" });
