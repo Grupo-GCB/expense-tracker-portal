@@ -1,12 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import { RegisterWallet }  from "./index";
+import { UpdateWallet } from "./";
 
-describe("Register Wallet", () => {
+describe("RegisterWallet", () => {
   it("should be able to render the component correctly", () => {
     const setOpen = jest.fn();
 
-    render(<RegisterWallet setOpen={setOpen} />);
+    render(<UpdateWallet setOpen={setOpen} />);
 
     const tipoContaInput = screen.getByPlaceholderText("Tipo da conta");
     const bancoInput = screen.getByPlaceholderText("Banco");
@@ -23,7 +23,7 @@ describe("Register Wallet", () => {
 
   it("should be able to handle form submission", async () => {
     const mockSetOpen = jest.fn();
-    render(<RegisterWallet setOpen={mockSetOpen} />);
+    render(<UpdateWallet setOpen={mockSetOpen} />);
 
     const tipoContaInput = screen.getByPlaceholderText("Tipo da conta");
     const bancoInput = screen.getByPlaceholderText("Banco");

@@ -1,13 +1,13 @@
 "use server";
 
-import { AxiosError } from "axios";
-import jwt_decode from "jwt-decode";
-import { cookies } from "next/dist/client/components/headers";
+import jwt_decode from 'jwt-decode';
+import axios, { AxiosError } from 'axios';
+import { cookies } from 'next/dist/client/components/headers';
 
-import { ErrorMappings, IBank, IRegisterWallet, IWallet } from "@/interfaces";
-import api from "@/services/api";
-import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
+import { AXIOS_ERROR, AXIOS_ERROR_400, AXIOS_ERROR_404, ERROR_UPDATE_MESSAGE, SUCESS_UPDATE_MESSAGE, UNKNOWN_ERROR } from '@/utils/constants';
+import { IBank, IRegisterWallet, IWallet, ErrorMappings } from "@/interfaces";
 import { DecodedToken } from "./types";
+import api from '@/services/api';
 
 export async function getBanks(): Promise<IBank[]> {
   const { data } = await api.get<IBank[]>("/bank/all");
@@ -23,9 +23,13 @@ function getSubUserToken(userToken: string): string {
   return sub;
 }
 
-export async function registerWallet(formData: FormData): Promise<string> {
-  const id: string = getUserIdFromToken();
-  const sub: string = getSubUserToken(id);
+function getIdWallet(){
+  return cookies().get('@id_wallet')!.value
+}
+
+export async function registerWallet(formData: FormData): Promise<string>{
+  const user_token: string = getUserIdFromToken()
+  const sub = getSubUserToken(user_token)
 
   try {
     const { data } = await api.post<IRegisterWallet>("/wallet", {
@@ -61,9 +65,31 @@ export async function getAllWallets(): Promise<IWallet[] | string> {
   try {
     const id: string = getUserIdFromToken();
     const sub = getSubUserToken(id);
-    const { data } = await api.get<IWallet[]>(`/wallets/${sub}`);
+    const { data } = await api.get<IWallet[]>(`/wallet/all/${sub}`);
     return data;
   } catch {
     return "Erro ao listar as carteiras.";
   }
+}
+
+export async function updateWallet(formData: FormData): Promise<string>{
+  const idWallet: string = getIdWallet()
+
+  try {
+     await api.put<IWallet>(`/wallet/${idWallet}`, {
+      account_type: formData.get('account_type') as string,
+      description: formData.get('description') as string,
+      bank_id: formData.get('bank_id') as string,
+    })
+
+    return SUCESS_UPDATE_MESSAGE
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error(AXIOS_ERROR, error.message);
+    } else {
+      console.error(UNKNOWN_ERROR, error);
+    }
+
+    return ERROR_UPDATE_MESSAGE
+  }  
 }

@@ -1,17 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Zod from "zod";
 
-import { getBanks, registerWallet } from "@/app/carteira/action";
-import { IRegisterWallet } from "@/app/carteira/types";
-import { IOptions } from "@/components/Select";
-import { IBank } from "@/interfaces";
-import { RegisterWalletSchema, fieldErrorMappings } from "./types";
+import { registerWallet } from "@/app/carteira/action";
+import { IUseWallet, WalletSchema, fieldErrorMappings } from "../../types";
+import { useState } from "react";
 
-export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
-  const [bankList, setBankList] = useState<IOptions[]>([]);
+export const useRegisterWallet = ({ setOpen }: IUseWallet) => {
+
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
   const handleSaveForm = (success: boolean) => {
@@ -24,25 +21,9 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
     }, 2000);
   };
 
-  useEffect(() => {
-    async function fetchBanks(): Promise<void> {
-      try {
-        const banks: IBank[] = await getBanks();
-        const formattedOptions = banks.map((bank) => ({
-          value: bank.id,
-          label: bank.name,
-        }));
-        setBankList(formattedOptions);
-      } catch (error) {
-        toast.error(`Erro ao buscar os bancos: ${error}`);
-      }
-    }
-    fetchBanks();
-  }, []);
-
   function validateRegisterWallet(formData: FormData): void {
     const formDataObject = Object.fromEntries(formData.entries());
-    RegisterWalletSchema.parse(formDataObject);
+    WalletSchema.parse(formDataObject);
   }
 
   function handleValidationErrors(error: Zod.ZodError): void {
@@ -71,13 +52,8 @@ export const useRegisterWallet = ({ setOpen }: IRegisterWallet) => {
   };
 
   return {
-    states: {
-      bankList,
-      isSavingDataForms,
-    },
-    actions: {
+    registerActions: {
       handleRegisterWallet,
-      handleSaveForm,
     },
   };
 };
