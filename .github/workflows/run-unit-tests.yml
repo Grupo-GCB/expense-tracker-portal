@@ -16,11 +16,8 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: yarn install --legacy-peer-deps
-
-
-      - name: Run tests
-        run: yarn test
+        run: yarn add storybook
+        run: yarn denv
 
       - name: Test coverage
         run: |
