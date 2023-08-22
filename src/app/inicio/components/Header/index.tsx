@@ -1,12 +1,16 @@
 import * as Dialog from "@radix-ui/react-dialog";
+import { useState } from "react";
 
-import { Button } from "@/components";
+import { Button, Modal } from "@/components";
+import { UpdateWallet } from "@/app/carteira/components/UpdateWallet";
 
 export default function Header() {
+  const [open, setOpen] = useState<boolean>(false);
+
   return (
     <header className="w-full h-48 bg-black flex items-center justify-end px-40">
-      <Dialog.Root>
-        <Dialog.Trigger asChild>
+      <Modal open={open} onOpenChange={setOpen}>
+        <Modal.Button asChild>
           <Button
             id="newTransactionButton"
             type="submit"
@@ -15,8 +19,16 @@ export default function Header() {
           >
             Nova transação
           </Button>
-        </Dialog.Trigger>
-      </Dialog.Root>
+        </Modal.Button>
+        <Modal.Content>
+          <div className="flex justify-start">
+            <Dialog.Title className="text-lg md:text-xl">
+              Nova transação
+            </Dialog.Title>
+          </div>
+          <UpdateWallet setOpen={setOpen} />
+        </Modal.Content>
+      </Modal>
     </header>
   );
 }
