@@ -28,3 +28,24 @@ export const accountTypes: IOptions[] = [
   { value: AccountType.CASH, label: AccountType.CASH },
   { value: AccountType.OTHERS, label: AccountType.OTHERS },
 ];
+
+export const Categories = {
+  Casa: 'Casa',
+  Eletrônicos: 'Eletrônicos',
+  Educação: 'Educação',
+  Lazer: 'Lazer',
+  Alimentação: 'Alimentação',
+  Saúde: 'Saúde',
+  Supermercado: 'Supermercado',
+  Roupas: 'Roupas',
+  Transporte: 'Transporte',
+  Viagem: 'Viagem',
+  Serviços: 'Serviços',
+  Presentes: 'Presentes',
+  Outros: 'Outros'
+} as const;
+
+export const categoryTypes: IOptions[] = Object.entries(Categories).map(([value, label]) => ({
+  value,
+  label,
+}));
