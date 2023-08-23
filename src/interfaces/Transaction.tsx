@@ -6,7 +6,6 @@ export interface IRegisterTransaction {
     walletId: string;
     category: string;
     type: 'income' | 'outcome';
-    user_id?: string;
   }
   
 
