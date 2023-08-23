@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { ErrorMappings, ITransaction } from "@/interfaces";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
+import { toast } from "react-toastify";
 
 export const useHome = () => {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
@@ -22,7 +23,9 @@ export const useHome = () => {
     try {
       const response = test.get("/transaction");
       const { data } = await response;
-      setTransactions(data);
+      if (Array.isArray(response) && response.length !== 0)
+        setTransactions(data);
+      else toast.error("Nenhuma carteira foi encontrada.");
     } catch (error) {
       if (error instanceof AxiosError) {
         const axiosError = error as AxiosError;
