@@ -1,6 +1,6 @@
 export interface ITransaction {
   id: string;
-  decription: string;
+  description: string;
   typeWallet: string;
   price: string;
   type: "income" | "outcome";
