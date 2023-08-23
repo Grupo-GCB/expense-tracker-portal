@@ -6,6 +6,7 @@ import { Button, Input, FormModal, CustomSelect } from "@/components";
 import { IUseTransaction } from "@/app/inicio/types";
 import { useWallet } from "@/app/carteira/wallet.hook";
 import { useRegisterTransaction } from "./hook";
+import { categoryTypes } from "@/utils/constants";
 
 export function RegisterTransaction({ setOpen }: IUseTransaction) {
   const { states } = useWallet({ setOpen });
@@ -54,39 +55,39 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
       <CustomSelect
         id="category"
         name="category"
-        options={states.bankList}
+        options={categoryTypes}
         placeholder="Categoria"
       />
 
       <RadioGroup.Root className="sm:grid sm:grid-rows-1 sm:w-full md:grid md:grid-cols-2 gap-4 mt-2" name='type'>
         <RadioGroup.Item
           className={`p-4 flex items-center justify-center gap-2 rounded cursor-pointer decoration-gray-300 font-normal ${
-            selectedOption === "income"
+            selectedOption === "Receita"
               ? "bg-green-500"
               : "bg-gray-700 hover:bg-gray-300"
           }`}
-          value="income"
-          onClick={() => handleOptionSelect("income")}
+          value="Receita"
+          onClick={() => handleOptionSelect("Receita")}
         >
           <ArrowCircleUp
             size={20}
-            color={`${selectedOption === "income" ? "#FFFFFF" : "#00B37E"}`}
+            color={`${selectedOption === "Receita" ? "#FFFFFF" : "#00B37E"}`}
           />
           Entrada
         </RadioGroup.Item>
 
         <RadioGroup.Item
           className={`p-4 flex items-center justify-center gap-2 rounded cursor-pointer decoration-gray-300 font-normal ${
-            selectedOption === "outcome"
+            selectedOption === "Despesa"
               ? "bg-red-300"
               : "bg-gray-700 hover:bg-gray-300"
           }`}
-          value="outcome"
-          onClick={() => handleOptionSelect("outcome")}
+          value="Despesa"
+          onClick={() => handleOptionSelect("Despesa")}
         >
           <ArrowCircleDown
             size={20}
-            color={`${selectedOption === "outcome" ? "#FFFFFF" : "#F75A68"}`}
+            color={`${selectedOption === "Despesa" ? "#FFFFFF" : "#F75A68"}`}
           />
           Saída
         </RadioGroup.Item>

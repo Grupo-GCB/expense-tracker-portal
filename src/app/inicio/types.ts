@@ -11,7 +11,7 @@ export const newTransactionSchema = z.object({
   date: z.string().nonempty(),
   wallets: z.string().nonempty(),
   category: z.string().nonempty(),
-  type: z.enum(['income', 'outcome'])
+  type: z.enum(['Receita', 'Despesa'])
 })
 
 export type TTransaction = z.infer<typeof newTransactionSchema>;
