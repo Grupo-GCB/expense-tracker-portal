@@ -4,9 +4,10 @@ interface InputRootProps extends HTMLAttributes<HTMLInputElement> {
   placeholder: string
   maxLength: number
   listId?: string
-  name: string
+  name?: string
   type?: string
-  max?: string
+  max?: string | number
+  min?: string | number
 }
 
 export function InputRoot({
@@ -16,6 +17,7 @@ export function InputRoot({
   name,
   type,
   max,
+  min,
   ...spread
 }: InputRootProps) {
   return (
@@ -27,6 +29,7 @@ export function InputRoot({
       name={name}
       type={type}
       max={max}
+      min={min}
       {...spread}
     />
   )
