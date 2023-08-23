@@ -4,6 +4,7 @@ import { IWallet } from "@/interfaces";
 import { getAllWallets } from "@/app/carteira/action";
 import { toast } from "react-toastify";
 import { IOptions } from "@/components";
+import { registerTransaction } from "../../action";
 
 export const useRegisterTransaction = () => {
   const [walletsNames, setWalletsNames] = useState<IOptions[]>([]);
@@ -41,12 +42,22 @@ export const useRegisterTransaction = () => {
       .padStart(2, "0")}`;
   };
 
+  const handleNewTransaction = async (values: FormData): Promise<void> => {
+    try{
+      const response = await registerTransaction(values)
+      toast(response)
+    } catch (error) {
+      toast.error(`${error}`);
+    }
+  }
+
   return {
     statesTransaction:{
       walletsNames
     },
     actions: {
       getMaxDate,
+      handleNewTransaction
     },
   };
 };
