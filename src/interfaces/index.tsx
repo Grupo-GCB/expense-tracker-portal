@@ -8,3 +8,4 @@ export * from "./UserProfile";
 export * from "./Bank";
 export * from "./Wallet";
 export * from "./ErrorMapping"
+export * from "./Transaction"
