@@ -1,4 +1,5 @@
 import { PencilLine, Trash } from "phosphor-react";
+import { ButtonAction } from "../ButtonAction";
 
 interface ITableTransaction {
   description: string;
@@ -30,16 +31,16 @@ export function TableTransactionContent({
       <td className=" px-5 py-8 bg-gray-700">{dateTransaction}</td>
       <td className=" px-5 py-8 bg-gray-700">
         <div className="flex gap-2">
-          <button className="focus:outline-green-300 focus:outline-2 ">
+          <ButtonAction>
             <PencilLine
               size={25}
               color="#40B9F7"
               className="hover:cursor-pointer"
             />{" "}
-          </button>
-          <button className="focus:outline-green-300 focus:outline-2 ">
+          </ButtonAction>
+          <ButtonAction>
             <Trash size={25} color="#F75A68" className="hover:cursor-pointer" />
-          </button>
+          </ButtonAction>
         </div>
       </td>
     </tr>
