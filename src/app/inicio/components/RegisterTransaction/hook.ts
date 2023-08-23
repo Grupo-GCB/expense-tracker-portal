@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
+import Zod from "zod";
+import { toast } from "react-toastify";
 
 import { IWallet } from "@/interfaces";
 import { getAllWallets } from "@/app/carteira/action";
-import { toast } from "react-toastify";
 import { IOptions } from "@/components";
 import { registerTransaction } from "@/app/inicio/action";
-import Zod from "zod";
-import { IUseTransaction, fieldErrorMappings, newTransactionSchema } from "../../types";
-import { ERROR_REGISTER_TRANSACTION, SUCESS_REGISTER_TRANSACTION } from "@/utils/constants";
+import {
+  IUseTransaction,
+  fieldErrorMappings,
+  newTransactionSchema,
+} from "@/app/inicio/types";
+import {
+  ERROR_REGISTER_TRANSACTION,
+  SUCESS_REGISTER_TRANSACTION,
+} from "@/utils/constants";
 
 export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
   const [walletsNames, setWalletsNames] = useState<IOptions[]>([]);
@@ -28,12 +35,10 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
       try {
         const response: IWallet[] | string = await getAllWallets();
         if (Array.isArray(response) && response.length !== 0) {
-          const bank = response.map((wallet) => (
-            {
-              value: wallet.id,
-              label: `${wallet.bank.name} - ${wallet.account_type}`
-            }
-          ))
+          const bank = response.map((wallet) => ({
+            value: wallet.id,
+            label: `${wallet.bank.name} - ${wallet.account_type}`,
+          }));
 
           setWalletsNames(bank);
         }
@@ -44,7 +49,6 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
 
     getWalletsNames();
   }, []);
-
 
   const getMaxDate = (): string => {
     const today = new Date();
@@ -72,12 +76,12 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
   }
 
   const handleNewTransaction = async (values: FormData): Promise<void> => {
-    try{
-      validateRegisterTransaction(values)
-      const response = await registerTransaction(values)
-      handleSaveForm(true)
-      if(response === SUCESS_REGISTER_TRANSACTION) toast.success(response)
-      if(response === ERROR_REGISTER_TRANSACTION) toast.success(response)
+    try {
+      validateRegisterTransaction(values);
+      const response = await registerTransaction(values);
+      handleSaveForm(true);
+      if (response === SUCESS_REGISTER_TRANSACTION) toast.success(response);
+      if (response === ERROR_REGISTER_TRANSACTION) toast.success(response);
     } catch (error) {
       if (error instanceof Zod.ZodError) {
         handleValidationErrors(error);
@@ -85,16 +89,16 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
         toast.error(`${error}`);
       }
     }
-  }
+  };
 
   return {
-    states:{
+    states: {
       walletsNames,
-      isSavingDataForms
+      isSavingDataForms,
     },
     actions: {
       getMaxDate,
-      handleNewTransaction
+      handleNewTransaction,
     },
   };
 };

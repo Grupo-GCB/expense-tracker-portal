@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import { Button, Input, FormModal, CustomSelect } from "@/components";
 import { IUseTransaction } from "@/app/inicio/types";
-import { useWallet } from "@/app/carteira/wallet.hook";
 import { useRegisterTransaction } from "./hook";
 import { categoryTypes } from "@/utils/constants";
 
@@ -58,7 +57,10 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
         placeholder="Categoria"
       />
 
-      <RadioGroup.Root className="sm:grid sm:grid-rows-1 sm:w-full md:grid md:grid-cols-2 gap-4 mt-2" name='type'>
+      <RadioGroup.Root
+        className="sm:grid sm:grid-rows-1 sm:w-full md:grid md:grid-cols-2 gap-4 mt-2"
+        name="type"
+      >
         <RadioGroup.Item
           className={`p-4 flex items-center justify-center gap-2 rounded cursor-pointer decoration-gray-300 font-normal ${
             selectedOption === "Receita"
