@@ -14,12 +14,13 @@ import {
   THIRTY_DAY_COOKIE_LIFETIME,
   UNKNOWN_ERROR,
 } from "@/utils/constants";
+import { CircleNotch } from "phosphor-react";
 import { TableTransaction } from "./components/TableTransaction";
 import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
 import { useHome } from "./hook";
 
 export default function Home() {
-  const { states, actions } = useHome();
+  const { states } = useHome();
 
   const { user } = useUser();
 
@@ -79,11 +80,12 @@ export default function Home() {
   return (
     <main className="w-full max-w-5xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
       <TableTransaction>
+        {/* Tipar o item */}
         {states.transactions.map((item) => {
           return (
             <TableTransactionContent
               key={item.id}
-              description={item.decription}
+              description={item.description}
               type={item.type}
               typeWallet={item.typeWallet}
               valueTransaction={item.price}
@@ -93,6 +95,12 @@ export default function Home() {
           );
         })}
       </TableTransaction>
+      {states.isloading && (
+        <div className="h-[20px] flex justify-center ">
+          <CircleNotch className="animate-spin" />
+        </div>
+      )}
+      <div ref={states.observerTarget}></div>
     </main>
   );
 }

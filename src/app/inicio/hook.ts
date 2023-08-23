@@ -1,12 +1,15 @@
 "use client";
 
+import axios, { AxiosError } from "axios";
+import { useEffect, useRef, useState } from "react";
+
 import { ErrorMappings, ITransaction } from "@/interfaces";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
-import axios, { AxiosError } from "axios";
-import { useEffect, useState } from "react";
 
 export const useHome = () => {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const [isloading, setIsLoading] = useState<boolean>(false);
+  const observerTarget = useRef(null);
 
   const test = axios.create({
     baseURL: "http://localhost:3001",
@@ -42,15 +45,38 @@ export const useHome = () => {
   }
 
   useEffect(() => {
-    loadTransactions();
-  }, []);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setTimeout(() => {
+            loadTransactions();
+            setIsLoading(true);
+          });
+          setIsLoading(false);
+        }
+      },
+      { threshold: 1 }
+    );
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+
+    return () => {
+      if (observerTarget.current) {
+        observer.unobserve(observerTarget.current);
+      }
+    };
+  }, [observerTarget]);
 
   return {
     states: {
       transactions,
+      observerTarget,
+      isloading,
     },
     actions: {
       setTransactions,
+      setIsLoading,
     },
   };
 };
