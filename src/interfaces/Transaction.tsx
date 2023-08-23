@@ -3,7 +3,6 @@ export interface IRegisterTransaction {
     price: number;
     date: string; 
     wallets: string;
-    walletId: string;
     category: string;
     type: 'income' | 'outcome';
   }
