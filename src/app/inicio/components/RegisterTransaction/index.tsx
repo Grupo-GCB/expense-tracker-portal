@@ -36,8 +36,8 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
         className="flex items-center px-4 bg-gray-900 h-12 rounded focus:outline-none focus:ring focus:ring-green-300 resize-none"
       />
       <Input.Root
-        id="price"
-        name="price"
+        id="date"
+        name="date"
         type="date"
         maxLength={32}
         placeholder="Data"
@@ -58,7 +58,7 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
         placeholder="Categoria"
       />
 
-      <RadioGroup.Root className="sm:grid sm:grid-rows-1 sm:w-full md:grid md:grid-cols-2 gap-4 mt-2">
+      <RadioGroup.Root className="sm:grid sm:grid-rows-1 sm:w-full md:grid md:grid-cols-2 gap-4 mt-2" name='type'>
         <RadioGroup.Item
           className={`p-4 flex items-center justify-center gap-2 rounded cursor-pointer decoration-gray-300 font-normal ${
             selectedOption === "income"
