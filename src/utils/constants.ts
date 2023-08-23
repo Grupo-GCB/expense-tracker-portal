@@ -11,6 +11,8 @@ export const SUCESS_UPDATE_MESSAGE = "Atualização da carteira realizada com su
 export const ERROR_UPDATE_MESSAGE = "Erro ao realizar a atualização da carteira."
 export const SUCESS_DELETE_MESSAGE = "Carteira deletada com sucesso."
 export const ERROR_DELETE_MESSAGE = "Erro ao deletar a carteira."
+export const SUCESS_REGISTER_TRANSACTION = "Nova transação adicionada com sucesso"
+export const ERROR_REGISTER_TRANSACTION = "Erro ao adicionar nova transação"
 
 
 export const AccountType = {
