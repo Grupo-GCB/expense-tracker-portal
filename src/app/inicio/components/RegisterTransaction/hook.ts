@@ -4,7 +4,7 @@ import { IWallet } from "@/interfaces";
 import { getAllWallets } from "@/app/carteira/action";
 import { toast } from "react-toastify";
 import { IOptions } from "@/components";
-import { registerTransaction } from "../../action";
+import { registerTransaction } from "@/app/inicio/action";
 
 export const useRegisterTransaction = () => {
   const [walletsNames, setWalletsNames] = useState<IOptions[]>([]);

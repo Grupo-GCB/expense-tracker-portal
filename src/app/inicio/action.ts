@@ -1,7 +1,8 @@
-import { IRegisterTransaction, } from "@/interfaces/Transaction";
 import api from "@/services/api";
-import { AXIOS_ERROR, UNKNOWN_ERROR } from "@/utils/constants";
 import axios from "axios";
+
+import { IRegisterTransaction, } from "@/interfaces/Transaction";
+import { AXIOS_ERROR, UNKNOWN_ERROR } from "@/utils/constants";
 
 export async function registerTransaction(formData: FormData): Promise<string> {
   try {

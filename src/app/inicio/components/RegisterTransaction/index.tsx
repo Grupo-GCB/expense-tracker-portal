@@ -1,10 +1,10 @@
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { ArrowCircleDown, ArrowCircleUp, CircleNotch } from "phosphor-react";
+import { useState } from "react";
 
 import { Button, Input, FormModal, CustomSelect } from "@/components";
 import { IUseTransaction } from "@/app/inicio/types";
 import { useWallet } from "@/app/carteira/wallet.hook";
-import { useState } from "react";
 import { useRegisterTransaction } from "./hook";
 
 export function RegisterTransaction({ setOpen }: IUseTransaction) {
