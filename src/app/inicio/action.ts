@@ -11,11 +11,10 @@ export async function registerTransaction(formData: FormData): Promise<string> {
   try {
     const {data} = await api.post<IRegisterTransaction>(`/transaction/${wallet}`, {
         description: formData.get("description") as string,
-        price: parseFloat(formData.get("price") as string),
+        value: parseFloat(formData.get("value") as string),
         date: formData.get("date") as string,
-        wallets: formData.get("wallets") as string,
         type: formData.get("type") as string,
-        category: formData.get("category") as string,        
+        categories: formData.get("categories") as string,        
     });
 
     console.log(data)

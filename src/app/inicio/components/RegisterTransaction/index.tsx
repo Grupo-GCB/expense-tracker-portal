@@ -28,8 +28,8 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
         className="flex items-center px-4 bg-gray-900 h-12 rounded focus:outline-none focus:ring focus:ring-green-300 resize-none"
       />
       <Input.Root
-        id="price"
-        name="price"
+        id="value"
+        name="value"
         type="number"
         min={0}
         placeholder="Preço"
@@ -53,8 +53,8 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
       />
 
       <CustomSelect
-        id="category"
-        name="category"
+        id="categories"
+        name="categories"
         options={categoryTypes}
         placeholder="Categoria"
       />

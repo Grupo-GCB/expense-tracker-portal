@@ -1,9 +1,9 @@
 export interface IRegisterTransaction {
     description: string;
-    price: number;
+    value: number;
     date: string; 
     wallets: string;
-    category: string;
+    categories: string;
     type: 'income' | 'outcome';
   }
   

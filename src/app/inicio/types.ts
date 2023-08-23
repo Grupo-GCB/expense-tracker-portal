@@ -7,10 +7,10 @@ export interface IUseTransaction {
 
 export const newTransactionSchema = z.object({
   description: z.string().nonempty(),
-  price: z.string().nonempty(),
+  value: z.string().nonempty(),
   date: z.string().nonempty(),
   wallets: z.string().nonempty(),
-  category: z.string().nonempty(),
+  categories: z.string().nonempty(),
   type: z.enum(['Receita', 'Despesa'])
 })
 
@@ -26,7 +26,7 @@ export const fieldErrorMappings: FieldErrorMapping = {
   description: {
     errorMessage: "Descrição é obirgatório"
   },
-  price: {
+  value: {
     errorMessage: "O valor é obirgatório"
   },
   date: {
@@ -35,7 +35,7 @@ export const fieldErrorMappings: FieldErrorMapping = {
   wallets: {
     errorMessage: "Uma carteira é obrigatória"
   },
-  category: {
+  categories: {
     errorMessage: "A categoria é obrigatória"
   },
   type: {
