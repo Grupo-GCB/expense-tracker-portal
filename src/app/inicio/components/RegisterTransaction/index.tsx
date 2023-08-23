@@ -9,8 +9,7 @@ import { useRegisterTransaction } from "./hook";
 import { categoryTypes } from "@/utils/constants";
 
 export function RegisterTransaction({ setOpen }: IUseTransaction) {
-  const { states } = useWallet({ setOpen });
-  const { statesTransaction, actions } = useRegisterTransaction();
+  const { states, actions } = useRegisterTransaction({ setOpen });
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleOptionSelect = (value: string) => {
@@ -48,7 +47,7 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
       <CustomSelect
         id="wallets"
         name="wallets"
-        options={statesTransaction.walletsNames}
+        options={states.walletsNames}
         placeholder="Carteiras"
       />
 
