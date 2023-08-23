@@ -6,10 +6,22 @@ import { toast } from "react-toastify";
 import { IOptions } from "@/components";
 import { registerTransaction } from "@/app/inicio/action";
 import Zod from "zod";
-import { fieldErrorMappings, newTransactionSchema } from "../../types";
+import { IUseTransaction, fieldErrorMappings, newTransactionSchema } from "../../types";
+import { ERROR_REGISTER_TRANSACTION, SUCESS_REGISTER_TRANSACTION } from "@/utils/constants";
 
-export const useRegisterTransaction = () => {
+export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
   const [walletsNames, setWalletsNames] = useState<IOptions[]>([]);
+  const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
+
+  const handleSaveForm = (succes: boolean) => {
+    setTimeout(() => {
+      setIsSavingDataForms(succes);
+    }, 200);
+
+    setTimeout(() => {
+      setOpen(false);
+    }, 2000);
+  };
 
   useEffect(() => {
     async function getWalletsNames(): Promise<void> {
@@ -63,7 +75,9 @@ export const useRegisterTransaction = () => {
     try{
       validateRegisterTransaction(values)
       const response = await registerTransaction(values)
-      toast(response)
+      handleSaveForm(true)
+      if(response === SUCESS_REGISTER_TRANSACTION) toast.success(response)
+      if(response === ERROR_REGISTER_TRANSACTION) toast.success(response)
     } catch (error) {
       if (error instanceof Zod.ZodError) {
         handleValidationErrors(error);
@@ -74,8 +88,9 @@ export const useRegisterTransaction = () => {
   }
 
   return {
-    statesTransaction:{
-      walletsNames
+    states:{
+      walletsNames,
+      isSavingDataForms
     },
     actions: {
       getMaxDate,
