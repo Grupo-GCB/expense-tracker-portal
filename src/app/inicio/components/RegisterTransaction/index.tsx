@@ -9,7 +9,7 @@ import { useRegisterTransaction } from "./hook";
 
 export function RegisterTransaction({ setOpen }: IUseTransaction) {
   const { states } = useWallet({ setOpen });
-  const { actions } = useRegisterTransaction()
+  const { statesTransaction, actions } = useRegisterTransaction()
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleOptionSelect = (value: string) => {
@@ -45,7 +45,7 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
       <CustomSelect
         id="wallets"
         name="wallets"
-        options={states.bankList}
+        options={statesTransaction.walletsNames}
         placeholder="Carteiras"
       />
 
@@ -56,7 +56,7 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
         placeholder="Categoria"
       />
 
-      <RadioGroup.Root className="m:grid sm:grid-rows-1 sm:w-full md:grid md:grid-cols-2 gap-4 mt-2">
+      <RadioGroup.Root className="sm:grid sm:grid-rows-1 sm:w-full md:grid md:grid-cols-2 gap-4 mt-2">
         <RadioGroup.Item
           className={`p-4 flex items-center justify-center gap-2 rounded cursor-pointer decoration-gray-300 font-normal ${
             selectedOption === "income"
