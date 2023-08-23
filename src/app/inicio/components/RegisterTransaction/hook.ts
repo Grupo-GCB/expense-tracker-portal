@@ -5,6 +5,8 @@ import { getAllWallets } from "@/app/carteira/action";
 import { toast } from "react-toastify";
 import { IOptions } from "@/components";
 import { registerTransaction } from "@/app/inicio/action";
+import Zod from "zod";
+import { fieldErrorMappings, newTransactionSchema } from "../../types";
 
 export const useRegisterTransaction = () => {
   const [walletsNames, setWalletsNames] = useState<IOptions[]>([]);
@@ -42,12 +44,32 @@ export const useRegisterTransaction = () => {
       .padStart(2, "0")}`;
   };
 
+  function validateRegisterTransaction(formData: FormData): void {
+    const formDataObject = Object.fromEntries(formData.entries());
+    newTransactionSchema.parse(formDataObject);
+  }
+
+  function handleValidationErrors(error: Zod.ZodError): void {
+    error.issues.forEach((issue, i) => {
+      const fieldName = issue.path[i];
+      if (fieldName in fieldErrorMappings) {
+        const { errorMessage } = fieldErrorMappings[fieldName];
+        toast.error(errorMessage);
+      }
+    });
+  }
+
   const handleNewTransaction = async (values: FormData): Promise<void> => {
     try{
+      validateRegisterTransaction(values)
       const response = await registerTransaction(values)
       toast(response)
     } catch (error) {
-      toast.error(`${error}`);
+      if (error instanceof Zod.ZodError) {
+        handleValidationErrors(error);
+      } else {
+        toast.error(`${error}`);
+      }
     }
   }
 
