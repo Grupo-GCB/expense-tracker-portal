@@ -5,13 +5,16 @@ import { IRegisterTransaction, } from "@/interfaces/Transaction";
 import { AXIOS_ERROR, UNKNOWN_ERROR } from "@/utils/constants";
 
 export async function registerTransaction(formData: FormData): Promise<string> {
+
+  const wallet = formData.get("wallets") as string
+
   try {
-    const {data} = await api.post<IRegisterTransaction>("/transaction", {
+    const {data} = await api.post<IRegisterTransaction>(`/transaction/${wallet}`, {
         description: formData.get("description") as string,
-        price: formData.get("price"),
-        bank_id: formData.get("bank_id") as string,
+        price: parseFloat(formData.get("price") as string),
         date: formData.get("date") as string,
         wallets: formData.get("wallets") as string,
+        type: formData.get("type") as string,
         category: formData.get("category") as string,        
     });
 
