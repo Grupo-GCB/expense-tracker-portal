@@ -9,7 +9,7 @@ import { useRegisterTransaction } from "./hook";
 
 export function RegisterTransaction({ setOpen }: IUseTransaction) {
   const { states } = useWallet({ setOpen });
-  const { statesTransaction, actions } = useRegisterTransaction()
+  const { statesTransaction, actions } = useRegisterTransaction();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleOptionSelect = (value: string) => {
@@ -18,7 +18,7 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
   };
 
   return (
-    <FormModal>
+    <FormModal action={actions.handleNewTransaction}>
       <Input.Root
         id="description"
         name="description"
@@ -29,6 +29,8 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
       <Input.Root
         id="price"
         name="price"
+        type="number"
+        min={0}
         placeholder="Preço"
         maxLength={32}
         className="flex items-center px-4 bg-gray-900 h-12 rounded focus:outline-none focus:ring focus:ring-green-300 resize-none"
@@ -36,10 +38,10 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
       <Input.Root
         id="price"
         name="price"
-        type="date" 
-        maxLength={32} 
+        type="date"
+        maxLength={32}
         placeholder="Data"
-        max={actions.getMaxDate()} 
+        max={actions.getMaxDate()}
         className="flex items-center px-4 bg-gray-900 h-12 rounded focus:outline-none focus:ring focus:ring-green-300 resize-none  decoration-gray-300"
       />
       <CustomSelect
