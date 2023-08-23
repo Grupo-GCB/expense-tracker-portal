@@ -16,8 +16,11 @@ import {
 } from "@/utils/constants";
 import { TableTransaction } from "./components/TableTransaction";
 import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
+import { useHome } from "./hook";
 
 export default function Home() {
+  const { states, actions } = useHome();
+
   const { user } = useUser();
 
   async function sendToken({ token }: IToken): Promise<void> {
@@ -73,49 +76,19 @@ export default function Home() {
     );
   }
 
-  const transaction = [
-    {
-      id: "1",
-      decription: "Desenvolvimento de site",
-      typeWallet: "Nubank",
-      value: "R$ 12.000,00",
-      type: "income",
-      typeTransaction: "venda",
-      date: "13/04/2022",
-    },
-    {
-      id: "2",
-      decription: "Hamburguer",
-      typeWallet: "C6",
-      value: "- R$ 59,00",
-      type: "outcome",
-      typeTransaction: "venda",
-      date: "27/03/2022",
-    },
-    {
-      id: "3",
-      decription: "Hamburguer",
-      typeWallet: "Santander",
-      type: "outcome",
-      value: "- R$ 59,00",
-      typeTransaction: "venda",
-      date: "27/03/2022",
-    },
-  ];
-
   return (
     <main className="w-full max-w-5xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
       <TableTransaction>
-        {transaction.map((item) => {
+        {states.transactions.map((item) => {
           return (
             <TableTransactionContent
               key={item.id}
               description={item.decription}
               type={item.type}
               typeWallet={item.typeWallet}
-              valueTransaction={item.value}
-              typeTransaction={item.typeTransaction}
-              dateTransaction={item.date}
+              valueTransaction={item.price}
+              typeTransaction={item.category}
+              dateTransaction={item.createdAt}
             />
           );
         })}
