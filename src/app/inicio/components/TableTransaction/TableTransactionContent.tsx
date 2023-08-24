@@ -5,16 +5,7 @@ import { useState } from "react";
 import { ButtonAction } from "@/app/inicio/components/ButtonAction";
 import { DeleteTransaction } from "@/app/inicio/components/DeleteTransaction";
 import { Modal } from "@/components";
-
-interface ITableTransaction {
-  id: string;
-  description: string;
-  value: string;
-  type: string;
-  category: string;
-  walletName: string;
-  date: string;
-}
+import { ITableTransaction } from "./types";
 
 export function TableTransactionContent({
   id,
