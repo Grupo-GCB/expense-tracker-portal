@@ -12,7 +12,9 @@ import {
   newTransactionSchema,
 } from "@/app/inicio/types";
 import {
+  CLOSE_DELAY,
   ERROR_REGISTER_TRANSACTION,
+  FORM_DELAY,
   SUCESS_REGISTER_TRANSACTION,
 } from "@/utils/constants";
 
@@ -20,49 +22,43 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
   const [walletsNames, setWalletsNames] = useState<IOptions[]>([]);
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
-  const handleSaveForm = (succes: boolean) => {
+  const handleSaveForm = (succes: boolean): void => {
     setTimeout(() => {
       setIsSavingDataForms(succes);
-    }, 200);
+    }, FORM_DELAY);
 
     setTimeout(() => {
       setOpen(false);
-    }, 2000);
+    }, CLOSE_DELAY);
   };
 
-  useEffect(() => {
-    async function getWalletsNames(): Promise<void> {
-      try {
-        const response: IWallet[] | string = await getAllWallets();
-        if (Array.isArray(response) && response.length !== 0) {
-          const bank = response.map((wallet) => ({
-            value: wallet.id,
-            label: `${wallet.bank.name} - ${wallet.account_type}`,
-          }));
+  async function getWalletsNames(): Promise<void> {
+    try {
+      const response: IWallet[] | string = await getAllWallets();
+      if (Array.isArray(response) && response.length !== 0) {
+        const bank = response.map((wallet) => ({
+          value: wallet.id,
+          label: `${wallet.bank.name} - ${wallet.account_type}`,
+        }));
 
-          setWalletsNames(bank);
-        }
-      } catch {
-        toast.error("Erro ao listar nome das carteiras.");
+        setWalletsNames(bank);
       }
+    } catch {
+      toast.error("Erro ao listar nome das carteiras.");
     }
+  }
 
+  useEffect(() => {
     getWalletsNames();
   }, []);
 
-  const getMaxDate = (): string => {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth() + 1;
-    const day = today.getDate();
-    return `${year}-${month.toString().padStart(2, "0")}-${day
-      .toString()
-      .padStart(2, "0")}`;
-  };
+  function convertFormDataToObject(formData: FormData): Record<string, any> {
+    return Object.fromEntries(formData.entries());
+  }
 
-  function validateRegisterTransaction(formData: FormData): void {
-    const formDataObject = Object.fromEntries(formData.entries());
-    newTransactionSchema.parse(formDataObject);
+  function validateTransactionData(formData: FormData): void {
+    const transactionData = convertFormDataToObject(formData);
+    newTransactionSchema.parse(transactionData);
   }
 
   function handleValidationErrors(error: Zod.ZodError): void {
@@ -77,11 +73,11 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
 
   const handleNewTransaction = async (values: FormData): Promise<void> => {
     try {
-      validateRegisterTransaction(values);
+      validateTransactionData(values);
       const response = await registerTransaction(values);
       handleSaveForm(true);
       if (response === SUCESS_REGISTER_TRANSACTION) toast.success(response);
-      if (response === ERROR_REGISTER_TRANSACTION) toast.success(response);
+      if (response === ERROR_REGISTER_TRANSACTION) toast.error(response);
     } catch (error) {
       if (error instanceof Zod.ZodError) handleValidationErrors(error);
       else toast.error(`${error}`);
@@ -94,7 +90,6 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
       isSavingDataForms,
     },
     actions: {
-      getMaxDate,
       handleNewTransaction,
     },
   };

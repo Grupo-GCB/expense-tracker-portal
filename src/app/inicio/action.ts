@@ -1,7 +1,8 @@
-import api from "@/services/api";
 import axios from "axios";
 
-import { IRegisterTransaction } from "@/interfaces/Transaction";
+import api from "@/services/api";
+
+import { IRegisterTransaction } from "@/interfaces";
 import {
   AXIOS_ERROR,
   ERROR_REGISTER_TRANSACTION,
