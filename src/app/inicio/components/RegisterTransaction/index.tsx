@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button, Input, FormModal, CustomSelect } from "@/components";
 import { IUseTransaction } from "@/app/inicio/types";
 import { useRegisterTransaction } from "./hook";
-import { categoryTypes } from "@/utils/constants";
+import { categoryTypes, getCurrentDate } from "@/utils/constants";
 
 export function RegisterTransaction({ setOpen }: IUseTransaction) {
   const { states, actions } = useRegisterTransaction({ setOpen });
@@ -40,7 +40,7 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
         type="date"
         maxLength={32}
         placeholder="Data"
-        max={actions.getMaxDate()}
+        max={getCurrentDate()}
         className="flex items-center px-4 bg-gray-900 h-12 rounded focus:outline-none focus:ring focus:ring-green-300 resize-none  decoration-gray-300"
       />
       <CustomSelect
