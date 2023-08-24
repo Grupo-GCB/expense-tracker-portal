@@ -20,7 +20,7 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
   const [walletsNames, setWalletsNames] = useState<IOptions[]>([]);
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
-  const handleSaveForm = (succes: boolean) => {
+  const handleSaveForm = (succes: boolean): void => {
     setTimeout(() => {
       setIsSavingDataForms(succes);
     }, 200);
