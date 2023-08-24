@@ -83,11 +83,8 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
       if (response === SUCESS_REGISTER_TRANSACTION) toast.success(response);
       if (response === ERROR_REGISTER_TRANSACTION) toast.success(response);
     } catch (error) {
-      if (error instanceof Zod.ZodError) {
-        handleValidationErrors(error);
-      } else {
-        toast.error(`${error}`);
-      }
+      if (error instanceof Zod.ZodError) handleValidationErrors(error);
+      else toast.error(`${error}`);
     }
   };
 
