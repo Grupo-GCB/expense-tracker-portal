@@ -8,24 +8,24 @@ export default {
   component: ButtonAction,
 } as Meta<IButtonAction>;
 
-const ediIcon = () => {
+const EditIcon = () => {
   return (
     <PencilLine size={25} color="#40B9F7" className="hover:cursor-pointer" />
   );
 };
 
-const deleteIcon = () => {
+const DeleteIcon = () => {
   return <Trash size={25} color="#F75A68" className="hover:cursor-pointer" />;
 };
 
 export const EditButton: StoryObj<IButtonAction> = {
   args: {
-    children: ediIcon(),
+    children: EditIcon(),
   },
 };
 
 export const DeleteButton: StoryObj<IButtonAction> = {
   args: {
-    children: deleteIcon(),
+    children: DeleteIcon(),
   },
 };
