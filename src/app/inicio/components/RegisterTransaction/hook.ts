@@ -12,7 +12,9 @@ import {
   newTransactionSchema,
 } from "@/app/inicio/types";
 import {
+  CLOSE_DELAY,
   ERROR_REGISTER_TRANSACTION,
+  FORM_DELAY,
   SUCESS_REGISTER_TRANSACTION,
 } from "@/utils/constants";
 
@@ -23,11 +25,11 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
   const handleSaveForm = (succes: boolean): void => {
     setTimeout(() => {
       setIsSavingDataForms(succes);
-    }, 200);
+    }, FORM_DELAY);
 
     setTimeout(() => {
       setOpen(false);
-    }, 2000);
+    }, CLOSE_DELAY);
   };
 
   useEffect(() => {
