@@ -8,7 +8,7 @@ export default function Header() {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <header className="w-full h-40 bg-gray-900 flex items-center md:justify-end sm:justify-center md:px-40">
+    <header className="w-full h-48 bg-gray-900 flex items-center md:justify-start lg:justify-end sm:px-8 2xl:px-40 pb-16">
       <Modal open={open} onOpenChange={setOpen}>
         <Modal.Button asChild>
           <Button
