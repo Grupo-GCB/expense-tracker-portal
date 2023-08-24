@@ -9,6 +9,10 @@ export default function TransactionTypes({
   handleOptionSelect,
 }: ITransactionType) {
   return (
+    <RadioGroup.Root
+    className="grid grid-rows-1"
+    name="type"
+  >
     <RadioGroup.Item
       className={`p-4 flex items-center justify-center gap-2 rounded cursor-pointer decoration-gray-300 font-normal ${
         selectedOption === value
@@ -33,5 +37,6 @@ export default function TransactionTypes({
       )}
       {value === "Receita" ? "Entrada" : "Saída"}
     </RadioGroup.Item>
+    </RadioGroup.Root>
   );
 }

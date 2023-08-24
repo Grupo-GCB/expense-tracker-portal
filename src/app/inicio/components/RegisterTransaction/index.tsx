@@ -58,10 +58,7 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
         placeholder="Categoria"
       />
 
-      <RadioGroup.Root
-        className="sm:grid sm:grid-rows-1 sm:w-full md:grid md:grid-cols-2 gap-4 mt-2"
-        name="type"
-      >
+      <div className="sm:grid sm:grid-rows-1 sm:w-full md:grid md:grid-cols-2 gap-4 mt-2">
         <TransactionTypes
           value="Receita"
           selectedOption={selectedOption}
@@ -72,7 +69,7 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
           selectedOption={selectedOption}
           handleOptionSelect={handleOptionSelect}
         />
-      </RadioGroup.Root>
+      </div>
 
       <div className="flex flex-col md:flex-row gap-2 md:gap-4 md:w-full md:justify-center">
         <Button
