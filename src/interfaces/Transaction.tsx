@@ -4,12 +4,8 @@ export interface ITransaction {
   value: string;
   type: "Despesa" | "Receita";
   date: string;
-  wallet: {
-    id: string;
-    bank: {
-      name: string;
-    };
-  };
+  wallet_id: string;
+  name_bank: string;
   updated_at: string;
   deleted_at: boolean | null;
   id: string;
