@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Button, Input, FormModal, CustomSelect } from "@/components";
 import { IUseTransaction } from "@/app/inicio/types";
 import { useRegisterTransaction } from "./hook";
-import { categoryTypes, getCurrentDate } from "@/utils/constants";
 import TransactionTypes from "./components/TransactionTypes";
+import { getCurrentDate, categoryTypes } from "@/utils";
 
 export function RegisterTransaction({ setOpen }: IUseTransaction) {
   const { states, actions } = useRegisterTransaction({ setOpen });
