@@ -15,7 +15,7 @@ export const useDeleteTransaction = () => {
 
   function removeTransaction(id: string) {
     const newList: ITransaction[] = states.transactions.filter(
-      (item: ITransaction) => item.id !== id
+      (item: ITransaction) => item.transaction_id !== id
     );
     actions.setTransactions(newList);
   }
