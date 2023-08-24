@@ -11,7 +11,7 @@ jest.mock("./hook", () => ({
   })),
 }));
 
-describe("DeleteWallet", () => {
+describe("Delete Wallet", () => {
   it("should render the component correctly", () => {
     const setOpen = jest.fn();
     render(<DeleteWallet setOpen={setOpen} />);

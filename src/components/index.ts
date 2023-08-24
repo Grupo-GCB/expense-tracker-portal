@@ -5,3 +5,4 @@ export * from "./Button";
 export * from "./Select";
 export * from "./Sidebar";
 export * from "./Modal/FormModal"
+export * from "./Input"

@@ -52,12 +52,14 @@ export interface IOptions {
 }
 
 export interface ICustomSelectProps {
+  id?: string
   placeholder: string;
   options: IOptions[];
   name: string;
 }
 
 export function CustomSelect({
+  id,
   options,
   placeholder,
   name,
@@ -65,13 +67,14 @@ export function CustomSelect({
   return (
     <div>
       <Select
+        id={id}
         options={options}
         styles={customStyles}
         components={{
           IndicatorSeparator: () => null,
         }}
         placeholder={
-          <span className="flex align-middle">
+          <span className="flex items-center h-12">
             <MagnifyingGlass size={24} color="#7d7878" className="mr-2" />{" "}
             {placeholder}
           </span>

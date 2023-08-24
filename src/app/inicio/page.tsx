@@ -14,6 +14,7 @@ import {
   THIRTY_DAY_COOKIE_LIFETIME,
   UNKNOWN_ERROR,
 } from "@/utils/constants";
+import Header from "./components/Header";
 
 export default function Home() {
   const { user } = useUser();
@@ -71,5 +72,7 @@ export default function Home() {
     );
   }
 
-  return <div className="lg:ml-28">Welcome {user.name}!</div>;
+  return <div className="lg:ml-28">
+    <Header />
+  </div>;
 }

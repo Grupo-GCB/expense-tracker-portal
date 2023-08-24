@@ -11,6 +11,8 @@ export const SUCESS_UPDATE_MESSAGE = "Atualização da carteira realizada com su
 export const ERROR_UPDATE_MESSAGE = "Erro ao realizar a atualização da carteira."
 export const SUCESS_DELETE_MESSAGE = "Carteira deletada com sucesso."
 export const ERROR_DELETE_MESSAGE = "Erro ao deletar a carteira."
+export const SUCESS_REGISTER_TRANSACTION = "Nova transação adicionada com sucesso"
+export const ERROR_REGISTER_TRANSACTION = "Erro ao adicionar nova transação"
 
 
 export const AccountType = {
@@ -28,3 +30,24 @@ export const accountTypes: IOptions[] = [
   { value: AccountType.CASH, label: AccountType.CASH },
   { value: AccountType.OTHERS, label: AccountType.OTHERS },
 ];
+
+export const Categories = {
+  Casa: 'Casa',
+  Eletrônicos: 'Eletrônicos',
+  Educação: 'Educação',
+  Lazer: 'Lazer',
+  Alimentação: 'Alimentação',
+  Saúde: 'Saúde',
+  Supermercado: 'Supermercado',
+  Roupas: 'Roupas',
+  Transporte: 'Transporte',
+  Viagem: 'Viagem',
+  Serviços: 'Serviços',
+  Presentes: 'Presentes',
+  Outros: 'Outros'
+} as const;
+
+export const categoryTypes: IOptions[] = Object.entries(Categories).map(([value, label]) => ({
+  value,
+  label,
+}));

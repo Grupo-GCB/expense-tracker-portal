@@ -4,7 +4,16 @@ import jwt_decode from "jwt-decode";
 import axios, { AxiosError } from "axios";
 import { cookies } from "next/dist/client/components/headers";
 
-import { AXIOS_ERROR, AXIOS_ERROR_400, AXIOS_ERROR_404, ERROR_DELETE_MESSAGE, ERROR_UPDATE_MESSAGE, SUCESS_DELETE_MESSAGE, SUCESS_UPDATE_MESSAGE, UNKNOWN_ERROR } from '@/utils/constants';
+import {
+  AXIOS_ERROR,
+  AXIOS_ERROR_400,
+  AXIOS_ERROR_404,
+  ERROR_DELETE_MESSAGE,
+  ERROR_UPDATE_MESSAGE,
+  SUCESS_DELETE_MESSAGE,
+  SUCESS_UPDATE_MESSAGE,
+  UNKNOWN_ERROR,
+} from "@/utils/constants";
 import { IBank, IRegisterWallet, IWallet, ErrorMappings } from "@/interfaces";
 import { DecodedToken } from "./types";
 import api from "@/services/api";
@@ -89,20 +98,16 @@ export async function updateWallet(formData: FormData): Promise<string> {
   }
 }
 
-export async function deleteWallet(): Promise<string>{
-  const idWallet: string = getIdWallet()
+export async function deleteWallet(): Promise<string> {
+  const idWallet: string = getIdWallet();
 
   try {
-     await api.delete<string>(`/wallet/${idWallet}`)
-
-    return SUCESS_DELETE_MESSAGE
+    await api.delete<void>(`/wallet/${idWallet}`);
+    return SUCESS_DELETE_MESSAGE;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.error(AXIOS_ERROR, error.message);
-    } else {
-      console.error(UNKNOWN_ERROR, error);
-    }
+    if (axios.isAxiosError(error)) console.error(AXIOS_ERROR, error.message);
+    else console.error(UNKNOWN_ERROR, error);
 
-    return ERROR_DELETE_MESSAGE
-  }  
+    return ERROR_DELETE_MESSAGE;
+  }
 }
