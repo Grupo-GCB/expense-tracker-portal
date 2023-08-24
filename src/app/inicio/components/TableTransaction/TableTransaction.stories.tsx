@@ -11,11 +11,12 @@ export default {
 export const tableTransaction = () => (
   <TableTransaction>
     <TableTransactionContent
+      id=""
       description="Desenvolvimento de site"
       type="income"
       typeWallet="Nubank"
       valueTransaction="R$ 12.000,00"
-      typeTransaction="venda"
+      category="venda"
       dateTransaction="13/04/2022"
     />
   </TableTransaction>
