@@ -85,12 +85,13 @@ export default function Home() {
           return (
             <TableTransactionContent
               key={item.id}
+              id={item.id}
               description={item.description}
               type={item.type}
-              typeWallet={item.typeWallet}
-              valueTransaction={item.price}
-              typeTransaction={item.category}
-              dateTransaction={item.createdAt}
+              typeWallet={item.wallet.bank.name}
+              valueTransaction={item.value}
+              category={item.categories}
+              dateTransaction={item.date}
             />
           );
         })}
