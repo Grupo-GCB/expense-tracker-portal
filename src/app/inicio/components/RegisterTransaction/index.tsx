@@ -11,7 +11,7 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
   const { states, actions } = useRegisterTransaction({ setOpen });
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
-  const handleOptionSelect = (value: string) => {
+  const handleOptionSelect = (value: string): void => {
     if (selectedOption === value) setSelectedOption(null);
     else setSelectedOption(value);
   };
