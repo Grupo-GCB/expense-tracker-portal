@@ -52,9 +52,13 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
     getWalletsNames();
   }, []);
 
-  function validateRegisterTransaction(formData: FormData): void {
-    const formDataObject = Object.fromEntries(formData.entries());
-    newTransactionSchema.parse(formDataObject);
+  function convertFormDataToObject(formData: FormData): Record<string, any> {
+    return Object.fromEntries(formData.entries());
+  }
+
+  function validateTransactionData(formData: FormData): void {
+    const transactionData = convertFormDataToObject(formData);
+    newTransactionSchema.parse(transactionData);
   }
 
   function handleValidationErrors(error: Zod.ZodError): void {
@@ -69,7 +73,7 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
 
   const handleNewTransaction = async (values: FormData): Promise<void> => {
     try {
-      validateRegisterTransaction(values);
+      validateTransactionData(values);
       const response = await registerTransaction(values);
       handleSaveForm(true);
       if (response === SUCESS_REGISTER_TRANSACTION) toast.success(response);
