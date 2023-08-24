@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-
 import { PencilLine, Trash } from "phosphor-react";
+
 import { ButtonAction, IButtonAction } from ".";
 
 export default {
