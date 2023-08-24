@@ -81,7 +81,7 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
       const response = await registerTransaction(values);
       handleSaveForm(true);
       if (response === SUCESS_REGISTER_TRANSACTION) toast.success(response);
-      if (response === ERROR_REGISTER_TRANSACTION) toast.success(response);
+      if (response === ERROR_REGISTER_TRANSACTION) toast.error(response);
     } catch (error) {
       if (error instanceof Zod.ZodError) handleValidationErrors(error);
       else toast.error(`${error}`);
