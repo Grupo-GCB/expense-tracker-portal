@@ -1,9 +1,17 @@
 export interface ITransaction {
-  id: string;
+  categories: string;
   description: string;
-  typeWallet: string;
-  price: string;
-  type: "income" | "outcome";
-  category: string;
-  createdAt: string;
+  value: string;
+  type: "Despesa" | "Receita";
+  date: string;
+  wallet: {
+    id: string;
+    bank: {
+      name: string;
+    };
+  };
+  updated_at: string;
+  deleted_at: boolean | null;
+  id: string;
+  created_at: string;
 }
