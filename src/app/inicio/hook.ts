@@ -23,9 +23,8 @@ export const useHome = () => {
     try {
       const response = test.get("/transaction");
       const { data } = await response;
-      if (Array.isArray(response) && response.length !== 0)
-        setTransactions(data);
-      else toast.error("Nenhuma carteira foi encontrada.");
+      if (Array.isArray(data) && data.length !== 0) setTransactions(data);
+      else toast.error("Nenhuma transação foi encontrada.");
     } catch (error) {
       if (error instanceof AxiosError) {
         const axiosError = error as AxiosError;
@@ -51,11 +50,11 @@ export const useHome = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
+          loadTransactions();
+          setIsLoading(true);
           setTimeout(() => {
-            loadTransactions();
-            setIsLoading(true);
-          });
-          setIsLoading(false);
+            setIsLoading(false);
+          }, 2000);
         }
       },
       { threshold: 1 }
