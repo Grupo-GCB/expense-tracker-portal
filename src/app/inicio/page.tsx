@@ -15,6 +15,7 @@ import {
   UNKNOWN_ERROR,
 } from "@/utils/constants";
 import Header from "./components/Header";
+import Summary from "./components/Summary";
 
 export default function Home() {
   const { user } = useUser();
@@ -75,6 +76,7 @@ export default function Home() {
   return (
     <div className="lg:ml-28">
       <Header />
+      <Summary />
     </div>
   );
 }
