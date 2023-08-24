@@ -6,7 +6,7 @@ import { parseCookies, setCookie } from "nookies";
 import { useCallback, useEffect } from "react";
 
 import { ErrorPage } from "@/components";
-import { ISignInResponse, IToken } from "@/interfaces";
+import { ISignInResponse, IToken, ITransaction } from "@/interfaces";
 import api from "@/services/api";
 import getUserSession from "@/services/userSession";
 import {
@@ -80,8 +80,7 @@ export default function Home() {
   return (
     <main className="w-full max-w-5xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
       <TableTransaction>
-        {/* Tipar o item */}
-        {states.transactions.map((item) => {
+        {states.transactions.map((item: ITransaction) => {
           return (
             <TableTransactionContent
               key={item.id}
