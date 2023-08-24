@@ -4,18 +4,28 @@ import { AxiosError } from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-import { ErrorMappings } from "@/interfaces";
+import { useHome } from "@/app/inicio/hook";
+import { ErrorMappings, ITransaction } from "@/interfaces";
 import api from "@/services/api";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
 
 export const useDeleteTransaction = () => {
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
+  const { states, actions } = useHome();
+
+  function removeTransaction(id: string) {
+    const newList: ITransaction[] = states.transactions.filter(
+      (item: ITransaction) => item.id !== id
+    );
+    actions.setTransactions(newList);
+  }
 
   const deleteTransaction = async (idTransaction: string): Promise<void> => {
     try {
       const response = api.delete<string>(`/transaction/${idTransaction}`);
       setIsSavingDataForms(true);
       const { data } = await response;
+      removeTransaction(idTransaction);
       toast.success("Transação deletada com sucesso");
     } catch (error) {
       if (error instanceof AxiosError) {

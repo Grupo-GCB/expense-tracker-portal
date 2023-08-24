@@ -68,7 +68,7 @@ export const useHome = () => {
         observer.unobserve(observerTarget.current);
       }
     };
-  }, [observerTarget]);
+  }, [observerTarget,transactions]);
 
   return {
     states: {
