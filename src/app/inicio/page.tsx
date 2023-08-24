@@ -87,7 +87,7 @@ export default function Home() {
               id={item.id}
               description={item.description}
               type={item.type}
-              walletName={item.wallet.bank.name}
+              walletName={item.name_bank}
               value={item.value}
               category={item.categories}
               date={item.date}
