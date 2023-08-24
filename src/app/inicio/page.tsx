@@ -79,6 +79,9 @@ export default function Home() {
 
   return (
     <main className="w-full max-w-5xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
+      {states.transactions.length === 0 && <div className="w-full flex justify-center">
+        <p className="text-red-300">Nenhuma transação foi encontrada.</p>
+      </div>}
       <TableTransaction>
         {states.transactions.map((item: ITransaction) => {
           return (
