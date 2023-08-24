@@ -1,17 +1,17 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { CircleNotch } from "phosphor-react";
+import { Dispatch, SetStateAction } from "react";
 
 import { Button, FormModal } from "@/components";
 import { useDeleteTransaction } from "./hook";
-import { Dispatch, SetStateAction } from "react";
 
 interface IUseTransaction {
   setOpen: Dispatch<SetStateAction<boolean>>;
-  idTransaction:string;
+  idTransaction: string;
 }
 
-export function DeleteTransaction({ setOpen , idTransaction}: IUseTransaction) {
-  const {deleteStates, deleteActions} = useDeleteTransaction()
+export function DeleteTransaction({ setOpen, idTransaction }: IUseTransaction) {
+  const { deleteStates, deleteActions } = useDeleteTransaction();
 
   setTimeout(() => {
     setOpen(false);
