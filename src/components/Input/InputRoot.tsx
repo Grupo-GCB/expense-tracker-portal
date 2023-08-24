@@ -2,16 +2,22 @@ import { HTMLAttributes } from 'react'
 
 interface InputRootProps extends HTMLAttributes<HTMLInputElement> {
   placeholder: string
-  maxlength: number
+  maxLength: number
   listId?: string
-  name: string
+  name?: string
+  type?: string
+  max?: string | number
+  min?: string | number
 }
 
 export function InputRoot({
   placeholder,
-  maxlength,
+  maxLength,
   listId,
   name,
+  type,
+  max,
+  min,
   ...spread
 }: InputRootProps) {
   return (
@@ -19,8 +25,11 @@ export function InputRoot({
       className="w-full text-white px-4 py-2 rounded-[6px] bg-gray-900 shadow-sm focus:outline-none focus:ring focus:ring-green-300 "
       placeholder={placeholder}
       list={listId}
-      maxLength={maxlength}
+      maxLength={maxLength}
       name={name}
+      type={type}
+      max={max}
+      min={min}
       {...spread}
     />
   )
