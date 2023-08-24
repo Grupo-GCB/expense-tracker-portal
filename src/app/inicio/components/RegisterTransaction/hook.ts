@@ -32,23 +32,23 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
     }, CLOSE_DELAY);
   };
 
-  useEffect(() => {
-    async function getWalletsNames(): Promise<void> {
-      try {
-        const response: IWallet[] | string = await getAllWallets();
-        if (Array.isArray(response) && response.length !== 0) {
-          const bank = response.map((wallet) => ({
-            value: wallet.id,
-            label: `${wallet.bank.name} - ${wallet.account_type}`,
-          }));
+  async function getWalletsNames(): Promise<void> {
+    try {
+      const response: IWallet[] | string = await getAllWallets();
+      if (Array.isArray(response) && response.length !== 0) {
+        const bank = response.map((wallet) => ({
+          value: wallet.id,
+          label: `${wallet.bank.name} - ${wallet.account_type}`,
+        }));
 
-          setWalletsNames(bank);
-        }
-      } catch {
-        toast.error("Erro ao listar nome das carteiras.");
+        setWalletsNames(bank);
       }
+    } catch {
+      toast.error("Erro ao listar nome das carteiras.");
     }
+  }
 
+  useEffect(() => {
     getWalletsNames();
   }, []);
 
