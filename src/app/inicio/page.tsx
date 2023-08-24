@@ -87,10 +87,10 @@ export default function Home() {
               id={item.id}
               description={item.description}
               type={item.type}
-              typeWallet={item.wallet.bank.name}
-              valueTransaction={item.value}
+              walletName={item.wallet.bank.name}
+              value={item.value}
               category={item.categories}
-              dateTransaction={item.date}
+              date={item.date}
             />
           );
         })}

@@ -1,28 +1,29 @@
-import { Modal } from "@/components";
 import * as Dialog from "@radix-ui/react-dialog";
 import { PencilLine, Trash } from "phosphor-react";
 import { useState } from "react";
-import { ButtonAction } from "../ButtonAction";
-import { DeleteTransaction } from "../DeleteTransaction";
+
+import { ButtonAction } from "@/app/inicio/components/ButtonAction";
+import { DeleteTransaction } from "@/app/inicio/components/DeleteTransaction";
+import { Modal } from "@/components";
 
 interface ITableTransaction {
   id: string;
   description: string;
-  valueTransaction: string;
+  value: string;
   type: string;
   category: string;
-  typeWallet: string;
-  dateTransaction: string;
+  walletName: string;
+  date: string;
 }
 
 export function TableTransactionContent({
   id,
   description,
-  valueTransaction,
+  value,
   type,
   category,
-  typeWallet,
-  dateTransaction,
+  walletName,
+  date,
 }: ITableTransaction) {
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
   return (
@@ -32,12 +33,12 @@ export function TableTransactionContent({
         <span
           className={type === "Receita" ? "text-green-300" : "text-red-300"}
         >
-          {valueTransaction}
+          {value}
         </span>
       </td>
-      <td className=" px-5 py-8 bg-gray-700">{typeWallet}</td>
+      <td className=" px-5 py-8 bg-gray-700">{walletName}</td>
       <td className=" px-5 py-8 bg-gray-700">{category}</td>
-      <td className=" px-5 py-8 bg-gray-700">{dateTransaction}</td>
+      <td className=" px-5 py-8 bg-gray-700">{date}</td>
       <td className=" px-5 py-8 bg-gray-700">
         <div className="flex gap-2">
           <ButtonAction onClick={() => {}}>
