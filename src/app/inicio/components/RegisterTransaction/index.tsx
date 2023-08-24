@@ -1,4 +1,3 @@
-import * as RadioGroup from "@radix-ui/react-radio-group";
 import { CircleNotch } from "phosphor-react";
 import { useState } from "react";
 
