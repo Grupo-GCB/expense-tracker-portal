@@ -72,7 +72,9 @@ export default function Home() {
     );
   }
 
-  return <div className="lg:ml-28">
-    <Header />
-  </div>;
+  return (
+    <div className="lg:ml-28">
+      <Header />
+    </div>
+  );
 }
