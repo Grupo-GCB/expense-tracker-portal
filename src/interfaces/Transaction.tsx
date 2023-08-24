@@ -6,6 +6,3 @@ export interface IRegisterTransaction {
     categories: string;
     type: 'Receita' | 'Despesa';
   }
-  
-
-  
