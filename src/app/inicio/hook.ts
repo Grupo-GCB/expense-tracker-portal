@@ -2,10 +2,10 @@
 
 import axios, { AxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 import { ErrorMappings, ITransaction } from "@/interfaces";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
-import { toast } from "react-toastify";
 
 export const useHome = () => {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
@@ -21,7 +21,7 @@ export const useHome = () => {
 
   async function loadTransactions() {
     try {
-      const response = test.get("/transaction");
+      const response = test.get<ITransaction>("/transaction");
       const { data } = await response;
       if (Array.isArray(data) && data.length !== 0) setTransactions(data);
       else toast.error("Nenhuma transação foi encontrada.");
