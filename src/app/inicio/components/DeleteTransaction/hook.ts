@@ -13,9 +13,9 @@ export const useDeleteTransaction = () => {
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
   const { states, actions } = useHome();
 
-  function removeTransaction(id: string) {
+  function removeTransaction(idTransaction: string) {
     const newList: ITransaction[] = states.transactions.filter(
-      (item: ITransaction) => item.transaction_id !== id
+      (item: ITransaction) => item.id !== idTransaction
     );
     actions.setTransactions(newList);
   }

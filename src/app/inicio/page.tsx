@@ -88,14 +88,14 @@ export default function Home() {
         {states.transactions.map((item: ITransaction) => {
           return (
             <TableTransactionContent
-              key={item.transaction_id}
-              id={item.transaction_id}
-              description={item.transaction_description}
-              type={item.transaction_type}
+              key={item.id}
+              id={item.id}
+              description={item.description}
+              type={item.type}
               walletName={item.bank_name}
-              value={item.transaction_value}
-              category={item.transaction_categories}
-              date={item.transaction_date}
+              value={item.value}
+              category={item.category}
+              date={item.date}
             />
           );
         })}
