@@ -4,7 +4,7 @@ export interface IRegisterTransaction {
     date: string; 
     wallets: string;
     categories: string;
-    type: 'income' | 'outcome';
+    type: 'Receita' | 'Despesa';
   }
   
 
