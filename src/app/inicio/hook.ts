@@ -12,16 +12,25 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 export const useHome = () => {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [isloading, setIsLoading] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState(1);
   const observerTarget = useRef(null);
   const { user } = useUser();
 
-  async function loadTransactions() {
+  async function loadTransactions(pageNumber: number) {
     try {
-      const response = api.get<ITransaction>(`/transaction/${user?.sub}`);
+      const pageSize = 5;
+      const response = api.get<ITransaction>(`/transaction/${user?.sub}`, {
+        params: {
+          page: pageNumber,
+          pageSize: pageSize,
+        },
+      });
       const { data } = await response;
 
-      if (Array.isArray(data) && data.length !== 0) setTransactions(data);
-      else toast.error("Nenhuma transação foi encontrada.");
+      if (Array.isArray(data) && data.length !== 0) {
+        setTransactions(data);
+        setCurrentPage(pageNumber);
+      } else toast.error("Nenhuma transação foi encontrada.");
     } catch (error) {
       if (error instanceof AxiosError) {
         const axiosError = error as AxiosError;
@@ -44,38 +53,21 @@ export const useHome = () => {
   }
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          loadTransactions();
-          setIsLoading(true);
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 2000);
-        }
-      },
-      { threshold: 1 }
-    );
-    if (observerTarget.current) {
-      observer.observe(observerTarget.current);
-    }
-
-    return () => {
-      if (observerTarget.current) {
-        observer.unobserve(observerTarget.current);
-      }
-    };
-  }, [observerTarget, transactions]);
+    loadTransactions(5);
+  }, [transactions]);
 
   return {
     states: {
       transactions,
       observerTarget,
       isloading,
+      currentPage,
     },
     actions: {
       setTransactions,
       setIsLoading,
+      loadTransactions,
+      setCurrentPage,
     },
   };
 };

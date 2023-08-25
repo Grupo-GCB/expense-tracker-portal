@@ -3,7 +3,6 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 import { parseCookies, setCookie } from "nookies";
-import { CircleNotch } from "phosphor-react";
 import { useCallback, useEffect } from "react";
 
 import { ErrorPage } from "@/components";
@@ -16,13 +15,14 @@ import {
   UNKNOWN_ERROR,
 } from "@/utils/constants";
 import { dateFormatter, priceFormatter } from "@/utils/formatter";
+import InfiniteScroll from "react-infinite-scroll-component";
 import Header from "./components/Header";
 import { TableTransaction } from "./components/TableTransaction";
 import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
 import { useHome } from "./hook";
 
 export default function Home() {
-  const { states } = useHome();
+  const { states, actions } = useHome();
 
   const { user } = useUser();
 
@@ -90,28 +90,31 @@ export default function Home() {
             <p className="text-red-300">Nenhuma transação foi encontrada.</p>
           </div>
         )}
-        <TableTransaction>
-          {states.transactions.map((item: ITransaction) => {
-            return (
-              <TableTransactionContent
-                key={item.id}
-                id={item.id}
-                description={item.description}
-                type={item.type}
-                walletName={item.bank_name}
-                value={priceFormatter.format(Number(item.value))}
-                category={item.category}
-                date={dateFormatter.format(new Date(item.date))}
-              />
-            );
-          })}
-        </TableTransaction>
-        {states.isloading && (
-          <div className="h-[20px] flex justify-center ">
-            <CircleNotch className="animate-spin" />
-          </div>
-        )}
-        <div ref={states.observerTarget}></div>
+        <InfiniteScroll
+          dataLength={states.transactions.length}
+          next={() => actions.loadTransactions(states.currentPage + 1)}
+          hasMore={states.transactions.length > 5}
+          loader={<p>Loading...</p>}
+          endMessage={<p>No more data to load.</p>}
+        >
+          <TableTransaction>
+            {states.transactions.map((item: ITransaction) => {
+              return (
+                <TableTransactionContent
+                  key={item.id}
+                  id={item.id}
+                  description={item.description}
+                  type={item.type}
+                  walletName={item.bank_name}
+                  value={priceFormatter.format(Number(item.value))}
+                  category={item.category}
+                  date={dateFormatter.format(new Date(item.date))}
+                />
+              );
+            })}
+          </TableTransaction>
+        </InfiniteScroll>
+
       </main>
     </>
   );
