@@ -38,4 +38,29 @@ export const useSummary = () => {
       clearInterval(intervalId);
     };
   }, []);
+
+  const summary = useMemo(() => {
+    return transactions.reduce(
+      (acc, transaction) => {
+        const transactionPrice = parseFloat(transaction.transaction_value);
+  
+        if (transaction.transaction_type === "Receita") {
+          acc.income += transactionPrice;
+          acc.total += transactionPrice;
+        } else {
+          acc.outcome += transactionPrice;
+          acc.total += transactionPrice;
+        }
+  
+        return acc;
+      },
+      {
+        income: 0,
+        outcome: 0,
+        total: 0,
+      }
+    );
+  }, [loadTransactions]);
+  
+  return summary;
 };
