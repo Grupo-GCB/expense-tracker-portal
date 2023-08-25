@@ -5,7 +5,6 @@ export interface ITransaction {
   value: string;
   type: "Despesa" | "Receita";
   date: string;
-  wallet_id: string;
   bank_name: string;
 }
 export interface IRegisterTransaction {
