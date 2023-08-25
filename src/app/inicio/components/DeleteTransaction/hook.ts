@@ -22,9 +22,10 @@ export const useDeleteTransaction = () => {
 
   const deleteTransaction = async (idTransaction: string): Promise<void> => {
     try {
-      const response = api.delete<string>(`/transaction/${idTransaction}`);
+      const response = await api.delete<string>(
+        `/transaction/${idTransaction}`
+      );
       setIsSavingDataForms(true);
-      const { data } = await response;
       removeTransaction(idTransaction);
       toast.success("Transação deletada com sucesso.");
     } catch (error) {
