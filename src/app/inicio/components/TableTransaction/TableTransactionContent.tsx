@@ -17,6 +17,7 @@ export function TableTransactionContent({
   date,
 }: ITableTransaction) {
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
+
   return (
     <tr className="text-white">
       <td className=" px-5 py-8 bg-gray-700">{description}</td>
