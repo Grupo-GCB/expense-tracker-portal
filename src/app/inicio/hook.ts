@@ -15,7 +15,7 @@ export const useHome = () => {
   const observerTarget = useRef(null);
   const { user } = useUser();
 
-  async function loadTransactions() {
+  async function loadTransactions(): Promise<string | void> {
     try {
       const response = api.get<ITransaction>(`/transaction/${user?.sub}`);
       const { data } = await response;
