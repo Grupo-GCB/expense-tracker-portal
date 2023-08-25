@@ -31,7 +31,7 @@ export function TableTransactionContent({
       <td className=" px-5 py-8 bg-gray-700">{category}</td>
       <td className=" px-5 py-8 bg-gray-700">{date}</td>
       <td className=" px-5 py-8 bg-gray-700">
-        <div className="flex gap-2">
+        <div className="flex gap-4">
           <ButtonAction onClick={() => {}}>
             <PencilLine
               size={25}
@@ -40,7 +40,7 @@ export function TableTransactionContent({
             />{" "}
           </ButtonAction>
           <Modal open={deleteModalOpen} onOpenChange={setDeleteModalOpen}>
-            <div className="w-full flex justify-center">
+            <div className="flex justify-center">
               <Modal.Button className="rounded py-2 px-10 mb-5" asChild>
                 <ButtonAction onClick={() => setDeleteModalOpen(true)}>
                   <Trash
