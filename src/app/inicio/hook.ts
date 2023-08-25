@@ -1,5 +1,6 @@
 "use client";
 
+import { useUser } from "@auth0/nextjs-auth0/client";
 import { AxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
@@ -7,7 +8,7 @@ import { toast } from "react-toastify";
 import { ErrorMappings, ITransaction } from "@/interfaces";
 import api from "@/services/api";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
-import { useUser } from "@auth0/nextjs-auth0/client";
+
 
 export const useHome = () => {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
