@@ -16,21 +16,13 @@ export const useHome = () => {
   const observerTarget = useRef(null);
   const { user } = useUser();
 
-  async function loadTransactions(pageNumber: number) {
+  async function loadTransactions() {
     try {
-      const pageSize = 5;
-      const response = api.get<ITransaction>(`/transaction/${user?.sub}`, {
-        params: {
-          page: pageNumber,
-          pageSize: pageSize,
-        },
-      });
+      const response = api.get<ITransaction>(`/transaction/${user?.sub}`);
       const { data } = await response;
 
-      if (Array.isArray(data) && data.length !== 0) {
-        setTransactions(data);
-        setCurrentPage(pageNumber);
-      } else toast.error("Nenhuma transação foi encontrada.");
+      if (Array.isArray(data) && data.length !== 0) setTransactions(data);
+      else toast.error("Nenhuma transação foi encontrada.");
     } catch (error) {
       if (error instanceof AxiosError) {
         const axiosError = error as AxiosError;
@@ -53,7 +45,7 @@ export const useHome = () => {
   }
 
   useEffect(() => {
-    loadTransactions(5);
+    loadTransactions();
   }, [transactions]);
 
   return {

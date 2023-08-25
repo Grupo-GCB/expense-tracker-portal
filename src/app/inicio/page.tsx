@@ -15,14 +15,13 @@ import {
   UNKNOWN_ERROR,
 } from "@/utils/constants";
 import { dateFormatter, priceFormatter } from "@/utils/formatter";
-import InfiniteScroll from "react-infinite-scroll-component";
 import Header from "./components/Header";
 import { TableTransaction } from "./components/TableTransaction";
 import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
 import { useHome } from "./hook";
 
 export default function Home() {
-  const { states, actions } = useHome();
+  const { states } = useHome();
 
   const { user } = useUser();
 
@@ -90,31 +89,22 @@ export default function Home() {
             <p className="text-red-300">Nenhuma transação foi encontrada.</p>
           </div>
         )}
-        <InfiniteScroll
-          dataLength={states.transactions.length}
-          next={() => actions.loadTransactions(states.currentPage + 1)}
-          hasMore={states.transactions.length > 5}
-          loader={<p>Loading...</p>}
-          endMessage={<p>No more data to load.</p>}
-        >
-          <TableTransaction>
-            {states.transactions.map((item: ITransaction) => {
-              return (
-                <TableTransactionContent
-                  key={item.id}
-                  id={item.id}
-                  description={item.description}
-                  type={item.type}
-                  walletName={item.bank_name}
-                  value={priceFormatter.format(Number(item.value))}
-                  category={item.category}
-                  date={dateFormatter.format(new Date(item.date))}
-                />
-              );
-            })}
-          </TableTransaction>
-        </InfiniteScroll>
-
+        <TableTransaction>
+          {states.transactions.map((item: ITransaction) => {
+            return (
+              <TableTransactionContent
+                key={item.id}
+                id={item.id}
+                description={item.description}
+                type={item.type}
+                walletName={item.bank_name}
+                value={priceFormatter.format(Number(item.value))}
+                category={item.category}
+                date={dateFormatter.format(new Date(item.date))}
+              />
+            );
+          })}
+        </TableTransaction>
       </main>
     </>
   );
