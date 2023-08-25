@@ -1,28 +1,25 @@
 "use client";
 
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
 import { ErrorMappings, ITransaction } from "@/interfaces";
+import api from "@/services/api";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export const useHome = () => {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [isloading, setIsLoading] = useState<boolean>(false);
   const observerTarget = useRef(null);
-
-  const test = axios.create({
-    baseURL: "http://localhost:3001",
-    headers: {
-      Accept: "application/json",
-    },
-  });
+  const { user } = useUser();
 
   async function loadTransactions() {
     try {
-      const response = test.get<ITransaction>("/transaction");
+      const response = api.get<ITransaction>(`/transaction/${user?.sub}`);
       const { data } = await response;
+
       if (Array.isArray(data) && data.length !== 0) setTransactions(data);
       else toast.error("Nenhuma transação foi encontrada.");
     } catch (error) {
@@ -68,7 +65,7 @@ export const useHome = () => {
         observer.unobserve(observerTarget.current);
       }
     };
-  }, [observerTarget,transactions]);
+  }, [observerTarget, transactions]);
 
   return {
     states: {
