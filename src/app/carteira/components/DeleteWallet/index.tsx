@@ -1,14 +1,14 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { CircleNotch } from "phosphor-react";
 
-import { Button, FormModal } from "@/components";
 import { IUseWallet } from "@/app/carteira/types";
 import { useWallet } from "@/app/carteira/wallet.hook";
+import { Button, FormModal } from "@/components";
 import { useDeleteWallet } from "./hook";
 
 export function DeleteWallet({ setOpen }: IUseWallet) {
   const { actions, states } = useWallet({ setOpen });
-  const {deleteActions} = useDeleteWallet()
+  const { deleteActions } = useDeleteWallet();
 
   return (
     <FormModal action={deleteActions.handleDeleteWallet}>
@@ -39,5 +39,5 @@ export function DeleteWallet({ setOpen }: IUseWallet) {
         </Dialog.Close>
       </div>
     </FormModal>
-  )
+  );
 }

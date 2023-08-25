@@ -3,6 +3,7 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 import { parseCookies, setCookie } from "nookies";
+import { CircleNotch } from "phosphor-react";
 import { useCallback, useEffect } from "react";
 
 import { ErrorPage } from "@/components";
@@ -14,7 +15,7 @@ import {
   THIRTY_DAY_COOKIE_LIFETIME,
   UNKNOWN_ERROR,
 } from "@/utils/constants";
-import { CircleNotch } from "phosphor-react";
+import { dateFormatter, priceFormatter } from "@/utils/formatter";
 import Header from "./components/Header";
 import { TableTransaction } from "./components/TableTransaction";
 import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
@@ -98,9 +99,9 @@ export default function Home() {
                 description={item.description}
                 type={item.type}
                 walletName={item.bank_name}
-                value={item.value}
+                value={priceFormatter.format(Number(item.value))}
                 category={item.category}
-                date={item.date}
+                date={dateFormatter.format(new Date(item.date))}
               />
             );
           })}
