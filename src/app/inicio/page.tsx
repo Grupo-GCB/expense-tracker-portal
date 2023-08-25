@@ -15,6 +15,7 @@ import {
   UNKNOWN_ERROR,
 } from "@/utils/constants";
 import { CircleNotch } from "phosphor-react";
+import Header from "./components/Header";
 import { TableTransaction } from "./components/TableTransaction";
 import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
 import { useHome } from "./hook";
@@ -78,34 +79,39 @@ export default function Home() {
   }
 
   return (
-    <main className="w-full max-w-5xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
-      {states.transactions.length === 0 && (
-        <div className="w-full flex justify-center">
-          <p className="text-red-300">Nenhuma transação foi encontrada.</p>
-        </div>
-      )}
-      <TableTransaction>
-        {states.transactions.map((item: ITransaction) => {
-          return (
-            <TableTransactionContent
-              key={item.id}
-              id={item.id}
-              description={item.description}
-              type={item.type}
-              walletName={item.bank_name}
-              value={item.value}
-              category={item.category}
-              date={item.date}
-            />
-          );
-        })}
-      </TableTransaction>
-      {states.isloading && (
-        <div className="h-[20px] flex justify-center ">
-          <CircleNotch className="animate-spin" />
-        </div>
-      )}
-      <div ref={states.observerTarget}></div>
-    </main>
+    <>
+      <div className="lg:ml-28">
+        <Header />
+      </div>
+      <main className="w-full max-w-5xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
+        {states.transactions.length === 0 && (
+          <div className="w-full flex justify-center">
+            <p className="text-red-300">Nenhuma transação foi encontrada.</p>
+          </div>
+        )}
+        <TableTransaction>
+          {states.transactions.map((item: ITransaction) => {
+            return (
+              <TableTransactionContent
+                key={item.id}
+                id={item.id}
+                description={item.description}
+                type={item.type}
+                walletName={item.bank_name}
+                value={item.value}
+                category={item.category}
+                date={item.date}
+              />
+            );
+          })}
+        </TableTransaction>
+        {states.isloading && (
+          <div className="h-[20px] flex justify-center ">
+            <CircleNotch className="animate-spin" />
+          </div>
+        )}
+        <div ref={states.observerTarget}></div>
+      </main>
+    </>
   );
 }
