@@ -17,8 +17,7 @@ export const useHome = () => {
 
   async function loadTransactions(): Promise<string | void> {
     try {
-      const response = api.get<ITransaction>(`/transaction/${user?.sub}`);
-      const { data } = await response;
+      const { data } = await api.get<ITransaction>(`/transaction/${user?.sub}`);
 
       if (Array.isArray(data) && data.length !== 0) setTransactions(data);
       else toast.error("Nenhuma transação foi encontrada.");
