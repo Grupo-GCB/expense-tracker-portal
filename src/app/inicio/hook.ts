@@ -12,7 +12,6 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 export const useHome = () => {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [isloading, setIsLoading] = useState<boolean>(false);
-  const [currentPage, setCurrentPage] = useState(1);
   const observerTarget = useRef(null);
   const { user } = useUser();
 
@@ -53,13 +52,11 @@ export const useHome = () => {
       transactions,
       observerTarget,
       isloading,
-      currentPage,
     },
     actions: {
       setTransactions,
       setIsLoading,
       loadTransactions,
-      setCurrentPage,
     },
   };
 };
