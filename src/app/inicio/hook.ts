@@ -9,7 +9,6 @@ import { ErrorMappings, ITransaction } from "@/interfaces";
 import api from "@/services/api";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
 
-
 export const useHome = () => {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [isloading, setIsLoading] = useState<boolean>(false);
@@ -19,9 +18,14 @@ export const useHome = () => {
   async function loadTransactions(): Promise<string | void> {
     try {
       const { data } = await api.get<ITransaction>(`/transaction/${user?.sub}`);
-
-      if (Array.isArray(data) && data.length !== 0) setTransactions(data);
-      else toast.error("Nenhuma transação foi encontrada.");
+      setIsLoading(true);
+      if (Array.isArray(data) && data.length !== 0) {
+        setIsLoading(false);
+        setTransactions(data);
+      } else {
+        setIsLoading(false);
+        toast.error("Nenhuma transação foi encontrada.");
+      }
     } catch (error) {
       if (error instanceof AxiosError) {
         const axiosError = error as AxiosError;
@@ -44,8 +48,10 @@ export const useHome = () => {
   }
 
   useEffect(() => {
-    loadTransactions();
-  }, [transactions]);
+    if (user) {
+      loadTransactions();
+    }
+  }, [user]);
 
   return {
     states: {

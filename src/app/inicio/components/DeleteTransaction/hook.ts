@@ -13,7 +13,7 @@ export const useDeleteTransaction = () => {
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
   const { states, actions } = useHome();
 
-  function removeTransaction(idTransaction: string): void {
+  function removeTransaction(idTransaction: string) {
     const newList: ITransaction[] = states.transactions.filter(
       (item: ITransaction) => item.id !== idTransaction
     );
@@ -22,12 +22,11 @@ export const useDeleteTransaction = () => {
 
   const deleteTransaction = async (idTransaction: string): Promise<void> => {
     try {
-      const response = await api.delete<string>(
-        `/transaction/${idTransaction}`
-      );
+      const response = api.delete<string>(`/transaction/${idTransaction}`);
       setIsSavingDataForms(true);
+      const { data } = await response;
       removeTransaction(idTransaction);
-      toast.success("Transação deletada com sucesso.");
+      toast.success("Transação deletada com sucesso");
     } catch (error) {
       if (error instanceof AxiosError) {
         const axiosError = error as AxiosError;
