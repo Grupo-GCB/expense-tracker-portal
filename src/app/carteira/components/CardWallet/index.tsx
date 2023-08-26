@@ -1,14 +1,14 @@
-import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { setCookie } from "nookies";
 import { Trash } from "phosphor-react";
+import { useState } from "react";
 
+import { DeleteWallet } from "@/app/carteira/components/DeleteWallet";
 import { ICardWallet, IContentCard } from "@/app/carteira/types";
 import { Button, Modal } from "@/components";
-import { ContentCard } from "./content-card-wallet";
-import { UpdateWallet } from "../UpdateWallet";
 import { THIRTY_DAY_COOKIE_LIFETIME } from "@/utils/constants";
-import { DeleteWallet } from "@/app/carteira/components/DeleteWallet";
+import { UpdateWallet } from "../UpdateWallet";
+import { ContentCard } from "./content-card-wallet";
 
 export function CardWallet({
   walletId,

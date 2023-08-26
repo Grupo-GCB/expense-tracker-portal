@@ -3,10 +3,11 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 import { parseCookies, setCookie } from "nookies";
+import { CircleNotch } from "phosphor-react";
 import { useCallback, useEffect } from "react";
 
 import { ErrorPage } from "@/components";
-import { ISignInResponse, IToken } from "@/interfaces";
+import { ISignInResponse, IToken, ITransaction } from "@/interfaces";
 import api from "@/services/api";
 import getUserSession from "@/services/userSession";
 import {
@@ -14,9 +15,16 @@ import {
   THIRTY_DAY_COOKIE_LIFETIME,
   UNKNOWN_ERROR,
 } from "@/utils/constants";
+import { dateFormatter, priceFormatter } from "@/utils/formatter";
+
 import Header from "./components/Header";
+import { TableTransaction } from "./components/TableTransaction";
+import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
+import { useHome } from "./hook";
 
 export default function Home() {
+  const { states } = useHome();
+
   const { user } = useUser();
 
   async function sendToken({ token }: IToken): Promise<void> {
@@ -73,8 +81,39 @@ export default function Home() {
   }
 
   return (
-    <div className="lg:ml-28">
-      <Header />
-    </div>
+    <>
+      <div className="lg:ml-28">
+        <Header />
+      </div>
+      <main className="w-full max-w-5xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
+        {states.transactions.length === 0 && (
+          <div className="w-full flex justify-center">
+            <p className="text-red-300">Nenhuma transação foi encontrada.</p>
+          </div>
+        )}
+        {states.isloading && (
+          <CircleNotch
+            className="animate-spin w-full justify-center"
+            data-testid="loading-icon"
+          />
+        )}
+        <TableTransaction>
+          {states.transactions.map((item: ITransaction) => {
+            return (
+              <TableTransactionContent
+                key={item.id}
+                id={item.id}
+                description={item.description}
+                type={item.type}
+                walletName={item.bank_name}
+                value={priceFormatter.format(Number(item.value))}
+                category={item.category}
+                date={dateFormatter.format(new Date(item.date))}
+              />
+            );
+          })}
+        </TableTransaction>
+      </main>
+    </>
   );
 }

@@ -1,16 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { toast } from "react-toastify";
 import Zod from "zod";
-import { useState } from "react";
 
 import { updateWallet } from "@/app/carteira/action";
-import { ERROR_UPDATE_MESSAGE, SUCESS_UPDATE_MESSAGE } from "@/utils/constants";
 import {
   IUseWallet,
   WalletSchema,
   fieldErrorMappings,
 } from "@/app/carteira/types";
+import { ERROR_UPDATE_MESSAGE, SUCESS_UPDATE_MESSAGE } from "@/utils/constants";
 
 export const useUpdateWallet = ({ setOpen }: IUseWallet) => {
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);

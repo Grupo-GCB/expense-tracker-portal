@@ -1,14 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { toast } from "react-toastify";
 import Zod from "zod";
 
 import { registerWallet } from "@/app/carteira/action";
-import { IUseWallet, WalletSchema, fieldErrorMappings } from "@/app/carteira/types";
-import { useState } from "react";
+import {
+  IUseWallet,
+  WalletSchema,
+  fieldErrorMappings,
+} from "@/app/carteira/types";
 
 export const useRegisterWallet = ({ setOpen }: IUseWallet) => {
-
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
 
   const handleSaveForm = (success: boolean) => {
@@ -54,6 +57,9 @@ export const useRegisterWallet = ({ setOpen }: IUseWallet) => {
   return {
     registerActions: {
       handleRegisterWallet,
+    },
+    state: {
+      isSavingDataForms,
     },
   };
 };
