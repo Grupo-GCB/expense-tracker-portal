@@ -3,6 +3,7 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 import { parseCookies, setCookie } from "nookies";
+import { CircleNotch } from "phosphor-react";
 import { useCallback, useEffect } from "react";
 
 import { ErrorPage } from "@/components";
@@ -15,6 +16,7 @@ import {
   UNKNOWN_ERROR,
 } from "@/utils/constants";
 import { dateFormatter, priceFormatter } from "@/utils/formatter";
+
 import Header from "./components/Header";
 import { TableTransaction } from "./components/TableTransaction";
 import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
@@ -88,6 +90,12 @@ export default function Home() {
           <div className="w-full flex justify-center">
             <p className="text-red-300">Nenhuma transação foi encontrada.</p>
           </div>
+        )}
+        {states.isloading && (
+          <CircleNotch
+            className="animate-spin w-full justify-center"
+            data-testid="loading-icon"
+          />
         )}
         <TableTransaction>
           {states.transactions.map((item: ITransaction) => {
