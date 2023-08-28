@@ -9,8 +9,8 @@ export const useDeleteWallet = () => {
   const handleDeleteWallet = async (): Promise<void> => {
     try {
       const response: string = await deleteWallet();
-      if (response === SUCESS_DELETE_MESSAGE) toast.success(response)
-      if (response === ERROR_DELETE_MESSAGE) toast.success(response)
+      if (response === SUCESS_DELETE_MESSAGE) toast.success(response);
+      if (response === ERROR_DELETE_MESSAGE) toast.success(response);
     } catch (error) {
       toast.error(`${error}`);
     }
@@ -18,7 +18,7 @@ export const useDeleteWallet = () => {
 
   return {
     deleteActions: {
-        handleDeleteWallet,
+      handleDeleteWallet,
     },
   };
 };

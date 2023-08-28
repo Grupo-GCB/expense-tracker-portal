@@ -1,11 +1,11 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { CircleNotch } from "phosphor-react";
 
+import { IUseWallet } from "@/app/carteira/types";
+import { useWallet } from "@/app/carteira/wallet.hook";
 import { Button, CustomSelect, FormModal } from "@/components";
 import { accountTypes } from "@/utils/constants";
-import { IUseWallet } from "@/app/carteira/types";
 import { useUpdateWallet } from "./hooks";
-import { useWallet } from "@/app/carteira/wallet.hook";
 
 export function UpdateWallet({ setOpen }: IUseWallet) {
   const { states } = useWallet({ setOpen });

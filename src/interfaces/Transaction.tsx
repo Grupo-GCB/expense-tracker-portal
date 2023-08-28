@@ -1,3 +1,12 @@
+export interface ITransaction {
+  id: string;
+  category: string;
+  description: string;
+  value: string;
+  type: "Despesa" | "Receita";
+  date: string;
+  bank_name: string;
+}
 export interface IRegisterTransaction {
   description: string;
   value: number;

@@ -13,12 +13,12 @@ describe("Update Wallet", () => {
     const descriptionTextarea = screen.getByPlaceholderText("Descrição");
     const confirmButton = screen.getByRole("button", { name: "Confirmar" });
     const cancelButton = screen.getByRole("button", { name: "Cancelar" });
-    
+
     expect(accountTypeInput).toBeInTheDocument();
     expect(bankInput).toBeInTheDocument();
     expect(descriptionTextarea).toBeInTheDocument();
     expect(confirmButton).toBeInTheDocument();
-    expect(cancelButton).toBeInTheDocument();    
+    expect(cancelButton).toBeInTheDocument();
   });
 
   it("should be able to handle form submission", async () => {

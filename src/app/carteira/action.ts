@@ -1,9 +1,11 @@
 "use server";
 
-import jwt_decode from "jwt-decode";
 import axios, { AxiosError } from "axios";
+import jwt_decode from "jwt-decode";
 import { cookies } from "next/dist/client/components/headers";
 
+import { ErrorMappings, IBank, IRegisterWallet, IWallet } from "@/interfaces";
+import api from "@/services/api";
 import {
   AXIOS_ERROR,
   AXIOS_ERROR_400,
@@ -14,9 +16,7 @@ import {
   SUCESS_UPDATE_MESSAGE,
   UNKNOWN_ERROR,
 } from "@/utils/constants";
-import { IBank, IRegisterWallet, IWallet, ErrorMappings } from "@/interfaces";
 import { DecodedToken } from "./types";
-import api from "@/services/api";
 
 export async function getBanks(): Promise<IBank[]> {
   const { data } = await api.get<IBank[]>("/bank/all");
