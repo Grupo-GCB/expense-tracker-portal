@@ -91,7 +91,7 @@ export default function Home() {
             <p className="text-red-300">Nenhuma transação foi encontrada.</p>
           </div>
         )}
-        {states.isloading && (
+        {states.isLoading && (
           <CircleNotch
             className="animate-spin w-full justify-center"
             data-testid="loading-icon"

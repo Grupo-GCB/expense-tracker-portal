@@ -11,7 +11,7 @@ import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
 
 export const useHome = () => {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
-  const [isloading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const observerTarget = useRef(null);
   const { user } = useUser();
 
@@ -57,7 +57,7 @@ export const useHome = () => {
     states: {
       transactions,
       observerTarget,
-      isloading,
+      isLoading,
     },
     actions: {
       setTransactions,
