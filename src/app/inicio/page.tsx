@@ -85,7 +85,7 @@ export default function Home() {
       <div className="lg:ml-28">
         <Header />
       </div>
-      <main className="w-full max-w-5xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
+      <main className="w-full max-w-6xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
         {states.transactions.length === 0 && (
           <div className="w-full flex justify-center">
             <p className="text-red-300">Nenhuma transação foi encontrada.</p>

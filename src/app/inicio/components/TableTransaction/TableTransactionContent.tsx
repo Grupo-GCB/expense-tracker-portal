@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ButtonAction } from "@/app/inicio/components/ButtonAction";
 import { DeleteTransaction } from "@/app/inicio/components/DeleteTransaction";
 import { Modal } from "@/components";
+import { TableTransactionColumn } from "./TableTrasactionColumn";
 import { ITableTransaction } from "./types";
 
 export function TableTransactionContent({
@@ -19,20 +20,20 @@ export function TableTransactionContent({
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
 
   return (
-    <tr className="text-white">
-      <td className=" px-5 py-8 bg-gray-700">{description}</td>
-      <td className=" px-5 py-8 bg-gray-700">
+    <tr className="text-white py-5">
+      <td className="py-5 pl-8 w-96  bg-gray-700 ">{description}</td>
+      <TableTransactionColumn>
         <span
           className={type === "Receita" ? "text-green-300" : "text-red-300"}
         >
           {value}
         </span>
-      </td>
-      <td className=" px-5 py-8 bg-gray-700">{walletName}</td>
-      <td className=" px-5 py-8 bg-gray-700">{category}</td>
-      <td className=" px-5 py-8 bg-gray-700">{date}</td>
-      <td className=" px-5 py-8 bg-gray-700">
-        <div className="flex gap-4">
+      </TableTransactionColumn>
+      <TableTransactionColumn>{walletName}</TableTransactionColumn>
+      <TableTransactionColumn>{category}</TableTransactionColumn>
+      <TableTransactionColumn>{date}</TableTransactionColumn>
+      <TableTransactionColumn>
+        <div className="flex gap-2">
           <ButtonAction onClick={() => {}}>
             <PencilLine
               size={25}
@@ -72,7 +73,7 @@ export function TableTransactionContent({
             </Modal.Content>
           </Modal>
         </div>
-      </td>
+      </TableTransactionColumn>
     </tr>
   );
 }
