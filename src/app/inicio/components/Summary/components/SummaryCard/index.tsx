@@ -1,5 +1,6 @@
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from "phosphor-react";
-import { useSummary } from "../../hook";
+
+import { useSummary } from "@/app/inicio/components/Summary/hook";
 import { priceFormatter } from "@/utils";
 
 export default function SummaryCard() {
