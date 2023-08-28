@@ -26,7 +26,6 @@ export default function RootLayout({
           <Sidebar />
           <ToastContainer />
           {children}
-          <ToastContainer />
         </body>
       </UserProvider>
     </html>
