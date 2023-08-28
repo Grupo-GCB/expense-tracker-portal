@@ -14,19 +14,19 @@ export default function SummaryCard() {
     {
       id: 1,
       title: "Entradas",
-      icon: <ArrowCircleUp size={32} color="#00b37e" />,
+      icon: <ArrowCircleUp color="#00b37e" className="md:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm:hidden"/>,
       value: priceFormatter.format(summary.income),
     },
     {
       id: 2,
       title: "Saídas",
-      icon: <ArrowCircleDown size={32} color="#f75a68" />,
+      icon: <ArrowCircleDown color="#f75a68" className="md:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm:hidden"/>,
       value: priceFormatter.format(summary.outcome),
     },
     {
       id: 3,
       title: "Total",
-      icon: <CurrencyDollar size={32} color="#fff" />,
+      icon: <CurrencyDollar color="#fff" className="md:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm:hidden"/>,
       value: priceFormatter.format(summary.total),
     },
   ];
@@ -40,10 +40,10 @@ export default function SummaryCard() {
         return (
           <div key={options.id} className={`${bgClass} rounded-sm p-8`}>
             <header className="flex items-center justify-between text-gray-100">
-              <span className="text-2xl">{options.title}</span>
+              <span className="lg:text-2xl md:text-xl">{options.title}</span>
               {options.icon}
             </header>
-            <strong className="block mt-4 text-4xl text-gray-100">
+            <strong className="block mt-4 lg:text-4xl md:text-2xl text-gray-100">
               {options.value}
             </strong>
           </div>
