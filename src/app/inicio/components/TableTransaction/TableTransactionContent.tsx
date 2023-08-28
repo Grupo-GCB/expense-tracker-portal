@@ -20,8 +20,8 @@ export function TableTransactionContent({
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
 
   return (
-    <tr className="text-white">
-      <TableTransactionColumn>{description}</TableTransactionColumn>
+    <tr className="text-white py-5">
+      <td className="py-5 pl-8 w-96  bg-gray-700 ">{description}</td>
       <TableTransactionColumn>
         <span
           className={type === "Receita" ? "text-green-300" : "text-red-300"}
