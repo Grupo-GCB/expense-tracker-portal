@@ -1,57 +1,25 @@
 "use client";
 
-import axios from "axios";
-import { useEffect, useMemo, useState } from "react";
-import { toast } from "react-toastify";
-
-import { ITransaction } from "@/interfaces";
-import { AXIOS_ERROR, UNKNOWN_ERROR } from "@/utils/constants";
-import api from "@/services/api";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { useMemo } from "react";
+import { useHome } from "@/app/inicio/hook";
 
 export const useSummary = () => {
-  const { user } = useUser();
-  const [transactions, setTransactions] = useState<ITransaction[]>([]);
-
-  async function loadTransactions(): Promise<
-    ITransaction | string | undefined
-  > {
-    try {
-      const response = api.get<ITransaction>(`/transaction/${user?.sub}`);
-      const { data } = await response;
-
-      if (Array.isArray(data) && data.length !== 0) setTransactions(data);
-      else toast.error("Nenhuma transação foi encontrada.");
-    } catch (error) {
-      if (axios.isAxiosError(error)) console.error(AXIOS_ERROR, error.message);
-      else console.error(UNKNOWN_ERROR, error);
-      return "Erro ao carregar transações";
-    }
-  }
-
- useEffect(() => {
-    const intervalId = setInterval(() => {
-      loadTransactions();
-    }, 1000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+  const { states } = useHome();
 
   const summary = useMemo(() => {
-    return transactions.reduce(
+    console.log(states.transactions);
+    return states.transactions.reduce(
       (acc, transaction) => {
-        const transactionPrice = parseFloat(transaction.transaction_value);
-  
-        if (transaction.transaction_type === "Receita") {
+        const transactionPrice = parseFloat(transaction.value);
+
+        if (transaction.type === "Receita") {
           acc.income += transactionPrice;
           acc.total += transactionPrice;
         } else {
           acc.outcome += transactionPrice;
           acc.total += transactionPrice;
         }
-  
+
         return acc;
       },
       {
@@ -60,7 +28,7 @@ export const useSummary = () => {
         total: 0,
       }
     );
-  }, [loadTransactions]);
-  
+  }, [states.transactions]);
+
   return summary;
 };
