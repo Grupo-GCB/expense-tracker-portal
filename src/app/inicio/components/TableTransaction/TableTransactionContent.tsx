@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ButtonAction } from "@/app/inicio/components/ButtonAction";
 import { DeleteTransaction } from "@/app/inicio/components/DeleteTransaction";
 import { Modal } from "@/components";
+import { UpdateTransaction } from "../UpdateTransaction";
 import { TableTransactionColumn } from "./TableTrasactionColumn";
 import { ITableTransaction } from "./types";
 
@@ -18,6 +19,7 @@ export function TableTransactionContent({
   date,
 }: ITableTransaction) {
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
+  const [updateModalOpen, setUpdateModalOpen] = useState<boolean>(false);
 
   return (
     <tr className="text-white py-5">
@@ -34,13 +36,31 @@ export function TableTransactionContent({
       <TableTransactionColumn>{date}</TableTransactionColumn>
       <TableTransactionColumn>
         <div className="flex gap-2">
-          <ButtonAction onClick={() => {}}>
-            <PencilLine
-              size={25}
-              color="#40B9F7"
-              className="hover:cursor-pointer"
-            />{" "}
-          </ButtonAction>
+          <Modal open={updateModalOpen} onOpenChange={setUpdateModalOpen}>
+            <div className="flex justify-center">
+              <Modal.Button className="rounded py-2 px-10 mb-5" asChild>
+                <ButtonAction onClick={() => setUpdateModalOpen(true)}>
+                  <PencilLine
+                    size={25}
+                    color="#40B9F7"
+                    className="hover:cursor-pointer"
+                  />{" "}
+                </ButtonAction>
+              </Modal.Button>
+            </div>
+            <Modal.Content>
+              <div className="flex justify-start">
+                <Dialog.Title className="text-lg md:text-xl">
+                  Editar transação
+                </Dialog.Title>
+              </div>
+              <UpdateTransaction
+                setOpen={setUpdateModalOpen}
+                idTransaction={id}
+              />
+            </Modal.Content>
+          </Modal>
+
           <Modal open={deleteModalOpen} onOpenChange={setDeleteModalOpen}>
             <div className="flex justify-center">
               <Modal.Button className="rounded py-2 px-10 mb-5" asChild>
