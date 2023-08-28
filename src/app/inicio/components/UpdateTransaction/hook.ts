@@ -16,6 +16,7 @@ import {
 export const useUpdateTransaction = ({ setOpen }: IUseUpdateTransaction) => {
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
   const [walletsNames, setWalletsNames] = useState<IOptions[]>([]);
+  const [idTransaction, setIdTransaction] = useState<string>("");
 
   const handleSaveForm = (succes: boolean) => {
     setTimeout(() => {
@@ -69,7 +70,7 @@ export const useUpdateTransaction = ({ setOpen }: IUseUpdateTransaction) => {
   const handleUpdateTransaction = async (values: FormData): Promise<void> => {
     try {
       validateTransactionData(values);
-      const response = await updateTransaction(values);
+      const response = await updateTransaction(values, idTransaction);
       handleSaveForm(true);
       if (response === SUCCESS_UPDATE_TRANSACTION) toast.success(response);
       if (response === ERROR_UPDATE_TRANSACTION) toast.error(response);
@@ -83,10 +84,12 @@ export const useUpdateTransaction = ({ setOpen }: IUseUpdateTransaction) => {
       handleUpdateTransaction,
       setWalletsNames,
       setIsSavingDataForms,
+      setIdTransaction,
     },
     states: {
       walletsNames,
       isSavingDataForms,
+      idTransaction,
     },
   };
 };

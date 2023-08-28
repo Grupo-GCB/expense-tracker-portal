@@ -32,9 +32,12 @@ export async function registerTransaction(formData: FormData): Promise<string> {
   }
 }
 
-export async function updateTransaction(formData: FormData): Promise<string> {
+export async function updateTransaction(
+  formData: FormData,
+  id: string
+): Promise<string> {
   try {
-    await api.put<IUpdateTransaction>(`/transaction/`, {
+    await api.put<IUpdateTransaction>(`/transaction/${id}`, {
       description: formData.get("description") as string,
       value: parseFloat(formData.get("value") as string),
       date: formData.get("date") as string,

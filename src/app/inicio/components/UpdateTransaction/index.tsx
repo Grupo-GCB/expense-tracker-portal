@@ -1,5 +1,5 @@
 import { CircleNotch } from "phosphor-react";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import { Button, CustomSelect, FormModal, Input } from "@/components";
 import { getCurrentDate } from "@/utils";
@@ -20,6 +20,11 @@ export function UpdateTransaction({ setOpen, idTransaction }: IUseTransaction) {
     if (selectedOption === value) setSelectedOption(null);
     else setSelectedOption(value);
   };
+
+  useEffect(() => {
+    updateActions.setIdTransaction(idTransaction);
+  });
+
   return (
     <FormModal action={updateActions.handleUpdateTransaction}>
       <Input.Root
