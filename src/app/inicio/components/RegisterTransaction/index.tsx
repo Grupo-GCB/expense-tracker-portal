@@ -1,11 +1,11 @@
 import { CircleNotch } from "phosphor-react";
 import { useState } from "react";
 
-import { Button, Input, FormModal, CustomSelect } from "@/components";
 import { IUseTransaction } from "@/app/inicio/types";
-import { useRegisterTransaction } from "./hook";
+import { Button, CustomSelect, FormModal, Input } from "@/components";
+import { categoryTypes, getCurrentDate } from "@/utils";
 import TransactionTypes from "./components/TransactionTypes";
-import { getCurrentDate, categoryTypes } from "@/utils";
+import { useRegisterTransaction } from "./hook";
 
 export function RegisterTransaction({ setOpen }: IUseTransaction) {
   const { states, actions } = useRegisterTransaction({ setOpen });

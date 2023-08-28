@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import Zod from "zod";
 import { toast } from "react-toastify";
+import Zod from "zod";
 
-import { IWallet } from "@/interfaces";
 import { getAllWallets } from "@/app/carteira/action";
-import { IOptions } from "@/components";
 import { registerTransaction } from "@/app/inicio/action";
 import {
   IUseTransaction,
   fieldErrorMappings,
   newTransactionSchema,
 } from "@/app/inicio/types";
+import { IOptions } from "@/components";
+import { IWallet } from "@/interfaces";
 import {
   CLOSE_DELAY,
   ERROR_REGISTER_TRANSACTION,
