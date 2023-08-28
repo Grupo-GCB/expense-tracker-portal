@@ -60,7 +60,7 @@ export function TableTransactionContent({
                       <Trash size={40} />
                     </div>
                     <div className="flex items-center justify-center">
-                      <h2>Deseja deletar esta Transação?</h2>
+                      <h2>Deseja deletar esta transação?</h2>
                     </div>
                   </div>
                 </Dialog.Title>
