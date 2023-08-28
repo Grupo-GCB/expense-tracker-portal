@@ -7,7 +7,6 @@ export const useSummary = () => {
   const { states } = useHome();
 
   const summary = useMemo(() => {
-    console.log(states.transactions);
     return states.transactions.reduce(
       (acc, transaction) => {
         const transactionPrice = parseFloat(transaction.value);
