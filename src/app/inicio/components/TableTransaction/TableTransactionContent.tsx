@@ -33,7 +33,7 @@ export function TableTransactionContent({
       <TableTransactionColumn>{category}</TableTransactionColumn>
       <TableTransactionColumn>{date}</TableTransactionColumn>
       <TableTransactionColumn>
-        <div className="flex gap-4">
+        <div className="flex gap-2">
           <ButtonAction onClick={() => {}}>
             <PencilLine
               size={25}
