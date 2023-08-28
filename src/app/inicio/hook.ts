@@ -45,7 +45,7 @@ export const useHome = () => {
 
   useEffect(() => {
     loadTransactions();
-  }, [user, transactions]);
+  });
 
   return {
     states: {
