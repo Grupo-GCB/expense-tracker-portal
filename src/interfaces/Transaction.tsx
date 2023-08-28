@@ -16,6 +16,10 @@ export interface IRegisterTransaction {
   type: "Receita" | "Despesa";
 }
 
+export interface IUpdateTransaction extends IRegisterTransaction {
+ 
+}
+
 export interface ITransactionType {
   value: string;
   selectedOption: string | null;
