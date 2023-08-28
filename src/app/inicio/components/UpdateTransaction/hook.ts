@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
-
-import { getAllWallets } from "@/app/carteira/action";
-import { IOptions } from "@/components";
-import { IWallet } from "@/interfaces";
-import { ERROR_UPDATE_TRANSACTION, SUCCESS_UPDATE_TRANSACTION } from "@/utils";
 import { toast } from "react-toastify";
 import Zod from "zod";
-import { updateTransaction } from "../../action";
+
+import { getAllWallets } from "@/app/carteira/action";
+import { updateTransaction } from "@/app/inicio/action";
+import { IOptions } from "@/components";
+import { IWallet } from "@/interfaces";
+import {
+  CLOSE_DELAY,
+  ERROR_UPDATE_TRANSACTION,
+  FORM_DELAY,
+  SUCCESS_UPDATE_TRANSACTION,
+} from "@/utils";
 import {
   IUseUpdateTransaction,
   fieldErrorMappings,
@@ -21,11 +26,11 @@ export const useUpdateTransaction = ({ setOpen }: IUseUpdateTransaction) => {
   const handleSaveForm = (succes: boolean) => {
     setTimeout(() => {
       setIsSavingDataForms(succes);
-    }, 200);
+    }, FORM_DELAY);
 
     setTimeout(() => {
       setOpen(false);
-    }, 2000);
+    }, CLOSE_DELAY);
   };
 
   async function getWalletsNames(): Promise<void> {
