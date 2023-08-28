@@ -14,19 +14,19 @@ export default function SummaryCard() {
     {
       id: 1,
       title: "Entradas",
-      icon: <ArrowCircleUp color="#00b37e" className="md:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm:hidden"/>,
+      icon: <ArrowCircleUp color="#00b37e" className="sm2:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm:hidden sm2:w-4 sm2:h-4"/>,
       value: priceFormatter.format(summary.income),
     },
     {
       id: 2,
       title: "Saídas",
-      icon: <ArrowCircleDown color="#f75a68" className="md:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm:hidden"/>,
+      icon: <ArrowCircleDown color="#f75a68" className="sm2:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm:hidden sm2:w-4 sm2:h-4"/>,
       value: priceFormatter.format(summary.outcome),
     },
     {
       id: 3,
       title: "Total",
-      icon: <CurrencyDollar color="#fff" className="md:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm:hidden"/>,
+      icon: <CurrencyDollar color="#fff" className="sm2:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm:hidden sm2:w-4 sm2:h-4"/>,
       value: priceFormatter.format(summary.total),
     },
   ];
@@ -38,7 +38,7 @@ export default function SummaryCard() {
         const bgClass = isTotal ? `${ChangeTotalBackground()}` : "bg-gray-600";
 
         return (
-          <div key={options.id} className={`${bgClass} rounded-sm p-8`}>
+          <div key={options.id} className={`${bgClass} rounded-sm md:p-8 sm:p-4`}>
             <header className="flex items-center justify-between text-gray-100">
               <span className="lg:text-2xl md:text-xl">{options.title}</span>
               {options.icon}
