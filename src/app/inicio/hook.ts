@@ -3,7 +3,6 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { AxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
-import { toast } from "react-toastify";
 
 import { ErrorMappings, ITransaction } from "@/interfaces";
 import api from "@/services/api";
@@ -22,9 +21,6 @@ export const useHome = () => {
       if (Array.isArray(data) && data.length !== 0) {
         setIsLoading(false);
         setTransactions(data);
-      } else {
-        setIsLoading(false);
-        toast.error("Nenhuma transação foi encontrada.");
       }
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -48,10 +44,8 @@ export const useHome = () => {
   }
 
   useEffect(() => {
-    if (user) {
-      loadTransactions();
-    }
-  }, [user]);
+    loadTransactions();
+  }, [user, transactions]);
 
   return {
     states: {
