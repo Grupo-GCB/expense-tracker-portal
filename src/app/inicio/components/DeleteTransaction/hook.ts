@@ -26,7 +26,7 @@ export const useDeleteTransaction = () => {
       setIsSavingDataForms(true);
       const { data } = await response;
       removeTransaction(idTransaction);
-      toast.success("Transação deletada com sucesso");
+      toast.success("Transação deletada com sucesso.");
     } catch (error) {
       if (error instanceof AxiosError) {
         const axiosError = error as AxiosError;
