@@ -60,7 +60,6 @@ export function TableTransactionContent({
               />
             </Modal.Content>
           </Modal>
-
           <Modal open={deleteModalOpen} onOpenChange={setDeleteModalOpen}>
             <div className="flex justify-center">
               <Modal.Button className="rounded py-2 px-10 mb-5" asChild>
