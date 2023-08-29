@@ -7,7 +7,7 @@ import { CircleNotch } from "phosphor-react";
 import { useCallback, useEffect } from "react";
 
 import { ErrorPage } from "@/components";
-import { ISignInResponse, IToken, ITransaction } from "@/interfaces";
+import { ISignInResponse, IToken, ITransactionList } from "@/interfaces";
 import api from "@/services/api";
 import getUserSession from "@/services/userSession";
 import {
@@ -16,7 +16,6 @@ import {
   UNKNOWN_ERROR,
 } from "@/utils/constants";
 import { dateFormatter, priceFormatter } from "@/utils/formatter";
-
 import Header from "./components/Header";
 import { TableTransaction } from "./components/TableTransaction";
 import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
@@ -87,7 +86,7 @@ export default function Home() {
         <Header />
         <Summary />
       </div>
-      <main className="w-full  max-w-screen-xl mx-auto sm:justify-center sm:px-2  sm:mt-8 text-white">
+      <main className="w-full max-w-screen-xl mx-auto sm:justify-center sm:px-2  sm:mt-8 text-white">
         {states.transactions.length === 0 && (
           <div className="w-full flex justify-center">
             <p className="text-red-300">Nenhuma transação foi encontrada.</p>
@@ -101,7 +100,7 @@ export default function Home() {
         )}
         <div className="sm:overflow-x-scroll min-[936px]:overflow-x-hidden lg:ml-[7rem]">
           <TableTransaction>
-            {states.transactions.map((item: ITransaction) => {
+            {states.transactions.map((item: ITransactionList) => {
               return (
                 <TableTransactionContent
                   key={item.id}

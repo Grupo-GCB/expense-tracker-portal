@@ -1,23 +1,25 @@
 "use client";
 
 import { useMemo } from "react";
+
 import { useHome } from "@/app/inicio/hook";
+import { ISummary, ITransaction } from "@/interfaces";
 
 export const useSummary = () => {
   const { states } = useHome();
 
-  const summary = useMemo(() => {
-    return states.transactions.reduce(
+  const isIncomeTransaction = (transaction: ITransaction): boolean => {
+    return transaction.type === "Receita";
+  };
+
+  const calculateSummary = (transaction: ITransaction[]): ISummary => {
+    return transaction.reduce(
       (acc, transaction) => {
         const transactionPrice = parseFloat(transaction.value);
 
-        if (transaction.type === "Receita") {
-          acc.income += transactionPrice;
-          acc.total += transactionPrice;
-        } else {
-          acc.outcome += transactionPrice;
-          acc.total += transactionPrice;
-        }
+        acc.income += isIncomeTransaction(transaction) ? transactionPrice : 0;
+        acc.outcome += isIncomeTransaction(transaction) ? 0 : transactionPrice;
+        acc.total += transactionPrice;
 
         return acc;
       },
@@ -27,6 +29,10 @@ export const useSummary = () => {
         total: 0,
       }
     );
+  };
+
+  const summary = useMemo(() => {
+    return calculateSummary(states.transactions);
   }, [states.transactions]);
 
   return summary;

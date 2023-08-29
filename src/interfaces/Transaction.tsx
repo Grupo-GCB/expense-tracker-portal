@@ -1,4 +1,4 @@
-export interface ITransaction {
+export interface ITransactionList {
   id: string;
   category: string;
   description: string;
@@ -7,17 +7,13 @@ export interface ITransaction {
   date: string;
   bank_name: string;
 }
-export interface IRegisterTransaction {
+export interface ITransaction {
   description: string;
   value: number;
   date: string;
   wallets: string;
   categories: string;
   type: "Receita" | "Despesa";
-}
-
-export interface IUpdateTransaction extends IRegisterTransaction {
- 
 }
 
 export interface ITransactionType {
