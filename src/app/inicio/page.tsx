@@ -25,14 +25,10 @@ import WithoutWallet from "./components/WithoutWalltes";
 import { useShowAllWallet } from "@/app/carteira/components/CardWallet/hook";
 
 export default function Home() {
-  const { walletStates } = useShowAllWallet()
+  const { walletStates } = useShowAllWallet();
   const { states } = useHome();
   const { user } = useUser();
-  const [open, setOpen] = useState<boolean>(verifyIfWalletsExist())
-
-  function verifyIfWalletsExist(): boolean {
-    return walletStates.walletList.length === 0;
-  }
+  const [open, setOpen] = useState<boolean>(true);
 
   async function sendToken({ token }: IToken): Promise<void> {
     try {
@@ -94,20 +90,22 @@ export default function Home() {
         <Summary />
       </div>
       <div>
-        <Modal open={open} onOpenChange={setOpen}>
-          <Modal.Content>
-            <div className="flex items-center justify-center flex-col gap-4">
-              <div className="flex items-center justify-center bg-red-300 w-16 h-16 rounded-full">
-                <Warning size={40} />
+        {walletStates.walletList.length === 0 && (
+          <Modal open={open} onOpenChange={setOpen}>
+            <Modal.Content>
+              <div className="flex items-center justify-center flex-col gap-4">
+                <div className="flex items-center justify-center bg-red-300 w-16 h-16 rounded-full">
+                  <Warning size={40} />
+                </div>
+                <div className="flex items-center justify-center flex-col">
+                  <h2>Você ainda não possui carteiras</h2>
+                  <p>Gostaria de ir para a página de carteiras ?</p>
+                </div>
               </div>
-              <div className="flex items-center justify-center flex-col">
-                <h2>Você ainda não possui carteiras</h2>
-                <p>Gostaria de ir para a página de carteiras ?</p>
-              </div>
-            </div>
-            <WithoutWallet setOpen={setOpen}/>
-          </Modal.Content>
-        </Modal>
+              <WithoutWallet setOpen={setOpen} />
+            </Modal.Content>
+          </Modal>
+        )}
       </div>
       <main className="w-full max-w-screen-xl mx-auto sm:justify-center sm:px-2  sm:mt-8 text-white">
         {states.transactions.length === 0 && (
@@ -115,12 +113,12 @@ export default function Home() {
             <p className="text-red-300">Nenhuma transação foi encontrada.</p>
           </div>
         )}
-        {states.isLoading && (
+        {/* {states.isLoading && (
           <CircleNotch
             className="animate-spin w-full justify-center"
             data-testid="loading-icon"
           />
-        )}
+        )} */}
         <div className="sm:overflow-x-scroll min-[936px]:overflow-x-hidden lg:ml-[7rem]">
           <TableTransaction>
             {states.transactions.map((item: ITransactionList) => {
