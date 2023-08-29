@@ -1,14 +1,18 @@
 import { CircleNotch } from "phosphor-react";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-import { IUseTransaction } from "@/app/inicio/types";
 import { Button, CustomSelect, FormModal, Input } from "@/components";
 import { categoryTypes, getCurrentDate } from "@/utils";
-import TransactionTypes from "./components/TransactionTypes";
-import { useRegisterTransaction } from "./hook";
+import TransactionTypes from "../RegisterTransaction/components/TransactionTypes";
+import { useUpdateTransaction } from "./hook";
 
-export function RegisterTransaction({ setOpen }: IUseTransaction) {
-  const { states, actions } = useRegisterTransaction({ setOpen });
+interface IUseTransaction {
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  idTransaction: string;
+}
+
+export function UpdateTransaction({ setOpen, idTransaction }: IUseTransaction) {
+  const { updateActions, states } = useUpdateTransaction({ setOpen });
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleOptionSelect = (value: string): void => {
@@ -16,8 +20,12 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
     else setSelectedOption(value);
   };
 
+  useEffect(() => {
+    updateActions.setIdTransaction(idTransaction);
+  }, []);
+
   return (
-    <FormModal action={actions.handleNewTransaction}>
+    <FormModal action={updateActions.handleUpdateTransaction}>
       <Input.Root
         id="description"
         name="description"
@@ -83,7 +91,7 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
               data-testid="loading-icon"
             />
           ) : (
-            <span>Cadastrar</span>
+            <span>Confirmar</span>
           )}
         </Button>
       </div>

@@ -3,6 +3,7 @@ import { CircleNotch } from "phosphor-react";
 import { Dispatch, SetStateAction } from "react";
 
 import { Button, FormModal } from "@/components";
+import { FORM_DELAY } from "@/utils";
 import { useDeleteTransaction } from "./hook";
 
 interface IUseTransaction {
@@ -23,7 +24,7 @@ export function DeleteTransaction({ setOpen, idTransaction }: IUseTransaction) {
             deleteActions.deleteTransaction(idTransaction);
             setTimeout(() => {
               setOpen(false);
-            }, 2000);
+            }, FORM_DELAY);
           }}
           disabled={deleteStates.isSavingDataForms}
           canceled={false}

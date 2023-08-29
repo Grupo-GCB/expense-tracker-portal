@@ -5,7 +5,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 import { useHome } from "@/app/inicio/hook";
-import { ErrorMappings, ITransaction } from "@/interfaces";
+import { ErrorMappings, ITransactionList } from "@/interfaces";
 import api from "@/services/api";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
 
@@ -14,8 +14,8 @@ export const useDeleteTransaction = () => {
   const { states, actions } = useHome();
 
   function removeTransaction(idTransaction: string): void {
-    const newList: ITransaction[] = states.transactions.filter(
-      (item: ITransaction) => item.id !== idTransaction
+    const newList: ITransactionList[] = states.transactions.filter(
+      (item: ITransactionList) => item.id !== idTransaction
     );
     actions.setTransactions(newList);
   }
