@@ -40,7 +40,7 @@ export const createCardItems = (walletList: IWallet[]) =>
 export function Carteira() {
   const [open, setOpen] = useState<boolean>(false);
 
-  const { states } = useShowAllWallet();
+  const { walletStates } = useShowAllWallet();
 
   return (
     <>
@@ -52,7 +52,7 @@ export function Carteira() {
       <main className="w-full lg:pl-28 ">
         <section className="w-full mt-6">
           <AliceCarousel
-            items={createCardItems(states.walletList)}
+            items={createCardItems(walletStates.walletList)}
             responsive={itemsVisibles}
             disableButtonsControls
           />
