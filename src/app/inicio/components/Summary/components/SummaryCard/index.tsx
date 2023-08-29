@@ -33,7 +33,7 @@ export default function SummaryCard() {
   ];
 
   return (
-    <div className="w-full max-w-screen-xl mx-auto px-6 grid sm2:grid-cols-3 sm:grid-col-1 sm:justify-center sm2:gap-8 sm:gap-2 sm:px-2 sm2:mt-[-5rem] sm:mt-4">
+    <div className="w-full max-w-screen-xl mx-auto px-6 grid sm2:grid-cols-3 sm:grid-col-1 sm:justify-center sm2:gap-8 sm:gap-2 sm:px-2 sm2:mt-[-5rem] sm:mt-8">
       {summaryOptions.map((options) => {
         const isTotal = options.title === "Total";
         const bgClass = isTotal ? `${ChangeTotalBackground()}` : "bg-gray-600";
