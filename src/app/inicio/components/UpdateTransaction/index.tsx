@@ -2,8 +2,7 @@ import { CircleNotch } from "phosphor-react";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import { Button, CustomSelect, FormModal, Input } from "@/components";
-import { getCurrentDate } from "@/utils";
-import { categoryTypes } from "@/utils/constants";
+import { categoryTypes, getCurrentDate } from "@/utils";
 import TransactionTypes from "../RegisterTransaction/components/TransactionTypes";
 import { useUpdateTransaction } from "./hook";
 
