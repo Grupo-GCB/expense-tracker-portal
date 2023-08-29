@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { IRegisterTransaction, IUpdateTransaction } from "@/interfaces";
+import { ITransaction } from "@/interfaces";
 import api from "@/services/api";
 import {
   AXIOS_ERROR,
@@ -15,7 +15,7 @@ export async function registerTransaction(formData: FormData): Promise<string> {
   const wallet = formData.get("wallets") as string;
 
   try {
-    await api.post<IRegisterTransaction>(`/transaction/${wallet}`, {
+    await api.post<ITransaction>(`/transaction/${wallet}`, {
       description: formData.get("description") as string,
       value: parseFloat(formData.get("value") as string),
       date: formData.get("date") as string,
@@ -36,7 +36,7 @@ export async function updateTransaction(
   id: string
 ): Promise<string> {
   try {
-    await api.put<IUpdateTransaction>(`/transaction/${id}`, {
+    await api.put<ITransaction>(`/transaction/${id}`, {
       description: formData.get("description") as string,
       value: parseFloat(formData.get("value") as string),
       date: formData.get("date") as string,

@@ -7,7 +7,7 @@ import { CircleNotch } from "phosphor-react";
 import { useCallback, useEffect } from "react";
 
 import { ErrorPage } from "@/components";
-import { ISignInResponse, IToken, ITransaction } from "@/interfaces";
+import { ISignInResponse, IToken, ITransactionList } from "@/interfaces";
 import api from "@/services/api";
 import getUserSession from "@/services/userSession";
 import {
@@ -98,7 +98,7 @@ export default function Home() {
         )}
         <div className="sm:overflow-x-scroll min-[936px]:overflow-x-hidden lg:ml-[7rem]">
           <TableTransaction>
-            {states.transactions.map((item: ITransaction) => {
+            {states.transactions.map((item: ITransactionList) => {
               return (
                 <TableTransactionContent
                   key={item.id}
