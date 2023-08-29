@@ -113,12 +113,6 @@ export default function Home() {
             <p className="text-red-300">Nenhuma transação foi encontrada.</p>
           </div>
         )}
-        {/* {states.isLoading && (
-          <CircleNotch
-            className="animate-spin w-full justify-center"
-            data-testid="loading-icon"
-          />
-        )} */}
         <div className="sm:overflow-x-scroll min-[936px]:overflow-x-hidden lg:ml-[7rem]">
           <TableTransaction>
             {states.transactions.map((item: ITransactionList) => {
