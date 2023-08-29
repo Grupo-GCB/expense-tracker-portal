@@ -85,7 +85,7 @@ export default function Home() {
       <div className="lg:ml-28">
         <Header />
       </div>
-      <main className="w-full max-w-6xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
+      <main className="w-full  max-w-screen-xl mx-auto sm:justify-center sm:px-2  sm:mt-8 text-white">
         {states.transactions.length === 0 && (
           <div className="w-full flex justify-center">
             <p className="text-red-300">Nenhuma transação foi encontrada.</p>
@@ -97,7 +97,7 @@ export default function Home() {
             data-testid="loading-icon"
           />
         )}
-        <div className="sm:overflow-x-scroll min-[936px]:overflow-x-hidden">
+        <div className="sm:overflow-x-scroll min-[936px]:overflow-x-hidden lg:ml-[7rem]">
           <TableTransaction>
             {states.transactions.map((item: ITransaction) => {
               return (
