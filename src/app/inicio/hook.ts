@@ -4,7 +4,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { AxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
 
-import { ErrorMappings, ITransactionList, ITransactionList } from "@/interfaces";
+import { ErrorMappings, ITransactionList } from "@/interfaces";
 import api from "@/services/api";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
 
