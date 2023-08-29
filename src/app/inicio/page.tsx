@@ -16,7 +16,6 @@ import {
   UNKNOWN_ERROR,
 } from "@/utils/constants";
 import { dateFormatter, priceFormatter } from "@/utils/formatter";
-
 import Header from "./components/Header";
 import { TableTransaction } from "./components/TableTransaction";
 import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
@@ -85,7 +84,7 @@ export default function Home() {
       <div className="lg:ml-28">
         <Header />
       </div>
-      <main className="w-full  max-w-screen-xl mx-auto sm:justify-center sm:px-2  sm:mt-8 text-white">
+      <main className="w-full max-w-screen-xl mx-auto sm:justify-center sm:px-2  sm:mt-8 text-white">
         {states.transactions.length === 0 && (
           <div className="w-full flex justify-center">
             <p className="text-red-300">Nenhuma transação foi encontrada.</p>
