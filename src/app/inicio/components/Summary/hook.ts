@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+
 import { useHome } from "@/app/inicio/hook";
 
 export const useSummary = () => {
