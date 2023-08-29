@@ -6,7 +6,7 @@ import { priceFormatter } from "@/utils";
 export default function SummaryCard() {
   const summary = useSummary();
 
-  function ChangeTotalBackground() {
+  function ChangeTotalBackground(): string {
     if (summary.total >= 0) return "bg-green-700";
     else return "bg-red-700";
   }
