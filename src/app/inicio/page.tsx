@@ -99,22 +99,24 @@ export default function Home() {
             data-testid="loading-icon"
           />
         )}
-        <TableTransaction>
-          {states.transactions.map((item: ITransaction) => {
-            return (
-              <TableTransactionContent
-                key={item.id}
-                id={item.id}
-                description={item.description}
-                type={item.type}
-                walletName={item.bank_name}
-                value={priceFormatter.format(Number(item.value))}
-                category={item.category}
-                date={dateFormatter.format(new Date(item.date))}
-              />
-            );
-          })}
-        </TableTransaction>
+        <div className="sm:overflow-x-scroll min-[936px]:overflow-x-hidden">
+          <TableTransaction>
+            {states.transactions.map((item: ITransaction) => {
+              return (
+                <TableTransactionContent
+                  key={item.id}
+                  id={item.id}
+                  description={item.description}
+                  type={item.type}
+                  walletName={item.bank_name}
+                  value={priceFormatter.format(Number(item.value))}
+                  category={item.category}
+                  date={dateFormatter.format(new Date(item.date))}
+                />
+              );
+            })}
+          </TableTransaction>
+        </div>
       </main>
     </>
   );

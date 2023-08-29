@@ -16,6 +16,8 @@ export const ERROR_DELETE_MESSAGE = "Erro ao deletar a carteira.";
 export const SUCESS_REGISTER_TRANSACTION =
   "Nova transação adicionada com sucesso.";
 export const ERROR_REGISTER_TRANSACTION = "Erro ao adicionar nova transação.";
+export const ERROR_UPDATE_TRANSACTION = "Erro ao atualizar a transação.";
+export const SUCCESS_UPDATE_TRANSACTION = "Atualizado com sucesso.";
 export const CLOSE_DELAY = 2000;
 export const FORM_DELAY = 200;
 

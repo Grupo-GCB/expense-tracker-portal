@@ -3,26 +3,27 @@ import { toast } from "react-toastify";
 import Zod from "zod";
 
 import { getAllWallets } from "@/app/carteira/action";
-import { registerTransaction } from "@/app/inicio/action";
-import {
-  IUseTransaction,
-  fieldErrorMappings,
-  newTransactionSchema,
-} from "@/app/inicio/types";
+import { updateTransaction } from "@/app/inicio/action";
 import { IOptions } from "@/components";
 import { IWallet } from "@/interfaces";
 import {
   CLOSE_DELAY,
-  ERROR_REGISTER_TRANSACTION,
+  ERROR_UPDATE_TRANSACTION,
   FORM_DELAY,
-  SUCESS_REGISTER_TRANSACTION,
-} from "@/utils/constants";
+  SUCCESS_UPDATE_TRANSACTION,
+} from "@/utils";
+import {
+  IUseUpdateTransaction,
+  fieldErrorMappings,
+  updateTransactionSchema,
+} from "./types";
 
-export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
-  const [walletsNames, setWalletsNames] = useState<IOptions[]>([]);
+export const useUpdateTransaction = ({ setOpen }: IUseUpdateTransaction) => {
   const [isSavingDataForms, setIsSavingDataForms] = useState<boolean>(false);
+  const [walletsNames, setWalletsNames] = useState<IOptions[]>([]);
+  const [idTransaction, setIdTransaction] = useState<string>("");
 
-  const handleSaveForm = (succes: boolean): void => {
+  const handleSaveForm = (succes: boolean) => {
     setTimeout(() => {
       setIsSavingDataForms(succes);
     }, FORM_DELAY);
@@ -58,7 +59,7 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
 
   function validateTransactionData(formData: FormData): void {
     const transactionData = convertFormDataToObject(formData);
-    newTransactionSchema.parse(transactionData);
+    updateTransactionSchema.parse(transactionData);
   }
 
   function handleValidationErrors(error: Zod.ZodError): void {
@@ -71,26 +72,29 @@ export const useRegisterTransaction = ({ setOpen }: IUseTransaction) => {
     });
   }
 
-  const handleNewTransaction = async (values: FormData): Promise<void> => {
+  const handleUpdateTransaction = async (values: FormData): Promise<void> => {
     try {
       validateTransactionData(values);
-      const response = await registerTransaction(values);
+      const response = await updateTransaction(values, idTransaction);
       handleSaveForm(true);
-      if (response === SUCESS_REGISTER_TRANSACTION) toast.success(response);
-      if (response === ERROR_REGISTER_TRANSACTION) toast.error(response);
+      if (response === SUCCESS_UPDATE_TRANSACTION) toast.success(response);
+      if (response === ERROR_UPDATE_TRANSACTION) toast.error(response);
     } catch (error) {
       if (error instanceof Zod.ZodError) handleValidationErrors(error);
       else toast.error(`${error}`);
     }
   };
-
   return {
+    updateActions: {
+      handleUpdateTransaction,
+      setWalletsNames,
+      setIsSavingDataForms,
+      setIdTransaction,
+    },
     states: {
       walletsNames,
       isSavingDataForms,
-    },
-    actions: {
-      handleNewTransaction,
+      idTransaction,
     },
   };
 };
