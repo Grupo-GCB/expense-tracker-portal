@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <header className="w-full h-40 bg-gray-900 ">
-      <div className="w-full h-40 max-w-6xl mx-auto flex justify-end items-center mb-0 px-10 py-0">
+      <div className="w-full h-40 max-w-6xl mx-auto flex justify-end items-center mb-0 px-[4.5rem] py-0">
         <Modal open={open} onOpenChange={setOpen}>
           <Modal.Button asChild>
             <Button
