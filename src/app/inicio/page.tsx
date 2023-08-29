@@ -21,6 +21,7 @@ import Header from "./components/Header";
 import { TableTransaction } from "./components/TableTransaction";
 import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
 import { useHome } from "./hook";
+import Summary from "./components/Summary";
 
 export default function Home() {
   const { states } = useHome();
@@ -84,6 +85,7 @@ export default function Home() {
     <>
       <div className="lg:ml-28">
         <Header />
+        <Summary />
       </div>
       <main className="w-full max-w-6xl mx-auto mt-4 mb-0 px-6 py-0 text-white">
         {states.transactions.length === 0 && (

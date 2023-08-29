@@ -17,7 +17,7 @@ export const useHome = () => {
   async function loadTransactions(): Promise<string | void> {
     try {
       const { data } = await api.get<ITransaction>(`/transaction/${user?.sub}`);
-      setIsLoading(true);
+      setIsLoading(false);
       if (Array.isArray(data) && data.length !== 0) {
         setIsLoading(false);
         setTransactions(data);
