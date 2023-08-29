@@ -9,3 +9,4 @@ export * from "./Bank";
 export * from "./Wallet";
 export * from "./ErrorMapping"
 export * from "./Transaction"
+export * from "./Summary";
