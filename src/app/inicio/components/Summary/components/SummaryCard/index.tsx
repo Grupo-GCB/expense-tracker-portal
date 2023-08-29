@@ -15,19 +15,19 @@ export default function SummaryCard() {
     {
       id: 1,
       title: "Entradas",
-      icon: <ArrowCircleUp color="#00b37e" className="sm2:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm2:w-4 sm2:h-4 sm:w-6 sm:h-6"/>,
+      icon: <ArrowCircleUp color="#00b37e" className="sm2:flex lg:w-8 lg:h-8 sm:w-6 sm:h-6"/>,
       value: priceFormatter.format(summary.income),
     },
     {
       id: 2,
       title: "Saídas",
-      icon: <ArrowCircleDown color="#f75a68" className="sm2:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm2:w-4 sm2:h-4 sm:w-6 sm:h-6"/>,
+      icon: <ArrowCircleDown color="#f75a68" className="sm2:flex lg:w-8 lg:h-8 sm:w-6 sm:h-6"/>,
       value: priceFormatter.format(summary.outcome),
     },
     {
       id: 3,
       title: "Total",
-      icon: <CurrencyDollar color="#fff" className="sm2:flex lg:w-8 lg:h-8 md:w-6 md:h-6 sm2:w-4 sm2:h-4 sm:w-6 sm:h-6"/>,
+      icon: <CurrencyDollar color="#fff" className="sm2:flex lg:w-8 lg:h-8 sm:w-6 sm:h-6"/>,
       value: priceFormatter.format(summary.total),
     },
   ];
