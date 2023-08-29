@@ -6,10 +6,7 @@ import { priceFormatter } from "@/utils";
 export default function SummaryCard() {
   const summary = useSummary();
 
-  function ChangeTotalBackground(): string {
-    if (summary.total >= 0) return "bg-green-700";
-    else return "bg-red-700";
-  }
+  const totalBgColor = summary.total >= 0 ? "bg-green-700" : "bg-red-700";
 
   const summaryOptions = [
     {
@@ -36,7 +33,7 @@ export default function SummaryCard() {
     <div className="w-full max-w-screen-xl mx-auto px-6 grid sm2:grid-cols-3 sm:grid-col-1 sm:justify-center sm2:gap-8 sm:gap-2 sm:px-2 sm2:mt-[-5rem] sm:mt-8">
       {summaryOptions.map((options) => {
         const isTotal = options.title === "Total";
-        const bgClass = isTotal ? `${ChangeTotalBackground()}` : "bg-gray-600";
+        const bgClass = isTotal ? totalBgColor : "bg-gray-600";
 
         return (
           <div key={options.id} className={`${bgClass} rounded-sm md:p-8 sm:p-4 sm:w-72 sm2:w-full`}>
