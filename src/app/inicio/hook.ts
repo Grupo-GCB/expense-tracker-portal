@@ -4,19 +4,21 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { AxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
 
-import { ErrorMappings, ITransaction } from "@/interfaces";
+import { ErrorMappings, ITransactionList } from "@/interfaces";
 import api from "@/services/api";
 import { AXIOS_ERROR_400, AXIOS_ERROR_404 } from "@/utils/constants";
 
 export const useHome = () => {
-  const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const [transactions, setTransactions] = useState<ITransactionList[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const observerTarget = useRef(null);
   const { user } = useUser();
 
   async function loadTransactions(): Promise<string | void> {
     try {
-      const { data } = await api.get<ITransaction>(`/transaction/${user?.sub}`);
+      const { data } = await api.get<ITransactionList>(
+        `/transaction/${user?.sub}`
+      );
       setIsLoading(true);
       if (Array.isArray(data) && data.length !== 0) {
         setIsLoading(false);
@@ -45,7 +47,7 @@ export const useHome = () => {
 
   useEffect(() => {
     loadTransactions();
-  }, [user, transactions]);
+  }, []);
 
   return {
     states: {
