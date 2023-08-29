@@ -22,7 +22,7 @@ export function UpdateTransaction({ setOpen, idTransaction }: IUseTransaction) {
 
   useEffect(() => {
     updateActions.setIdTransaction(idTransaction);
-  });
+  }, []);
 
   return (
     <FormModal action={updateActions.handleUpdateTransaction}>
