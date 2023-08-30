@@ -10,12 +10,7 @@ export const useWithoutWallet = () => {
   const { walletStates } = useShowAllWallet();
   const [withoutWalletOpen, setWithoutWalletOpen] = useState<boolean>(false);
 
-  function verifyIfWalletsExist(): boolean {
-    if (walletStates.walletList.length === 0) {
-      return true;
-    }
-    return false;
-  }
+  const verifyIfWalletsExist = (): boolean => walletStates.walletList.length === 0 ? true : false;
 
   useEffect(() => {
     const delay = 1000;
