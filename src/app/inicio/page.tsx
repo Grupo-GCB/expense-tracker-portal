@@ -28,7 +28,7 @@ export default function Home() {
   const { walletStates } = useShowAllWallet();
   const { states } = useHome();
   const { user } = useUser();
-  const [open, setOpen] = useState<boolean>(true);
+  const [withoutWalletOpen, setWithoutWalletOpen] = useState<boolean>(true);
 
   async function sendToken({ token }: IToken): Promise<void> {
     try {
@@ -91,7 +91,7 @@ export default function Home() {
       </div>
       <div>
         {walletStates.walletList.length === 0 && (
-          <Modal open={open} onOpenChange={setOpen}>
+          <Modal open={withoutWalletOpen} onOpenChange={setWithoutWalletOpen}>
             <Modal.Content>
               <div className="flex items-center justify-center flex-col gap-4">
                 <div className="flex items-center justify-center bg-red-300 w-16 h-16 rounded-full">
@@ -102,7 +102,7 @@ export default function Home() {
                   <p>Gostaria de ir para a página de carteiras ?</p>
                 </div>
               </div>
-              <WithoutWallet setOpen={setOpen} />
+              <WithoutWallet setWithoutWalletOpen={setWithoutWalletOpen} />
             </Modal.Content>
           </Modal>
         )}
