@@ -3,10 +3,10 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 import { parseCookies, setCookie } from "nookies";
-import { CircleNotch } from "phosphor-react";
-import { useCallback, useEffect } from "react";
+import { Warning } from "phosphor-react";
+import { useCallback, useEffect, useState } from "react";
 
-import { ErrorPage } from "@/components";
+import { ErrorPage, Modal } from "@/components";
 import { ISignInResponse, IToken, ITransactionList } from "@/interfaces";
 import api from "@/services/api";
 import getUserSession from "@/services/userSession";
@@ -21,10 +21,14 @@ import { TableTransaction } from "./components/TableTransaction";
 import { TableTransactionContent } from "./components/TableTransaction/TableTransactionContent";
 import { useHome } from "./hook";
 import Summary from "./components/Summary";
+import WithoutWallet from "./components/WithoutWalltes";
+import { useShowAllWallet } from "@/app/carteira/components/CardWallet/hook";
+import { useWithoutWallet } from "./components/WithoutWalltes/hook";
 
 export default function Home() {
+  const { walletStates } = useShowAllWallet();
+  const { stateWithoutWallet } = useWithoutWallet();
   const { states } = useHome();
-
   const { user } = useUser();
 
   async function sendToken({ token }: IToken): Promise<void> {
@@ -86,17 +90,34 @@ export default function Home() {
         <Header />
         <Summary />
       </div>
+      <div>
+        {walletStates.walletList.length === 0 && (
+          <Modal
+            open={stateWithoutWallet.withoutWalletOpen}
+            onOpenChange={stateWithoutWallet.setWithoutWalletOpen}
+          >
+            <Modal.Content>
+              <div className="flex items-center justify-center flex-col gap-4">
+                <div className="flex items-center justify-center bg-red-300 w-16 h-16 rounded-full">
+                  <Warning size={40} />
+                </div>
+                <div className="flex items-center justify-center flex-col">
+                  <h2>Você ainda não possui carteiras</h2>
+                  <p>Gostaria de ir para a página de carteiras ?</p>
+                </div>
+              </div>
+              <WithoutWallet
+                setWithoutWalletOpen={stateWithoutWallet.setWithoutWalletOpen}
+              />
+            </Modal.Content>
+          </Modal>
+        )}
+      </div>
       <main className="w-full max-w-screen-xl mx-auto sm:justify-center sm:px-2  sm:mt-8 text-white">
         {states.transactions.length === 0 && (
           <div className="w-full flex justify-center">
             <p className="text-red-300">Nenhuma transação foi encontrada.</p>
           </div>
-        )}
-        {states.isLoading && (
-          <CircleNotch
-            className="animate-spin w-full justify-center"
-            data-testid="loading-icon"
-          />
         )}
         <div className="sm:overflow-x-scroll min-[936px]:overflow-x-hidden lg:ml-[7rem]">
           <TableTransaction>

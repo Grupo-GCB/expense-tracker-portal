@@ -24,7 +24,7 @@ export const useShowAllWallet = () => {
   }, []);
 
   return {
-    states: {
+    walletStates: {
       walletList,
       setWalletList,
     },
