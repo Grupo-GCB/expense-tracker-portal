@@ -1,14 +1,17 @@
-import { CircleNotch } from "phosphor-react";
+import { CircleNotch, Warning } from "phosphor-react";
 import { useState } from "react";
 
 import { IUseTransaction } from "@/app/inicio/types";
-import { Button, CustomSelect, FormModal, Input } from "@/components";
+import { Button, CustomSelect, FormModal, Input, Modal } from "@/components";
 import { categoryTypes, getCurrentDate } from "@/utils";
 import TransactionTypes from "./components/TransactionTypes";
 import { useRegisterTransaction } from "./hook";
+import WithoutWallet from "@/app/inicio/components/WithoutWalltes";
+import { useWithoutWallet } from "@/app/inicio/components/WithoutWalltes/hook";
 
 export function RegisterTransaction({ setOpen }: IUseTransaction) {
   const { states, actions } = useRegisterTransaction({ setOpen });
+  const { stateWithoutWallet } = useWithoutWallet();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleOptionSelect = (value: string): void => {
@@ -49,7 +52,27 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
         options={states.walletsNames}
         placeholder="Carteiras"
       />
-
+      {states.walletsNames.length === 0 && (
+        <Modal
+          open={stateWithoutWallet.withoutWalletOpen}
+          onOpenChange={stateWithoutWallet.setWithoutWalletOpen}
+        >
+          <Modal.Content>
+            <div className="flex items-center justify-center flex-col gap-4">
+              <div className="flex items-center justify-center bg-red-300 w-16 h-16 rounded-full">
+                <Warning size={40} />
+              </div>
+              <div className="flex items-center justify-center flex-col">
+                <h2>Você ainda não possui carteiras</h2>
+                <p>Gostaria de ir para a página de carteiras?</p>
+              </div>
+            </div>
+            <WithoutWallet
+              setWithoutWalletOpen={stateWithoutWallet.setWithoutWalletOpen}
+            />
+          </Modal.Content>
+        </Modal>
+      )}
       <CustomSelect
         id="categories"
         name="categories"
