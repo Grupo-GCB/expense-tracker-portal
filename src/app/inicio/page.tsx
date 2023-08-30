@@ -3,7 +3,7 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 import { parseCookies, setCookie } from "nookies";
-import { CircleNotch, Warning } from "phosphor-react";
+import { Warning } from "phosphor-react";
 import { useCallback, useEffect, useState } from "react";
 
 import { ErrorPage, Modal } from "@/components";
@@ -23,12 +23,13 @@ import { useHome } from "./hook";
 import Summary from "./components/Summary";
 import WithoutWallet from "./components/WithoutWalltes";
 import { useShowAllWallet } from "@/app/carteira/components/CardWallet/hook";
+import { useWithoutWallet } from "./components/WithoutWalltes/hook";
 
 export default function Home() {
   const { walletStates } = useShowAllWallet();
+  const { stateWithoutWallet } = useWithoutWallet();
   const { states } = useHome();
   const { user } = useUser();
-  const [withoutWalletOpen, setWithoutWalletOpen] = useState<boolean>(true);
 
   async function sendToken({ token }: IToken): Promise<void> {
     try {
@@ -91,7 +92,7 @@ export default function Home() {
       </div>
       <div>
         {walletStates.walletList.length === 0 && (
-          <Modal open={withoutWalletOpen} onOpenChange={setWithoutWalletOpen}>
+          <Modal open={stateWithoutWallet.withoutWalletOpen} onOpenChange={stateWithoutWallet.setWithoutWalletOpen}>
             <Modal.Content>
               <div className="flex items-center justify-center flex-col gap-4">
                 <div className="flex items-center justify-center bg-red-300 w-16 h-16 rounded-full">
@@ -102,7 +103,7 @@ export default function Home() {
                   <p>Gostaria de ir para a página de carteiras ?</p>
                 </div>
               </div>
-              <WithoutWallet setWithoutWalletOpen={setWithoutWalletOpen} />
+              <WithoutWallet setWithoutWalletOpen={stateWithoutWallet.setWithoutWalletOpen} />
             </Modal.Content>
           </Modal>
         )}
