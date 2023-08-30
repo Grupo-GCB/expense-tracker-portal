@@ -4,9 +4,13 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { useRouter } from "next/navigation";
 
 import { Button, FormModal } from "@/components";
-import { IUseTransaction } from "@/app/inicio/types";
+import { Dispatch, SetStateAction } from "react";
 
-export default function WithoutWallet({ setOpen }: IUseTransaction) {
+export interface IWithoutWallet {
+  setWithoutWalletOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function WithoutWallet({ setWithoutWalletOpen }: IWithoutWallet) {
   const router = useRouter();
   return (
     <FormModal>
@@ -24,7 +28,7 @@ export default function WithoutWallet({ setOpen }: IUseTransaction) {
             className="py-2 px-4 md:py-4 md:px-6 w-full md:w-full bg-gray-200 rounded-md  hover:bg-gray-300"
             canceled
             onClick={() => {
-              setOpen(false);
+              setWithoutWalletOpen(false);
             }}
           >
             Cancelar
