@@ -5,7 +5,7 @@ interface IFormModal extends HTMLAttributes<HTMLFormElement> {
 }
 
 export function FormModal({ children, action }: IFormModal) {
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     if (action) {
       const formData = new FormData(e.target as HTMLFormElement);
