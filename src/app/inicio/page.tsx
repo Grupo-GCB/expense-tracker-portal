@@ -92,7 +92,10 @@ export default function Home() {
       </div>
       <div>
         {walletStates.walletList.length === 0 && (
-          <Modal open={stateWithoutWallet.withoutWalletOpen} onOpenChange={stateWithoutWallet.setWithoutWalletOpen}>
+          <Modal
+            open={stateWithoutWallet.withoutWalletOpen}
+            onOpenChange={stateWithoutWallet.setWithoutWalletOpen}
+          >
             <Modal.Content>
               <div className="flex items-center justify-center flex-col gap-4">
                 <div className="flex items-center justify-center bg-red-300 w-16 h-16 rounded-full">
@@ -103,7 +106,9 @@ export default function Home() {
                   <p>Gostaria de ir para a página de carteiras ?</p>
                 </div>
               </div>
-              <WithoutWallet setWithoutWalletOpen={stateWithoutWallet.setWithoutWalletOpen} />
+              <WithoutWallet
+                setWithoutWalletOpen={stateWithoutWallet.setWithoutWalletOpen}
+              />
             </Modal.Content>
           </Modal>
         )}

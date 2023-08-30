@@ -3,12 +3,12 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useRouter } from "next/navigation";
 
-
 import { Button, FormModal } from "@/components";
 import { IWithoutWallet } from "./hook";
 
-
-export default function WithoutWallet({ setWithoutWalletOpen }: IWithoutWallet) {
+export default function WithoutWallet({
+  setWithoutWalletOpen,
+}: IWithoutWallet) {
   const router = useRouter();
   return (
     <FormModal>
