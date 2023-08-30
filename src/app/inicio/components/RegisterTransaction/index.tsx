@@ -64,7 +64,7 @@ export function RegisterTransaction({ setOpen }: IUseTransaction) {
               </div>
               <div className="flex items-center justify-center flex-col">
                 <h2>Você ainda não possui carteiras</h2>
-                <p>Gostaria de ir para a página de carteiras ?</p>
+                <p>Gostaria de ir para a página de carteiras?</p>
               </div>
             </div>
             <WithoutWallet
