@@ -8,6 +8,7 @@ import { IWallet } from "@/interfaces";
 
 export const useShowAllWallet = () => {
   const [walletList, setWalletList] = useState<IWallet[]>([]);
+  const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchAllWallets(): Promise<void> {
@@ -21,13 +22,16 @@ export const useShowAllWallet = () => {
       }
     }
     fetchAllWallets();
-  }, []);
+  }, [open === false]);
 
   return {
     walletStates: {
       walletList,
       setWalletList,
+      open,
     },
-    actions: {},
+    actions: {
+      setOpen,
+    },
   };
 };
