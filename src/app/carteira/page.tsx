@@ -38,9 +38,7 @@ export const createCardItems = (walletList: IWallet[]) =>
   ));
 
 export function Carteira() {
-  const [open, setOpen] = useState<boolean>(false);
-
-  const { walletStates } = useShowAllWallet();
+  const { walletStates, actions } = useShowAllWallet();
 
   return (
     <>
@@ -57,7 +55,7 @@ export function Carteira() {
             disableButtonsControls
           />
         </section>
-        <Modal open={open} onOpenChange={setOpen}>
+        <Modal open={walletStates.open} onOpenChange={actions.setOpen}>
           <div className="w-full flex justify-center">
             <Modal.Button className="rounded py-2 px-10 mb-5" asChild>
               <Button canceled={false}>cadastrar nova carteira</Button>
@@ -69,7 +67,7 @@ export function Carteira() {
                 Registrar Carteira
               </Dialog.Title>
             </div>
-            <RegisterWallet setOpen={setOpen} />
+            <RegisterWallet setOpen={actions.setOpen} />
           </Modal.Content>
         </Modal>
       </main>
